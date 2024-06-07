@@ -1,5 +1,5 @@
 function Style () {
-    return <h1>test style</h1>
+    return <h1>Style</h1>
 }
 
 export default Style
