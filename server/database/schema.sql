@@ -1,12 +1,37 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+CREATE TABLE roles (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name VARCHAR(100) NOT NULL
+)
+
+CREATE TABLE user (
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  firstname VARCHAR(100) NOT NULL,
+  lastname VARCHAR(100) NOT NULL,
+  role_id INT NOT NULL,
+  FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+CREATE TABLE video (
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  user_id INT NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES user(id)
+);
+CREATE TABLE categories (
+    id INT UNSIGNED PRIMARY KEYS AUTO_INCREMENT NOT NULL,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE tag (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE video_tag (
+  tag_id INT NOT NULL,
+  site_id INT NOT NULL,
+  FOREIGN KEY (site_id) REFERENCES sites(id),
+  FOREIGN KEY (tag_id) REFERENCES tags(id)
 );
