@@ -1,4 +1,12 @@
+import HeroSection from "../components/HeroSection";
+import HomeSection from "../components/HomeSection";
+
 function Home() {
-  return <h1 className="text-red-500">Home</h1>;
+  return (
+    <main>
+      <HeroSection />
+      <HomeSection />
+    </main>
+  );
 }
 export default Home;
