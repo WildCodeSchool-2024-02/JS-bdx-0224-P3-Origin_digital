@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./src/assets/fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Rajdhani";
+  src: url("client/src/assets/fonts/Rajdhani-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("./src/assets/fonts/NunitoSans_7pt-Regular.ttf") format("truetype");
+}
+
+:root {
+  --primaryColor: #e1b7ff;
+  --primaryLight: #f2e2fe;
+  --primaryDark: #b44dfe;
+  --secondaryColor: #eaf3f5;
+  --lightColor: #fdfdfd;
+  --darkColor: #353535;
+  --logoFont: "Poppins", sans-serif;
+  --headingFont: "Rajdhani", sans-serif;
+  --textFont: "Nunito Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--textFont);
+  font-size: 1rem;
+  color: var(--darkColor);
+  background-color: var(--lightColor);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-family: var(--headingFont);
+}
+
+h2 {
+  font-size: 2rem;
+  font-family: var(--headingFont);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-family: var(--headingFont);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-family: var(--headingFont);
+  font-weight: 500;
+}
+
+header {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+section {
+  width: 100%;
+  padding: 1rem;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-left: 0.25rem;
+}
+
+label {
+  width: 100%;
+  font-weight: 500;
+}
+
+input {
+  height: 2.5rem;
+  padding: 0.25rem;
+  border-radius: 15px;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid var(--primaryColor);
+}
+
+button {
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 15px;
+  font-weight: 600;
+  background-color: var(--primaryColor);
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  transition: all ease 300ms;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--primaryDark);
+  color: var(--lightColor);
+}
+
+a {
+  color: var(--primaryDark);
+  text-decoration: none;
+  transition: all ease 300ms;
+}
+
+a:visited {
+  text-decoration: none;
+  color: var(--primaryColor);
+}
+
+a:hover {
+  color: var(--primaryColor);
+}
+.center {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+}

@@ -1,5 +1,12 @@
-export default function Style() {
-  return (
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./src/index.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
     <section>
       <div className="center">
         <h1>Heading 1</h1>
@@ -12,7 +19,7 @@ export default function Style() {
           asperiores nisi quas quod laudantium sunt tempora! Quasi placeat
           minima voluptatem inventore quos!
         </p>
-        <ul>
+        <ul class="flex flex-col w-5 h-5 items-end justify-end text-red-500">
           <li>test li</li>
           <li>test li</li>
           <li>test li</li>
@@ -27,5 +34,5 @@ export default function Style() {
         <button type="button">button</button>
       </div>
     </section>
-  );
-}
+  </body>
+</html>
