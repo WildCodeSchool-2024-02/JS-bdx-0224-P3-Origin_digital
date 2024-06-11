@@ -5,7 +5,8 @@ function Home() {
   return (
     <main>
       <HeroSection />
-      <HomeSection />
+      <HomeSection reversed={false} />
+      <HomeSection reversed />
     </main>
   );
 }
