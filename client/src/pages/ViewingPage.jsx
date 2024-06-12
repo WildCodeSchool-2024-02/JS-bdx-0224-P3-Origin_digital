@@ -1,23 +1,25 @@
+import { Link } from 'react-router-dom';
+
 export default function ViewingPage() {
   return (
     <>
-      <section className="">
+      <section className=" lg:w-4/6 lg:block lg:mx-auto lg:bg-[var(--secondaryColor)] lg:rounded-b-3xl lg:px-10 lg:pb-5">
         <video
           controls
-          src="src\assets\videos\test2.mp4"
-          className="w-full lg:w-5/6 lg:block lg:mx-auto"
+          src="src\assets\videos\test3.mp4"
+          className=" w-full max-h-screen"
         >
           <track kind="captions" />
         </video>
-        <section className="[&>*]:mx-1">
-          <button type="button">#tag1</button>
-          <button type="button">#tag2</button> 
-          <button type="button">#tag3</button>
+        <h1 className="font-bold text-3xl pt-2">INOXTAG au sommet de l'EVERST 😮🤣😎test test test test</h1>
+        <section className="p-0 [&>*]:mx-1 [&>*]:py-0 [&>*]:px-4 [&>*]:text-xl [&>*]:h-7 [&>*]:bg-[var(--primaryColor)] [&>*]:rounded-3xl [&>*]:text-[var(--darkColor)] [&>*]:font-bold [&>*]:capitalize">
+          <Link to="/tag1">#tag1</Link>
+          <Link to="/tag2">#tag2</Link>
+          <Link to="/tag3">#tag3</Link>
         </section>
-        <h1>Titre vidéo</h1>
-        <p className="h-8">Durée : XX minutes</p>
-        <h3>Description</h3>
-        <p>
+        <p className="py-1 text-lg">Durée : XX minutes</p>
+        <h3 className="text-2xl">Description</h3>
+        <p className="text-lg">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
           laboriosam repellat facilis saepe in necessitatibus facere cupiditate
           unde! Eum nam porro dolorum ratione veritatis ex debitis fugit officia
