@@ -71,7 +71,7 @@ header {
 
 section {
   width: 100%;
-  padding: 1rem;
+  padding: 0rem 1rem;
 }
 
 footer {
@@ -181,7 +181,7 @@ a:hover {
   }
 
   section {
-    padding: 2rem;
+    padding: 0.5rem 2rem;
   }
 
   footer {
@@ -215,7 +215,7 @@ a:hover {
   }
 
   section {
-    padding: 3rem;
+    padding: 1rem 3rem;
   }
 
   footer {

@@ -6,21 +6,20 @@ export default function HomeSection({ reversed }) {
     <section
       className={`w-full flex flex-col items-center justify-center gap-2 ${reversed ? "md:items-end" : "md:items-start"}`}
     >
-      <figure>
+      <div className="w-full flex flex-col items-center justify-center md:w-1/2 lg:w-[40%] xl: md:items-start gap-2 md:gap-3 lg:gap-4">
         <img
-          src="./src/assets/images/runner.webp"
+          src={`${reversed ? "./src/assets/images/crossfit.webp" : "./src/assets/images/runner.webp"}`}
           alt="a runner"
-          className={`img-shadow max-h-[35rem] aspect-[3/6] w-[calc(100%-15px)] md:w-4/6 lg:w-1/2 xl:h-2/6
-            rounded-xl mb-4 ${reversed ? "ml-auto" : "mr-auto"}`}
+          className="img-shadow h-72 w-[calc(100%-15px)] rounded-xl"
         />
-      </figure>
-      <figcaption>
-        <h2>Votre sport en Streaming</h2>
-        <p>Les avantages...</p>
+        <h2 className="w-full text-center md:text-left">
+          Votre sport en Streaming
+        </h2>
+        <p className="w-full text-center md:text-left">Les avantages...</p>
         <Link
           to="/register"
-          className="text-[var(--lightColor)] text-xl lg:text-2xl visited:text-[var(--lightColor)] bg-[var(--primaryColor)] p-2 md:p-3 lg:p-4 rounded-xl 
-        flex item-center justify-center gap-2 mt-2"
+          className="text-[var(--lightColor)] text-xl lg:text-2xl visited:text-[var(--lightColor)] bg-[var(--primaryColor)] p-2 md:p-3 lg:p-4 
+          rounded-xl flex item-center justify-center gap-2 mt-2 w-40 md:w-48 lg:w-56 text-center md:text-left hover:bg-[var(--primaryDark)]"
         >
           <img
             src="./src/assets/images/logoPlay.png"
@@ -29,7 +28,7 @@ export default function HomeSection({ reversed }) {
           />
           Commencer
         </Link>
-      </figcaption>
+      </div>
     </section>
   );
 }
