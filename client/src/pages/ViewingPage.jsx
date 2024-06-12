@@ -1,7 +1,7 @@
 export default function ViewingPage() {
   return (
     <>
-      <section>
+      <section className="">
         <video
           controls
           src="src\assets\videos\test2.mp4"
