@@ -5,8 +5,16 @@ function Home() {
   return (
     <main>
       <HeroSection />
-      <HomeSection reversed={false} />
-      <HomeSection reversed />
+      <HomeSection
+        alignItem="md:items-end"
+        imgSrc="./src/assets/images/runner.webp"
+        title="Pourquoi s'abonner ?"
+      />
+      <HomeSection
+        alignItem="md:items-start"
+        imgSrc="./src/assets/images/crossfit.webp"
+        title="Les avantages"
+      />
     </main>
   );
 }

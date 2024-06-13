@@ -1,20 +1,18 @@
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 
-export default function HomeSection({ reversed }) {
+export default function HomeSection({ alignItem, imgSrc, title }) {
   return (
     <section
-      className={`w-full flex flex-col items-center justify-center gap-2 ${reversed ? "md:items-end" : "md:items-start"}`}
+      className={`w-full grid grid-cols-1 items-center justify-center p gap-2 ${alignItem}`}
     >
-      <div className="w-full flex flex-col items-center justify-center md:w-1/2 lg:w-[40%] xl: md:items-start gap-2 md:gap-3 lg:gap-4">
-        <img
-          src={`${reversed ? "./src/assets/images/crossfit.webp" : "./src/assets/images/runner.webp"}`}
-          alt="un coureur"
-          className="img-shadow h-72 w-[calc(100%-15px)] rounded-xl"
-        />
-        <h2 className="w-full text-center md:text-left">
-          Votre sport en Streaming
-        </h2>
+      <img
+        src={imgSrc}
+        alt="un coureur"
+        className="img-shadow lg:row-[1/2] h-72 w-[calc(100%-15px)] rounded-xl"
+      />
+      <div className="lg:row-[1/2] flex flex-col gap-2">
+        <h2 className="w-full text-center md:text-left">{title}</h2>
         <p className="w-full text-center md:text-left">Les avantages...</p>
         <Link
           to="/register"
@@ -34,5 +32,7 @@ export default function HomeSection({ reversed }) {
 }
 
 HomeSection.propTypes = {
-  reversed: PropTypes.bool.isRequired,
+  alignItem: PropTypes.bool.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
