@@ -9,7 +9,7 @@ export default function HomeSection({ reversed }) {
       <div className="w-full flex flex-col items-center justify-center md:w-1/2 lg:w-[40%] xl: md:items-start gap-2 md:gap-3 lg:gap-4">
         <img
           src={`${reversed ? "./src/assets/images/crossfit.webp" : "./src/assets/images/runner.webp"}`}
-          alt="a runner"
+          alt="un coureur"
           className="img-shadow h-72 w-[calc(100%-15px)] rounded-xl"
         />
         <h2 className="w-full text-center md:text-left">
