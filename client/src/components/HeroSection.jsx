@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   return (
-    <section
+    <header
       className="h-screen w-full flex flex-col items-center justify-center lg:items-end lg:pr-8 bg-[url(./assets/images/heroBg.webp)] 
     bg-no-repeat bg-[30%] bg-cover bg-clip-border gap-2 mb-24"
     >
@@ -26,6 +26,6 @@ export default function HeroSection() {
           Commencer
         </Link>
       </hgroup>
-    </section>
+    </header>
   );
 }

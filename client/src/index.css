@@ -79,10 +79,6 @@ footer {
   padding: 0.5rem 1rem;
 }
 
-nav {
-  width: 100%;
-}
-
 ul {
   list-style-type: none;
 }
@@ -132,13 +128,10 @@ a {
   transition: all ease 300ms;
 }
 
-a:visited {
-  text-decoration: none;
-}
-
 a:hover {
   color: var(--primaryColor);
 }
+
 .center {
   width: 50%;
   margin: auto;
