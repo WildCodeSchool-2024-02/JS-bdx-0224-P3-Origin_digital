@@ -125,19 +125,10 @@ button:hover {
 }
 
 a {
-  color: var(--primaryDark);
+  color: var(--darkColor);
   text-decoration: none;
-  transition: all ease 300ms;
 }
 
-a:visited {
-  text-decoration: none;
-  color: var(--primaryColor);
-}
-
-a:hover {
-  color: var(--primaryColor);
-}
 .center {
   width: 50%;
   margin: auto;
