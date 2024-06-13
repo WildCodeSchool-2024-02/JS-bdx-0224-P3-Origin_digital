@@ -18,12 +18,12 @@ export default function ViewingPage() {
           <Link to="/tag3">#tag3</Link>
         </section>
         <p className="py-1 text-lg">Durée : XX minutes</p>
-        <h3 className="text-2xl">Description</h3>
+        <h2 className="text-2xl">Description</h2>
         <p className="text-lg">
         Placeholder : description 
         </p>
       </section>
-      <h3>Suggestions</h3>
+      <h2>Suggestions</h2>
       <p>carrousel vidéo suggestion</p>
     </>
   );

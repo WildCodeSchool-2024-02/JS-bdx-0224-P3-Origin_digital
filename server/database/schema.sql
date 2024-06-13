@@ -1,39 +1,12 @@
--- SQLBook: Code
-CREATE TABLE roles (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name VARCHAR(100) NOT NULL
+create table user (
+    id int unsigned primary key auto_increment not null,
+    email varchar(255) not null unique,
+    password varchar(255) not null
 );
 
-CREATE TABLE user (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    firstname VARCHAR(100) NOT NULL,
-    lastname VARCHAR(100) NOT NULL,
-    role_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (role_id) REFERENCES roles (id)
-);
-
-CREATE TABLE video (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    user_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user (id)
-);
-
-CREATE TABLE categories (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name VARCHAR(100) NOT NULL UNIQUE
-);
-
-CREATE TABLE tag (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name VARCHAR(100) NOT NULL UNIQUE
-);
-
-CREATE TABLE video_tag (
-    tag_id INT UNSIGNED NOT NULL,
-    video_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (video_id) REFERENCES video (id),
-    FOREIGN KEY (tag_id) REFERENCES tag (id)
+create table item (
+    id int unsigned primary key auto_increment not null,
+    title varchar(255) not null,
+    user_id int unsigned not null,
+    foreign key (user_id) references user (id)
 );
