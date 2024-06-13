@@ -12,16 +12,15 @@ class RolesSeeder extends AbstractSeeder {
   // The run method - Populate the 'item' table with fake data
 
   run() {
+    const roles = [{ name: "Admin" }, { name: "User" }, { name: "Coach" }];
     // Generate and insert fake data into the 'item' table
-    for (let i = 0; i < 3; i += 1) {
-      // Generate fake item data
-      const fakeRoles = {
-        name: this.faker.lorem.word(), // Generate a fake title using faker library
-        };
-
-      // Insert the fakeItem data into the 'item' table
-      this.insert(fakeRoles); // insert into item(title, user_id) values (?, ?)
-    }
+    roles.forEach((role) => {
+      const roleWithRefName = {
+        ...role,
+        refName: `${role.name}`,
+      };
+      this.insert(roleWithRefName); // insert into category(name) values (?)
+    });
   }
 }
 

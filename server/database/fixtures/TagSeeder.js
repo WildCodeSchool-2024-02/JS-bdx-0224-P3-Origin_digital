@@ -13,7 +13,8 @@ class TagSeeder extends AbstractSeeder {
     for (let i = 0; i < 10; i += 1) {
       // Generate fake user data
       const fakeTag = {
-        name: this.faker.lorem.word()
+        name: this.faker.lorem.word(),
+        refName: `tag_${i}`,
       };
 
       // Insert the fakeUser data into the 'user' table
