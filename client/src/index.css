@@ -147,3 +147,7 @@ a:hover {
   justify-content: center;
   gap: 1rem;
 }
+
+.img-shadow {
+  box-shadow: 15px 15px 0px 0px var(--primaryColor);
+}
