@@ -1,16 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "Poppins";
-  src: url("./src/assets/fonts/Poppins-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Rajdhani";
-  src: url("client/src/assets/fonts/Rajdhani-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/Rajdhani-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Nunito Sans";
-  src: url("./src/assets/fonts/NunitoSans_7pt-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/NunitoSans_7pt-Regular.ttf") format("truetype");
 }
 
 :root {
@@ -142,4 +146,8 @@ a:hover {
   align-items: flex-start;
   justify-content: center;
   gap: 1rem;
+}
+
+.img-shadow {
+  box-shadow: 15px 15px 0px 0px var(--primaryColor);
 }

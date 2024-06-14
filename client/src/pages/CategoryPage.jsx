@@ -1,6 +1,5 @@
-function Category () {
-    return <h1>Category</h1>
-
+function Category() {
+  return <h1>Category</h1>;
 }
 
-export default Category
+export default Category;
