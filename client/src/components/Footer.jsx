@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="bg-[var(--primaryColor)] p-4 lg:flex lg:p-10 ">
       <h2 className="italic font-extrabold uppercase">
-        <Link to="/">Sweet Stream</Link>
+        <Link to="/">Sweat Stream</Link>
       </h2>
       <ul className="flex flex-wrap gap-x-6 gap-y-6 lg:grow lg:justify-evenly lg:leading-10">
         <li className="grow lg:grow-0">
