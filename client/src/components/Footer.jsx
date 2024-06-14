@@ -66,7 +66,7 @@ export default function Footer() {
                     <Link to="/">
                       <img
                         src="src/assets/images/icons8-facebook-100.png"
-                        alt=""
+                        alt="Facebook"
                         className="w-10"
                       />
                     </Link>
@@ -75,7 +75,7 @@ export default function Footer() {
                     <Link to="/">
                       <img
                         src="src/assets/images/icons8-instagram-100.png"
-                        alt=""
+                        alt="Instagram"
                         className="w-10"
                       />
                     </Link>
@@ -84,7 +84,7 @@ export default function Footer() {
                     <Link to="/">
                       <img
                         src="src/assets/images/icons8-tic-tac-100.png"
-                        alt=""
+                        alt="TikTok"
                         className="w-10"
                       />
                     </Link>
