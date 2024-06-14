@@ -30,10 +30,10 @@ export default function Footer() {
           </ul>
         </li>
         <li className="grow lg:grow-0">
-          <ul>
             <h3>
               <Link to="/">Catégories</Link>
             </h3>
+          <ul>
             <li>
               <Link to="/">Musculation</Link>
             </li>
