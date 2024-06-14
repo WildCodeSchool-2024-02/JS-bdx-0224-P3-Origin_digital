@@ -55,13 +55,12 @@ export default function Footer() {
           <h3>
             <Link to="/">Réseaux</Link>
           </h3>
-          <ul className="flex justify-between items-start lg:block m-0">
+          <ul className="flex justify-between items-start md:block m-0">
             <li>
               <Link to="/">Contact</Link>
             </li>
             <li className="m-0">
-              <section className="pt-0 lg:px-0">
-                <ul className="flex justify-around lg:justify-start">
+                <ul className="flex justify-around grow md:justify-start">
                   <li className="m-0">
                     <Link to="/">
                       <img
@@ -90,7 +89,6 @@ export default function Footer() {
                     </Link>
                   </li>
                 </ul>
-              </section>
             </li>
           </ul>
         </li>
