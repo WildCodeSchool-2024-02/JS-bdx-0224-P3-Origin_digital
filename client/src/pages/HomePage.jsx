@@ -1,21 +1,14 @@
 import HeroSection from "../components/HeroSection";
-import HomeSection from "../components/HomeSection";
+import HomeSection from "../components/registerSection";
 
 function Home() {
   return (
     <main>
       <HeroSection />
-      <HomeSection
-        alignItem="md:items-end"
-        imgSrc="./src/assets/images/runner.webp"
-        title="Pourquoi s'abonner ?"
-      />
-      <HomeSection
-        alignItem="md:items-start"
-        imgSrc="./src/assets/images/crossfit.webp"
-        title="Les avantages"
-      />
+      <HomeSection />
+      <HomeSection />
     </main>
   );
 }
+
 export default Home;

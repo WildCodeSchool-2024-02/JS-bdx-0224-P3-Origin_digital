@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
-import { PropTypes } from "prop-types";
 
-export default function HomeSection({ alignItem, imgSrc, title }) {
+export default function registerSection() {
   return (
-    <section
-      className={`w-full grid grid-cols-1 items-center justify-center p gap-2 ${alignItem}`}
-    >
+    <section className="w-full grid grid-cols-1 md:grid-cols-2 grid-rows-1 items-center justify-center p gap-2 md:items-end">
       <img
-        src={imgSrc}
+        src="./src/assets/images/runner.webp"
         alt="un coureur"
-        className="img-shadow lg:row-[1/2] h-72 w-[calc(100%-15px)] rounded-xl"
+        className="img-shadow h-72 row-[1/2] ~w-64/96 max-w-[calc(100%-15px)] rounded-xl md:col-[1/2]"
       />
-      <div className="lg:row-[1/2] flex flex-col gap-2">
-        <h2 className="w-full text-center md:text-left">{title}</h2>
+      <div className="md:col-[1/2] row-[1/2] flex flex-col gap-2">
+        <h2 className="w-full text-center md:text-left">
+          Pourquoi s'abonner ?
+        </h2>
         <p className="w-full text-center md:text-left">Les avantages...</p>
         <Link
           to="/register"
@@ -30,9 +29,3 @@ export default function HomeSection({ alignItem, imgSrc, title }) {
     </section>
   );
 }
-
-HomeSection.propTypes = {
-  alignItem: PropTypes.bool.isRequired,
-  imgSrc: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
