@@ -1,14 +1,14 @@
 import HeroSection from "../components/HeroSection";
-import HomeSection from "../components/registerSection";
+import RegisterSection from "../components/registerSection";
+import InfoSection from "../components/infoSection";
 
 function Home() {
   return (
     <main>
       <HeroSection />
-      <HomeSection />
-      <HomeSection />
+      <RegisterSection />
+      <InfoSection />
     </main>
   );
 }
-
 export default Home;
