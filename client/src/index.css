@@ -19,7 +19,7 @@
 
 :root {
   --primaryColor: #e1b7ff;
-  --primaryLight: #f2e2fe;
+  --primaryLight: #e1b7ffb3;
   --primaryDark: #b44dfe;
   --secondaryColor: #eaf3f5;
   --lightColor: #fdfdfd;
@@ -40,6 +40,9 @@ body {
   font-size: 1rem;
   color: var(--darkColor);
   background-color: var(--lightColor);
+}
+p {
+  font-size: 1rem;
 }
 
 h1 {
@@ -72,6 +75,11 @@ header {
 section {
   width: 100%;
   padding: 1rem;
+}
+
+footer {
+  width: 100%;
+  padding: 0.5rem 1rem;
 }
 
 nav {
@@ -130,14 +138,10 @@ a {
   transition: all ease 300ms;
 }
 
-a:visited {
-  text-decoration: none;
-  color: var(--primaryColor);
-}
-
 a:hover {
   color: var(--primaryColor);
 }
+
 .center {
   width: 50%;
   margin: auto;
