@@ -4,20 +4,20 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
-import Home from "./pages/HomePage";
 import Category from "./pages/CategoryPage";
+import Viewing from "./pages/ViewingPage";
 
 const router = createBrowserRouter([
   {
     element: <App />,
     children: [
       {
-        path: "/",
-        element: <Home />,
-      },
-      {
         path: "/category",
         element: <Category />,
+      },
+      {
+        path: "/viewing",
+        element: <Viewing />,
       },
     ],
   },

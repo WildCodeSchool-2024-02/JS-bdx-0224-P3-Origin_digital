@@ -7,7 +7,6 @@ class UserSeeder extends AbstractSeeder {
   }
 
   // The run method - Populate the 'user' table with fake data
-
   run() {
     // Generate and insert fake data into the 'user' table
     for (let i = 0; i < 10; i += 1) {
@@ -23,6 +22,5 @@ class UserSeeder extends AbstractSeeder {
     }
   }
 }
-
 // Export the UserSeeder class
 module.exports = UserSeeder;
