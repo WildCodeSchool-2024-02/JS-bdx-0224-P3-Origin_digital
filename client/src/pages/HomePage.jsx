@@ -1,12 +1,11 @@
-import HeroSection from "../components/HeroSection";
-import HomeSection from "../components/HomeSection";
+import Slider from "../components/Slider";
 
 function Home() {
   return (
-    <main>
-      <HeroSection />
-      <HomeSection />
-    </main>
+    <section>
+      <h1 className="text-red-500">Home</h1>
+      <Slider />
+    </section>
   );
 }
 export default Home;
