@@ -19,7 +19,7 @@
 
 :root {
   --primaryColor: #e1b7ff;
-  --primaryLight: rgba(225, 183, 255, 0.7);
+  --primaryLight: #e1b7ffb3;
   --primaryDark: #b44dfe;
   --secondaryColor: #eaf3f5;
   --lightColor: #fdfdfd;
