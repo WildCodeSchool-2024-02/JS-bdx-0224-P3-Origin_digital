@@ -30,9 +30,9 @@ export default function Footer() {
           </ul>
         </li>
         <li className="grow lg:grow-0">
-            <h3>
-              <Link to="/">Catégories</Link>
-            </h3>
+          <h3>
+            <Link to="/">Catégories</Link>
+          </h3>
           <ul>
             <li>
               <Link to="/">Musculation</Link>
@@ -52,43 +52,41 @@ export default function Footer() {
           </ul>
         </li>
         <li className="grow lg:grow-0">
-          <h3>
-            <Link to="/">Réseaux</Link>
-          </h3>
+          <h3>Réseaux</h3>
           <ul className="flex justify-between items-start md:block m-0">
             <li>
               <Link to="/">Contact</Link>
             </li>
             <li className="m-0">
-                <ul className="flex justify-around grow md:justify-start">
-                  <li className="m-0">
-                    <Link to="/">
-                      <img
-                        src="src/assets/images/icons8-facebook-100.png"
-                        alt="Facebook"
-                        className="w-10"
-                      />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <img
-                        src="src/assets/images/icons8-instagram-100.png"
-                        alt="Instagram"
-                        className="w-10"
-                      />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      <img
-                        src="src/assets/images/icons8-tic-tac-100.png"
-                        alt="TikTok"
-                        className="w-10"
-                      />
-                    </Link>
-                  </li>
-                </ul>
+              <ul className="flex justify-around grow md:justify-start">
+                <li className="m-0">
+                  <a href="facebook.com">
+                    <img
+                      src="src/assets/images/icons8-facebook-100.png"
+                      alt="Facebook"
+                      className="w-10"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="instagram.com">
+                    <img
+                      src="src/assets/images/icons8-instagram-100.png"
+                      alt="Instagram"
+                      className="w-10"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="tiktok.com">
+                    <img
+                      src="src/assets/images/icons8-tic-tac-100.png"
+                      alt="TikTok"
+                      className="w-10"
+                    />
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </li>
