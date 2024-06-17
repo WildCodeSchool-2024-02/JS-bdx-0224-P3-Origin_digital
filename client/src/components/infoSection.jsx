@@ -1,22 +1,22 @@
 export default function registerSection() {
   return (
     <section
-      className="w-full grid grid-cols-1 grid-rows-[1fr/auto] items-center gap-2 justify-center 
-      md:grid-rows-1 md:grid-cols-2 md:gap-8 py-8 md:py-16 md:items-start lg:gap-16 "
+      className="w-full grid grid-cols-1 grid-rows-[1fr/auto/auto] items-center justify-center pt-16 gap-4 pb-8
+      md:grid-rows-[auto/auto/auto] md:pt24 md:gap-x-8 md:grid-cols-2 md:pb-16 md:items-start lg:gap-x-16"
     >
       <img
         src="./src/assets/images/crossfit.webp"
-        alt="une femme faisant du crossfit"
-        className="img-shadow h-72 row-[1/2] w-[calc(100%-15px)] rounded-xl max-w-[450px] justify-self-center md:col-[2/3]"
+        alt="une femme qui fait du crossfit"
+        className="img-shadow h-72 col-[1/2] row-[1/2] w-[calc(100%-15px)] max-w-[450px] justify-self-center rounded-xl md:col-[2/3] md:row-span-3"
       />
-      <div className="flex flex-col items-center gap-2 py-6 md:items-start md:col-[1/2] md:row-[1/2]">
-        <h2 className="w-full text-center md:text-left">L'offre</h2>
-        <p className="w-full text-center md:text-left">
-          Des vidéos en temps réel rapides, fun et efficaces qui s’adaptent à
-          ton niveau (intensité, zones du corps...) Ton rythme (fréquence &
-          durée) Et ton équipement (avec ou sans matériel)
-        </p>
-      </div>
+      <h2 className="w-full text-center md:text-left row-[2/3] place-self-end mt-4 md:col-[1/2] md:row-[1/2]">
+        L'offre
+      </h2>
+      <p className="w-full text-center row-[3/4] md:row-[2/3] md:col-[1/2] md:text-left">
+        Des vidéos en temps réel rapides, fun et efficaces qui s’adaptent à ton
+        niveau (intensité, zones du corps...) Ton rythme (fréquence & durée) Et
+        ton équipement (avec ou sans matériel)
+      </p>
     </section>
   );
 }

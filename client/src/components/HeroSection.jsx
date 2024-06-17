@@ -6,7 +6,7 @@ export default function HeroSection() {
       className="h-screen w-full flex flex-col items-center justify-center bg-[url(./assets/images/heroBg.webp)]  
       bg-no-repeat bg-[30%] bg-cover bg-clip-border gap-2 lg:items-end lg:pr-8"
     >
-      <div className="flex flex-col gap-2 justify-center items-center lg:items-start">
+      <section className="w-auto flex flex-col gap-2 justify-center items-center lg:items-start">
         <h1 className="text-[var(--lightColor)] text-center text-5xl md:text-6xl">
           Votre sport en Streaming
         </h1>
@@ -25,7 +25,7 @@ export default function HeroSection() {
           />
           Commencer
         </Link>
-      </div>
+      </section>
     </header>
   );
 }
