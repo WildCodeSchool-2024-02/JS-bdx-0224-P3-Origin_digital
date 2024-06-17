@@ -133,13 +133,8 @@ button:hover {
 }
 
 a {
-  color: var(--primaryDark);
+  color: var(--darkColor);
   text-decoration: none;
-  transition: all ease 300ms;
-}
-
-a:hover {
-  color: var(--primaryColor);
 }
 
 .center {
