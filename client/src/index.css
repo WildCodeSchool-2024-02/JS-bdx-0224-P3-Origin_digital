@@ -139,10 +139,6 @@ a {
   transition: all ease 300ms;
 }
 
-a:visited {
-  text-decoration: none;
-}
-
 a:hover {
   color: var(--primaryColor);
 }

@@ -6,7 +6,7 @@ export default function registerSection() {
     >
       <img
         src="./src/assets/images/crossfit.webp"
-        alt="une femme qui fait du crossfit"
+        alt=""
         className="img-shadow h-72 col-[1/2] row-[1/2] w-[calc(100%-15px)] max-w-[450px] justify-self-center rounded-xl md:col-[2/3] md:row-span-3"
       />
       <h2 className="w-full text-center md:text-left row-[2/3] place-self-end mt-4 md:col-[1/2] md:row-[1/2]">
