@@ -19,7 +19,7 @@
 
 :root {
   --primaryColor: #e1b7ff;
-  --primaryLight: rgba(225, 183, 255, 0.7);
+  --primaryLight: #e1b7ffb3;
   --primaryDark: #b44dfe;
   --secondaryColor: #eaf3f5;
   --lightColor: #fdfdfd;
@@ -41,12 +41,8 @@ body {
   color: var(--darkColor);
   background-color: var(--lightColor);
 }
-
-h1,
-h2,
-h3,
-h4 {
-  line-height: 120%;
+p {
+  font-size: 1rem;
 }
 
 h1 {
@@ -78,7 +74,7 @@ header {
 
 section {
   width: 100%;
-  padding: 0rem 1rem;
+  padding: 1rem;
 }
 
 footer {
@@ -88,6 +84,9 @@ footer {
 
 nav {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 ul {
@@ -142,6 +141,7 @@ a {
 a:hover {
   color: var(--primaryColor);
 }
+
 .center {
   width: 50%;
   margin: auto;
