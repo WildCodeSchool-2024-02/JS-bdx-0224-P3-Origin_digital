@@ -1,7 +1,7 @@
 export default function registerSection() {
   return (
     <section
-      className="w-full grid grid-cols-1 grid-rows-[1fr/auto/auto] items-center justify-center pt-16 gap-4 pb-8
+      className="grid grid-cols-1 grid-rows-[1fr/auto/auto] items-center justify-center pt-16 gap-4 pb-8
       md:grid-rows-[auto/auto/auto] md:pt24 md:gap-x-8 md:grid-cols-2 md:pb-16 md:items-start lg:gap-x-16"
     >
       <img
