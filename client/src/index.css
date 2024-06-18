@@ -19,7 +19,7 @@
 
 :root {
   --primaryColor: #e1b7ff;
-  --primaryLight: rgba(225, 183, 255, 0.7);
+  --primaryLight: #e1b7ffb3;
   --primaryDark: #b44dfe;
   --secondaryColor: #eaf3f5;
   --lightColor: #fdfdfd;
@@ -133,18 +133,10 @@ button:hover {
 }
 
 a {
-  color: var(--primaryDark);
-  text-decoration: none;
-  transition: all ease 300ms;
-}
-
-a:visited {
+  color: var(--darkColor);
   text-decoration: none;
 }
 
-a:hover {
-  color: var(--primaryColor);
-}
 .center {
   width: 50%;
   margin: auto;
@@ -157,71 +149,4 @@ a:hover {
 
 .img-shadow {
   box-shadow: 15px 15px 0px 0px var(--primaryColor);
-}
-
-@media screen and (min-width: 768px) {
-  body {
-    font-size: 1.2rem;
-  }
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 2.5rem;
-  }
-
-  h3 {
-    font-size: 2rem;
-  }
-
-  h4 {
-    font-size: 1.5rem;
-  }
-
-  header {
-    padding: 0 2rem;
-  }
-
-  section {
-    padding: 2rem;
-  }
-
-  footer {
-    padding: 0.5rem 2rem;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  body {
-    font-size: 1.5rem;
-  }
-
-  h1 {
-    font-size: 3.5rem;
-  }
-
-  h2 {
-    font-size: 3rem;
-  }
-
-  h3 {
-    font-size: 2.5rem;
-  }
-
-  h4 {
-    font-size: 2rem;
-  }
-
-  header {
-    padding: 0 3rem;
-  }
-
-  section {
-    padding: 3rem;
-  }
-
-  footer {
-    padding: 1rem 3rem;
-  }
 }

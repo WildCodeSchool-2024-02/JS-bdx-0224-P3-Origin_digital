@@ -16,10 +16,7 @@ class UserSeeder extends AbstractSeeder {
       const fakeUser = {
         email: this.faker.internet.email(), // Generate a fake email using faker library
         password: this.faker.internet.password(), // Generate a fake password using faker library
-        firstname: this.faker.person.firstName(),
-        lastname: this.faker.person.lastName(),
-        role_id: this.getRef(`Admin`).insertId, // Create a reference name for the user
-        refName: `user_${i}`,
+        refName: `user_${i}`, // Create a reference name for the user
       };
 
       // Insert the fakeUser data into the 'user' table

@@ -2,27 +2,30 @@ const AbstractSeeder = require("./AbstractSeeder");
 
 // Import seeders that must be executed before this one
 // Follow your foreign keys to find the right order ;)
+const UserSeeder = require("./UserSeeder");
 
-class RolesSeeder extends AbstractSeeder {
+class ItemSeeder extends AbstractSeeder {
   constructor() {
     // Call the constructor of the parent class (AbstractSeeder) with appropriate options
-    super({ table: "roles", truncate: true });
+    super({ table: "item", truncate: true, dependencies: [UserSeeder] });
   }
 
   // The run method - Populate the 'item' table with fake data
 
   run() {
-    const roles = [{ name: "Admin" }, { name: "User" }, { name: "Coach" }];
     // Generate and insert fake data into the 'item' table
-    roles.forEach((role) => {
-      const roleWithRefName = {
-        ...role,
-        refName: `${role.name}`,
+    for (let i = 0; i < 10; i += 1) {
+      // Generate fake item data
+      const fakeItem = {
+        title: this.faker.lorem.word(), // Generate a fake title using faker library
+        user_id: this.getRef(`user_${i}`).insertId, // Get the insertId of the corresponding user from UserSeeder
       };
-      this.insert(roleWithRefName); // insert into category(name) values (?)
-    });
+
+      // Insert the fakeItem data into the 'item' table
+      this.insert(fakeItem); // insert into item(title, user_id) values (?, ?)
+    }
   }
 }
 
 // Export the ItemSeeder class
-module.exports = RolesSeeder;
+module.exports = ItemSeeder;
