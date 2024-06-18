@@ -66,7 +66,6 @@ h4 {
 
 header {
   width: 100%;
-  padding: 0 1rem;
 }
 
 section {
@@ -128,10 +127,6 @@ a {
   transition: all ease 300ms;
 }
 
-a:hover {
-  color: var(--primaryColor);
-}
-
 .center {
   width: 50%;
   margin: auto;
@@ -166,10 +161,6 @@ a:hover {
     font-size: 1.5rem;
   }
 
-  header {
-    padding: 0 2rem;
-  }
-
   section {
     padding: 0.5rem 2rem;
   }
@@ -200,15 +191,69 @@ a:hover {
     font-size: 2rem;
   }
 
-  header {
-    padding: 0 3rem;
-  }
-
   section {
     padding: 1rem 3rem;
   }
 
   footer {
     padding: 1rem 3rem;
+  }
+}
+
+/* Burger-design */
+
+#navbar button .line-burger {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+#navbar button .line-burger:first-child {
+  top: 0;
+  transform-origin: left center;
+}
+#navbar button .line-burger:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}
+#navbar button .line-burger:last-child {
+  top: 100%;
+  transform-origin: left center;
+  transform: translateY(-100%);
+}
+
+#navbar button.active .line-burger:first-child {
+  transform: rotate(45deg);
+  top: 0px;
+  left: 5px;
+}
+#navbar button.active .line-burger:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+#navbar button.active .line-burger:last-child {
+  transform: rotate(-45deg);
+  top: 28px;
+  left: 5px;
+}
+
+#navbar button.active span {
+  top: calc(50% - 2px);
+  bottom: unset;
+}
+
+.burgerMenu {
+  font-size: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  #navbar button:nth-child(2) {
+    display: none;
   }
 }
