@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         element: <Category />,
       },
       {
-        path: "/Viewing",
+        path: "/viewing",
         element: <Viewing />,
       },
     ],
