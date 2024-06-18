@@ -56,7 +56,6 @@ function Header() {
 
   return (
     <Navbar
-      isMenuOpen={isMenuOpen}
       isObjectivesMenuOpen={isObjectivesMenuOpen}
       closeMenu={closeMenu}
       handleClick={handleClick}
