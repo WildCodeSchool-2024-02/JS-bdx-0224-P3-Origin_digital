@@ -79,20 +79,20 @@ function SubscriptionPage() {
   }, []);
 
   return (
-    <section className="flex justify-center items-center">
-      <figure className="hidden md:flex">
+    <section className="flex justify-evenly ">
+      <figure className="hidden md:flex ">
         <img
           src={fitnessImg}
           alt="sportifs"
-          className="img-shadow w-[calc(100%-15px)] mr-auto rounded-xl mb-4 h-60 object-cover"
+          className="img-shadow mr-auto rounded-xl mb-4 object-cover md:w-5/6 lg:w-3/3 "
         />
       </figure>
-      <article className="flex flex-col items-center w-full h-full">
+      <article className="flex flex-col items-center w-full h-full md:w-2/3 lg:w-1/3 ">
         <ul className="flex items-center text-center w-full h-14 rounded-t-lg">
           <li className="font-bold h-full m-0 flex-1 flex justify-center items-center">
             <button
               onClick={handleClickCustomer}
-              className={`w-full h-full rounded-none rounded-tl-lg cursor-pointer ${fields.length === textLabel.length ? "bg-pcd text-lc" : "bg-pc"}`}
+              className={`w-full h-full p-0 rounded-none rounded-tl-lg cursor-pointer ${fields.length === textLabel.length ? "bg-pcd text-lc" : "bg-pc"}`}
               type="button"
             >
               PARTICULIER
@@ -101,7 +101,7 @@ function SubscriptionPage() {
           <li className="font-bold h-full m-0 flex-1 flex justify-center items-center">
             <button
               onClick={handleClickProfessional}
-              className={`w-full h-full rounded-none rounded-tr-lg cursor-pointer ${fields.length > textLabel.length ? "bg-pcd text-lc" : "bg-pc"}`}
+              className={`w-full h-full p-0 rounded-none rounded-tr-lg cursor-pointer ${fields.length > textLabel.length ? "bg-pcd text-lc" : "bg-pc"}`}
               type="button"
             >
               PROFESSIONNEL
