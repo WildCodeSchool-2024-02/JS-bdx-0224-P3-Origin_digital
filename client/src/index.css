@@ -19,7 +19,7 @@
 
 :root {
   --primaryColor: #e1b7ff;
-  --primaryLight: #f2e2fe;
+  --primaryLight: #e1b7ffb3;
   --primaryDark: #b44dfe;
   --secondaryColor: #eaf3f5;
   --lightColor: #fdfdfd;
@@ -40,6 +40,16 @@ body {
   font-size: 1rem;
   color: var(--darkColor);
   background-color: var(--lightColor);
+}
+p {
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 120%;
 }
 
 h1 {
@@ -66,7 +76,6 @@ h4 {
 
 header {
   width: 100%;
-  padding: 0 1rem;
 }
 
 section {
@@ -74,11 +83,9 @@ section {
   padding: 1rem;
 }
 
-nav {
+footer {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 0.5rem 1rem;
 }
 
 ul {
@@ -121,14 +128,6 @@ a {
   transition: all ease 300ms;
 }
 
-a:visited {
-  text-decoration: none;
-  color: var(--primaryColor);
-}
-
-a:hover {
-  color: var(--primaryColor);
-}
 .center {
   width: 50%;
   margin: auto;
@@ -141,4 +140,79 @@ a:hover {
 
 .img-shadow {
   box-shadow: 15px 15px 0px 0px var(--primaryColor);
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 1.2rem;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  section {
+    padding: 0.5rem 2rem;
+  }
+
+  footer {
+    padding: 0.5rem 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 1.2rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  h4 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 1rem 3rem;
+  }
+
+  footer {
+    padding: 1rem 3rem;
+  }
+}
+
+/* Burger-design */
+
+.line-burger {
+  @apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200  bg-gray-600;
+}
+
+#navbar button.active .line-burger:first-child {
+  @apply transform rotate-45 top-0 left-1.5;
+}
+#navbar button.active .line-burger:nth-child(2) {
+  @apply w-0 opacity-0;
+}
+#navbar button.active .line-burger:last-child {
+  @apply transform -rotate-45 top-8 left-1.5;
 }

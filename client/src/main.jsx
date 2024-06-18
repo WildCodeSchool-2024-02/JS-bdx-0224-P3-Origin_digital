@@ -5,6 +5,7 @@ import App from "./App";
 import Home from "./pages/HomePage";
 import Category from "./pages/CategoryPage";
 import SubscriptionPage from "./pages/SubscriptionPage";
+import Viewing from "./pages/ViewingPage";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +20,11 @@ const router = createBrowserRouter([
         element: <Category />,
       },
       {
-        path: "/Subscription",
+        path: "/subscription",
         element: <SubscriptionPage />,
+        
+        path: "/viewing",
+        element: <Viewing />,
       },
     ],
   },
