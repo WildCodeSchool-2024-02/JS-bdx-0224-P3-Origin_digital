@@ -27,6 +27,5 @@ class UserSeeder extends AbstractSeeder {
     }
   }
 }
-
 // Export the UserSeeder class
 module.exports = UserSeeder;
