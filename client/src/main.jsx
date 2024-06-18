@@ -22,7 +22,8 @@ const router = createBrowserRouter([
       {
         path: "/subscription",
         element: <SubscriptionPage />,
-        
+      },
+      {
         path: "/viewing",
         element: <Viewing />,
       },
