@@ -212,58 +212,20 @@ a {
 
 /* Burger-design */
 
-#navbar button .line-burger {
-  display: block;
-  position: absolute;
-  height: 4px;
-  width: 100%;
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: 0.25s ease-in-out;
+.line-burger {
+  @apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200  bg-gray-600;
 }
-#navbar button .line-burger:first-child {
-  top: 0;
-  transform-origin: left center;
-}
-#navbar button .line-burger:nth-child(2) {
-  top: 50%;
-  transform: translateY(-50%);
-  transform-origin: left center;
-}
-#navbar button .line-burger:last-child {
-  top: 100%;
-  transform-origin: left center;
-  transform: translateY(-100%);
+
+.line-burger {
+  @apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200  bg-gray-600;
 }
 
 #navbar button.active .line-burger:first-child {
-  transform: rotate(45deg);
-  top: 0px;
-  left: 5px;
+  @apply transform rotate-45 top-0 left-1.5;
 }
 #navbar button.active .line-burger:nth-child(2) {
-  width: 0%;
-  opacity: 0;
+  @apply w-0 opacity-0;
 }
 #navbar button.active .line-burger:last-child {
-  transform: rotate(-45deg);
-  top: 28px;
-  left: 5px;
-}
-
-#navbar button.active span {
-  top: calc(50% - 2px);
-  bottom: unset;
-}
-
-.burgerMenu {
-  font-size: 0;
-}
-
-@media screen and (min-width: 1024px) {
-  #navbar button:nth-child(2) {
-    display: none;
-  }
+  @apply transform -rotate-45 top-8 left-1.5;
 }

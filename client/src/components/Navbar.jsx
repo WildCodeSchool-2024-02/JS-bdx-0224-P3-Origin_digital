@@ -34,9 +34,9 @@ function Navbar({
           title="Menu déroulant"
         >
           Menu déroulant
-          <span className="line-burger block h-0.5 w-8 bg-gray-600 " />
-          <span className="line-burger block h-0.5 w-8 bg-gray-600" />
-          <span className="line-burger block h-0.5 w-8 bg-gray-600 " />
+          <span className="line-burger top-0 origin-left" />
+          <span className="line-burger top-1/2 -translate-y-1/2 origin-left" />
+          <span className="line-burger top-full -translate-y-full origin-left" />
         </button>
 
         <ul className={menuListClasses}>
@@ -71,13 +71,17 @@ function Navbar({
       </nav>
       <button className={signInClasses} type="button">
         {" "}
-        <Link to="/" className="text-[var(--darkColor)]">inscription</Link>
+        <Link to="/" className="text-[var(--darkColor)]">
+          inscription
+        </Link>
       </button>
       <button className={signUpClasses} type="button">
-        <Link to="/" className="text-[var(--darkColor)]">connexion</Link>
+        <Link to="/" className="">
+          connexion
+        </Link>
       </button>
       {isObjectivesMenuOpen && (
-        <div className={objectiveSectionClasses}>
+        <nav className={objectiveSectionClasses}>
           <button
             className="absolute top-0 right-0 px-6 py-6 bg-transparent hover:bg-transparent"
             type="button"
@@ -133,7 +137,7 @@ function Navbar({
               </Link>
             </li>
           </ul>
-        </div>
+        </nav>
       )}
     </header>
   );
