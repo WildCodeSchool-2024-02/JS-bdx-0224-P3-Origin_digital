@@ -35,7 +35,8 @@ function Header() {
   lg:static lg:max-h-16 lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none
   ${isMenuOpen ? "opacity-100 transform translate-y-0" : "-translate-y-[100vh]"}`;
 
-  const burgerButtonClasses = `burgerMenu relative w-10 h-7 bg-transparent text-0 hover:bg-transparent none flex border-none justify-self-end 
+  const burgerButtonClasses = `burgerMenu relative w-10 h-7 bg-transparent text-0 hover:bg-transparent none border-none 
+  flex justify-self-end 
   ${isMenuOpen ? "active" : ""}`;
 
   const objectiveSectionClasses = `absolute top-[4.5rem] left-0 right-0 bottom-0 w-full 
