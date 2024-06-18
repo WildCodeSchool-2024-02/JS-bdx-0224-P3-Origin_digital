@@ -8,14 +8,6 @@ import Home from "./pages/HomePage";
 import Category from "./pages/CategoryPage";
 import Viewing from "./pages/ViewingPage";
 
-const getCategories = async () => {
-  await fetch("http://localhost:3310/api/categories")
-    .then((res) => res.json())
-    .then((data) => console.info(data))
-    .catch((err) => console.error(err));
-  return true;
-};
-
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -23,7 +15,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: getCategories(),
       },
       {
         path: "/category",
