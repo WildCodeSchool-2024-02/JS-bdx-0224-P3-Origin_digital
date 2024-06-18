@@ -76,7 +76,6 @@ h4 {
 
 header {
   width: 100%;
-  padding: 0 1rem;
 }
 
 section {
@@ -87,13 +86,6 @@ section {
 footer {
   width: 100%;
   padding: 0.5rem 1rem;
-}
-
-nav {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 ul {
@@ -145,10 +137,6 @@ a {
   transition: all ease 300ms;
 }
 
-a:hover {
-  color: var(--primaryColor);
-}
-
 .center {
   width: 50%;
   margin: auto;
@@ -183,10 +171,6 @@ a:hover {
     font-size: 1.5rem;
   }
 
-  header {
-    padding: 0 2rem;
-  }
-
   section {
     padding: 0.5rem 2rem;
   }
@@ -217,10 +201,6 @@ a:hover {
     font-size: 2rem;
   }
 
-  header {
-    padding: 0 3rem;
-  }
-
   section {
     padding: 1rem 3rem;
   }
@@ -228,4 +208,24 @@ a:hover {
   footer {
     padding: 1rem 3rem;
   }
+}
+
+/* Burger-design */
+
+.line-burger {
+  @apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200  bg-gray-600;
+}
+
+.line-burger {
+  @apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200  bg-gray-600;
+}
+
+#navbar button.active .line-burger:first-child {
+  @apply transform rotate-45 top-0 left-1.5;
+}
+#navbar button.active .line-burger:nth-child(2) {
+  @apply w-0 opacity-0;
+}
+#navbar button.active .line-burger:last-child {
+  @apply transform -rotate-45 top-8 left-1.5;
 }
