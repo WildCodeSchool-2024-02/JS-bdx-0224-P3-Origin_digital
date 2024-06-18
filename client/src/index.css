@@ -45,6 +45,10 @@ p {
   font-size: 1rem;
 }
 
+h1,h2,h3,h4 {
+    line-height: 120%;
+}
+
 h1 {
   font-size: 2.5rem;
   font-family: var(--headingFont);
