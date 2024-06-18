@@ -1,4 +1,18 @@
+import HeroSection from "../components/HeroSection";
+import RegisterSection from "../components/registerSection";
+import InfoSection from "../components/infoSection";
+import Slider from "../components/Slider";
+
 function Home() {
-  return <h1 className="text-red-500">Home</h1>;
+  return (
+    <main>
+      <HeroSection />
+      <section className="pt-24 pb-16 md:pt-32">
+        <Slider />
+      </section>
+      <RegisterSection />
+      <InfoSection />
+    </main>
+  );
 }
 export default Home;
