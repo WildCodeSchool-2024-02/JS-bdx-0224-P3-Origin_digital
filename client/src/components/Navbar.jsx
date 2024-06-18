@@ -76,7 +76,7 @@ function Navbar({
         </Link>
       </button>
       <button className={signUpClasses} type="button">
-        <Link to="/" className="">
+        <Link to="/" className="text-[var(--darkColor)]">
           connexion
         </Link>
       </button>
