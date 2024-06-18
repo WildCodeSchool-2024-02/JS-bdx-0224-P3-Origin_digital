@@ -14,7 +14,7 @@ class VideoSeeder extends AbstractSeeder {
 
   // The run method - Populate the 'user' table with fake data
 
-  async run() {
+  run() {
     // Generate and insert fake data into the 'user' table
 
     const accesType = ["free", "subscription"];

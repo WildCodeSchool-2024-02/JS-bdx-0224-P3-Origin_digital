@@ -8,7 +8,7 @@ class UserSeeder extends AbstractSeeder {
   }
 
   // The run method - Populate the 'user' table with fake data
-  async run() {
+  run() {
     // Generate and insert fake data into the 'user' table
 
     for (let i = 0; i < 10; i += 1) {

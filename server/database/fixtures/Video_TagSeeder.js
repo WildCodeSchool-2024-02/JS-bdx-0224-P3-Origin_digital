@@ -11,7 +11,7 @@ class VideoTagSeeder extends AbstractSeeder {
     });
   }
 
-  async run() {
+  run() {
     for (let i = 0; i < 10; i += 1) {
       const fakeVideoTag = {
         video_id: this.getRef(
