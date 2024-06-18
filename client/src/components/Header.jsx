@@ -27,11 +27,11 @@ function Header() {
   }, [isMenuOpen]);
 
   const signInClasses = `
-    mr-5 bg-white flex justify-around items-center transform transition-all duration-300 text-center fixed 
+    mr-5 bg-white flex justify-around items-center transform transition-all duration-300 fixed 
     lg:static lg:max-h-16 lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none
     ${isMenuOpen ? "opacity-100 translate-y-0" : "-translate-y-[100vh]"}`;
 
-  const signUpClasses = `mr-5 flex items-center transform transition-all duration-300 text-center fixed 
+  const signUpClasses = `mr-5 flex items-center transform transition-all duration-300 fixed 
   lg:static lg:max-h-16 lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none
   ${isMenuOpen ? "opacity-100 transform translate-y-0" : "-translate-y-[100vh]"}`;
 

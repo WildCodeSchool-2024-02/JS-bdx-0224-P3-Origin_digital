@@ -71,10 +71,10 @@ function Navbar({
       </nav>
       <button className={signInClasses} type="button">
         {" "}
-        <Link to="/">inscription</Link>
+        <Link to="/" className="text-[var(--darkColor)]">inscription</Link>
       </button>
       <button className={signUpClasses} type="button">
-        <Link to="/">connexion</Link>
+        <Link to="/" className="text-[var(--darkColor)]">connexion</Link>
       </button>
       {isObjectivesMenuOpen && (
         <div className={objectiveSectionClasses}>
