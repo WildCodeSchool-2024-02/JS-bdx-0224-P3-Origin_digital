@@ -1,43 +1,26 @@
-import {Checkbox, Cell, Row, TableBody} from 'react-aria-components';
+import { Checkbox, Cell, Row } from "react-aria-components";
 
 export default function DashboardVideo() {
   return (
-<>
-  <TableBody>
     <Row>
       <Cell>
         <Checkbox slot="selection" />
       </Cell>
-      <Cell>Games</Cell>
-      <Cell>File folder</Cell>
-      <Cell>6/7/2020</Cell>
-    </Row>
-    <Row>
-      <Cell>
-        <Checkbox slot="selection" />
+      <Cell className="flex items-center">
+        <img src="../src/assets/images/pilat.jpg" alt="" className="w-36" />
+        <p className="px-4">Titre de la vidéo</p>
       </Cell>
-      <Cell>Program Files</Cell>
-      <Cell>File folder</Cell>
-      <Cell>4/7/2021</Cell>
-    </Row>
-    <Row>
+      <Cell>Pilate</Cell>
       <Cell>
-        <Checkbox slot="selection" />
+        <ul>
+          <li>#Tag1</li>
+          <li>#Tag2</li>
+          <li>#Tag3</li>
+        </ul>
       </Cell>
-      <Cell>bootmgr</Cell>
-      <Cell>System file</Cell>
-      <Cell>11/20/2010</Cell>
+      <Cell>Abonné</Cell>
+      <Cell>301</Cell>
+      <Cell>18/06/2024</Cell>
     </Row>
-    <Row>
-      <Cell>
-        <Checkbox slot="selection" />
-      </Cell>
-      <Cell>log.txt</Cell>
-      <Cell>Text Document</Cell>
-      <Cell>1/18/2016</Cell>
-    </Row>
-  </TableBody>
-<p>test</p>
-</>
-  )
+  );
 }
