@@ -7,6 +7,7 @@ import App from "./App";
 import Home from "./pages/HomePage";
 import Category from "./pages/CategoryPage";
 import Viewing from "./pages/ViewingPage";
+import Dashboard from "./pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/viewing",
         element: <Viewing />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },
