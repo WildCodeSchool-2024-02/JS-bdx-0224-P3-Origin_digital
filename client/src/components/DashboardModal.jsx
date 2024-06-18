@@ -7,44 +7,113 @@ import {
   TextField,
   TextArea,
   Switch,
+  Select,
+  SelectValue,
+  Popover,
+  ListBox,
+  ListBoxItem,
   FileTrigger,
 } from "react-aria-components";
 import { useState } from "react";
 import { PropTypes } from "prop-types";
+import "../assets/styles/modal.css";
 
-export default function DashboardModal({ setIsModalOpen, title }) {
-  const [selected, setSelection] = useState(false);
+export default function DashboardModal({
+  setIsModalOpen,
+  title,
+  validateText,
+}) {
+  const [selectedAccess, setSelectedAccess] = useState(false);
+  const [selectedTags, setSelectedTags] = useState([]);
 
   return (
-    <dialog className="absolute top-0 left-0 w-screen h-screen bg-[var(--darkColor)] flex flex-col items-center justify-center gap-2">
+    <dialog
+      className="absolute top-0 left-0 w-screen h-screen bg-[var(--blurBg)] 
+    grid grid-cols-[1fr,0.25fr] grid-rows-[100px,auto] items-center justify-center p-4"
+    >
+      <h2 id="form-title" className="w-full col-span-1">
+        {title}
+      </h2>
       <button
-        className="absolute top-[10%] right-[10%]"
+        className="bg-none col-span-1 place-self-start justify-self-end"
         onClick={setIsModalOpen}
         type="button"
+        aria-label="fermer la modale"
       >
         X
       </button>
-      <h2 id="form-title">{title}</h2>
       <Form
         aria-labelledby="form-title"
-        className="flex flex-col items-center justify-evenly h-4/5"
+        className="w-full h-full flex flex-col items-center justify-evenly col-span-2"
       >
-        <FileTrigger acceptedFileTypes={["video/mp4"]}>
-          <Button>Enregistrer votre vidéo</Button>
+        <FileTrigger name="video_url" acceptedFileTypes={["video/mp4"]}>
+          <Button className="bg-[var(--primaryColor)] w-full border-dashed border border-black text-base normal-case">
+            Enregistrer votre vidéo
+          </Button>
         </FileTrigger>
-        <FileTrigger acceptedFileTypes={["image/png", "image/webp"]}>
-          <Button>Enregistrer votre miniature</Button>
+        <FileTrigger
+          name="preview_url"
+          acceptedFileTypes={["image/png", "image/webp"]}
+        >
+          <Button className="bg-[var(--primaryColor)] w-full border-dashed border border-black text-base">
+            Enregistrer votre miniature
+          </Button>
         </FileTrigger>
-        <TextField name="text" type="text" isRequired necessityIndicator="icon">
+        <TextField
+          name="title"
+          type="text"
+          isRequired
+          necessityIndicator="icon"
+          className="w-full"
+        >
           <Label>Titre</Label>
-          <Input />
+          <Input className="bg-[var(--lightColor)] w-full" />
           <FieldError />
         </TextField>
-        <TextArea label="Description" isRequired necessityIndicator="icon" />
-        <Switch isSelected={selected} onChange={setSelection}>
-          {selected ? "Abonné" : "Public"}
+        <TextField className="w-full" isRequired necessityIndicator="icon">
+          <Label>Description</Label>
+          <TextArea
+            label="Description"
+            name="description"
+            className="bg-[var(--lightColor)] w-full radius-4 rounded-[15px] min-h-16 p-1
+            focus:outline-none focus:border-2 focus:border-[var(--primaryColor)] md:min-h-20"
+          />
+        </TextField>
+        <Label>Tags</Label>
+        <Select className="w-full" aria-label="selection de tag">
+          <Button className="w-full bg-[var(--lightColor)] flex justify-between">
+            <SelectValue />
+            <span aria-hidden="true" className="justify-self-end">
+              ▼
+            </span>
+          </Button>
+          <Popover className="w-4/5 bg-[var(--lightColor)] rounded-[15px] py-2 px-4">
+            <ListBox
+              aria-label="selection de tag"
+              selectionMode="multiple"
+              selectedKeys={selectedTags}
+              onSelectionChange={setSelectedTags}
+            >
+              <ListBoxItem>Aardvark</ListBoxItem>
+              <ListBoxItem>Cat</ListBoxItem>
+              <ListBoxItem>Dog</ListBoxItem>
+              <ListBoxItem>Kangaroo</ListBoxItem>
+              <ListBoxItem>Panda</ListBoxItem>
+              <ListBoxItem>Snake</ListBoxItem>
+            </ListBox>
+          </Popover>
+        </Select>
+        <Switch
+          name="access"
+          isSelected={selectedAccess}
+          onChange={setSelectedAccess}
+          className=".react-aria-Switch"
+        >
+          {selectedAccess ? "Abonné" : "Public"}
         </Switch>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="w-full bg-[var(--lightColor)]">
+          {validateText}
+        </Button>
       </Form>
     </dialog>
   );
@@ -53,4 +122,5 @@ export default function DashboardModal({ setIsModalOpen, title }) {
 DashboardModal.propTypes = {
   setIsModalOpen: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  validateText: PropTypes.string.isRequired,
 };

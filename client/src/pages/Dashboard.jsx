@@ -25,6 +25,7 @@ export default function Dashboard() {
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         title="Ajouter une vidéo"
+        validateText="Ajouter"
       />
     </>
   );
