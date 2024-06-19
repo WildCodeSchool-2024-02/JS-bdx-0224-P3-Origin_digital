@@ -71,12 +71,12 @@ function Navbar({
       </nav>
       <button className={signInClasses} type="button">
         {" "}
-        <Link to="/" className="text-[var(--darkColor)]">
+        <Link to="/subscription" className="text-[var(--darkColor)]">
           inscription
         </Link>
       </button>
       <button className={signUpClasses} type="button">
-        <Link to="/" className="">
+        <Link to="/" className="text-[var(--darkColor)]">
           connexion
         </Link>
       </button>
