@@ -97,19 +97,11 @@ li {
 }
 
 label {
-  width: 100%;
-  font-weight: 500;
+  font-family: var(--textFont);
 }
 
-input {
-  height: 2.5rem;
-  padding: 0.25rem;
-  border-radius: 15px;
-}
-
-input:focus {
-  outline: none;
-  border: 2px solid var(--primaryColor);
+label:focus {
+  font-family: var(--textFont);
 }
 
 button {
@@ -119,7 +111,6 @@ button {
   border-radius: 15px;
   font-weight: 600;
   background-color: var(--primaryColor);
-  text-transform: uppercase;
   outline: none;
   border: none;
   transition: all ease 300ms;
