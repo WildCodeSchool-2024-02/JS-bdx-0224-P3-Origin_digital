@@ -31,9 +31,8 @@ function Navbar({
           type="button"
           onClick={handleClickMobileMenu}
           className={burgerButtonClasses}
-          title="Menu déroulant"
+          aria-label="Menu déroulant"
         >
-          Menu déroulant
           <span className="line-burger top-0 origin-left" />
           <span className="line-burger top-1/2 -translate-y-1/2 origin-left" />
           <span className="line-burger top-full -translate-y-full origin-left" />
