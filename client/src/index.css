@@ -235,3 +235,9 @@ td {
 #navbar button.active .line-burger:last-child {
   @apply transform -rotate-45 top-8 left-1.5;
 }
+
+/* Footer-Design */
+
+.footer-list {
+  @apply text-[var(--darkColor)];
+}

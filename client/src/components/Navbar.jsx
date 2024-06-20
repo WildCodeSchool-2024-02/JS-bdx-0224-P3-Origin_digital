@@ -5,8 +5,8 @@ import logoSrc from "../assets/images/LogoSweatStream.png";
 function Navbar({
   isObjectivesMenuOpen,
   closeMenu,
-  handleClick,
-  handleChange,
+  handleClickMobileMenu,
+  handleClickObjectivesMenu,
   signInClasses,
   signUpClasses,
   burgerButtonClasses,
@@ -29,11 +29,10 @@ function Navbar({
         </Link>
         <button
           type="button"
-          onClick={handleClick}
+          onClick={handleClickMobileMenu}
           className={burgerButtonClasses}
-          title="Menu déroulant"
+          aria-label="Menu déroulant"
         >
-          Menu déroulant
           <span className="line-burger top-0 origin-left" />
           <span className="line-burger top-1/2 -translate-y-1/2 origin-left" />
           <span className="line-burger top-full -translate-y-full origin-left" />
@@ -42,8 +41,8 @@ function Navbar({
         <ul className={menuListClasses}>
           <li>
             <button
-              onClick={handleChange}
-              className={objectivesButtonClasses}
+              onClick={handleClickObjectivesMenu}
+              className={`${objectivesButtonClasses} uppercase`}
               type="button"
             >
               Objectifs
@@ -71,13 +70,13 @@ function Navbar({
       </nav>
       <button className={signInClasses} type="button">
         {" "}
-        <Link to="/subscription" className="text-[var(--darkColor)]">
-          inscription
+        <Link to="/subscription" className="text-[var(--darkColor)] hover:text-white">
+          Inscription
         </Link>
       </button>
       <button className={signUpClasses} type="button">
-        <Link to="/" className="text-[var(--darkColor)]">
-          connexion
+        <Link to="/" className="text-[var(--darkColor)] hover:text-white">
+          Connexion
         </Link>
       </button>
       {isObjectivesMenuOpen && (
@@ -86,7 +85,7 @@ function Navbar({
             className="absolute top-0 right-0 px-6 py-6 bg-transparent hover:bg-transparent"
             type="button"
             aria-label="bouton fermant dans objectif"
-            onClick={handleChange}
+            onClick={handleClickObjectivesMenu}
           >
             <svg
               className="h-8 w-8 text-gray-600"
@@ -144,8 +143,8 @@ function Navbar({
 }
 
 Navbar.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleClickObjectivesMenu: PropTypes.func.isRequired,
+  handleClickMobileMenu: PropTypes.func.isRequired,
   isObjectivesMenuOpen: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
   signInClasses: PropTypes.string.isRequired,
