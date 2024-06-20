@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { Cell, Row } from "react-aria-components";
 import { Link } from 'react-router-dom';
 
 export default function DashboardVideo() {
+const tag = ["#Tag1","#Tag2","#Tag2","#Tag2"]
+const [showAllTags, setShowAllTags] = useState(false);
+
+const handleButtonClick = () => {
+  setShowAllTags(!showAllTags);
+};
+
   return (
     <Row>
       <Cell className="flex items-center">
@@ -9,12 +17,17 @@ export default function DashboardVideo() {
         <p className="px-4">Titre de la vidéo</p>
       </Cell>
       <Cell>Pilate</Cell>
-      <Cell>
-        <ul className="p-0 flex flex-wrap w-auto h-24 justify-center items-center overflow-auto gap-2  [&>*]:py-0 [&>*]:px-4 [&>*]:text-xl [&>*]:h-7 [&>*]:bg-[var(--primaryColor)] [&>*]:rounded-3xl [&>*]:text-[var(--darkColor)] [&>*]:font-bold [&>*]:capitalize">
-          <li>#Tag1</li>
-          <li>#Tag2</li>
-          <li>#Tag3</li>
-        </ul>
+      <Cell className="py-2">
+        <ul className="flex flex-wrap w-auto justify-center items-center  gap-2  [&>*]:py-0 [&>*]:px-4 [&>*]:text-xl [&>*]:h-7 [&>*]:bg-[var(--primaryColor)] [&>*]:rounded-3xl [&>*]:text-[var(--darkColor)] [&>*]:font-bold [&>*]:capitalize">
+        {(showAllTags ? tag : tag.slice(0, 2)).map((tags) => (
+          <li key={tags}>{tags}</li>
+        ))}
+      </ul>
+      {tag.length > 3 && (
+        <button type="button" className="h-8 mt-2 text-sm" onClick={handleButtonClick}>
+          {showAllTags ? 'Afficher moins' : 'Afficher plus'}
+        </button>
+      )}
       </Cell>
       <Cell>Abonné</Cell>
       <Cell>301</Cell>

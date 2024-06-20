@@ -145,11 +145,16 @@ table {
   table-layout: fixed;
   width: 100%;
 }
-table,
-th,
 td {
   border: 1px solid var(--primaryColor);
-  border-collapse: collapse;
+}
+
+th:first-child {
+  border-radius: 50px 0px 0px 0px;
+}
+
+th:last-child {
+  border-radius: 0px 50px 0px 0px;
 }
 td {
   text-align: center;
