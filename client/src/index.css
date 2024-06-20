@@ -77,7 +77,6 @@ h4 {
 
 header {
   width: 100%;
-  padding: 0 1rem;
 }
 
 section {
@@ -90,13 +89,6 @@ footer {
   padding: 0.5rem 1rem;
 }
 
-nav {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 ul {
   list-style-type: none;
 }
@@ -106,19 +98,11 @@ li {
 }
 
 label {
-  width: 100%;
-  font-weight: 500;
+  font-family: var(--textFont);
 }
 
-input {
-  height: 2.5rem;
-  padding: 0.25rem;
-  border-radius: 15px;
-}
-
-input:focus {
-  outline: none;
-  border: 2px solid var(--primaryColor);
+label:focus {
+  font-family: var(--textFont);
 }
 
 button {
@@ -145,10 +129,6 @@ a {
   transition: all ease 300ms;
 }
 
-a:hover {
-  color: var(--primaryColor);
-}
-
 .center {
   width: 50%;
   margin: auto;
@@ -161,6 +141,25 @@ a:hover {
 
 .img-shadow {
   box-shadow: 15px 15px 0px 0px var(--primaryColor);
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+td {
+  border: 1px solid var(--primaryColor);
+}
+
+th:first-child {
+  border-radius: 50px 0px 0px 0px;
+}
+
+th:last-child {
+  border-radius: 0px 50px 0px 0px;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
 }
 
 @media screen and (min-width: 768px) {
@@ -181,10 +180,6 @@ a:hover {
 
   h4 {
     font-size: 1.5rem;
-  }
-
-  header {
-    padding: 0 2rem;
   }
 
   section {
@@ -217,10 +212,6 @@ a:hover {
     font-size: 2rem;
   }
 
-  header {
-    padding: 0 3rem;
-  }
-
   section {
     padding: 1rem 3rem;
   }
@@ -228,4 +219,20 @@ a:hover {
   footer {
     padding: 1rem 3rem;
   }
+}
+
+/* Burger-design */
+
+.line-burger {
+  @apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200  bg-gray-600;
+}
+
+#navbar button.active .line-burger:first-child {
+  @apply transform rotate-45 top-0 left-1.5;
+}
+#navbar button.active .line-burger:nth-child(2) {
+  @apply w-0 opacity-0;
+}
+#navbar button.active .line-burger:last-child {
+  @apply transform -rotate-45 top-8 left-1.5;
 }

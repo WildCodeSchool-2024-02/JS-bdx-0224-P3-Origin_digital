@@ -1,62 +1,57 @@
-import {
-  Checkbox,
-  Cell,
-  Row,
-  TableBody,
-  Column,
-  Table,
-  TableHeader,
-} from "react-aria-components";
+import { useState } from "react";
+import { Cell, Row } from "react-aria-components";
+import { PropTypes } from "prop-types";
 
-export default function DashboardVideo() {
+export default function DashboardVideo({ handleOpenModal }) {
+  const tag = ["#Tag1", "#Tag2", "#Tag2", "#Tag2"];
+  const [showAllTags, setShowAllTags] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowAllTags(!showAllTags);
+  };
+
   return (
-    <>
-      <Table aria-label="Files" selectionMode="multiple">
-        <TableHeader>
-          <Column>
-            <Checkbox slot="selection" />
-          </Column>
-          <Column isRowHeader>Name</Column>
-          <Column>Type</Column>
-          <Column>Date Modified</Column>
-        </TableHeader>
-
-        <TableBody>
-          <Row>
-            <Cell>
-              <Checkbox slot="selection" />
-            </Cell>
-            <Cell>Games</Cell>
-            <Cell>File folder</Cell>
-            <Cell>6/7/2020</Cell>
-          </Row>
-          <Row>
-            <Cell>
-              <Checkbox slot="selection" />
-            </Cell>
-            <Cell>Program Files</Cell>
-            <Cell>File folder</Cell>
-            <Cell>4/7/2021</Cell>
-          </Row>
-          <Row>
-            <Cell>
-              <Checkbox slot="selection" />
-            </Cell>
-            <Cell>bootmgr</Cell>
-            <Cell>System file</Cell>
-            <Cell>11/20/2010</Cell>
-          </Row>
-          <Row>
-            <Cell>
-              <Checkbox slot="selection" />
-            </Cell>
-            <Cell>log.txt</Cell>
-            <Cell>Text Document</Cell>
-            <Cell>1/18/2016</Cell>
-          </Row>
-        </TableBody>
-      </Table>
-      <p>test</p>
-    </>
+    <Row>
+      <Cell className="flex items-center">
+        <img src="../src/assets/images/pilat.jpg" alt="" className="w-36" />
+        <p className="px-4">Titre de la vidéo</p>
+      </Cell>
+      <Cell>Pilate</Cell>
+      <Cell className="py-2">
+        <ul className="flex flex-wrap w-auto justify-center items-center  gap-2  [&>*]:py-0 [&>*]:px-4 [&>*]:text-xl [&>*]:h-7 [&>*]:bg-[var(--primaryColor)] [&>*]:rounded-3xl [&>*]:text-[var(--darkColor)] [&>*]:font-bold [&>*]:capitalize">
+          {(showAllTags ? tag : tag.slice(0, 2)).map((tags) => (
+            <li key={tags}>{tags}</li>
+          ))}
+        </ul>
+        {tag.length > 3 && (
+          <button
+            type="button"
+            className="h-8 mt-2 text-sm"
+            onClick={handleButtonClick}
+          >
+            {showAllTags ? "Afficher moins" : "Afficher plus"}
+          </button>
+        )}
+      </Cell>
+      <Cell>Abonné</Cell>
+      <Cell>301</Cell>
+      <Cell>18/06/2024</Cell>
+      <Cell>
+        <ul className="flex flex-col gap-4">
+          <li>
+            <button type="button" onClick={handleOpenModal}>
+              Modifier
+            </button>
+          </li>
+          <li>
+            <button type="button">Supprimer</button>
+          </li>
+        </ul>
+      </Cell>
+    </Row>
   );
 }
+
+DashboardVideo.propTypes = {
+  handleOpenModal: PropTypes.func.isRequired,
+};

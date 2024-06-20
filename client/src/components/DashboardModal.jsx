@@ -19,24 +19,26 @@ import { PropTypes } from "prop-types";
 import "../assets/styles/modal.css";
 
 export default function DashboardModal({
-  setIsModalOpen,
-  title,
-  validateText,
+  handleOpenModal,
+  isModalOpen,
+  displayClass,
+  toModify,
 }) {
   const [selectedAccess, setSelectedAccess] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
 
   return (
     <dialog
-      className="absolute top-0 left-0 w-screen h-screen bg-[var(--blurBg)] 
-    grid grid-cols-[1fr,0.25fr] grid-rows-[100px,auto] items-center justify-center p-4"
+      className={` ${displayClass} absolute top-0 left-0 w-screen h-screen bg-[var(--blurBg)] 
+       grid-cols-[1fr,0.25fr] grid-rows-[100px,auto] items-center justify-center p-4 md:px-32 lg:py-16 lg:px-64`}
+      open={isModalOpen}
     >
       <h2 id="form-title" className="w-full col-span-1">
-        {title}
+        {toModify ? "Modifier la vidéo" : "Ajouter une vidéo"}
       </h2>
       <button
         className="bg-none col-span-1 place-self-start justify-self-end"
-        onClick={setIsModalOpen}
+        onClick={handleOpenModal}
         type="button"
         aria-label="fermer la modale"
       >
@@ -112,7 +114,7 @@ export default function DashboardModal({
           {selectedAccess ? "Abonné" : "Public"}
         </Switch>
         <Button type="submit" className="w-full bg-[var(--lightColor)]">
-          {validateText}
+          {toModify ? "Modifier" : "Ajouter"}
         </Button>
       </Form>
     </dialog>
@@ -120,7 +122,12 @@ export default function DashboardModal({
 }
 
 DashboardModal.propTypes = {
-  setIsModalOpen: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  validateText: PropTypes.string.isRequired,
+  handleOpenModal: PropTypes.func.isRequired,
+  isModalOpen: PropTypes.bool.isRequired,
+  displayClass: PropTypes.string.isRequired,
+  toModify: PropTypes.bool,
+};
+
+DashboardModal.defaultProps = {
+  toModify: false,
 };
