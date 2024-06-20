@@ -11,7 +11,6 @@ export default function Dashboard() {
       />
       <button type="button"> + </button>
       <section className="overflow-x-auto rounded-xl">
-
       <Table aria-label="Files" selectionMode="multiple" >
         <TableHeader className=" bg-[var(--primaryLight)]">
           <Column isRowHeader className="w-60">
@@ -25,9 +24,6 @@ export default function Dashboard() {
           <Column className="w-36">Modification</Column>
         </TableHeader>
         <TableBody>
-          <DashboardVideo />
-          <DashboardVideo />
-          <DashboardVideo />
           <DashboardVideo />
         </TableBody>
       </Table>

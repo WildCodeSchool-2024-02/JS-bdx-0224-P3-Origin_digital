@@ -3,7 +3,7 @@ import { Cell, Row } from "react-aria-components";
 import { Link } from 'react-router-dom';
 
 export default function DashboardVideo() {
-const tag = ["#Tag1","#Tag2","#Tag2","#Tag2"]
+const tag = ["#Tag1","#Tag2","#Tag2","#Tag2","#Tag2","#Tag2","#Tag2","#Tag2","#Tag2","#Tag2"]
 const [showAllTags, setShowAllTags] = useState(false);
 
 const handleButtonClick = () => {
@@ -12,9 +12,9 @@ const handleButtonClick = () => {
 
   return (
     <Row>
-      <Cell className="flex items-center">
-        <img src="../src/assets/images/pilat.jpg" alt="" className="w-36" />
-        <p className="px-4">Titre de la vidéo</p>
+      <Cell>
+        <img src="../src/assets/images/pilat.jpg" alt="" className="w-36 inline"/>
+        <p className="p-4 inline text-ellipsis">Titre de la vidéo</p>
       </Cell>
       <Cell>Pilate</Cell>
       <Cell className="py-2">
