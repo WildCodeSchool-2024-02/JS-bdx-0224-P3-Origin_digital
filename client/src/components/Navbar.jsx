@@ -71,12 +71,12 @@ function Navbar({
       </nav>
       <button className={signInClasses} type="button">
         {" "}
-        <Link to="/" className="text-[var(--darkColor)]">
+        <Link to="/" className="text-[var(--darkColor)] hover:text-white">
           inscription
         </Link>
       </button>
       <button className={signUpClasses} type="button">
-        <Link to="/" className="">
+        <Link to="/" className="text-[var(--darkColor)] hover:text-white">
           connexion
         </Link>
       </button>
