@@ -70,7 +70,7 @@ function Navbar({
       </nav>
       <button className={signInClasses} type="button">
         {" "}
-        <Link to="/" className="text-[var(--darkColor)] hover:text-white">
+        <Link to="/subscription" className="text-[var(--darkColor)] hover:text-white">
           Inscription
         </Link>
       </button>
