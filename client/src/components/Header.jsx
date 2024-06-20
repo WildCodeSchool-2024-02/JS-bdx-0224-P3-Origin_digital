@@ -59,8 +59,8 @@ function Header() {
     <Navbar
       isObjectivesMenuOpen={isObjectivesMenuOpen}
       closeMenu={closeMenu}
-      handleClick={handleClickMobileMenu}
-      handleChange={handleClickObjectivesMenu}
+      handleClickMobileMenu={handleClickMobileMenu}
+      handleClickObjectivesMenu={handleClickObjectivesMenu}
       signInClasses={signInClasses}
       signUpClasses={signUpClasses}
       burgerButtonClasses={burgerButtonClasses}
