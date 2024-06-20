@@ -119,7 +119,6 @@ button {
   border-radius: 15px;
   font-weight: 600;
   background-color: var(--primaryColor);
-  text-transform: uppercase;
   outline: none;
   border: none;
   transition: all ease 300ms;
