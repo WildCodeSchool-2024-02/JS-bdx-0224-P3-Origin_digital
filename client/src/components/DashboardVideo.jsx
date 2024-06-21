@@ -13,8 +13,8 @@ const handleButtonClick = () => {
   return (
     <Row>
       <Cell>
-        <img src="../src/assets/images/pilat.jpg" alt="" className="w-36 inline"/>
-        <p className="p-4 inline text-ellipsis">Titre de la vidéo</p>
+        <img src="../src/assets/images/pilat.jpg" alt="" className="w-36 inline float-left"/>
+        <p className="block text-ellipsis pt-10">Titre de la vidéo</p>
       </Cell>
       <Cell>Pilate</Cell>
       <Cell className="py-2">

@@ -25,6 +25,7 @@ export default function Dashboard() {
         </TableHeader>
         <TableBody>
           <DashboardVideo />
+          <DashboardVideo />
         </TableBody>
       </Table>
       </section>
