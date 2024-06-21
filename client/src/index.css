@@ -37,12 +37,8 @@
 
 body {
   font-family: var(--textFont);
-  font-size: 1rem;
   color: var(--darkColor);
   background-color: var(--lightColor);
-}
-p {
-  font-size: 1rem;
 }
 
 h1,
@@ -96,14 +92,6 @@ li {
   margin-left: 0.25rem;
 }
 
-label {
-  font-family: var(--textFont);
-}
-
-label:focus {
-  font-family: var(--textFont);
-}
-
 button {
   height: 2.5rem;
   padding: 0.5rem 1rem;
@@ -126,20 +114,6 @@ a {
   color: var(--primaryDark);
   text-decoration: none;
   transition: all ease 300ms;
-}
-
-.center {
-  width: 50%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.img-shadow {
-  box-shadow: 15px 15px 0px 0px var(--primaryColor);
 }
 
 @media screen and (min-width: 768px) {
@@ -199,26 +173,4 @@ a {
   footer {
     padding: 1rem 3rem;
   }
-}
-
-/* Burger-design */
-
-.line-burger {
-  @apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200  bg-gray-600;
-}
-
-#navbar button.active .line-burger:first-child {
-  @apply transform rotate-45 top-0 left-1.5;
-}
-#navbar button.active .line-burger:nth-child(2) {
-  @apply w-0 opacity-0;
-}
-#navbar button.active .line-burger:last-child {
-  @apply transform -rotate-45 top-8 left-1.5;
-}
-
-/* Footer-Design */
-
-.footer-list {
-  @apply text-[var(--darkColor)];
 }
