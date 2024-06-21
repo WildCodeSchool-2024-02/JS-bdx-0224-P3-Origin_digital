@@ -21,9 +21,12 @@ export default function Dashboard() {
           placeholder="Rechercher une vidéo.."
           className="bg-(var"
         />
-        <button type="button" onClick={handleOpenModal}>
-          {" "}
-          +{" "}
+        <button
+          type="button"
+          onClick={handleOpenModal}
+          className="flex items-center"
+        >
+          +
         </button>
         <section className="overflow-x-auto rounded-xl">
           <Table aria-label="Files" selectionMode="multiple">
