@@ -30,9 +30,9 @@ function Navbar({
           className={burgerButtonClasses}
           aria-label="Menu déroulant"
         >
-          <line className="line-burger top-0 origin-left" />
-          <line className="line-burger top-1/2 -translate-y-1/2 origin-left" />
-          <line className="line-burger top-full -translate-y-full origin-left" />
+          <span className="line-burger top-0 origin-left" />
+          <span className="line-burger top-1/2 -translate-y-1/2 origin-left" />
+          <span className="line-burger top-full -translate-y-full origin-left" />
         </button>
 
         <ul className={menuListClasses}>
