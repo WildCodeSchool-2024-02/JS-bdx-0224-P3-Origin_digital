@@ -1,8 +1,8 @@
-const CategoriesRepository = require("./models/categoriesRepository");
+const CategoryRepository = require("./models/CategoryRepository");
 
 const tables = {};
 
-tables.categories = new CategoriesRepository();
+tables.category = new CategoryRepository();
 
 module.exports = new Proxy(tables, {
   get(obj, prop) {
