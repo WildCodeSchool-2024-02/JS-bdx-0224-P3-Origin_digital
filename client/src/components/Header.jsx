@@ -12,6 +12,7 @@ function Header() {
 
   const handleClickMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsObjectivesMenuOpen(false);
   };
 
   const handleClickObjectivesMenu = () => {
@@ -40,8 +41,8 @@ function Header() {
     lg:hidden
     ${isMobileMenuOpen ? "active" : ""}`;
 
-  const objectiveSectionClasses = `absolute top-[4.5rem] left-0 right-0 bottom-0 w-full 
-    uppercase bg-white list-none justify-around items-center transform transition-all duration-300 text-center 
+  const objectiveSectionClasses = `absolute top-[4.5rem] left-0 right-0 bottom-0 w-full bg-white lg:bg-transparent
+    uppercase list-none justify-around items-center transform transition-all text-center 
     lg:top-[6rem] lg:flex-row 
     ${isObjectivesMenuOpen ? "opacity-100 transform translate-y-0" : "opacity-0 pointer-events-none"}`;
 

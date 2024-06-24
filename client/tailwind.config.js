@@ -9,13 +9,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        'pc':'#e1b7ff',
-        'pcd':'#b44dfe',
-        'pcl':'#f2e2fe',
-        'sc':'#eaf3f5',
-        'lc':'#fdfdfd',
-        'dc':'#353535',
-      }
+        "primary-color": "#e1b7ff",
+        "primary-color-dark": "#b44dfe",
+        "primary-color-light": "#f2e2fe",
+        "secondary-color": "#eaf3f5",
+        "light-color": "#fdfdfd",
+        "dark-color": "#353535",
+      },
     },
   },
   plugins: [fluid],

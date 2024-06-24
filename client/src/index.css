@@ -207,13 +207,13 @@ a {
   @apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200  bg-gray-600;
 }
 
-#navbar button.active .line-burger:first-child {
+button.active .line-burger:first-child {
   @apply transform rotate-45 top-0 left-1.5;
 }
-#navbar button.active .line-burger:nth-child(2) {
+button.active .line-burger:nth-child(2) {
   @apply w-0 opacity-0;
 }
-#navbar button.active .line-burger:last-child {
+button.active .line-burger:last-child {
   @apply transform -rotate-45 top-8 left-1.5;
 }
 
