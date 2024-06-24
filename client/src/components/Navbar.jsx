@@ -38,7 +38,7 @@ function Navbar({
           <span className="line-burger top-full -translate-y-full origin-left" />
         </button>
 
-        <ul className={menuListClasses}>
+        <ul className={`${menuListClasses} z-10`}>
           <li>
             <button
               onClick={handleClickObjectivesMenu}
@@ -70,7 +70,10 @@ function Navbar({
       </nav>
       <button className={signInClasses} type="button">
         {" "}
-        <Link to="/subscription" className="text-[var(--darkColor)] hover:text-white">
+        <Link
+          to="/subscription"
+          className="text-[var(--darkColor)] hover:text-white"
+        >
           Inscription
         </Link>
       </button>
