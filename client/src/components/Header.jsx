@@ -22,7 +22,7 @@ function Header() {
     document.body.classList.toggle("overflow-hidden", isMobileMenuOpen);
   }, [isMobileMenuOpen]);
 
-  const subscribeStyle = `mr-5 flex lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none items-center transform transition-all duration-300 fixed lg:static lg:max-h-16 ${isMobileMenuOpen ? "opacity-100 translate-y-0" : "-translate-y-[100vh]"}`
+  const subscribeStyle = `mr-5 flex lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none items-center transform transition-all duration-300 fixed lg:static lg:max-h-16 ${isMobileMenuOpen ? "opacity-100 translate-y-0" : "-translate-y-[100vh]"}`;
 
   const signInClasses = `${subscribeStyle} bg-white`;
 
@@ -42,7 +42,7 @@ function Header() {
     flex flex-col justify-around items-center 
     transform translate-x-[100vw] transition-all duration-300 text-center fixed inset-0
     lg:bg-[var(--secondaryColor)] lg:static lg:max-h-12 lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none 
-    ${isMobileMenuOpen ? "opacity-100 transform -translate-x-[0vw]" : ""}`;
+    ${isMobileMenuOpen ? "opacity-100 transform translate-x-[0vw]" : ""}`;
 
   const objectivesButtonClasses = `font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline bg-transparent 
     hover:bg-transparent hover:text-[var(--darkColor)] 

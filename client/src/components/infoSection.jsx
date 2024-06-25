@@ -1,4 +1,4 @@
-export default function registerSection() {
+export default function InfoSection() {
   return (
     <>
       <img
@@ -14,6 +14,6 @@ export default function registerSection() {
         niveau (intensité, zones du corps...) Ton rythme (fréquence & durée) Et
         ton équipement (avec ou sans matériel)
       </p>
-      </>
+    </>
   );
 }

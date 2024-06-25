@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import logoSrc from "../assets/images/LogoSweatStream.png";
 
 function Navbar({
@@ -46,13 +47,13 @@ function Navbar({
             </button>
           </li>
           <li>
-            <Link
-              to="/"
+            <HashLink
+              to="/#WhySubscribe"
               onClick={closeMenu}
               className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
             >
               Pourquoi s'abonner ?
-            </Link>
+            </HashLink>
           </li>
           <li>
             <Link
