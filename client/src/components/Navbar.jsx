@@ -5,8 +5,8 @@ import logoSrc from "../assets/images/LogoSweatStream.png";
 function Navbar({
   isObjectivesMenuOpen,
   closeMenu,
-  handleClick,
-  handleChange,
+  handleClickMobileMenu,
+  handleClickObjectivesMenu,
   signInClasses,
   signUpClasses,
   burgerButtonClasses,
@@ -16,10 +16,7 @@ function Navbar({
 }) {
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
-      <nav
-        id="navbar"
-        className="grid grid-cols-2 items-center w-full h-[4.5rem] px-4 lg:px-8  lg:flex"
-      >
+      <nav className="grid grid-cols-2 items-center w-full h-[4.5rem] px-4 lg:px-8  lg:flex">
         <Link to="/">
           <img
             className="~w-[250px]/[350px] "
@@ -29,21 +26,20 @@ function Navbar({
         </Link>
         <button
           type="button"
-          onClick={handleClick}
+          onClick={handleClickMobileMenu}
           className={burgerButtonClasses}
-          title="Menu déroulant"
+          aria-label="Menu déroulant"
         >
-          Menu déroulant
           <span className="line-burger top-0 origin-left" />
           <span className="line-burger top-1/2 -translate-y-1/2 origin-left" />
           <span className="line-burger top-full -translate-y-full origin-left" />
         </button>
 
-        <ul className={menuListClasses}>
+        <ul className={`${menuListClasses} z-10`}>
           <li>
             <button
-              onClick={handleChange}
-              className={objectivesButtonClasses}
+              onClick={handleClickObjectivesMenu}
+              className={`${objectivesButtonClasses} uppercase`}
               type="button"
             >
               Objectifs
@@ -71,13 +67,16 @@ function Navbar({
       </nav>
       <button className={signInClasses} type="button">
         {" "}
-        <Link to="/subscription" className="text-[var(--darkColor)]">
-          inscription
+        <Link
+          to="/subscription"
+          className="text-[var(--darkColor)] hover:text-white"
+        >
+          Inscription
         </Link>
       </button>
       <button className={signUpClasses} type="button">
-        <Link to="/" className="text-[var(--darkColor)]">
-          connexion
+        <Link to="/" className="text-[var(--darkColor)] hover:text-white">
+          Connexion
         </Link>
       </button>
       {isObjectivesMenuOpen && (
@@ -86,7 +85,7 @@ function Navbar({
             className="absolute top-0 right-0 px-6 py-6 bg-transparent hover:bg-transparent"
             type="button"
             aria-label="bouton fermant dans objectif"
-            onClick={handleChange}
+            onClick={handleClickObjectivesMenu}
           >
             <svg
               className="h-8 w-8 text-gray-600"
@@ -101,7 +100,10 @@ function Navbar({
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
-          <ul className="flex flex-col items-center justify-between bg-transparent">
+          <ul
+            className="flex flex-col items-center justify-around bg-white
+          lg:flex-row"
+          >
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link
                 to="/category1"
@@ -112,13 +114,11 @@ function Navbar({
                   <li>#tag1</li>
                   <li>#tag1</li>
                   <li>#tag1</li>
+                  <li>#tag1</li>
+                  <li>#tag1</li>
+                  <li>#tag1</li>
                 </ul>
               </Link>
-              <ul>
-                <li>#tag1</li>
-                <li>#tag1</li>
-                <li>#tag1</li>
-              </ul>
             </li>
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link
@@ -127,6 +127,12 @@ function Navbar({
               >
                 Musculation
               </Link>
+              <ul>
+                <li>#tag1</li>
+                <li>#tag1</li>
+                <li>#tag1</li>
+                <li>#tag1</li>
+              </ul>
             </li>
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link
@@ -144,8 +150,8 @@ function Navbar({
 }
 
 Navbar.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleClickObjectivesMenu: PropTypes.func.isRequired,
+  handleClickMobileMenu: PropTypes.func.isRequired,
   isObjectivesMenuOpen: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
   signInClasses: PropTypes.string.isRequired,
