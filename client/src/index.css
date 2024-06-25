@@ -174,3 +174,10 @@ a {
     padding: 1rem 3rem;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  button,
+  a {
+    transition: none;
+  }
+}
