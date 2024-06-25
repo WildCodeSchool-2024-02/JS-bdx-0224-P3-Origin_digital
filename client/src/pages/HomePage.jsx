@@ -7,9 +7,7 @@ function Home() {
   return (
     <main>
       <HeroSection />
-      <section className="pt-24 pb-16 md:pt-32">
         <Slider />
-      </section>
       <RegisterSection />
       <InfoSection />
     </main>
