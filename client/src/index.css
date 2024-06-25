@@ -41,9 +41,6 @@ body {
   color: var(--darkColor);
   background-color: var(--lightColor);
 }
-p {
-  font-size: 1rem;
-}
 
 h1,
 h2,
@@ -128,20 +125,6 @@ a {
   transition: all ease 300ms;
 }
 
-.center {
-  width: 50%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.img-shadow {
-  box-shadow: 15px 15px 0px 0px var(--primaryColor);
-}
-
 @media screen and (min-width: 768px) {
   body {
     font-size: 1.2rem;
@@ -201,24 +184,9 @@ a {
   }
 }
 
-/* Burger-design */
-
-.line-burger {
-  @apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200  bg-gray-600;
-}
-
-button.active .line-burger:first-child {
-  @apply transform rotate-45 top-0 left-1.5;
-}
-button.active .line-burger:nth-child(2) {
-  @apply w-0 opacity-0;
-}
-button.active .line-burger:last-child {
-  @apply transform -rotate-45 top-8 left-1.5;
-}
-
-/* Footer-Design */
-
-.footer-list {
-  @apply text-[var(--darkColor)];
+@media (prefers-reduced-motion: reduce) {
+  button,
+  a {
+    transition: none;
+  }
 }
