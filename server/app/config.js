@@ -27,9 +27,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: [
-      process.env.CLIENT_URL, // keep this one, after checking the value in `server/.env`
-    ],
+    origin: [process.env.CLIENT_URL],
   })
 );
 
@@ -48,7 +46,7 @@ app.use(
 
 // Uncomment one or more of these options depending on the format of the data sent by your client:
 
-// app.use(express.json());
+app.use(express.json());
 // app.use(express.urlencoded());
 // app.use(express.text());
 // app.use(express.raw());
