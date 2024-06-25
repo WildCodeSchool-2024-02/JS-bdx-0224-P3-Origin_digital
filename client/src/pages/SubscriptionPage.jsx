@@ -98,7 +98,6 @@ function SubscriptionPage() {
       handleChange={handleChange}
       fields={fields}
       formValues={formValues}
-      textLabel={textLabel}
       customerButton={customerButton}
       professionalButton={professionalButton}
       generateFieldLabelClass={generateFieldLabelClass}
