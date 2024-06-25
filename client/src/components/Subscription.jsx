@@ -23,7 +23,7 @@ function Subscription({
       </figure>
       <article className="flex flex-col items-center w-96 aspect-[6/10]  ">
         <ul className="flex items-center text-center w-full h-14 rounded-t-lg">
-          <li className="btnForm">
+          <li className="containBtnForm">
             <button
               onClick={handleClickCustomer}
               className={customerButton}
@@ -32,7 +32,7 @@ function Subscription({
               PARTICULIER
             </button>
           </li>
-          <li className="btnForm">
+          <li className="containBtnForm">
             <button
               onClick={handleClickProfessional}
               className={professionalButton}

@@ -79,11 +79,13 @@ function SubscriptionPage() {
     handleClickCustomer();
   }, []);
 
-  const customerButton = `w-full h-full p-0 rounded-none rounded-tl-lg cursor-pointer ${
-    fields.length === textLabel.length ? "bg-primary-dark text-lc" : "bg-primary-color"
+  const btnFormClass = "w-full h-full p-0 rounded-none cursor-pointer"
+
+  const customerButton = `${btnFormClass} rounded-tl-lg ${
+    fields.length === textLabel.length ? "bg-primary-dark text-light-color" : "bg-primary-color"
   }`;
-  const professionalButton = `w-full h-full p-0 rounded-none rounded-tr-lg cursor-pointer ${
-    fields.length > textLabel.length ? "bg-primary-dark text-lc" : "bg-primary-color"
+  const professionalButton = `${btnFormClass} rounded-tr-lg ${
+    fields.length > textLabel.length ? "bg-primary-dark text-light-color" : "bg-primary-color"
   }`;
 
   const generateFieldLabelClass = (id) =>
