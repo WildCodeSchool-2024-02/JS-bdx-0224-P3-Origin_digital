@@ -48,7 +48,6 @@ export default {
           "@apply font-bold h-full m-0 flex-1 flex justify-center items-center": {},
         }
       };
-    
       addComponents(components);
     }),    
   ],
