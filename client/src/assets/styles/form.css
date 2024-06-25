@@ -1,0 +1,15 @@
+.label {
+  left: 1rem;
+  top: 0;
+  font-weight: 600;
+  cursor: text;
+  position: absolute;
+  transition: all 0.2s;
+}
+
+.label.active,
+.label.peer-focus {
+  top: -1.25rem;
+  font-size: 0.875rem;
+  color: var(--primaryDark);
+}

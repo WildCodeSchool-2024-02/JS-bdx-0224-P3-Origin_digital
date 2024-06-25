@@ -44,8 +44,10 @@ export default {
         ".img-shadow": {
           "@apply shadow-custom-shadow": {},
         },
+        ".containBtnForm": {
+          "@apply font-bold h-full m-0 flex-1 flex justify-center items-center": {},
+        }
       };
-    
       addComponents(components);
     }),    
   ],
