@@ -9,7 +9,7 @@ export default function registerSection() {
       <h2 className="text-center lg:text-left place-self-end mt-10 lg:relative lg:top-[-40vh] lg:ml-[10vw]">
         L'offre
       </h2>
-      <p className="text-center lg:text-left my-5 px-5 lg:relative lg:top-[-40vh] lg:ml-[10vw] lg:w-[58ch] lg:p-0 lg:mb-[-10%]">
+      <p className="text-center lg:text-left my-5 px-5 lg:relative lg:top-[-40vh] lg:ml-[10vw] lg:w-[42vw] lg:p-0 lg:mb-[-10%]">
         Des vidéos en temps réel rapides, fun et efficaces qui s’adaptent à ton
         niveau (intensité, zones du corps...) Ton rythme (fréquence & durée) Et
         ton équipement (avec ou sans matériel)
