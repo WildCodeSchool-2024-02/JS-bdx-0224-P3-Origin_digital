@@ -2,8 +2,8 @@ const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
   try {
-    const categories = await tables.categories.readAll();
-    res.json(categories);
+    const category = await tables.category.readAll();
+    res.json(category);
   } catch (err) {
     next(err);
   }
@@ -11,7 +11,7 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const category = await tables.categories.read(req.params.id);
+    const category = await tables.category.read(req.params.id);
     if (category == null) {
       res.sendStatus(404);
     } else {
@@ -25,7 +25,7 @@ const read = async (req, res, next) => {
 const edit = async (req, res, next) => {
   const category = { ...req.body, id: req.params.id };
   try {
-    await tables.categories.update(category);
+    await tables.category.update(category);
 
     res.sendStatus(204);
   } catch (err) {
@@ -36,7 +36,7 @@ const edit = async (req, res, next) => {
 const add = async (req, res, next) => {
   const category = req.body;
   try {
-    const insertId = await tables.categories.create(category);
+    const insertId = await tables.category.create(category);
 
     res.status(201).json({ insertId });
   } catch (err) {
@@ -46,7 +46,7 @@ const add = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    await tables.categories.delete(req.params.id);
+    await tables.category.delete(req.params.id);
     res.sendStatus(204);
   } catch (err) {
     next(err);

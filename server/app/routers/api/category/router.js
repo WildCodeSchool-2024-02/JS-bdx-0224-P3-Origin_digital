@@ -8,7 +8,7 @@ const {
   edit,
   add,
   destroy,
-} = require("../../../controllers/categoriesActions");
+} = require("../../../controllers/categoryActions");
 
 router.get("/", browse);
 
