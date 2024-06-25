@@ -16,10 +16,7 @@ function Navbar({
 }) {
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
-      <nav
-        id="navbar"
-        className="grid grid-cols-2 items-center w-full h-[4.5rem] px-4 lg:px-8  lg:flex"
-      >
+      <nav className="grid grid-cols-2 items-center w-full h-[4.5rem] px-4 lg:px-8  lg:flex">
         <Link to="/">
           <img
             className="~w-[250px]/[350px] "
@@ -38,7 +35,7 @@ function Navbar({
           <span className="line-burger top-full -translate-y-full origin-left" />
         </button>
 
-        <ul className={menuListClasses}>
+        <ul className={`${menuListClasses} z-10`}>
           <li>
             <button
               onClick={handleClickObjectivesMenu}
@@ -70,7 +67,10 @@ function Navbar({
       </nav>
       <button className={signInClasses} type="button">
         {" "}
-        <Link to="/subscription" className="text-[var(--darkColor)] hover:text-white">
+        <Link
+          to="/subscription"
+          className="text-[var(--darkColor)] hover:text-white"
+        >
           Inscription
         </Link>
       </button>
@@ -100,7 +100,10 @@ function Navbar({
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
-          <ul className="flex flex-col items-center justify-between bg-transparent">
+          <ul
+            className="flex flex-col items-center justify-around bg-white
+          lg:flex-row"
+          >
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link
                 to="/category1"
@@ -111,13 +114,11 @@ function Navbar({
                   <li>#tag1</li>
                   <li>#tag1</li>
                   <li>#tag1</li>
+                  <li>#tag1</li>
+                  <li>#tag1</li>
+                  <li>#tag1</li>
                 </ul>
               </Link>
-              <ul>
-                <li>#tag1</li>
-                <li>#tag1</li>
-                <li>#tag1</li>
-              </ul>
             </li>
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link
@@ -126,6 +127,12 @@ function Navbar({
               >
                 Musculation
               </Link>
+              <ul>
+                <li>#tag1</li>
+                <li>#tag1</li>
+                <li>#tag1</li>
+                <li>#tag1</li>
+              </ul>
             </li>
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link
