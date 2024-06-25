@@ -23,7 +23,7 @@ function Subscription({
       </figure>
       <article className="flex flex-col items-center w-96 aspect-[6/10]  ">
         <ul className="flex items-center text-center w-full h-14 rounded-t-lg">
-          <li className="font-bold h-full m-0 flex-1 flex justify-center items-center">
+          <li className="btnForm">
             <button
               onClick={handleClickCustomer}
               className={customerButton}
@@ -32,7 +32,7 @@ function Subscription({
               PARTICULIER
             </button>
           </li>
-          <li className="font-bold h-full m-0 flex-1 flex justify-center items-center">
+          <li className="btnForm">
             <button
               onClick={handleClickProfessional}
               className={professionalButton}
@@ -42,7 +42,7 @@ function Subscription({
             </button>
           </li>
         </ul>
-        <form className="flex flex-col items-center w-full h-full px-4 border border-pc rounded-b-lg">
+        <form className="flex flex-col items-center w-full h-full px-4 border border-primary-color rounded-b-lg">
           <h2 className="font-bold my-10">INSCRIPTION</h2>
           {fields.map((info) => (
             <fieldset key={info.id} className="relative w-full pb-10">
@@ -52,7 +52,7 @@ function Subscription({
                 name={info.text}
                 value={formValues[info.id]}
                 onChange={handleChange}
-                className="border-b-2 border-dc py-1 focus:border-b-2 focus:border-pc transition-colors focus:outline-none bg-inherit w-full"
+                className="peer border-b-2 border-dark-color py-1 focus:border-b-2 focus:border-primary-color transition-colors focus:outline-none bg-inherit w-full"
               />
               <label
                 htmlFor={info.id}

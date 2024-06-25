@@ -80,10 +80,10 @@ function SubscriptionPage() {
   }, []);
 
   const customerButton = `w-full h-full p-0 rounded-none rounded-tl-lg cursor-pointer ${
-    fields.length === textLabel.length ? "bg-pcd text-lc" : "bg-pc"
+    fields.length === textLabel.length ? "bg-primary-dark text-lc" : "bg-primary-color"
   }`;
   const professionalButton = `w-full h-full p-0 rounded-none rounded-tr-lg cursor-pointer ${
-    fields.length > textLabel.length ? "bg-pcd text-lc" : "bg-pc"
+    fields.length > textLabel.length ? "bg-primary-dark text-lc" : "bg-primary-color"
   }`;
 
   const generateFieldLabelClass = (id) =>
