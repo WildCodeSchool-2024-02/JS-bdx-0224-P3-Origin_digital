@@ -9,18 +9,27 @@
       linear,
       left top,
       right top,
-      color-stop(50%, #efefef),
+      color-stop(50%, var(--lightColor)),
       color-stop(50%, #2a2a2a)
     )
     no-repeat;
-  background: -o-linear-gradient(left, #efefef 50%, var(--primaryColor) 50%)
+  background: -o-linear-gradient(
+      left,
+      var(--lightColor) 50%,
+      var(--primaryColor) 50%
+    )
     no-repeat;
-  background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+  background: linear-gradient(
+      to right,
+      var(--lightColor) 50%,
+      var(--darkColor) 50%
+    )
+    no-repeat;
   background-size: 205%;
   background-position: 0;
-  -webkit-transition: 0.4s;
-  -o-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
   border-radius: 99rem;
   position: relative;
   cursor: pointer;
@@ -38,20 +47,35 @@
       linear,
       left top,
       right top,
-      color-stop(50%, #efefef),
-      color-stop(50%, #2a2a2a)
+      color-stop(50%, var(--lightColor)),
+      color-stop(50%, var(--darkColor))
     )
     no-repeat;
-  background: -o-linear-gradient(left, #efefef 50%, #2a2a2a 50%) no-repeat;
-  background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+  background: -o-linear-gradient(
+      left,
+      var(--lightColor) 50%,
+      var(--darkColor) 50%
+    )
+    no-repeat;
+  background: linear-gradient(
+      to right,
+      var(--lightColor) 50%,
+      var(--darkColor) 50%
+    )
+    no-repeat;
   background-size: 205%;
   background-position: 100%;
   border-radius: 50%;
-  -webkit-transition: 0.4s;
-  -o-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .theme-checkbox:checked::before {
   left: calc(100% - 1.5rem - 0.25rem);
+}
+
+.insertField {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='15' ry='15' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 15px;
 }
