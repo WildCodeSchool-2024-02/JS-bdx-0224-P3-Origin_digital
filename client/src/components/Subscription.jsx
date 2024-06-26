@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import fitnessImg from "../assets/images/training.jpg";
 import "../assets/styles/form.css"
@@ -63,11 +64,12 @@ function Subscription({
             </fieldset>
           ))}
           <button
-            className="mb-2 md:mb-28"
+            className="mb-2 md:mb-10"
             type="button"
           >
             CRÉER VOTRE COMPTE
           </button>
+          <Link to="/signin" className="mb-10">Déjà inscrit ? Conectez-vous</Link>
         </form>
       </article>
     </section>

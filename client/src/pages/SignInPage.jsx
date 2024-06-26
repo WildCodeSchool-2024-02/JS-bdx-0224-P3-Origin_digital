@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SignIn from "../components/SignIn";
 
-const textLabel = [
+const fields = [
   {
     type: "email",
     id: "email",
@@ -16,22 +16,11 @@ const textLabel = [
   },
 ];
 
-
 function SignInPage() {
-  const [fields, setFields] = useState(textLabel);
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
   });
-
-  const handleClickCustomer = () => {
-    setFields(textLabel);
-    setFormValues({
-      email: "",
-      password: "",
-    });
-  };
-
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -41,9 +30,6 @@ function SignInPage() {
     });
   };
 
-  useEffect(() => {
-    handleClickCustomer();
-  }, []);
   const generateFieldLabelClass = (id) =>
     `label ${formValues[id].length > 0 ? "active" : ""}`;
 

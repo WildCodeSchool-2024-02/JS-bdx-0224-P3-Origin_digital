@@ -1,13 +1,9 @@
-import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import fitnessImg from "../assets/images/training.jpg";
-import "../assets/styles/form.css"
+import "../assets/styles/form.css";
 
-function SignIn({
-  handleChange,
-  fields,
-  formValues,
-  generateFieldLabelClass,
-}) {
+function SignIn({ handleChange, fields, formValues, generateFieldLabelClass }) {
   return (
     <section className="flex justify-center items-center gap-10 ">
       <figure className="hidden lg:flex justify-center">
@@ -19,7 +15,7 @@ function SignIn({
       </figure>
       <article className="w-96">
         <form className="flex flex-col items-center w-full h-3/5 px-4 border border-primary-color rounded-lg">
-          <h2 className="font-bold my-10">CONNECTION</h2>
+          <h2 className="font-bold my-10">CONNEXION</h2>
           {fields.map((info) => (
             <fieldset key={info.id} className="relative w-full pb-10">
               <input
@@ -38,12 +34,10 @@ function SignIn({
               </label>
             </fieldset>
           ))}
-          <button
-            className="mb-2 md:mb-28"
-            type="button"
-          >
+          <button className="mb-2 md:mb-10" type="button">
             VOUS CONNECTER
           </button>
+          <Link to="/subscription" className="mb-10">Pas de compte ? Inscrivez-vous</Link>
         </form>
       </article>
     </section>
