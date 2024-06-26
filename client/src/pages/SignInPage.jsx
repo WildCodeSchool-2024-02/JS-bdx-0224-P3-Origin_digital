@@ -22,7 +22,7 @@ function SignInPage() {
     password: "",
   });
 
-  const handleChangeSaisie = (e) => {
+  const handleChangeScribe = (e) => {
     const { id, value } = e.target;
     setFormValues({
       ...formValues,
@@ -35,7 +35,7 @@ function SignInPage() {
 
   return (
     <SignIn
-      handleChangSaisiee={handleChangeSaisie}
+      handleChangScribe={handleChangeScribe}
       fields={fields}
       formValues={formValues}
       generateFieldLabelClass={generateFieldLabelClass}
