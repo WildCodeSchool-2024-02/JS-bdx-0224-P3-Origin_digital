@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import fitnessImg from "../assets/images/training.jpg";
 import "../assets/styles/form.css";
 
-function SignIn({ handleChange, fields, formValues, generateFieldLabelClass }) {
+function SignIn({ handleChangeSaisie, fields, formValues, generateFieldLabelClass }) {
   return (
     <section className="flex justify-center items-center gap-10 ">
       <figure className="hidden lg:flex justify-center">
@@ -23,7 +23,7 @@ function SignIn({ handleChange, fields, formValues, generateFieldLabelClass }) {
                 id={info.id}
                 name={info.text}
                 value={formValues[info.id]}
-                onChange={handleChange}
+                onChange={handleChangeSaisie}
                 className="peer border-b-2 border-dark-color py-1 focus:border-b-2 focus:border-primary-color transition-colors focus:outline-none bg-inherit w-full"
               />
               <label
@@ -45,7 +45,7 @@ function SignIn({ handleChange, fields, formValues, generateFieldLabelClass }) {
 }
 
 SignIn.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  handleChangeSaisie: PropTypes.func.isRequired,
   fields: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
