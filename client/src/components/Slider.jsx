@@ -6,36 +6,10 @@ import "swiper/css/pagination";
 import "../assets/styles/slider.css";
 import { Navigation, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
-import image1 from "../assets/images/musculation.jpg";
-import image2 from "../assets/images/yoga.jpg";
-import image3 from "../assets/images/nutrition.jpg";
-import image4 from "../assets/images/pilat.jpg";
-import image5 from "../assets/images/training.jpg";
+import PropTypes from "prop-types";
 
-const sportList = [
-  {
-    imgSrc: image1,
-    name: "Musculation",
-  },
-  {
-    imgSrc: image2,
-    name: "Yoga",
-  },
-  {
-    imgSrc: image3,
-    name: "Nutrition",
-  },
-  {
-    imgSrc: image4,
-    name: "Pilates",
-  },
-  {
-    imgSrc: image5,
-    name: "Fitness",
-  },
-];
 
-export default function Slider() {
+export default function Slider({ sportList }) {
   return (
     <Swiper
       spaceBetween={30}
@@ -57,7 +31,6 @@ export default function Slider() {
           spaceBetween: 30,
         },
       }}
-      className="mySwiper"
     >
       {sportList.map((sport) => (
         <SwiperSlide key={sport.name}>
@@ -76,3 +49,12 @@ export default function Slider() {
     </Swiper>
   );
 }
+
+Slider.propTypes = {
+  sportList: PropTypes.arrayOf(
+    PropTypes.shape({
+      imgSrc: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
