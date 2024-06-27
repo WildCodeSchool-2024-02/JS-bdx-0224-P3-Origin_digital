@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function HeroSection() {
   return (
     <>
-      <h1 className="w-full text-[var(--lightColor)] text-5xl md:text-6xl bg-[url(./assets/images/banner.jpg)] bg-no-repeat bg-[30%] bg-cover bg-clip-border h-dvh text-center lg:text-left lg:pl-[55%] pt-[20%] lg:pt-[10%] drop-shadow-2xl">
+      <h1 className="z-10	w-full text-[var(--lightColor)] text-5xl md:text-6xl bg-[url(./assets/images/banner.jpg)] bg-no-repeat bg-[30%] bg-cover bg-clip-border h-dvh text-center lg:text-left lg:pl-[55%] pt-[20%] lg:pt-[10%] drop-shadow-2xl">
         Votre sport en Streaming
       </h1>
       <p className="w-full text-[var(--lightColor)] lg:pl-[55%] text-lg md:text-xl text-center lg:text-left lg:text-2xl relative top-[-64vh] drop-shadow-2xl lg:top-[-60vh]">
