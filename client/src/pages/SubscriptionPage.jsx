@@ -35,36 +35,26 @@ const siret = {
   text: "N° de SIRET",
 };
 
+const emptyFields = {
+  firstname: "",
+  lastname: "",
+  email: "",
+  password: "",
+  siret: "",
+};
+
 function SubscriptionPage() {
   const [fields, setFields] = useState(textLabel);
-  const [formValues, setFormValues] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    siret: "",
-  });
+  const [formValues, setFormValues] = useState(emptyFields);
 
   const handleClickCustomer = () => {
     setFields(textLabel);
-    setFormValues({
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      siret: "",
-    });
+    setFormValues(emptyFields);
   };
 
   const handleClickProfessional = () => {
     setFields([...textLabel, siret]);
-    setFormValues({
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      siret: "",
-    });
+    setFormValues(emptyFields);
   };
 
   const handleChange = (e) => {
@@ -79,13 +69,17 @@ function SubscriptionPage() {
     handleClickCustomer();
   }, []);
 
-  const btnFormClass = "w-full h-full p-0 rounded-none cursor-pointer"
+  const btnFormClass = "w-full h-full p-0 rounded-none cursor-pointer";
 
   const customerButton = `${btnFormClass} rounded-tl-lg ${
-    fields.length === textLabel.length ? "bg-primary-dark text-light-color" : "bg-primary-color"
+    fields.length === textLabel.length
+      ? "bg-primary-dark text-light-color"
+      : "bg-primary-color"
   }`;
   const professionalButton = `${btnFormClass} rounded-tr-lg ${
-    fields.length > textLabel.length ? "bg-primary-dark text-light-color" : "bg-primary-color"
+    fields.length > textLabel.length
+      ? "bg-primary-dark text-light-color"
+      : "bg-primary-color"
   }`;
 
   const generateFieldLabelClass = (id) =>
