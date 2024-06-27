@@ -15,13 +15,11 @@ function Subscription({
 }) {
   return (
     <section className="flex justify-center items-center gap-10 ">
-      <figure className="hidden lg:flex items-center justify-center">
         <img
           src={fitnessImg}
           alt="sportifs"
-          className="img-shadow rounded-xl mb-4 object-cover h-96 "
+          className="hidden lg:block img-shadow rounded-xl mb-4 object-cover h-96 "
         />
-      </figure>
       <article className="flex flex-col items-center w-96 aspect-[6/10]  ">
         <ul className="flex items-center text-center w-full h-14 rounded-t-lg">
           <li className="containBtnForm">
