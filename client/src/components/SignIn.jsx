@@ -6,15 +6,12 @@ import "../assets/styles/form.css";
 function SignIn({ handleChangeScribe, fields, formValues, generateFieldLabelClass }) {
   return (
     <section className="flex justify-center items-center gap-10 ">
-      <figure className="hidden lg:flex justify-center">
         <img
           src={fitnessImg}
           alt="sportifs"
-          className="img-shadow rounded-xl mb-4 object-cover h-96 "
+          className="hidden lg:block img-shadow rounded-xl mb-4 object-cover h-96 "
         />
-      </figure>
-      <article className="w-96">
-        <form className="flex flex-col items-center w-full h-3/5 px-4 border border-primary-color rounded-lg">
+        <form className="lg:w-[25%] flex flex-col items-center w-full h-3/5 px-4 border border-primary-color rounded-lg">
           <h2 className="font-bold my-10">CONNEXION</h2>
           {fields.map((info) => (
             <fieldset key={info.id} className="relative w-full pb-10">
@@ -39,7 +36,6 @@ function SignIn({ handleChangeScribe, fields, formValues, generateFieldLabelClas
           </button>
           <Link to="/subscription" className="mb-10">Pas de compte ? Inscrivez-vous</Link>
         </form>
-      </article>
     </section>
   );
 }

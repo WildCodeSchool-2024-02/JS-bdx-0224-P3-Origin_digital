@@ -40,10 +40,10 @@ export default function Slider({ sportList }) {
               alt={sport.name}
               className="img-shadow w-[calc(100%-15px)] mr-auto rounded-xl mb-4 h-60 object-cover"
             />
-          </Link>
           <p className="flex justify-center items-center font-bold">
             {sport.name}
           </p>
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>
