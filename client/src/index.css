@@ -176,6 +176,7 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   button,
+  label,
   a {
     transition: none;
   }

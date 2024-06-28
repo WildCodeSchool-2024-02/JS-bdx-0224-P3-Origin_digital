@@ -34,16 +34,17 @@ export default function Slider({ sportList }) {
     >
       {sportList.map((sport) => (
         <SwiperSlide key={sport.name}>
-          <Link to="/category">
+          <Link
+            to="/category"
+            className="flex flex-col text-center text-dark-color"
+          >
             <img
               src={sport.imgSrc}
               alt={sport.name}
               className="img-shadow w-[calc(100%-15px)] mr-auto rounded-xl mb-4 h-60 object-cover"
             />
-          </Link>
-          <p className="flex justify-center items-center font-bold">
             {sport.name}
-          </p>
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>

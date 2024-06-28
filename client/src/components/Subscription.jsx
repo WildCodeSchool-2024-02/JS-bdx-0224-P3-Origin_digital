@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import fitnessImg from "../assets/images/training.jpg";
 import "../assets/styles/form.css"
@@ -13,13 +14,11 @@ function Subscription({
 }) {
   return (
     <section className="flex justify-center items-center gap-10 ">
-      <figure className="hidden lg:flex items-center justify-center">
         <img
           src={fitnessImg}
           alt="sportifs"
-          className="img-shadow rounded-xl mb-4 object-cover h-96 "
+          className="hidden lg:block img-shadow rounded-xl mb-4 object-cover h-96 "
         />
-      </figure>
       <article className="flex flex-col items-center w-96 aspect-[6/10]  ">
         <ul className="flex items-center text-center w-full h-14 rounded-t-lg">
           <li className="containBtnForm">
@@ -62,11 +61,12 @@ function Subscription({
             </fieldset>
           ))}
           <button
-            className="mb-2 md:mb-28"
+            className="mb-2 md:mb-10"
             type="button"
           >
             CRÉER VOTRE COMPTE
           </button>
+          <Link to="/signin" className="mb-10">Déjà inscrit ? Conectez-vous</Link>
         </form>
       </article>
     </section>

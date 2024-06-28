@@ -53,6 +53,7 @@ function SubscriptionPage() {
     } else {
       setFields(textLabel);
     }
+    ...textLabel, siret]);
     setFormValues(emptyFields);
   };
 
