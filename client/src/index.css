@@ -99,7 +99,6 @@ button {
   border-radius: 15px;
   font-weight: 600;
   background-color: var(--primaryColor);
-  outline: none;
   border: none;
   transition: all ease 300ms;
   cursor: pointer;
