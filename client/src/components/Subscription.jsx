@@ -3,8 +3,7 @@ import fitnessImg from "../assets/images/training.jpg";
 import "../assets/styles/form.css"
 
 function Subscription({
-  handleClickCustomer,
-  handleClickProfessional,
+  handleClickProfile,
   handleChange,
   fields,
   formValues,
@@ -25,7 +24,7 @@ function Subscription({
         <ul className="flex items-center text-center w-full h-14 rounded-t-lg">
           <li className="containBtnForm">
             <button
-              onClick={handleClickCustomer}
+              onClick = {() => handleClickProfile(false)}
               className={customerButton}
               type="button"
             >
@@ -34,7 +33,7 @@ function Subscription({
           </li>
           <li className="containBtnForm">
             <button
-              onClick={handleClickProfessional}
+              onClick= {() => handleClickProfile(true)}
               className={professionalButton}
               type="button"
             >
@@ -75,8 +74,7 @@ function Subscription({
 }
 
 Subscription.propTypes = {
-  handleClickCustomer: PropTypes.func.isRequired,
-  handleClickProfessional: PropTypes.func.isRequired,
+  handleClickProfile: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   fields: PropTypes.arrayOf(
     PropTypes.shape({
