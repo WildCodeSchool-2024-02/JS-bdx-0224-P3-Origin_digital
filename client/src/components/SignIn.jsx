@@ -4,6 +4,7 @@ import fitnessImg from "../assets/images/training.jpg";
 import "../assets/styles/form.css";
 
 function SignIn({ handleChangeScribe, fields, formValues, generateFieldLabelClass }) {
+
   return (
     <section className="flex justify-center items-center gap-10 ">
         <img
@@ -11,7 +12,8 @@ function SignIn({ handleChangeScribe, fields, formValues, generateFieldLabelClas
           alt="sportifs"
           className="hidden lg:block img-shadow rounded-xl mb-4 object-cover h-96 "
         />
-        <form className="lg:w-[25%] flex flex-col items-center w-full h-3/5 px-4 border border-primary-color rounded-lg">
+        <form className="lg:w-[25%] flex flex-col items-center w-full h-3/5 px-4 border border-primary-color rounded-lg"
+        action="" method="post">
           <h2 className="font-bold my-10">CONNEXION</h2>
           {fields.map((info) => (
             <fieldset key={info.id} className="relative w-full pb-10">
@@ -34,7 +36,7 @@ function SignIn({ handleChangeScribe, fields, formValues, generateFieldLabelClas
           <button className="mb-2 md:mb-10" type="button">
             VOUS CONNECTER
           </button>
-          <Link to="/subscription" className="mb-10">Pas de compte ? Inscrivez-vous</Link>
+          <Link to="/register" className="mb-10">Pas de compte ? Inscrivez-vous</Link>
         </form>
     </section>
   );

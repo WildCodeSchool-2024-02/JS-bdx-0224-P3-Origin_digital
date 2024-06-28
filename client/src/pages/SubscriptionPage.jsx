@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import Subscription from "../components/Subscription";
+import sendData from "../services/api.service"
 
 const textLabel = [
   {
@@ -46,6 +48,34 @@ const emptyFields = {
 function SubscriptionPage() {
   const [fields, setFields] = useState(textLabel);
   const [formValues, setFormValues] = useState(emptyFields);
+  const [password, setPassword] = useState("");
+  const emailRef = useRef();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const navigate = useNavigate();
+  const path = useParams();
+
+  console.info(path);
+
+  const handleSubmitRegister = async (event) => {
+    event.preventDefault();
+    
+      const data = {
+        firstname: firstNameRef.current.value,
+        lastName : lastNameRef.current.value,
+        email: emailRef.current.value,
+        password,
+      }
+
+      const response = await sendData("/user", data, "POST");
+
+      if (response) {
+        navigate("/login");
+      } else {
+          console.info(response);
+      }  
+    
+  };
 
   const handleClickCustomer = () => {
     setFields(textLabel);
@@ -95,6 +125,13 @@ function SubscriptionPage() {
       customerButton={customerButton}
       professionalButton={professionalButton}
       generateFieldLabelClass={generateFieldLabelClass}
+      handleSubmitRegister={handleSubmitRegister}
+      emailRef={emailRef}
+      firstNameRef={firstNameRef}
+      lastNameRef={lastNameRef}
+      navigate={navigate}
+      setPassword={setPassword}
+      password={password}
     />
   );
 }

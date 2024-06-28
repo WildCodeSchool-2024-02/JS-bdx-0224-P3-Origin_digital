@@ -21,11 +21,11 @@ const router = createBrowserRouter([
         element: <Category />,
       },
       {
-        path: "/subscription",
-        element: <SubscriptionPage />,
+        path: "/register",
+        element: <SubscriptionPage />
       },
       {
-        path: "/signin",
+        path: "/login",
         element: <SignInPage />,
       },
       {

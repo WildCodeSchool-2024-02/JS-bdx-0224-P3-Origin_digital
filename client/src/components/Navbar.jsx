@@ -68,14 +68,14 @@ function Navbar({
       <button className={signInClasses} type="button">
         {" "}
         <Link
-          to="/subscription"
+          to="/register"
           className="text-[var(--darkColor)] hover:text-white"
         >
           Inscription
         </Link>
       </button>
       <button className={signUpClasses} type="button">
-        <Link to="/signin" className="text-[var(--darkColor)] hover:text-white">
+        <Link to="/login" className="text-[var(--darkColor)] hover:text-white">
           Connexion
         </Link>
       </button>

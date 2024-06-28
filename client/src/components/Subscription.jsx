@@ -12,6 +12,7 @@ function Subscription({
   customerButton,
   professionalButton,
   generateFieldLabelClass,
+  
 }) {
   return (
     <section className="flex justify-center items-center gap-10 ">
@@ -41,7 +42,8 @@ function Subscription({
             </button>
           </li>
         </ul>
-        <form className="flex flex-col items-center w-full h-full px-4 border border-primary-color rounded-b-lg">
+        <form className="flex flex-col items-center w-full h-full px-4 border border-primary-color rounded-b-lg"
+        method="post">
           <h2 className="font-bold my-10">INSCRIPTION</h2>
           {fields.map((info) => (
             <fieldset key={info.id} className="relative w-full pb-10">
@@ -67,7 +69,7 @@ function Subscription({
           >
             CRÉER VOTRE COMPTE
           </button>
-          <Link to="/signin" className="mb-10">Déjà inscrit ? Conectez-vous</Link>
+          <Link to="/login" className="mb-10">Déjà inscrit ? Conectez-vous</Link>
         </form>
       </article>
     </section>
