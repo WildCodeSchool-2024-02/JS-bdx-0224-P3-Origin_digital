@@ -2,8 +2,8 @@ const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
   try {
-    const category = await tables.category.readAll();
-    res.json(category);
+    const role = await tables.role.readAll();
+    res.json(role);
   } catch (err) {
     next(err);
   }
@@ -11,11 +11,11 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const category = await tables.category.read(req.params.id);
-    if (category == null) {
+    const role = await tables.role.read(req.params.id);
+    if (role == null) {
       res.sendStatus(404);
     } else {
-      res.json(category);
+      res.json(role);
     }
   } catch (err) {
     next(err);

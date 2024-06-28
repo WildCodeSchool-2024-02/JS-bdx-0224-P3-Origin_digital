@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Subscription from "../components/Subscription";
 import sendData from "../services/api.service"
 
@@ -53,9 +53,9 @@ function SubscriptionPage() {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const navigate = useNavigate();
-  const path = useParams();
+  const path = useLocation();
 
-  console.info(path);
+  console.info(path.pathname.substring(1));
 
   const handleSubmitRegister = async (event) => {
     event.preventDefault();

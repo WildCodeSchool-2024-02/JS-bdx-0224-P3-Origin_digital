@@ -1,9 +1,9 @@
 const AbstractSeeder = require("./AbstractSeeder");
 
-class CategoriesSeeder extends AbstractSeeder {
+class CategorySeeder extends AbstractSeeder {
   constructor() {
     // Call the constructor of the parent class (AbstractSeeder) with appropriate options
-    super({ table: "categories", truncate: true });
+    super({ table: "category", truncate: true });
   }
 
   // The run method - Populate the 'user' table with fake data
@@ -28,4 +28,4 @@ class CategoriesSeeder extends AbstractSeeder {
 }
 
 // Export the UserSeeder class
-module.exports = CategoriesSeeder;
+module.exports = CategorySeeder;
