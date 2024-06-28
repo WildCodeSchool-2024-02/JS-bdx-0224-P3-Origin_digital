@@ -47,13 +47,12 @@ function SubscriptionPage() {
   const [fields, setFields] = useState(textLabel);
   const [formValues, setFormValues] = useState(emptyFields);
 
-  const handleClickProfile = (isProfessional=false) => {
+   const handleClickProfile = (isProfessional=false) => {
     if (isProfessional) {
       setFields([...textLabel, siret]);
     } else {
       setFields(textLabel);
     }
-    ...textLabel, siret]);
     setFormValues(emptyFields);
   };
 
