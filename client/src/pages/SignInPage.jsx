@@ -1,5 +1,6 @@
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import SignIn from "../components/SignIn";
+import Subscription from "../components/Subscription";
 
 const fields = [
   {
@@ -21,6 +22,15 @@ function SignInPage() {
     email: "",
     password: "",
   });
+  const connexionContent = {
+    title: "CONNEXION",
+    button: "SE CONNECTER",
+    linkToRegister: "Pas de compte ? Inscrivez-vous"
+  };
+
+  const path = useLocation();
+
+  const url = path.pathname.substring(1)
 
   const handleChangeScribe = (e) => {
     const { id, value } = e.target;
@@ -34,12 +44,14 @@ function SignInPage() {
     `label ${formValues[id].length > 0 ? "active" : ""}`;
 
   return (
-    <SignIn
+      <Subscription 
       handleChangScribe={handleChangeScribe}
       fields={fields}
       formValues={formValues}
       generateFieldLabelClass={generateFieldLabelClass}
-    />
+      url={url}
+      connexionContent={connexionContent}
+      />
   );
 }
 

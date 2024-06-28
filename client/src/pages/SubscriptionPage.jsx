@@ -54,8 +54,13 @@ function SubscriptionPage() {
   const lastNameRef = useRef();
   const navigate = useNavigate();
   const path = useLocation();
+  const registerContent =  {
+    title: "INSCRIPTION",
+    button: "CRÉER VOTRE COMPTE",
+    linkToConnexion: "Déjà inscrit ? Connectez-vous"
+  };
 
-  console.info(path.pathname.substring(1));
+  const url = path.pathname.substring(1)
 
   const handleSubmitRegister = async (event) => {
     event.preventDefault();
@@ -130,6 +135,8 @@ function SubscriptionPage() {
       navigate={navigate}
       setPassword={setPassword}
       password={password}
+      url={url}
+      registerContent={registerContent}
     />
   );
 }
