@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Subscription from "../components/Subscription";
 
 const textLabel = [
@@ -47,7 +47,7 @@ function SubscriptionPage() {
   const [fields, setFields] = useState(textLabel);
   const [formValues, setFormValues] = useState(emptyFields);
 
-  const handleClickProfile = (isProfessional) => {
+  const handleClickProfile = (isProfessional=false) => {
     if (isProfessional) {
       setFields([...textLabel, siret]);
     } else {
@@ -64,9 +64,6 @@ function SubscriptionPage() {
     });
   };
 
-  useEffect(() => {
-    handleClickProfile(false);
-  }, []);
 
   const btnFormClass = "w-full h-full p-0 rounded-none cursor-pointer";
 

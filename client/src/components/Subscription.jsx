@@ -24,7 +24,7 @@ function Subscription({
         <ul className="flex items-center text-center w-full h-14 rounded-t-lg">
           <li className="containBtnForm">
             <button
-              onClick = {() => handleClickProfile(false)}
+              onClick = {() => handleClickProfile()}
               className={customerButton}
               type="button"
             >
