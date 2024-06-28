@@ -77,13 +77,12 @@ function SubscriptionPage() {
     
   };
 
-  const handleClickCustomer = () => {
-    setFields(textLabel);
-    setFormValues(emptyFields);
-  };
-
-  const handleClickProfessional = () => {
-    setFields([...textLabel, siret]);
+  const handleClickProfile = (isProfessional) => {
+    if (isProfessional) {
+      setFields([...textLabel, siret]);
+    } else {
+      setFields(textLabel);
+    }
     setFormValues(emptyFields);
   };
 
@@ -96,7 +95,7 @@ function SubscriptionPage() {
   };
 
   useEffect(() => {
-    handleClickCustomer();
+    handleClickProfile(false);
   }, []);
 
   const btnFormClass = "w-full h-full p-0 rounded-none cursor-pointer";
@@ -117,8 +116,7 @@ function SubscriptionPage() {
 
   return (
     <Subscription
-      handleClickCustomer={handleClickCustomer}
-      handleClickProfessional={handleClickProfessional}
+      handleClickProfile={handleClickProfile}
       handleChange={handleChange}
       fields={fields}
       formValues={formValues}
