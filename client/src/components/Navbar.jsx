@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import logoSrc from "../assets/images/LogoSweatStream.png";
+import arrowSrc from "../assets/images/objectiveArrow.png";
 
 function Navbar({
   isObjectivesMenuOpen,
   closeMenu,
   handleClickMobileMenu,
   handleClickObjectivesMenu,
-  signInClasses,
-  signUpClasses,
+  subscribeStyle,
   burgerButtonClasses,
   menuListClasses,
   objectivesButtonClasses,
@@ -24,26 +24,21 @@ function Navbar({
             alt="retour à l'accueil"
           />
         </Link>
-        <button
-          type="button"
-          onClick={handleClickMobileMenu}
-          className={burgerButtonClasses}
-          aria-label="Menu déroulant"
-        >
-          <span className="line-burger top-0 origin-left" />
-          <span className="line-burger top-1/2 -translate-y-1/2 origin-left" />
-          <span className="line-burger top-full -translate-y-full origin-left" />
-        </button>
 
         <ul className={`${menuListClasses} z-10`}>
-          <li>
+          <li className="flex">
             <button
               onClick={handleClickObjectivesMenu}
-              className={`${objectivesButtonClasses} uppercase`}
+              className={`${objectivesButtonClasses} h-auto uppercase`}
               type="button"
             >
               Objectifs
             </button>
+            <img
+              className="ml-1"
+              src={arrowSrc}
+              alt="flèche indiquant qu'objectif est déroulant"
+            />
           </li>
           <li>
             <Link
@@ -65,7 +60,10 @@ function Navbar({
           </li>
         </ul>
       </nav>
-      <button className={signInClasses} type="button">
+      <button
+        className={`${subscribeStyle} bg-white border-8 border-indigo-500`}
+        type="button"
+      >
         {" "}
         <Link
           to="/subscription"
@@ -74,10 +72,20 @@ function Navbar({
           Inscription
         </Link>
       </button>
-      <button className={signUpClasses} type="button">
+      <button className={subscribeStyle} type="button">
         <Link to="/signin" className="text-[var(--darkColor)] hover:text-white">
           Connexion
         </Link>
+      </button>
+      <button
+        type="button"
+        onClick={handleClickMobileMenu}
+        className={burgerButtonClasses}
+        aria-label="Menu déroulant"
+      >
+        <span className="line-burger top-0 origin-left" />
+        <span className="line-burger top-1/2 -translate-y-1/2 origin-left" />
+        <span className="line-burger top-full -translate-y-full origin-left" />
       </button>
       {isObjectivesMenuOpen && (
         <nav className={objectiveSectionClasses}>
@@ -154,8 +162,7 @@ Navbar.propTypes = {
   handleClickMobileMenu: PropTypes.func.isRequired,
   isObjectivesMenuOpen: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
-  signInClasses: PropTypes.string.isRequired,
-  signUpClasses: PropTypes.string.isRequired,
+  subscribeStyle: PropTypes.string.isRequired,
   burgerButtonClasses: PropTypes.string.isRequired,
   menuListClasses: PropTypes.string.isRequired,
   objectivesButtonClasses: PropTypes.string.isRequired,
