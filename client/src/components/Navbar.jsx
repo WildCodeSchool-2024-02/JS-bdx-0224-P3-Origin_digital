@@ -13,6 +13,7 @@ function Navbar({
   menuListClasses,
   objectivesButtonClasses,
   objectiveSectionClasses,
+  category,
 }) {
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
@@ -108,48 +109,20 @@ function Navbar({
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
-          <ul
-            className="flex flex-col items-center justify-around bg-white
-          lg:flex-row"
-          >
-            <li className="border-b border-gray-400 my-8 uppercase">
-              <Link
-                to="/category1"
-                className="text-[var(--darkColor)] visited:text-[var(--darkColor)]"
+          <ul className="flex flex-col items-center justify-around bg-white lg:flex-row">
+            {category.map((categories) => (
+              <li
+                key={category.id}
+                className="border-b border-gray-400 my-8 uppercase"
               >
-                yoga
-                <ul>
-                  <li>#tag1</li>
-                  <li>#tag1</li>
-                  <li>#tag1</li>
-                  <li>#tag1</li>
-                  <li>#tag1</li>
-                  <li>#tag1</li>
-                </ul>
-              </Link>
-            </li>
-            <li className="border-b border-gray-400 my-8 uppercase">
-              <Link
-                to="/category2"
-                className="text-[var(--darkColor)] visited:text-[var(--darkColor)]"
-              >
-                Musculation
-              </Link>
-              <ul>
-                <li>#tag1</li>
-                <li>#tag1</li>
-                <li>#tag1</li>
-                <li>#tag1</li>
-              </ul>
-            </li>
-            <li className="border-b border-gray-400 my-8 uppercase">
-              <Link
-                to="/category3"
-                className="text-[var(--darkColor)] visited:text-[var(--darkColor)]"
-              >
-                Pilates
-              </Link>
-            </li>
+                <Link
+                  to={`/category/${category.id}`}
+                  className="text-[var(--darkColor)] visited:text-[var(--darkColor)]"
+                >
+                  {categories.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       )}
@@ -167,6 +140,7 @@ Navbar.propTypes = {
   menuListClasses: PropTypes.string.isRequired,
   objectivesButtonClasses: PropTypes.string.isRequired,
   objectiveSectionClasses: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired
 };
 
 export default Navbar;

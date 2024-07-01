@@ -36,7 +36,7 @@ export default {
           "@apply w-0 opacity-0": {},
         },
         "button.active .line-burger:last-child": {
-          "@apply transform -rotate-45 top-8 left-1.5": {},
+          "@apply transform -rotate-45 top-[30px] left-1.5": {},
         },
         ".footer-list": {
           "@apply text-[var(--darkColor)]": {},

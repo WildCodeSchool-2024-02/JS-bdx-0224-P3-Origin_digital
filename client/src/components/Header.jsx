@@ -23,10 +23,7 @@ function Header() {
   }, [isMobileMenuOpen]);
 
   const subscribeStyle = `mr-5 flex lg:flex-row lg:opacity-100 lg:transform-none  lg:static lg:max-h-16
-  items-center relative`
-
-
-
+  items-center relative`;
 
   const burgerButtonClasses = `burgerMenu relative w-10 h-7 bg-transparent text-0 hover:bg-transparent none border-none 
     flex justify-self-end text-[0] mr-4
@@ -48,6 +45,19 @@ function Header() {
     hover:bg-transparent hover:text-[var(--darkColor)] 
     p-0 border-none cursor-pointer`;
 
+  // fetch
+
+  const [category, setCategory] = useState();
+
+  useEffect(() => {
+    fetch("http://localhost:3310/api/category")
+      .then((result) => result.json())
+      .then((data) => {
+        setCategory(data);
+      })
+      .catch((error) => console.error("Error finding categories:", error));
+  }, []);
+
   return (
     <Navbar
       isObjectivesMenuOpen={isObjectivesMenuOpen}
@@ -59,6 +69,7 @@ function Header() {
       menuListClasses={menuListClasses}
       objectivesButtonClasses={objectivesButtonClasses}
       subscribeStyle={subscribeStyle}
+      category={category}
     />
   );
 }
