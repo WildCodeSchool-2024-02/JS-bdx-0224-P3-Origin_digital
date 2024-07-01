@@ -1,49 +1,46 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import logoSrc from "../assets/images/LogoSweatStream.png";
+import arrowSrc from "../assets/images/objectiveArrow.png";
 
 function Navbar({
   isObjectivesMenuOpen,
   closeMenu,
   handleClickMobileMenu,
   handleClickObjectivesMenu,
-  signInClasses,
-  signUpClasses,
+  subscribeStyle,
   burgerButtonClasses,
   menuListClasses,
   objectivesButtonClasses,
   objectiveSectionClasses,
+  category,
+  tag,
 }) {
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
       <nav className="grid grid-cols-2 items-center w-full h-[4.5rem] px-4 lg:px-8  lg:flex">
         <Link to="/">
           <img
-            className="~w-[250px]/[350px] "
+            className="~w-[400px]/[550px] "
             src={logoSrc}
             alt="retour à l'accueil"
           />
         </Link>
-        <button
-          type="button"
-          onClick={handleClickMobileMenu}
-          className={burgerButtonClasses}
-          aria-label="Menu déroulant"
-        >
-          <span className="line-burger top-0 origin-left" />
-          <span className="line-burger top-1/2 -translate-y-1/2 origin-left" />
-          <span className="line-burger top-full -translate-y-full origin-left" />
-        </button>
 
         <ul className={`${menuListClasses} z-10`}>
-          <li>
+          <li className="flex">
             <button
               onClick={handleClickObjectivesMenu}
-              className={`${objectivesButtonClasses} uppercase`}
+              className={`${objectivesButtonClasses} h-auto uppercase`}
               type="button"
             >
               Objectifs
             </button>
+            <img
+              className="ml-1"
+              src={arrowSrc}
+              alt="flèche indiquant qu'objectif est déroulant"
+            />
           </li>
           <li>
             <Link
@@ -65,7 +62,10 @@ function Navbar({
           </li>
         </ul>
       </nav>
-      <button className={signInClasses} type="button">
+      <button
+        className={`${subscribeStyle} bg-white border-8 border-indigo-500`}
+        type="button"
+      >
         {" "}
         <Link
           to="/subscription"
@@ -74,10 +74,20 @@ function Navbar({
           Inscription
         </Link>
       </button>
-      <button className={signUpClasses} type="button">
+      <button className={subscribeStyle} type="button">
         <Link to="/signin" className="text-[var(--darkColor)] hover:text-white">
           Connexion
         </Link>
+      </button>
+      <button
+        type="button"
+        onClick={handleClickMobileMenu}
+        className={burgerButtonClasses}
+        aria-label="Menu déroulant"
+      >
+        <span className="line-burger top-0 origin-left" />
+        <span className="line-burger top-1/2 -translate-y-1/2 origin-left" />
+        <span className="line-burger top-full -translate-y-full origin-left" />
       </button>
       {isObjectivesMenuOpen && (
         <nav className={objectiveSectionClasses}>
@@ -100,48 +110,32 @@ function Navbar({
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
-          <ul
-            className="flex flex-col items-center justify-around bg-white
-          lg:flex-row"
-          >
-            <li className="border-b border-gray-400 my-8 uppercase">
-              <Link
-                to="/category1"
-                className="text-[var(--darkColor)] visited:text-[var(--darkColor)]"
+          <ul className="flex flex-wrap justify-around bg-white">
+            {category.map((categories) => (
+              <li
+                key={categories.id}
+                className=" border-b border-gray-400 my-8 w-full w-1/4 lg:w-1/6"
               >
-                yoga
-                <ul>
-                  <li>#tag1</li>
-                  <li>#tag1</li>
-                  <li>#tag1</li>
-                  <li>#tag1</li>
-                  <li>#tag1</li>
-                  <li>#tag1</li>
+                <Link
+                  to={`/category/${categories.id}`}
+                  className="text-[var(--darkColor)] visited:text-[var(--darkColor)]"
+                >
+                  {categories.name}
+                </Link>
+                <ul className="flex flex-col hover:text-[var(--primaryDark)] capitalize">
+                  {tag.map((tags) => (
+                    <li key={tags.id}>
+                      <Link
+                        to={`/category/${categories.id}/${tags.id}`}
+                        className="hover:text-[var(--primaryDark)] text-[var(--darkColor)] font-light"
+                      >
+                        {tags.name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
-              </Link>
-            </li>
-            <li className="border-b border-gray-400 my-8 uppercase">
-              <Link
-                to="/category2"
-                className="text-[var(--darkColor)] visited:text-[var(--darkColor)]"
-              >
-                Musculation
-              </Link>
-              <ul>
-                <li>#tag1</li>
-                <li>#tag1</li>
-                <li>#tag1</li>
-                <li>#tag1</li>
-              </ul>
-            </li>
-            <li className="border-b border-gray-400 my-8 uppercase">
-              <Link
-                to="/category3"
-                className="text-[var(--darkColor)] visited:text-[var(--darkColor)]"
-              >
-                Pilates
-              </Link>
-            </li>
+              </li>
+            ))}
           </ul>
         </nav>
       )}
@@ -154,12 +148,17 @@ Navbar.propTypes = {
   handleClickMobileMenu: PropTypes.func.isRequired,
   isObjectivesMenuOpen: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
-  signInClasses: PropTypes.string.isRequired,
-  signUpClasses: PropTypes.string.isRequired,
+  subscribeStyle: PropTypes.string.isRequired,
   burgerButtonClasses: PropTypes.string.isRequired,
   menuListClasses: PropTypes.string.isRequired,
   objectivesButtonClasses: PropTypes.string.isRequired,
   objectiveSectionClasses: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+
 };
 
 export default Navbar;
+
+
+
