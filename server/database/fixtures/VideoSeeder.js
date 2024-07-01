@@ -1,6 +1,6 @@
 const AbstractSeeder = require("./AbstractSeeder");
-const userSeeder = require("./UserSeeder");
-const categorySeeder = require("./CategorySeeder");
+const UserSeeder = require("./UserSeeder");
+const CategorySeeder = require("./CategorySeeder");
 
 class VideoSeeder extends AbstractSeeder {
   constructor() {
@@ -8,7 +8,7 @@ class VideoSeeder extends AbstractSeeder {
     super({
       table: "video",
       truncate: true,
-      dependencies: [userSeeder, categorySeeder],
+      dependencies: [UserSeeder, CategorySeeder],
     });
   }
 
@@ -34,7 +34,7 @@ class VideoSeeder extends AbstractSeeder {
         upload_date: this.faker.date.past(),
         duration: this.faker.number.int(100),
         video_url: this.faker.image.urlPicsumPhotos(),
-        preview_url: this.faker.lorem.words(10),
+        img_url: this.faker.image.urlLoremFlickr(),
         access: accesType[Math.round(Math.random())],
         user_id: this.getRef(`user_${Math.floor(Math.random() * (10 - 1) + 1)}`)
           .insertId,

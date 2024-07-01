@@ -8,7 +8,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export default function Slider({ sportList, resource }) {
+export default function Slider({ resourceList, resourcePath }) {
   return (
     <Swiper
       spaceBetween={30}
@@ -31,18 +31,18 @@ export default function Slider({ sportList, resource }) {
         },
       }}
     >
-      {sportList.map((sport) => (
-        <SwiperSlide key={sport.name}>
+      {resourceList.map((resource) => (
+        <SwiperSlide key={resource.id}>
           <Link
-            to={`/${resource}/${sport.id}`}
+            to={`/${resourcePath}/${resource.id}`}
             className="flex flex-col text-center text-dark-color"
           >
             <img
-              src={sport.imgSrc}
-              alt={sport.name}
+              src={resource.image}
+              alt={resource.name}
               className="img-shadow w-[calc(100%-15px)] mr-auto rounded-xl mb-4 h-60 object-cover"
             />
-            {sport.name}
+            {resource.name}
           </Link>
         </SwiperSlide>
       ))}
@@ -51,11 +51,12 @@ export default function Slider({ sportList, resource }) {
 }
 
 Slider.propTypes = {
-  sportList: PropTypes.arrayOf(
+  resourceList: PropTypes.arrayOf(
     PropTypes.shape({
-      imgSrc: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
     })
   ).isRequired,
-  resource: PropTypes.string.isRequired,
+  resourcePath: PropTypes.string.isRequired,
 };
