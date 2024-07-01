@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function registerSection() {
+export default function RegisterSection() {
   return (
     <>
       <img
@@ -8,7 +8,10 @@ export default function registerSection() {
         alt=""
         className="img-shadow h-72 w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] rounded-xl lg:ml-[10vw] mt-10"
       />
-      <h2 className="text-center lg:text-left place-self-end mt-10 lg:relative lg:top-[-40vh] lg:ml-[60vw]">
+      <h2
+        id="WhySubscribe"
+        className="text-center lg:text-left place-self-end mt-10 lg:relative lg:top-[-40vh] lg:ml-[60vw]"
+      >
         Pourquoi s'abonner ?
       </h2>
       <p className="text-center lg:text-left my-5 px-5 lg:relative lg:top-[-40vh] lg:ml-[60vw] lg:p-0">
@@ -26,6 +29,6 @@ export default function registerSection() {
         />
         Commencer
       </Link>
-      </>
+    </>
   );
 }
