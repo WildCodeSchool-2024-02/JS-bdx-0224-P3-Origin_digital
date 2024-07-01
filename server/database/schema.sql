@@ -11,7 +11,7 @@ CREATE TABLE user (
     firstname VARCHAR(100) NOT NULL,
     lastname VARCHAR(100) NOT NULL,
     role_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (role_id) REFERENCES roles(id)
+    FOREIGN KEY (role_id) REFERENCES role(id)
 );
 
 CREATE TABLE category (
@@ -30,7 +30,7 @@ CREATE TABLE video (
     access VARCHAR(100) NOT NULL,
     category_id INT UNSIGNED NOT NULL,
     user_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (category_id) REFERENCES categories(id),
+    FOREIGN KEY (category_id) REFERENCES category(id),
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
