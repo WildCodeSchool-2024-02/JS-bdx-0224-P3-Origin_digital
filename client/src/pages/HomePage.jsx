@@ -4,13 +4,12 @@ import InfoSection from "../components/InfoSection";
 import Slider from "../components/Slider";
 import SliderCategory from "../components/SliderCategory";
 
-
 function Home() {
   return (
     <main>
       <HeroSection />
       <Slider />
-        <SliderCategory />
+      <SliderCategory />
       <RegisterSection />
       <InfoSection />
     </main>
