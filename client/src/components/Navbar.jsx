@@ -153,9 +153,16 @@ Navbar.propTypes = {
   menuListClasses: PropTypes.string.isRequired,
   objectivesButtonClasses: PropTypes.string.isRequired,
   objectiveSectionClasses: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
-
+  category: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })).isRequired,
+  tag: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })).isRequired,
 };
 
 export default Navbar;
