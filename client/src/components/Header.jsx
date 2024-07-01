@@ -35,7 +35,7 @@ function Header() {
 
   const objectiveSectionClasses = `absolute top-[4.5rem] left-0 right-0 bottom-0 w-full 
     uppercase bg-white list-none justify-around items-center transform transition-all duration-300 text-center 
-    lg:top-[6rem] lg:flex-row 
+    lg:top-[6rem] lg:flex-row z-50	lg:bg-transparent
     ${isObjectivesMenuOpen ? "opacity-100 transform translate-y-0" : "opacity-0 pointer-events-none"}`;
 
   const menuListClasses = `top-[4.5rem] h-[calc(100vh-4.5rem)] w-full uppercase bg-white list-none 

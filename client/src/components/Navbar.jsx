@@ -76,7 +76,7 @@ function Navbar({
         </Link>
       </button>
       <button className={signUpClasses} type="button">
-        <Link to="/" className="text-[var(--darkColor)] hover:text-white">
+        <Link to="/signin" className="text-[var(--darkColor)] hover:text-white">
           Connexion
         </Link>
       </button>

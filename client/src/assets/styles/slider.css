@@ -14,13 +14,11 @@
   height: 0.5rem;
   opacity: 1;
   transition-duration: 250ms;
-  position: relative;
 }
 
 .swiper-pagination-bullet-active {
   width: 0.7rem;
   height: 0.7rem;
-  position: relative;
 }
 
 .swiper-button-prev {
