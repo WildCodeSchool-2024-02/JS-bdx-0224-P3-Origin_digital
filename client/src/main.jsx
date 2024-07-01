@@ -7,6 +7,7 @@ import Category from "./pages/CategoryPage";
 import SubscriptionPage from "./pages/SubscriptionPage";
 import Viewing from "./pages/ViewingPage";
 import Dashboard from "./pages/Dashboard";
+import SignInPage from "./pages/SignInPage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/subscription",
         element: <SubscriptionPage />,
+      },
+      {
+        path: "/signin",
+        element: <SignInPage />,
       },
       {
         path: "/viewing",
