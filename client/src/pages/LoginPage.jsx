@@ -23,7 +23,7 @@ function LoginPage() {
     email: "",
     password: "",
   });
-  const connexionContent = {
+  const connectionContent = {
     title: "CONNEXION",
     button: "SE CONNECTER",
     linkToRegister: "Pas de compte ? Inscrivez-vous"
@@ -34,7 +34,7 @@ function LoginPage() {
 
   const url = path.pathname.substring(1)
 
-  const handleChangeScribe = (e) => {
+  const handleChangeInputValue = (e) => {
     const { id, value } = e.target;
     setFormValues({
       ...formValues,
@@ -62,13 +62,13 @@ function LoginPage() {
 
   return (
       <Subscription 
-      handleChange={handleChangeScribe}
+      handleChangeInputValue={handleChangeInputValue}
       handleSubmitForm={handleSubmitForm}
       fields={fields}
       formValues={formValues}
       generateFieldLabelClass={generateFieldLabelClass}
       url={url}
-      connexionContent={connexionContent}
+      connectionContent={connectionContent}
       />
   );
 }

@@ -5,7 +5,7 @@ import "../assets/styles/form.css";
 
 function Subscription({
   handleClickProfile,
-  handleChange,
+  handleChangeInputValue,
   fields,
   formValues,
   customerButton,
@@ -13,7 +13,7 @@ function Subscription({
   generateFieldLabelClass,
   url,
   handleSubmitForm,
-  connexionContent,
+  connectionContent,
   registerContent,
 }) {
   return (
@@ -51,7 +51,7 @@ function Subscription({
           className="flex flex-col items-center w-full h-full px-4 border border-primary-color rounded-b-lg"
           method="POST"
         >
-          <h2 className="font-bold my-10">{url === "register" ? registerContent.title : connexionContent.title}</h2>
+          <h2 className="font-bold my-10">{url === "register" ? registerContent.title : connectionContent.title}</h2>
           {fields.map((info) => (
             <fieldset key={info.id} className="relative w-full pb-10">
               <input
@@ -59,7 +59,7 @@ function Subscription({
                 id={info.id}
                 name={info.text}
                 value={formValues[info.id]}
-                onChange={handleChange}
+                onChange={handleChangeInputValue}
                 className="peer border-b-2 border-dark-color py-1 focus:border-b-2 focus:border-primary-color transition-colors focus:outline-none bg-inherit w-full"
               />
               <label
@@ -70,11 +70,11 @@ function Subscription({
               </label>
             </fieldset>
           ))}
-          <button className="mb-2 md:mb-10" type="button" onClick={handleSubmitForm}>
-          {url === "register" ? registerContent.button : connexionContent.button}
+          <button className="mb-2 md:mb-10" type="submit" onClick={handleSubmitForm}>
+          {url === "register" ? registerContent.button : connectionContent.button}
           </button>
           <Link to={url === "register" ? "/login" : "/register"} className="mb-10">
-          {url === "register" ? registerContent.linkToConnexion : connexionContent.linkToRegister}
+          {url === "register" ? registerContent.linkToConnection : connectionContent.linkToRegister}
           </Link>
         </form>
       </article>
@@ -84,7 +84,7 @@ function Subscription({
 
 Subscription.propTypes = {
   handleClickProfile: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  handleChangeInputValue: PropTypes.func.isRequired,
   handleSubmitForm: PropTypes.func.isRequired,
   fields: PropTypes.arrayOf(
     PropTypes.shape({
@@ -98,14 +98,14 @@ Subscription.propTypes = {
   professionalButton: PropTypes.string,
   generateFieldLabelClass: PropTypes.func.isRequired,
   url: PropTypes.string.isRequired,
-  connexionContent: PropTypes.shape(),
+  connectionContent: PropTypes.shape(),
   registerContent: PropTypes.shape(),
 };
 
 Subscription.defaultProps = {
   customerButton: "",
   professionalButton: "",
-  connexionContent: {},
+  connectionContent: {},
   registerContent: {}
 };
 

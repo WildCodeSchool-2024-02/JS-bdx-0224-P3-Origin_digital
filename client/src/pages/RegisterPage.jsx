@@ -57,7 +57,7 @@ function RegisterPage() {
   const registerContent = {
     title: "INSCRIPTION",
     button: "CRÉER VOTRE COMPTE",
-    linkToConnexion: "Déjà inscrit ? Connectez-vous",
+    linkToConnection: "Déjà inscrit ? Connectez-vous",
   };
 
   const url = path.pathname.substring(1);
@@ -89,7 +89,7 @@ function RegisterPage() {
     setFormValues(emptyFields);
   };
 
-  const handleChange = (e) => {
+  const handleChangeInputValue = (e) => {
     const { id, value } = e.target;
     setFormValues({
       ...formValues,
@@ -117,7 +117,7 @@ function RegisterPage() {
   return (
     <Subscription
       handleClickProfile={handleClickProfile}
-      handleChange={handleChange}
+      handleChangeInputValue={handleChangeInputValue}
       fields={fields}
       formValues={formValues}
       customerButton={customerButton}
