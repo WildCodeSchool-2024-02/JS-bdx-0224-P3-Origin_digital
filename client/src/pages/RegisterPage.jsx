@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Subscription from "../components/Subscription";
 import sendData from "../services/api.service";
@@ -97,9 +97,6 @@ function RegisterPage() {
     });
   };
 
-  useEffect(() => {
-    handleClickProfile(false);
-  }, []);
 
   const btnFormClass = "w-full h-full p-0 rounded-none cursor-pointer";
 

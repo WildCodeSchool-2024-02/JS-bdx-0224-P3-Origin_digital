@@ -7,6 +7,7 @@ import Category from "./pages/CategoryPage";
 import RegisterPage from "./pages/RegisterPage";
 import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
+import ContactPage from "./pages/ContactPage";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/viewing",
         element: <Viewing />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
     ],
   },

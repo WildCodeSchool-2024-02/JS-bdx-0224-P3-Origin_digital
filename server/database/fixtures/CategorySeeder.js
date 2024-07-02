@@ -6,7 +6,7 @@ class CategorySeeder extends AbstractSeeder {
     super({ table: "category", truncate: true });
   }
 
-  // The run method - Populate the 'user' table with fake data
+  // The run method - Populate the 'user' table with data
   run() {
     const categories = [
       { name: "Fitness" },
@@ -16,7 +16,7 @@ class CategorySeeder extends AbstractSeeder {
       { name: "Nutrition" },
     ];
 
-    // Generate and insert fake data into the 'user' table
+    // Generate and insert data into the 'user' table
     categories.forEach((category) => {
       const categoryWithRefName = {
         ...category,
