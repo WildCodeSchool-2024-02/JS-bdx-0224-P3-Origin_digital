@@ -47,23 +47,21 @@ function Header() {
 
   // fetch
 
-  const [category, setCategory] = useState([]);
-  const [tag, setTag] = useState([]);
-  
+  const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:3310/api/category")
       .then((result) => result.json())
       .then((data) => {
-        setCategory(data);
+        setCategories(data);
       })
-      .catch((error) => console.error("Error finding categories:", error));
 
     fetch("http://localhost:3310/api/tag")
       .then((result) => result.json())
       .then((data) => {
-        setTag(data);
+        setTags(data);
       })
-      .catch((error) => console.error("Error finding tags:", error));
   }, []);
 
   return (
@@ -77,8 +75,8 @@ function Header() {
       menuListClasses={menuListClasses}
       objectivesButtonClasses={objectivesButtonClasses}
       subscribeStyle={subscribeStyle}
-      category={category}
-      tag={tag}
+      categories={categories}
+      tags={tags}
     />
   );
 }

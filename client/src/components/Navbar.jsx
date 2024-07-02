@@ -14,8 +14,8 @@ function Navbar({
   menuListClasses,
   objectivesButtonClasses,
   objectiveSectionClasses,
-  category,
-  tag,
+  categories,
+  tags,
 }) {
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
@@ -112,25 +112,25 @@ function Navbar({
             </svg>
           </button>
           <ul className="flex flex-wrap justify-around bg-white">
-            {category.map((categories) => (
+            {categories.map((category) => (
               <li
-                key={categories.id}
+                key={category.id}
                 className=" border-b border-gray-400 my-8 w-full w-1/4 lg:w-1/6"
               >
                 <Link
-                  to={`/category/${categories.id}`}
+                  to={`/category/${category.id}`}
                   className="text-[var(--darkColor)] visited:text-[var(--darkColor)]"
                 >
-                  {categories.name}
+                  {category.name}
                 </Link>
                 <ul className="flex flex-col hover:text-[var(--primaryDark)] capitalize">
-                  {tag.map((tags) => (
-                    <li key={tags.id}>
+                  {tags.map((tag) => (
+                    <li key={tag.id}>
                       <Link
-                        to={`/category/${categories.id}/${tags.id}`}
+                        to={`/category/${categories.id}/${tag.id}`}
                         className="hover:text-[var(--primaryDark)] text-[var(--darkColor)] font-light"
                       >
-                        {tags.name}
+                        {tag.name}
                       </Link>
                     </li>
                   ))}
@@ -154,12 +154,12 @@ Navbar.propTypes = {
   menuListClasses: PropTypes.string.isRequired,
   objectivesButtonClasses: PropTypes.string.isRequired,
   objectiveSectionClasses: PropTypes.string.isRequired,
-  category: PropTypes.arrayOf(
+  categories: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
     })).isRequired,
-  tag: PropTypes.arrayOf(
+  tags: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
