@@ -11,20 +11,20 @@ const handleButtonClick = () => {
 };
 
   return (
-    <Row>
+    <Row className="[&>*]:border-2">
       <Cell>
         <img src="../src/assets/images/pilat.jpg" alt="" className="w-36 inline float-left"/>
         <p className="block text-ellipsis pt-10">Titre de la vidéo</p>
       </Cell>
       <Cell>Pilate</Cell>
       <Cell className="py-2">
-        <ul className="flex flex-wrap w-auto justify-center items-center  gap-2  [&>*]:py-0 [&>*]:px-4 [&>*]:text-xl [&>*]:h-7 [&>*]:bg-[var(--primaryColor)] [&>*]:rounded-3xl [&>*]:text-[var(--darkColor)] [&>*]:font-bold [&>*]:capitalize">
+        <ul className="flex flex-wrap w-auto justify-center items-center gap-4 [&>*]:py-0 [&>*]:px-4 [&>*]:text-xl [&>*]:h-7 [&>*]:bg-[var(--primaryColor)] [&>*]:rounded-full [&>*]:text-[var(--darkColor)] [&>*]:capitaliz [&>*]:my-1 [&>*]:border-2 [&>*]:border-dark-color">
         {(showAllTags ? tag : tag.slice(0, 2)).map((tags) => (
           <li key={tags}>{tags}</li>
         ))}
       </ul>
       {tag.length > 3 && (
-        <button type="button" className="h-8 mt-2 text-sm" onClick={handleButtonClick}>
+        <button type="button" className="bg-inherit hover:bg-inherit font-thin pt-3 text-dark-color hover:border-b hover:border-primary-dark hover:text-primary-dark" onClick={handleButtonClick}>
           {showAllTags ? 'Afficher moins' : 'Afficher plus'}
         </button>
       )}
@@ -34,8 +34,8 @@ const handleButtonClick = () => {
       <Cell>18/06/2024</Cell>
       <Cell>
         <ul className="flex flex-col gap-4">
-          <li><Link to="/">Modifier</Link></li>
-          <li><Link to="/">Supprimer</Link></li>
+          <li><Link to="/" className="textHoverUnderline">Modifier</Link></li>
+          <li><Link to="/" className="textHoverUnderline">Supprimer</Link></li>
         </ul>
       </Cell>
     </Row>

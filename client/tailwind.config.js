@@ -46,6 +46,9 @@ export default {
         },
         ".containBtnForm": {
           "@apply font-bold h-full m-0 flex-1 flex justify-center items-center": {},
+        },
+        ".textHoverUnderline":{
+          "@apply text-dark-color hover:border-b hover:border-primary-dark hover:text-primary-dark":{},
         }
       };
       addComponents(components);

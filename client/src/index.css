@@ -115,6 +115,19 @@ a {
   transition: all ease 300ms;
 }
 
+table {
+  table-layout: fixed;
+  width: 100%;
+  overflow: scroll;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid var(--primaryLight);
+  border-collapse: collapse;
+}
+
 @media screen and (min-width: 768px) {
   body {
     font-size: 1.2rem;
