@@ -1,6 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Subscription from "../components/Subscription";
+import sendData from "../services/api.service";
 
 const fields = [
   {
@@ -27,6 +28,7 @@ function LoginPage() {
     button: "SE CONNECTER",
     linkToRegister: "Pas de compte ? Inscrivez-vous"
   };
+  const navigate = useNavigate();
 
   const path = useLocation();
 
@@ -43,9 +45,25 @@ function LoginPage() {
   const generateFieldLabelClass = (id) =>
     `label ${formValues[id].length > 0 ? "active" : ""}`;
 
+  const handleSubmitForm = async (event) => {
+    event.preventDefault();
+    const data = {
+      email: formValues.email,
+      password: formValues.password
+    };
+
+    const response = await sendData("/auth/login", data, "POST");
+    if (response) {
+      navigate("/");
+    } else {
+      console.info(response);
+    }
+  };
+
   return (
       <Subscription 
       handleChange={handleChangeScribe}
+      handleSubmitForm={handleSubmitForm}
       fields={fields}
       formValues={formValues}
       generateFieldLabelClass={generateFieldLabelClass}
