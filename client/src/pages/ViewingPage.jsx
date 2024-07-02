@@ -11,22 +11,19 @@ export default function ViewingPage() {
         >
           <track kind="captions" />
         </video>
-        <section className="p-0 [&>*]:mx-1 [&>*]:py-1 [&>*]:px-6 [&>*]:text-xl [&>*]:bg-primary-color [&>*]:border-2 [&>*]:border-dark-color [&>*]:rounded-full [&>*]:text-dark-color [&>*]:font-bold [&>*]:capitalize">
+        <section className="p-0 [&>*]:tagsViewing">
           <Link
             to="/tag1"
-            className="hover:text-light-color hover:border-light-color hover:bg-primary-dark hover:ring-2 hover:ring-primary-dark"
           >
             #tag1
           </Link>
           <Link
             to="/tag2"
-            className="hover:text-light-color hover:border-light-color hover:bg-primary-dark hover:ring-2 hover:ring-primary-dark "
           >
             #tag2
           </Link>
           <Link
             to="/tag3"
-            className="hover:text-light-color hover:border-light-color hover:bg-primary-dark hover:ring-2 hover:ring-primary-dark "
           >
             #tag3
           </Link>
