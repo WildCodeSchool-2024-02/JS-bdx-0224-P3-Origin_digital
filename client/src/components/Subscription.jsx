@@ -1,47 +1,62 @@
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import fitnessImg from "../assets/images/training.jpg";
-import "../assets/styles/form.css"
+import "../assets/styles/form.css";
 
 function Subscription({
   handleClickProfile,
-  handleChange,
+  handleChangeInputValue,
   fields,
   formValues,
   customerButton,
   professionalButton,
   generateFieldLabelClass,
+  url,
+  handleSubmitRegister,
+  connexionContent,
+  registerContent,
+  handleSubmitLogin,
 }) {
   return (
     <section className="flex justify-center items-center gap-10 ">
-        <img
-          src={fitnessImg}
-          alt="sportifs"
-          className="hidden lg:block img-shadow rounded-xl mb-4 object-cover h-96 "
-        />
+      <img
+        src={fitnessImg}
+        alt="sportifs"
+        className="hidden lg:block img-shadow rounded-xl mb-4 object-cover h-96 "
+      />
       <article className="flex flex-col items-center w-96 aspect-[6/10]  ">
-        <ul className="flex items-center text-center w-full h-14 rounded-t-lg">
-          <li className="containBtnForm">
-            <button
-              onClick = {() => handleClickProfile()}
-              className={customerButton}
-              type="button"
-            >
-              PARTICULIER
-            </button>
-          </li>
-          <li className="containBtnForm">
-            <button
-              onClick= {() => handleClickProfile(true)}
-              className={professionalButton}
-              type="button"
-            >
-              PROFESSIONNEL
-            </button>
-          </li>
-        </ul>
-        <form className="flex flex-col items-center w-full h-full px-4 border border-primary-color rounded-b-lg">
-          <h2 className="font-bold my-10">INSCRIPTION</h2>
+        {url === "register" && (
+          <ul className="flex items-center text-center w-full h-14 rounded-t-lg">
+            <li className="containBtnForm">
+              <button
+                onClick={() => handleClickProfile(false)}
+                className={customerButton}
+                type="button"
+              >
+                PARTICULIER
+              </button>
+            </li>
+            <li className="containBtnForm">
+              <button
+                onClick={() => handleClickProfile(true)}
+                className={professionalButton}
+                type="button"
+              >
+                PROFESSIONNEL
+              </button>
+            </li>
+          </ul>
+        )}
+
+        <form
+          className="flex flex-col items-center w-full h-full px-4 border border-primary-color rounded-b-lg"
+          method="POST"
+        >
+          <h2 className="font-bold my-10">
+            {url === "register"
+              ? registerContent.title
+              : connexionContent.title}
+          </h2>
           {fields.map((info) => (
             <fieldset key={info.id} className="relative w-full pb-10">
               <input
@@ -49,7 +64,7 @@ function Subscription({
                 id={info.id}
                 name={info.text}
                 value={formValues[info.id]}
-                onChange={handleChange}
+                onChange={handleChangeInputValue}
                 className="peer border-b-2 border-dark-color py-1 focus:border-b-2 focus:border-primary-color transition-colors focus:outline-none bg-inherit w-full"
               />
               <label
@@ -63,10 +78,22 @@ function Subscription({
           <button
             className="mb-2 md:mb-10"
             type="button"
+            onClick={
+              url === "register" ? handleSubmitRegister : handleSubmitLogin
+            }
           >
-            CRÉER VOTRE COMPTE
+            {url === "register"
+              ? registerContent.button
+              : connexionContent.button}
           </button>
-          <Link to="/signin" className="mb-10">Déjà inscrit ? Conectez-vous</Link>
+          <Link
+            to={url === "register" ? "/login" : "/register"}
+            className="mb-10"
+          >
+            {url === "register"
+              ? registerContent.linkToConnexion
+              : connexionContent.linkToRegister}
+          </Link>
         </form>
       </article>
     </section>
@@ -74,8 +101,10 @@ function Subscription({
 }
 
 Subscription.propTypes = {
-  handleClickProfile: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  handleClickProfile: PropTypes.func,
+  handleChangeInputValue: PropTypes.func.isRequired,
+  handleSubmitRegister: PropTypes.func,
+  handleSubmitLogin: PropTypes.func,
   fields: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -83,15 +112,23 @@ Subscription.propTypes = {
       text: PropTypes.string.isRequired,
     })
   ).isRequired,
-  formValues: PropTypes.string.isRequired,
+  formValues: PropTypes.shape().isRequired,
   customerButton: PropTypes.string,
   professionalButton: PropTypes.string,
   generateFieldLabelClass: PropTypes.func.isRequired,
+  url: PropTypes.string.isRequired,
+  connexionContent: PropTypes.shape(),
+  registerContent: PropTypes.shape(),
 };
 
 Subscription.defaultProps = {
-  customerButton: '',
-  professionalButton: '',
+  handleClickProfile: () => {},
+  handleSubmitRegister: () => {},
+  handleSubmitLogin: () => {},
+  customerButton: "",
+  professionalButton: "",
+  connexionContent: {},
+  registerContent: {},
 };
 
 export default Subscription;
