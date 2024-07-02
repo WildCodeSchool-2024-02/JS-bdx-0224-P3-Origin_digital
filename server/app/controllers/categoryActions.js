@@ -11,7 +11,11 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const category = await tables.category.read(req.params.id);
+    const category = await tables.category.read(
+      req.params.id,
+      req.params.id,
+      req.params.id
+    );
     if (category == null) {
       res.sendStatus(404);
     } else {
