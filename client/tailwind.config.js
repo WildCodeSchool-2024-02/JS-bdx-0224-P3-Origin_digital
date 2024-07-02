@@ -57,8 +57,9 @@ export default {
           "@apply rounded-lg m-2 p-4": {},
         },
         ".labelContact": {
-          "@apply rounded-lg m-2 p-4  text-center w-20 h-7 m-2 p-1 justify-self-center text-xs": {},
-        }
+          "@apply rounded-lg m-2 p-4 h-7 justify-self-center text-base": {},
+        }      
+
       };
       addComponents(components);
     }),
