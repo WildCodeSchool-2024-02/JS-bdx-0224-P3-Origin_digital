@@ -47,29 +47,22 @@ function Header() {
 
   // fetch
 
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/category")
+    fetch(`${import.meta.env.VITE_API_URL}/api/category`)
       .then((result) => result.json())
       .then((data) => {
-        setCategory(data);
+        setCategories(data);
       })
-      .catch((error) => console.error("Error finding categories:", error));
-  }, []);
 
-  const [tag, setTag] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3310/api/tag")
+    fetch(`${import.meta.env.VITE_API_URL}/api/tag`)
       .then((result) => result.json())
       .then((data) => {
-        setTag(data);
+        setTags(data);
       })
-      .catch((error) => console.error("Error finding tags:", error));
   }, []);
-
-
 
   return (
     <Navbar
@@ -82,11 +75,10 @@ function Header() {
       menuListClasses={menuListClasses}
       objectivesButtonClasses={objectivesButtonClasses}
       subscribeStyle={subscribeStyle}
-      category={category}
-      tag={tag}
+      categories={categories}
+      tags={tags}
     />
   );
 }
 
 export default Header;
-
