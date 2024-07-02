@@ -48,7 +48,8 @@ function Header() {
   // fetch
 
   const [category, setCategory] = useState([]);
-
+  const [tag, setTag] = useState([]);
+  
   useEffect(() => {
     fetch("http://localhost:3310/api/category")
       .then((result) => result.json())
@@ -56,11 +57,7 @@ function Header() {
         setCategory(data);
       })
       .catch((error) => console.error("Error finding categories:", error));
-  }, []);
 
-  const [tag, setTag] = useState([]);
-
-  useEffect(() => {
     fetch("http://localhost:3310/api/tag")
       .then((result) => result.json())
       .then((data) => {
@@ -68,8 +65,6 @@ function Header() {
       })
       .catch((error) => console.error("Error finding tags:", error));
   }, []);
-
-
 
   return (
     <Navbar
@@ -89,4 +84,3 @@ function Header() {
 }
 
 export default Header;
-
