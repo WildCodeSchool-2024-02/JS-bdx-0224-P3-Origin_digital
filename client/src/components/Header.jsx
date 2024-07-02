@@ -51,13 +51,13 @@ function Header() {
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/category")
+    fetch(`${import.meta.env.VITE_API_URL}/api/category`)
       .then((result) => result.json())
       .then((data) => {
         setCategories(data);
       })
 
-    fetch("http://localhost:3310/api/tag")
+    fetch(`${import.meta.env.VITE_API_URL}/api/tag`)
       .then((result) => result.json())
       .then((data) => {
         setTags(data);
