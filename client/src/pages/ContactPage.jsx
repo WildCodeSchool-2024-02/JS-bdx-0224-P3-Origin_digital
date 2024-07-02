@@ -3,8 +3,8 @@ function Contact() {
     return (
       <>
         <h2 className="">Contact</h2>
-        <form className="ContactForm">
-          <label className="labelContact" htmlFor="name">
+        <form className="flex flex-col items-center mb-28 bg-primary-light">
+          <label className="labelContact " htmlFor="name">
             Name
           </label>
           <input

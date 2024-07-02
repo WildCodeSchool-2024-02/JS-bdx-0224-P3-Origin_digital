@@ -77,7 +77,7 @@ export default function Footer() {
           <h3>Réseaux</h3>
           <ul className="flex justify-between items-start md:block m-0">
             <li>
-              <Link to="/" className="footer-list">
+              <Link to="/contact" className="footer-list">
                 Contact
               </Link>
             </li>

@@ -46,7 +46,13 @@ export default {
         },
         ".containBtnForm": {
           "@apply font-bold h-full m-0 flex-1 flex justify-center items-center": {},
-        }
+        },
+        ".inputContact": {
+          "@apply rounded-lg m-2 p-4": {},
+        },
+        ".labelContact": {
+          "@apply rounded-lg m-2 p-4  text-center w-20 h-7 m-2 p-1 justify-self-center text-xs": {},
+        }      
       };
       addComponents(components);
     }),    
