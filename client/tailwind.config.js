@@ -53,6 +53,12 @@ export default {
           "@apply mx-1 py-1 px-6 text-xl bg-primary-color border-2 border-dark-color rounded-full text-dark-color font-bold capitalize hover:text-light-color hover:border-light-color hover:bg-primary-dark hover:ring-2 hover:ring-primary-dark":
             {},
         },
+        ".inputContact": {
+          "@apply rounded-lg m-2 p-4": {},
+        },
+        ".labelContact": {
+          "@apply rounded-lg m-2 p-4  text-center w-20 h-7 m-2 p-1 justify-self-center text-xs": {},
+        }
       };
       addComponents(components);
     }),
