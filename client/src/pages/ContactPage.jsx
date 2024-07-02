@@ -24,7 +24,6 @@ function Contact() {
           placeholder="Insérez votre nom ici"
           className="inputContact"
           type="text"
-          minLength="5"
           id="name"
           required
         />
@@ -43,7 +42,7 @@ function Contact() {
           Message
         </label>
         <textarea
-          placeholder="Ecrivez votre commentaire !"
+          placeholder="Ecrivez votre commentaire..."
           className="rounded-lg m-2 p-4"
           name="message"
           id="message"
@@ -60,14 +59,9 @@ function Contact() {
         </button>
       </form>
       {isSubmitted && (
-        <>
           <p className="text-center text-primary-dark mb-2">
-            Votre message a été envoyé avec succès!
+            Votre message a été envoyé avec succès !
           </p>
-          <p className="text-center text-primary-dark mb-8">
-            Notre équipe s'engage à vous répondre dans les 72 prochaines heures.
-          </p>
-        </>
       )}
     </>
   );
