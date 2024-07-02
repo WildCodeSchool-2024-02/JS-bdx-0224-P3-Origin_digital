@@ -12,6 +12,7 @@ function Subscription({
   professionalButton,
   generateFieldLabelClass,
   url,
+  handleSubmitForm,
   connexionContent,
   registerContent,
 }) {
@@ -48,7 +49,7 @@ function Subscription({
 
         <form
           className="flex flex-col items-center w-full h-full px-4 border border-primary-color rounded-b-lg"
-          method="post"
+          method="POST"
         >
           <h2 className="font-bold my-10">{url === "register" ? registerContent.title : connexionContent.title}</h2>
           {fields.map((info) => (
@@ -69,7 +70,7 @@ function Subscription({
               </label>
             </fieldset>
           ))}
-          <button className="mb-2 md:mb-10" type="button">
+          <button className="mb-2 md:mb-10" type="button" onClick={handleSubmitForm}>
           {url === "register" ? registerContent.button : connexionContent.button}
           </button>
           <Link to={url === "register" ? "/login" : "/register"} className="mb-10">
@@ -84,6 +85,7 @@ function Subscription({
 Subscription.propTypes = {
   handleClickProfile: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
+  handleSubmitForm: PropTypes.func.isRequired,
   fields: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Subscription from "../components/Subscription";
-import sendData from "../services/api.service"
+import sendData from "../services/api.service";
 
 const textLabel = [
   {
@@ -45,7 +45,7 @@ const emptyFields = {
   siret: "",
 };
 
-function SubscriptionPage() {
+function RegisterPage() {
   const [fields, setFields] = useState(textLabel);
   const [formValues, setFormValues] = useState(emptyFields);
   const [password, setPassword] = useState("");
@@ -54,32 +54,30 @@ function SubscriptionPage() {
   const lastNameRef = useRef();
   const navigate = useNavigate();
   const path = useLocation();
-  const registerContent =  {
+  const registerContent = {
     title: "INSCRIPTION",
     button: "CRÉER VOTRE COMPTE",
-    linkToConnexion: "Déjà inscrit ? Connectez-vous"
+    linkToConnexion: "Déjà inscrit ? Connectez-vous",
   };
 
-  const url = path.pathname.substring(1)
+  const url = path.pathname.substring(1);
 
-  const handleSubmitRegister = async (event) => {
+  const handleSubmitForm = async (event) => {
     event.preventDefault();
-    
-      const data = {
-        firstname: firstNameRef.current.value,
-        lastName : lastNameRef.current.value,
-        email: emailRef.current.value,
-        password,
-      }
+    const data = {
+      firstname: formValues.firstname,
+      lastname: formValues.lastname,
+      email: formValues.email,
+      password: formValues.password,
+      siret: formValues.siret,
+    };
+    const response = await sendData("/users", data, "POST");
 
-      const response = await sendData("/user", data, "POST");
-
-      if (response) {
-        navigate("/login");
-      } else {
-          console.info(response);
-      }  
-    
+    if (response) {
+      navigate("/login");
+    } else {
+      console.info(response);
+    }
   };
 
   const handleClickProfile = (isProfessional) => {
@@ -128,7 +126,7 @@ function SubscriptionPage() {
       customerButton={customerButton}
       professionalButton={professionalButton}
       generateFieldLabelClass={generateFieldLabelClass}
-      handleSubmitRegister={handleSubmitRegister}
+      handleSubmitForm={handleSubmitForm}
       emailRef={emailRef}
       firstNameRef={firstNameRef}
       lastNameRef={lastNameRef}
@@ -141,4 +139,4 @@ function SubscriptionPage() {
   );
 }
 
-export default SubscriptionPage;
+export default RegisterPage;

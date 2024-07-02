@@ -17,7 +17,7 @@ const fields = [
   },
 ];
 
-function SignInPage() {
+function LoginPage() {
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -45,7 +45,7 @@ function SignInPage() {
 
   return (
       <Subscription 
-      handleChangScribe={handleChangeScribe}
+      handleChange={handleChangeScribe}
       fields={fields}
       formValues={formValues}
       generateFieldLabelClass={generateFieldLabelClass}
@@ -55,4 +55,4 @@ function SignInPage() {
   );
 }
 
-export default SignInPage;
+export default LoginPage;
