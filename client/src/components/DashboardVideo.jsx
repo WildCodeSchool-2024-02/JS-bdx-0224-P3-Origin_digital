@@ -24,7 +24,7 @@ const handleButtonClick = () => {
         ))}
       </ul>
       {tag.length > 3 && (
-        <button type="button" className="bg-inherit hover:bg-inherit font-thin pt-3 text-dark-color hover:border-b hover:border-primary-dark hover:text-primary-dark" onClick={handleButtonClick}>
+        <button type="button" className="bg-inherit hover:bg-inherit font-thin pt-3 textHoverUnderline" onClick={handleButtonClick}>
           {showAllTags ? 'Afficher moins' : 'Afficher plus'}
         </button>
       )}
