@@ -27,7 +27,8 @@ export default {
     plugin(({ addComponents }) => {
       const components = {
         ".line-burger": {
-          "@apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200 bg-gray-600": {},
+          "@apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200 bg-gray-600":
+            {},
         },
         "button.active .line-burger:first-child": {
           "@apply transform rotate-45 top-0 left-1.5": {},
@@ -45,16 +46,21 @@ export default {
           "@apply shadow-custom-shadow": {},
         },
         ".containBtnForm": {
-          "@apply font-bold h-full m-0 flex-1 flex justify-center items-center": {},
+          "@apply font-bold h-full m-0 flex-1 flex justify-center items-center":
+            {},
+        },
+        ".tagsViewing": {
+          "@apply mx-1 py-1 px-6 text-xl bg-primary-color border-2 border-dark-color rounded-full text-dark-color font-bold capitalize hover:text-light-color hover:border-light-color hover:bg-primary-dark hover:ring-2 hover:ring-primary-dark":
+            {},
         },
         ".inputContact": {
           "@apply rounded-lg m-2 p-4": {},
         },
         ".labelContact": {
           "@apply rounded-lg m-2 p-4  text-center w-20 h-7 m-2 p-1 justify-self-center text-xs": {},
-        }      
+        }
       };
       addComponents(components);
-    }),    
+    }),
   ],
 };
