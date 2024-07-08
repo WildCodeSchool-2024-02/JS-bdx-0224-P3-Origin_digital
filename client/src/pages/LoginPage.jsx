@@ -26,13 +26,13 @@ function LoginPage() {
   const connectionContent = {
     title: "CONNEXION",
     button: "SE CONNECTER",
-    linkToRegister: "Pas de compte ? Inscrivez-vous"
+    linkToRegister: "Pas de compte ? Inscrivez-vous",
   };
   const navigate = useNavigate();
 
   const path = useLocation();
 
-  const url = path.pathname.substring(1)
+  const url = path.pathname.substring(1);
 
   const handleChangeInputValue = (e) => {
     const { id, value } = e.target;
@@ -49,19 +49,17 @@ function LoginPage() {
     event.preventDefault();
     const data = {
       email: formValues.email,
-      password: formValues.password
+      password: formValues.password,
     };
 
     const response = await sendData("/auth/login", data, "POST");
     if (response) {
       navigate("/");
-    } else {
-      console.info(response);
     }
   };
 
   return (
-      <Subscription 
+    <Subscription
       handleChangeInputValue={handleChangeInputValue}
       handleSubmitForm={handleSubmitForm}
       fields={fields}
@@ -69,7 +67,7 @@ function LoginPage() {
       generateFieldLabelClass={generateFieldLabelClass}
       url={url}
       connectionContent={connectionContent}
-      />
+    />
   );
 }
 

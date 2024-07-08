@@ -75,8 +75,6 @@ function RegisterPage() {
 
     if (response) {
       navigate("/login");
-    } else {
-      console.info(response);
     }
   };
 
