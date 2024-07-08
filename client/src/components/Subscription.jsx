@@ -64,6 +64,8 @@ function Subscription({
                 name={field.text}
                 value={formValues[field.id]}
                 onChange={handleChangeInputValue}
+                pattern={field.id === "email" ? ".+@example.com" : undefined}
+                minLength={field.id === "password" ? 8 : 0}
                 className="peer border-b-2 border-dark-color py-1transition-colors  bg-inherit w-full
                  focus:border-primary-color focus:outline-none focus:border-b-2"
               />

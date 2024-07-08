@@ -65,7 +65,6 @@ function RegisterPage() {
   const navigate = useNavigate();
   const path = useLocation();
   const [formValues, setFormValues] = useState(emptyFields);
-  const [password, setPassword] = useState("");
   const [fields, setFields] = useState(textLabel);
   const url = path.pathname.substring(1);
 
@@ -134,8 +133,6 @@ function RegisterPage() {
       firstNameRef={firstNameRef}
       lastNameRef={lastNameRef}
       navigate={navigate}
-      setPassword={setPassword}
-      password={password}
       url={url}
       registerContent={registerContent}
     />
