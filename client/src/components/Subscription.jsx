@@ -13,7 +13,7 @@ function Subscription({
   generateFieldLabelClass,
   url,
   handleSubmitRegister,
-  connexionContent,
+  loginContent,
   registerContent,
   handleSubmitLogin,
 }) {
@@ -53,25 +53,25 @@ function Subscription({
           method="POST"
         >
           <h2 className="font-bold my-10">
-            {url === "register"
-              ? registerContent.title
-              : connexionContent.title}
+            {url === "register" ? registerContent.title : loginContent.title}
           </h2>
-          {fields.map((info) => (
-            <fieldset key={info.id} className="relative w-full pb-10">
+          {fields.map((field) => (
+            <fieldset key={field.id} className="relative w-full pb-10">
               <input
-                type={info.type}
-                id={info.id}
-                name={info.text}
-                value={formValues[info.id]}
+                type={field.type}
+                id={field.id}
+                ref={field.ref}
+                name={field.text}
+                value={formValues[field.id]}
                 onChange={handleChangeInputValue}
-                className="peer border-b-2 border-dark-color py-1 focus:border-b-2 focus:border-primary-color transition-colors focus:outline-none bg-inherit w-full"
+                className="peer border-b-2 border-dark-color py-1transition-colors  bg-inherit w-full
+                 focus:border-primary-color focus:outline-none focus:border-b-2"
               />
               <label
-                htmlFor={info.id}
-                className={generateFieldLabelClass(info.id)}
+                htmlFor={field.id}
+                className={generateFieldLabelClass(field.id)}
               >
-                {info.text}
+                {field.text}
               </label>
             </fieldset>
           ))}
@@ -82,17 +82,15 @@ function Subscription({
               url === "register" ? handleSubmitRegister : handleSubmitLogin
             }
           >
-            {url === "register"
-              ? registerContent.button
-              : connexionContent.button}
+            {url === "register" ? registerContent.button : loginContent.button}
           </button>
           <Link
             to={url === "register" ? "/login" : "/register"}
             className="mb-10"
           >
             {url === "register"
-              ? registerContent.linkToConnexion
-              : connexionContent.linkToRegister}
+              ? registerContent.linkToLogin
+              : loginContent.linkToRegister}
           </Link>
         </form>
       </article>
@@ -117,7 +115,7 @@ Subscription.propTypes = {
   professionalButton: PropTypes.string,
   generateFieldLabelClass: PropTypes.func.isRequired,
   url: PropTypes.string.isRequired,
-  connexionContent: PropTypes.shape(),
+  loginContent: PropTypes.shape(),
   registerContent: PropTypes.shape(),
 };
 
@@ -127,7 +125,7 @@ Subscription.defaultProps = {
   handleSubmitLogin: () => {},
   customerButton: "",
   professionalButton: "",
-  connexionContent: {},
+  loginContent: {},
   registerContent: {},
 };
 

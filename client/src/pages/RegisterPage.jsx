@@ -3,40 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Subscription from "../components/Subscription";
 import sendData from "../services/api.service";
 
-const textLabel = [
-  {
-    type: "text",
-    id: "firstname",
-    for: "firstname",
-    text: "Prénom",
-  },
-  {
-    type: "text",
-    id: "lastname",
-    for: "lastname",
-    text: "Nom",
-  },
-  {
-    type: "email",
-    id: "email",
-    for: "email",
-    text: "Adresse mail",
-  },
-  {
-    type: "password",
-    id: "password",
-    for: "password",
-    text: "Mot de passe",
-  },
-];
-
-const siret = {
-  type: "text",
-  id: "siret",
-  for: "siret",
-  text: "N° de SIRET",
-};
-
 const emptyFields = {
   firstname: "",
   lastname: "",
@@ -45,21 +11,62 @@ const emptyFields = {
   siret: "",
 };
 
+const registerContent = {
+  title: "INSCRIPTION",
+  button: "CRÉER VOTRE COMPTE",
+  linkToLogin: "Déjà inscrit ? Connectez-vous",
+};
+
 function RegisterPage() {
-  const [fields, setFields] = useState(textLabel);
-  const [formValues, setFormValues] = useState(emptyFields);
-  const [password, setPassword] = useState("");
   const emailRef = useRef();
   const firstNameRef = useRef();
   const lastNameRef = useRef();
-  const navigate = useNavigate();
-  const path = useLocation();
-  const registerContent = {
-    title: "INSCRIPTION",
-    button: "CRÉER VOTRE COMPTE",
-    linkToConnexion: "Déjà inscrit ? Connectez-vous",
+  const siretRef = useRef();
+
+  const textLabel = [
+    {
+      type: "text",
+      id: "firstname",
+      for: "firstname",
+      text: "Prénom",
+      ref: firstNameRef,
+    },
+    {
+      type: "text",
+      id: "lastname",
+      for: "lastname",
+      text: "Nom",
+      ref: lastNameRef,
+    },
+    {
+      type: "email",
+      id: "email",
+      for: "email",
+      text: "Adresse mail",
+      ref: emailRef,
+    },
+    {
+      type: "password",
+      id: "password",
+      for: "password",
+      text: "Mot de passe",
+      ref: null,
+    },
+  ];
+
+  const siret = {
+    type: "text",
+    id: "siret",
+    for: "siret",
+    text: "N° de SIRET",
+    ref: siretRef,
   };
 
+  const navigate = useNavigate();
+  const path = useLocation();
+  const [formValues, setFormValues] = useState(emptyFields);
+  const [password, setPassword] = useState("");
+  const [fields, setFields] = useState(textLabel);
   const url = path.pathname.substring(1);
 
   const handleSubmitRegister = async (event) => {

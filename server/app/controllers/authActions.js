@@ -12,7 +12,6 @@ const login = async (req, res, next) => {
 
     if (verified) {
       delete user.password;
-      console.info("yes");
       res.json(user);
     } else {
       res.sendStatus(422);

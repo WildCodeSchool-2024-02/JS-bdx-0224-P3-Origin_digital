@@ -1,22 +1,13 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Subscription from "../components/Subscription";
 import sendData from "../services/api.service";
 
-const fields = [
-  {
-    type: "email",
-    id: "email",
-    for: "email",
-    text: "Adresse mail",
-  },
-  {
-    type: "password",
-    id: "password",
-    for: "password",
-    text: "Mot de passe",
-  },
-];
+const loginContent = {
+  title: "CONNEXION",
+  button: "SE CONNECTER",
+  linkToRegister: "Pas de compte ? Inscrivez-vous",
+};
 
 function LoginPage() {
   const [formValues, setFormValues] = useState({
@@ -26,12 +17,24 @@ function LoginPage() {
   const path = useLocation();
   const url = path.pathname.substring(1);
   const navigate = useNavigate();
+  const emailRef = useRef();
 
-  const connexionContent = {
-    title: "CONNEXION",
-    button: "SE CONNECTER",
-    linkToRegister: "Pas de compte ? Inscrivez-vous",
-  };
+  const fields = [
+    {
+      type: "email",
+      id: "email",
+      for: "email",
+      text: "Adresse mail",
+      ref: emailRef,
+    },
+    {
+      type: "password",
+      id: "password",
+      for: "password",
+      text: "Mot de passe",
+      ref: null,
+    },
+  ];
 
   const handleSubmitLogin = async (event) => {
     event.preventDefault();
@@ -66,7 +69,7 @@ function LoginPage() {
       formValues={formValues}
       generateFieldLabelClass={generateFieldLabelClass}
       url={url}
-      connexionContent={connexionContent}
+      loginContent={loginContent}
       handleSubmitLogin={handleSubmitLogin}
     />
   );
