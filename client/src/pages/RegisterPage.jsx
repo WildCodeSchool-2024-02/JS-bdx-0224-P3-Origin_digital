@@ -71,7 +71,7 @@ function RegisterPage() {
       password: formValues.password,
       siret: formValues.siret,
     };
-    const response = await sendData("/api/users", data, "POST");
+    const response = await sendData("/api/user", data, "POST");
 
     if (response) {
       navigate("/login");

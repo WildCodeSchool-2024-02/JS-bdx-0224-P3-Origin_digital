@@ -39,7 +39,7 @@ function LoginPage() {
       email: formValues.email,
       password: formValues.password,
     };
-    const response = await sendData("/api/users/login", data, "POST");
+    const response = await sendData("/api/auth", data, "POST");
 
     if (response) {
       navigate("/register");
