@@ -4,10 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/HomePage";
 import Category from "./pages/CategoryPage";
-import SubscriptionPage from "./pages/SubscriptionPage";
+import RegisterPage from "./pages/RegisterPage";
 import Viewing from "./pages/ViewingPage";
-import SignInPage from "./pages/SignInPage";
-import ContactPage from "./pages/ContactPage"
+import LoginPage from "./pages/LoginPage";
+import ContactPage from "./pages/ContactPage";
 
 const router = createBrowserRouter([
   {
@@ -22,12 +22,12 @@ const router = createBrowserRouter([
         element: <Category />,
       },
       {
-        path: "/subscription",
-        element: <SubscriptionPage />,
+        path: "/register",
+        element: <RegisterPage />
       },
       {
-        path: "/signin",
-        element: <SignInPage />,
+        path: "/login",
+        element: <LoginPage />,
       },
       {
         path: "/viewing",

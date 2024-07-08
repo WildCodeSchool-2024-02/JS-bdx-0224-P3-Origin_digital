@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import logoSrc from "../assets/images/LogoSweatStream.png";
@@ -69,14 +69,14 @@ function Navbar({
       >
         {" "}
         <Link
-          to="/subscription"
+          to="/register"
           className="text-[var(--darkColor)] hover:text-white"
         >
           Inscription
         </Link>
       </button>
       <button className={subscribeStyle} type="button">
-        <Link to="/signin" className="text-[var(--darkColor)] hover:text-white">
+        <Link to="/login" className="text-[var(--darkColor)] hover:text-white">
           Connexion
         </Link>
       </button>
