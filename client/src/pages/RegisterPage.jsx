@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Subscription from "../components/Subscription";
-import sendData from "../services/api.service";
 
 const emptyFields = {
   firstname: "",
@@ -51,6 +50,8 @@ function RegisterPage() {
       for: "password",
       text: "Mot de passe",
       ref: null,
+      pattern:
+        "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&])[A-Za-z0-9@$!%*#?&]{8,}$",
     },
   ];
 
@@ -67,24 +68,6 @@ function RegisterPage() {
   const [formValues, setFormValues] = useState(emptyFields);
   const [fields, setFields] = useState(textLabel);
   const url = path.pathname.substring(1);
-
-  const handleSubmitRegister = async (event) => {
-    event.preventDefault();
-    const data = {
-      firstname: formValues.firstname,
-      lastname: formValues.lastname,
-      email: formValues.email,
-      password: formValues.password,
-      siret: formValues.siret,
-    };
-    const response = await sendData("/api/user", data, "POST");
-
-    if (response) {
-      navigate("/login");
-    } else {
-      console.info(response);
-    }
-  };
 
   const handleClickProfile = (isProfessional) => {
     if (isProfessional) {
@@ -128,7 +111,6 @@ function RegisterPage() {
       customerButton={customerButton}
       professionalButton={professionalButton}
       generateFieldLabelClass={generateFieldLabelClass}
-      handleSubmitRegister={handleSubmitRegister}
       emailRef={emailRef}
       firstNameRef={firstNameRef}
       lastNameRef={lastNameRef}

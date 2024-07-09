@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 import PropTypes from "prop-types";
 import fitnessImg from "../assets/images/training.jpg";
 import "../assets/styles/form.css";
@@ -12,10 +12,8 @@ function Subscription({
   professionalButton,
   generateFieldLabelClass,
   url,
-  handleSubmitRegister,
   loginContent,
   registerContent,
-  handleSubmitLogin,
 }) {
   return (
     <section className="flex justify-center items-center gap-10 ">
@@ -48,9 +46,10 @@ function Subscription({
           </ul>
         )}
 
-        <form
+        <Form
           className="flex flex-col items-center w-full h-full px-4 border border-primary-color rounded-b-lg"
           method="POST"
+          action={url === "register" ? "/register" : "/login"}
         >
           <h2 className="font-bold my-10">
             {url === "register" ? registerContent.title : loginContent.title}
@@ -61,12 +60,12 @@ function Subscription({
                 type={field.type}
                 id={field.id}
                 ref={field.ref}
-                name={field.text}
+                name={field.id}
                 value={formValues[field.id]}
                 onChange={handleChangeInputValue}
-                pattern={field.id === "email" ? ".+@example.com" : undefined}
-                minLength={field.id === "password" ? 8 : 0}
-                className="peer border-b-2 border-dark-color py-1transition-colors  bg-inherit w-full
+                pattern={field.pattern}
+                required
+                className="peer border-b-2 border-dark-color py-1transition-colors bg-inherit w-full
                  focus:border-primary-color focus:outline-none focus:border-b-2"
               />
               <label
@@ -79,10 +78,10 @@ function Subscription({
           ))}
           <button
             className="mb-2 md:mb-10"
-            type="button"
-            onClick={
-              url === "register" ? handleSubmitRegister : handleSubmitLogin
-            }
+            type="submit"
+            // onClick={
+            //   url === "register" ? handleSubmitRegister : handleSubmitLogin
+            // }
           >
             {url === "register" ? registerContent.button : loginContent.button}
           </button>
@@ -94,7 +93,7 @@ function Subscription({
               ? registerContent.linkToLogin
               : loginContent.linkToRegister}
           </Link>
-        </form>
+        </Form>
       </article>
     </section>
   );
@@ -103,8 +102,6 @@ function Subscription({
 Subscription.propTypes = {
   handleClickProfile: PropTypes.func,
   handleChangeInputValue: PropTypes.func.isRequired,
-  handleSubmitRegister: PropTypes.func,
-  handleSubmitLogin: PropTypes.func,
   fields: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -123,8 +120,6 @@ Subscription.propTypes = {
 
 Subscription.defaultProps = {
   handleClickProfile: () => {},
-  handleSubmitRegister: () => {},
-  handleSubmitLogin: () => {},
   customerButton: "",
   professionalButton: "",
   loginContent: {},

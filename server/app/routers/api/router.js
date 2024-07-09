@@ -15,6 +15,7 @@ const roleRouter = require("./role/router");
 
 router.use("/role", roleRouter);
 
+
 const videoRouter = require("./video/router");
 
 router.use("/video", videoRouter);
@@ -22,6 +23,7 @@ router.use("/video", videoRouter);
 const userRouter = require("./user/router");
 
 router.use("/user", userRouter);
+
 
 const authRouter = require("./auth/router");
 
