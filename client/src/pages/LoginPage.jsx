@@ -1,7 +1,6 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useActionData, useLocation } from "react-router-dom";
 import { useRef, useState } from "react";
 import Subscription from "../components/Subscription";
-import sendData from "../services/api.service";
 
 const loginContent = {
   title: "CONNEXION",
@@ -16,8 +15,8 @@ function LoginPage() {
   });
   const path = useLocation();
   const url = path.pathname.substring(1);
-  const navigate = useNavigate();
   const emailRef = useRef();
+  const actionData = useActionData();
 
   const fields = [
     {
@@ -36,20 +35,20 @@ function LoginPage() {
     },
   ];
 
-  const handleSubmitLogin = async (event) => {
-    event.preventDefault();
-    const data = {
-      email: formValues.email,
-      password: formValues.password,
-    };
-    const response = await sendData("/api/auth", data, "POST");
+  //   const handleSubmitLogin = async (event) => {
+  //     event.preventDefault();
+  //     const data = {
+  //       email: formValues.email,
+  //       password: formValues.password,
+  //     };
+  //     const response = await sendData("/api/auth", data, "POST");
 
-    if (response) {
-      navigate("/register");
-    } else {
-      console.info(response);
-    }
-  };
+  //     if (response) {
+  //       navigate("/register");
+  //     } else {
+  //       console.info(response);
+  //     }
+  //   };
 
   const handleChangeInputValue = (e) => {
     const { id, value } = e.target;
@@ -70,7 +69,7 @@ function LoginPage() {
       generateFieldLabelClass={generateFieldLabelClass}
       url={url}
       loginContent={loginContent}
-      handleSubmitLogin={handleSubmitLogin}
+      actionData={actionData}
     />
   );
 }

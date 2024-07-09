@@ -67,9 +67,10 @@ const router = createBrowserRouter([
           const formData = Object.fromEntries(await request.formData());
           const response = await sendData("/api/user", formData, "POST");
           if (response.status === 201) {
-            redirect("/login");
+           redirect("/login");
           } else {
             console.error(response);
+            return response;
           }
           return response;
         },
@@ -77,6 +78,17 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+        action: async ({ request }) => {
+          const formData = Object.fromEntries(await request.formData());
+          const response = await sendData("/api/auth", formData, "POST");
+          if (response.status === 200) {
+            console.info(response);
+          } else {
+            console.error(response);
+            return response.status;
+          }
+          return redirect("/register");
+        },
       },
       {
         path: "/viewing",

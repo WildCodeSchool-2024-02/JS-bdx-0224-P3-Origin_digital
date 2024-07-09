@@ -11,7 +11,7 @@ const validateUser = require("../../../services/middlewares/validateUser");
 
 router.get("/", user.browse);
 router.get("/:id", user.read);
-router.post("/", userCheckRole, hashPassword, validateUser, user.add);
+router.post("/", userCheckRole, validateUser, hashPassword, user.add);
 router.delete("/:id", verifyToken, user.destroy);
 
 module.exports = router;

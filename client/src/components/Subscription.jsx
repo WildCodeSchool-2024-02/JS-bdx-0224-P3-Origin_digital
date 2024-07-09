@@ -14,6 +14,7 @@ function Subscription({
   url,
   loginContent,
   registerContent,
+  actionData,
 }) {
   return (
     <section className="flex justify-center items-center gap-10 ">
@@ -76,13 +77,12 @@ function Subscription({
               </label>
             </fieldset>
           ))}
-          <button
-            className="mb-2 md:mb-10"
-            type="submit"
-            // onClick={
-            //   url === "register" ? handleSubmitRegister : handleSubmitLogin
-            // }
-          >
+          {url === "login" && actionData === 422 && (
+            <p className="text-red-500 font-medium text-sm mb-2 mt-[-0.5rem]">
+              Mot de passe / Email incorrect
+            </p>
+          )}
+          <button className="mb-2 md:mb-10" type="submit">
             {url === "register" ? registerContent.button : loginContent.button}
           </button>
           <Link
@@ -116,6 +116,7 @@ Subscription.propTypes = {
   url: PropTypes.string.isRequired,
   loginContent: PropTypes.shape(),
   registerContent: PropTypes.shape(),
+  actionData: PropTypes.number,
 };
 
 Subscription.defaultProps = {
@@ -124,6 +125,7 @@ Subscription.defaultProps = {
   professionalButton: "",
   loginContent: {},
   registerContent: {},
+  actionData: undefined,
 };
 
 export default Subscription;
