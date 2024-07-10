@@ -3,7 +3,9 @@ const express = require("express");
 const router = express.Router();
 
 const video = require("../../../controllers/videoActions");
-const { verifyToken } = require("../../../services/middlewares/auth");
+const {
+  verifyToken,
+} = require("../../../services/middlewares/tokenVerification");
 
 router.get("/", video.browse);
 router.get("/:id", video.read);

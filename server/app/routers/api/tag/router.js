@@ -3,7 +3,9 @@ const express = require("express");
 const router = express.Router();
 
 const tag = require("../../../controllers/tagActions");
-const { verifyToken } = require("../../../services/middlewares/auth");
+const {
+  verifyToken,
+} = require("../../../services/middlewares/tokenVerification");
 
 router.get("/", tag.browse);
 router.get("/:id", tag.read);
