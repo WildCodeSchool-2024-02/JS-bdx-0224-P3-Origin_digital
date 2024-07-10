@@ -35,21 +35,6 @@ function LoginPage() {
     },
   ];
 
-  //   const handleSubmitLogin = async (event) => {
-  //     event.preventDefault();
-  //     const data = {
-  //       email: formValues.email,
-  //       password: formValues.password,
-  //     };
-  //     const response = await sendData("/api/auth", data, "POST");
-
-  //     if (response) {
-  //       navigate("/register");
-  //     } else {
-  //       console.info(response);
-  //     }
-  //   };
-
   const handleChangeInputValue = (e) => {
     const { id, value } = e.target;
     setFormValues({

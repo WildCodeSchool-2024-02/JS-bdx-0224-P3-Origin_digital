@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import logoSrc from "../assets/images/LogoSweatStream.png";
@@ -75,7 +75,7 @@ function Navbar({
           Inscription
         </Link>
       </button>
-      <button type="button">
+      <button className={subscribeStyle} type="button">
         <Link to="/login" className="text-[var(--darkColor)] hover:text-white">
           Connexion
         </Link>
@@ -115,7 +115,7 @@ function Navbar({
             {categories.map((category) => (
               <li
                 key={category.id}
-                className=" border-b border-gray-400 my-8 w-full w-1/4 lg:w-1/6"
+                className=" border-b border-gray-400 my-8 w-1/4 lg:w-1/6"
               >
                 <Link
                   to={`/category/${category.id}`}
