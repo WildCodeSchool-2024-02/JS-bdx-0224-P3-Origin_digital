@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Contact() {
+function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (event) => {
@@ -51,7 +51,7 @@ function Contact() {
           required
         />
         <button
-          className="contactButton w-20 h-10 m-2 mb-4 p-1 text-xs mx-auto w-28 h-10 text-base"
+          className="contactButton m-2 mb-4 p-1 mx-auto w-28 h-10 text-base"
           type="submit"
           aria-label="submit"
         >
@@ -67,5 +67,4 @@ function Contact() {
   );
 }
 
-export default Contact;
-
+export default ContactPage;

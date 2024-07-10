@@ -51,17 +51,17 @@ function Header() {
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/category`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/categories`)
       .then((result) => result.json())
       .then((data) => {
         setCategories(data);
-      })
+      });
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/tag`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/tags`)
       .then((result) => result.json())
       .then((data) => {
         setTags(data);
-      })
+      });
   }, []);
 
   return (

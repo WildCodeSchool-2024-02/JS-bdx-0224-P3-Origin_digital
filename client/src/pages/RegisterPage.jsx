@@ -1,41 +1,6 @@
 import { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Subscription from "../components/Subscription";
-import sendData from "../services/api.service";
-
-const textLabel = [
-  {
-    type: "text",
-    id: "firstname",
-    for: "firstname",
-    text: "Prénom",
-  },
-  {
-    type: "text",
-    id: "lastname",
-    for: "lastname",
-    text: "Nom",
-  },
-  {
-    type: "email",
-    id: "email",
-    for: "email",
-    text: "Adresse mail",
-  },
-  {
-    type: "password",
-    id: "password",
-    for: "password",
-    text: "Mot de passe",
-  },
-];
-
-const siret = {
-  type: "text",
-  id: "siret",
-  for: "siret",
-  text: "N° de SIRET",
-};
 
 const emptyFields = {
   firstname: "",
@@ -45,38 +10,64 @@ const emptyFields = {
   siret: "",
 };
 
+const registerContent = {
+  title: "INSCRIPTION",
+  button: "CRÉER VOTRE COMPTE",
+  linkToLogin: "Déjà inscrit ? Connectez-vous",
+};
+
 function RegisterPage() {
-  const [fields, setFields] = useState(textLabel);
-  const [formValues, setFormValues] = useState(emptyFields);
-  const [password, setPassword] = useState("");
   const emailRef = useRef();
   const firstNameRef = useRef();
   const lastNameRef = useRef();
+  const siretRef = useRef();
+
+  const textLabel = [
+    {
+      type: "text",
+      id: "firstname",
+      for: "firstname",
+      text: "Prénom",
+      ref: firstNameRef,
+    },
+    {
+      type: "text",
+      id: "lastname",
+      for: "lastname",
+      text: "Nom",
+      ref: lastNameRef,
+    },
+    {
+      type: "email",
+      id: "email",
+      for: "email",
+      text: "Adresse mail",
+      ref: emailRef,
+    },
+    {
+      type: "password",
+      id: "password",
+      for: "password",
+      text: "Mot de passe",
+      ref: null,
+      pattern:
+        "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&])[A-Za-z0-9@$!%*#?&]{8,}$",
+    },
+  ];
+
+  const siret = {
+    type: "text",
+    id: "siret",
+    for: "siret",
+    text: "N° de SIRET",
+    ref: siretRef,
+  };
+
   const navigate = useNavigate();
   const path = useLocation();
-  const registerContent = {
-    title: "INSCRIPTION",
-    button: "CRÉER VOTRE COMPTE",
-    linkToConnection: "Déjà inscrit ? Connectez-vous",
-  };
-
+  const [formValues, setFormValues] = useState(emptyFields);
+  const [fields, setFields] = useState(textLabel);
   const url = path.pathname.substring(1);
-
-  const handleSubmitForm = async (event) => {
-    event.preventDefault();
-    const data = {
-      firstname: formValues.firstname,
-      lastname: formValues.lastname,
-      email: formValues.email,
-      password: formValues.password,
-      siret: formValues.siret,
-    };
-    const response = await sendData("/users", data, "POST");
-
-    if (response) {
-      navigate("/login");
-    }
-  };
 
   const handleClickProfile = (isProfessional) => {
     if (isProfessional) {
@@ -94,7 +85,6 @@ function RegisterPage() {
       [id]: value,
     });
   };
-
 
   const btnFormClass = "w-full h-full p-0 rounded-none cursor-pointer";
 
@@ -121,13 +111,10 @@ function RegisterPage() {
       customerButton={customerButton}
       professionalButton={professionalButton}
       generateFieldLabelClass={generateFieldLabelClass}
-      handleSubmitForm={handleSubmitForm}
       emailRef={emailRef}
       firstNameRef={firstNameRef}
       lastNameRef={lastNameRef}
       navigate={navigate}
-      setPassword={setPassword}
-      password={password}
       url={url}
       registerContent={registerContent}
     />

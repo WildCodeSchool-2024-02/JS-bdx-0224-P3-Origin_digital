@@ -115,7 +115,7 @@ function Navbar({
             {categories.map((category) => (
               <li
                 key={category.id}
-                className=" border-b border-gray-400 my-8 w-full w-1/4 lg:w-1/6"
+                className=" border-b border-gray-400 my-8 w-1/4 lg:w-1/6"
               >
                 <Link
                   to={`/category/${category.id}`}

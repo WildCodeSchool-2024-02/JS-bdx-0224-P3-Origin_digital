@@ -7,7 +7,7 @@ export default async function sendData(url, data, http) {
         },
         body: JSON.stringify(data),
       });
-      return response.json();
+      return response;
     } catch (error) {
       console.error("Erreur lors de l'envoi des données :", error);
       return null;

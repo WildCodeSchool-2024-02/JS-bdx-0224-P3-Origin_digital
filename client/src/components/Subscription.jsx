@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 import PropTypes from "prop-types";
 import fitnessImg from "../assets/images/training.jpg";
 import "../assets/styles/form.css";
@@ -12,9 +12,9 @@ function Subscription({
   professionalButton,
   generateFieldLabelClass,
   url,
-  handleSubmitForm,
-  connectionContent,
+  loginContent,
   registerContent,
+  actionData,
 }) {
   return (
     <section className="flex justify-center items-center gap-10 ">
@@ -47,45 +47,61 @@ function Subscription({
           </ul>
         )}
 
-        <form
+        <Form
           className="flex flex-col items-center w-full h-full px-4 border border-primary-color rounded-b-lg"
           method="POST"
+          action={url === "register" ? "/register" : "/login"}
         >
-          <h2 className="font-bold my-10">{url === "register" ? registerContent.title : connectionContent.title}</h2>
-          {fields.map((info) => (
-            <fieldset key={info.id} className="relative w-full pb-10">
+          <h2 className="font-bold my-10">
+            {url === "register" ? registerContent.title : loginContent.title}
+          </h2>
+          {fields.map((field) => (
+            <fieldset key={field.id} className="relative w-full pb-10">
               <input
-                type={info.type}
-                id={info.id}
-                name={info.text}
-                value={formValues[info.id]}
+                type={field.type}
+                id={field.id}
+                ref={field.ref}
+                name={field.id}
+                value={formValues[field.id]}
                 onChange={handleChangeInputValue}
-                className="peer border-b-2 border-dark-color py-1 focus:border-b-2 focus:border-primary-color transition-colors focus:outline-none bg-inherit w-full"
+                pattern={field.pattern}
+                required
+                className="peer border-b-2 border-dark-color py-1transition-colors bg-inherit w-full
+                 focus:border-primary-color focus:outline-none focus:border-b-2"
               />
               <label
-                htmlFor={info.id}
-                className={generateFieldLabelClass(info.id)}
+                htmlFor={field.id}
+                className={generateFieldLabelClass(field.id)}
               >
-                {info.text}
+                {field.text}
               </label>
             </fieldset>
           ))}
-          <button className="mb-2 md:mb-10" type="submit" onClick={handleSubmitForm}>
-          {url === "register" ? registerContent.button : connectionContent.button}
+          {url === "login" && actionData === 422 && (
+            <p className="text-red-500 font-medium text-sm mb-2 mt-[-0.5rem]">
+              Mot de passe / Email incorrect
+            </p>
+          )}
+          <button className="mb-2 md:mb-10" type="submit">
+            {url === "register" ? registerContent.button : loginContent.button}
           </button>
-          <Link to={url === "register" ? "/login" : "/register"} className="mb-10">
-          {url === "register" ? registerContent.linkToConnection : connectionContent.linkToRegister}
+          <Link
+            to={url === "register" ? "/login" : "/register"}
+            className="mb-10"
+          >
+            {url === "register"
+              ? registerContent.linkToLogin
+              : loginContent.linkToRegister}
           </Link>
-        </form>
+        </Form>
       </article>
     </section>
   );
 }
 
 Subscription.propTypes = {
-  handleClickProfile: PropTypes.func.isRequired,
+  handleClickProfile: PropTypes.func,
   handleChangeInputValue: PropTypes.func.isRequired,
-  handleSubmitForm: PropTypes.func.isRequired,
   fields: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -98,15 +114,18 @@ Subscription.propTypes = {
   professionalButton: PropTypes.string,
   generateFieldLabelClass: PropTypes.func.isRequired,
   url: PropTypes.string.isRequired,
-  connectionContent: PropTypes.shape(),
+  loginContent: PropTypes.shape(),
   registerContent: PropTypes.shape(),
+  actionData: PropTypes.number,
 };
 
 Subscription.defaultProps = {
+  handleClickProfile: () => {},
   customerButton: "",
   professionalButton: "",
-  connectionContent: {},
-  registerContent: {}
+  loginContent: {},
+  registerContent: {},
+  actionData: undefined,
 };
 
 export default Subscription;
