@@ -13,6 +13,10 @@ import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
 import sendData from "./services/api.service";
+// import { useCookie, CookieProvider } from "./context/CookieContext";
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -43,9 +47,11 @@ const router = createBrowserRouter([
         element: <LoginPage />,
         action: async ({ request }) => {
           const formData = Object.fromEntries(await request.formData());
+          // const {cookie, setCookie, removeCookie} = useCookie();
           const response = await sendData("/api/auth", formData, "POST");
           if (response.status === 200) {
-            return redirect("/register");
+            // setCookie("token", actionData.token, { path: "/" })
+            return redirect("/");
           }
           return response;
         },
@@ -66,6 +72,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    {/* <CookieProvider> */}
+      <RouterProvider router={router} />
+    {/* </CookieProvider> */}
   </React.StrictMode>
 );

@@ -116,7 +116,7 @@ Subscription.propTypes = {
   url: PropTypes.string.isRequired,
   loginContent: PropTypes.shape(),
   registerContent: PropTypes.shape(),
-  actionData: PropTypes.number,
+  actionData: PropTypes.shape(),
 };
 
 Subscription.defaultProps = {
