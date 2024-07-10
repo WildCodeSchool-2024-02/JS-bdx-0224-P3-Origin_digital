@@ -1,3 +1,4 @@
+import { CookiesProvider } from 'react-cookie';
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -13,7 +14,6 @@ import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
 import sendData from "./services/api.service";
-// import { useCookie, CookieProvider } from "./context/CookieContext";
 
 
 
@@ -47,11 +47,9 @@ const router = createBrowserRouter([
         element: <LoginPage />,
         action: async ({ request }) => {
           const formData = Object.fromEntries(await request.formData());
-          // const {cookie, setCookie, removeCookie} = useCookie();
           const response = await sendData("/api/auth", formData, "POST");
           if (response.status === 200) {
-            // setCookie("token", actionData.token, { path: "/" })
-            return redirect("/");
+            return response;
           }
           return response;
         },
@@ -72,8 +70,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    {/* <CookieProvider> */}
+    <CookiesProvider defaultSetOptions={{ path: '/' }}>
       <RouterProvider router={router} />
-    {/* </CookieProvider> */}
+    </CookiesProvider>
   </React.StrictMode>
 );
