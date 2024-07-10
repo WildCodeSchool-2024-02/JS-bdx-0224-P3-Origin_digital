@@ -3,10 +3,10 @@ const express = require("express");
 const router = express.Router();
 const userCheckRole = require("../../../services/middlewares/userCheckRole");
 const user = require("../../../controllers/userActions");
+const { hashPassword } = require("../../../services/middlewares/hashing");
 const {
-  hashPassword,
   verifyToken,
-} = require("../../../services/middlewares/auth");
+} = require("../../../services/middlewares/tokenVerification");
 const validateUser = require("../../../services/middlewares/validateUser");
 
 router.get("/", user.browse);

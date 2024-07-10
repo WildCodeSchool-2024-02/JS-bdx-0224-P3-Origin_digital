@@ -31,7 +31,7 @@ const router = createBrowserRouter([
         element: <RegisterPage />,
         action: async ({ request }) => {
           const formData = Object.fromEntries(await request.formData());
-          const response = await sendData("/api/user", formData, "POST");
+          const response = await sendData("/api/users", formData, "POST");
           if (response.status === 201) {
             return redirect("/login");
           }

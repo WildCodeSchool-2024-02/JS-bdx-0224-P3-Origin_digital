@@ -6,7 +6,7 @@ export default function RegisterSection() {
       <img
         src="./src/assets/images/yoga.jpg"
         alt=""
-        className="img-shadow h-72 w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] rounded-xl lg:ml-[10vw] mt-10"
+        className="img-shadow w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] rounded-xl lg:ml-[10vw] mt-10"
       />
       <h2
         id="WhySubscribe"

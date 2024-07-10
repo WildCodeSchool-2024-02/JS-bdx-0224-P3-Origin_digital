@@ -2,7 +2,7 @@ const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
 const tables = require("../../database/tables");
 
-const login = async (req, res, next) => {
+const login = async (req, res) => {
   try {
     const user = await tables.user.readByEmail(req.body.email);
     if (user == null) {
@@ -22,15 +22,12 @@ const login = async (req, res, next) => {
         }
       );
 
-      res.json({
-        token,
-        user,
-      });
+      res.json({ token });
     } else {
       res.sendStatus(422);
     }
   } catch (err) {
-    next(err);
+    console.error(err);
   }
 };
 
