@@ -13,6 +13,7 @@ import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
 import sendData from "./services/api.service";
+import MyAccount from "./pages/MyAccount";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <ContactPage />,
       },
+      {
+        path: "/account",
+        element: <MyAccount />
+      }
     ],
   },
 ]);

@@ -54,7 +54,7 @@ function Navbar({
           </li>
           <li>
             <Link
-              to="/"
+              to="/account"
               onClick={closeMenu}
               className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
             >
