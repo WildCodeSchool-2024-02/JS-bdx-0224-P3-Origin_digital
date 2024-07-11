@@ -1,9 +1,9 @@
+import { CookiesProvider } from 'react-cookie';
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  redirect,
 } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/HomePage";
@@ -13,6 +13,9 @@ import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
 import sendData from "./services/api.service";
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -32,9 +35,6 @@ const router = createBrowserRouter([
         action: async ({ request }) => {
           const formData = Object.fromEntries(await request.formData());
           const response = await sendData("/api/users", formData, "POST");
-          if (response.status === 201) {
-            return redirect("/login");
-          }
           return response;
         },
       },
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
           const formData = Object.fromEntries(await request.formData());
           const response = await sendData("/api/auth", formData, "POST");
           if (response.status === 200) {
-            return redirect("/register");
+            return response;
           }
           return response;
         },
@@ -66,6 +66,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <CookiesProvider defaultSetOptions={{ path: '/' }}>
+      <RouterProvider router={router} />
+    </CookiesProvider>
   </React.StrictMode>
 );
