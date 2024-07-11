@@ -4,7 +4,6 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  redirect,
 } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/HomePage";
@@ -36,9 +35,6 @@ const router = createBrowserRouter([
         action: async ({ request }) => {
           const formData = Object.fromEntries(await request.formData());
           const response = await sendData("/api/users", formData, "POST");
-          if (response.status === 201) {
-            return redirect("/login");
-          }
           return response;
         },
       },

@@ -24,7 +24,7 @@ function LoginPage() {
 
   useEffect(()=> {
     if(actionData && actionData.token) {
-      setCookie("jwt", actionData.token, {path: "/"})
+      setCookie("jwt", actionData.token)
       navigate("/")
     }
   }, [actionData, setCookie, navigate])
