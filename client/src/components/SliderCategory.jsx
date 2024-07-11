@@ -10,27 +10,27 @@ const sportList = [
   {
     id: 1,
     image: image1,
-    name: "Fitness",
+    title: "Fitness",
   },
   {
     id: 2,
     image: image2,
-    name: "Musculation",
+    title: "Musculation",
   },
   {
     id: 3,
     image: image3,
-    name: "Pilates",
+    title: "Pilates",
   },
   {
     id: 4,
     image: image4,
-    name: "Yoga",
+    title: "Yoga",
   },
   {
     id: 5,
     image: image5,
-    name: "Nutrition",
+    title: "Nutrition",
   },
 ];
 

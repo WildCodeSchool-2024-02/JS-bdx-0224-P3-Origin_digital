@@ -23,6 +23,7 @@ class CategoryRepository extends AbstractRepository {
         SELECT video.id AS video_id,
                video.title,
                video.img_url,
+               video.access,
                video_tag.tag_id
         FROM video
         JOIN video_tag ON video.id = video_tag.video_id
@@ -38,7 +39,8 @@ class CategoryRepository extends AbstractRepository {
                            JSON_OBJECT(
                               'id', TagVideos.video_id,
                               'title', TagVideos.title,
-                              'image', TagVideos.img_url
+                              'image', TagVideos.img_url,
+                              'access', TagVideos.access
                             )
                          )
                   FROM TagVideos
