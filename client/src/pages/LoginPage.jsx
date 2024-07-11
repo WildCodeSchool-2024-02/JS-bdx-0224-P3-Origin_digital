@@ -1,6 +1,5 @@
-import { useCookies } from "react-cookie";
-import { useActionData, useLocation, useNavigate } from "react-router-dom";
-import { useRef, useState, useEffect } from "react";
+import { useActionData, useLocation } from "react-router-dom";
+import { useRef, useState } from "react";
 import Subscription from "../components/Subscription";
 
 const loginContent = {
@@ -18,16 +17,6 @@ function LoginPage() {
   const url = path.pathname.substring(1);
   const emailRef = useRef();
   const actionData = useActionData();
-  const navigate = useNavigate();
-  const [, setCookie ] = useCookies();
- 
-
-  useEffect(()=> {
-    if(actionData && actionData.token) {
-      setCookie("jwt", actionData.token)
-      navigate("/")
-    }
-  }, [actionData, setCookie, navigate])
 
   const fields = [
     {
