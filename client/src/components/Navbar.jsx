@@ -1,6 +1,8 @@
- import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { useContext } from "react";
+import LoggedContext from "../context/LoggedContext";
 import logoSrc from "../assets/images/LogoSweatStream.png";
 import arrowSrc from "../assets/images/objectiveArrow.png";
 
@@ -17,6 +19,8 @@ function Navbar({
   categories,
   tags,
 }) {
+  const { isLogged, handleLogout } = useContext(LoggedContext);
+
 
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
@@ -64,23 +68,29 @@ function Navbar({
           </li>
         </ul>
       </nav>
-      <button
-        className={`${subscribeStyle} bg-white border-8 border-indigo-500`}
-        type="button"
-      >
-        {" "}
-        <Link
-          to="/register"
-          className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
-        >
-          Inscription
-        </Link>
-      </button>
-      <button className={subscribeStyle} type="button">
-        <Link to="/login" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base ">
-          Connexion
-        </Link>
-      </button>
+      {isLogged ? (
+        <button className={subscribeStyle} type="button" onClick={handleLogout}>
+          <Link to="/" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base">
+            Déconnexion
+          </Link>
+        </button>
+      ) : (
+        <>
+          <button className={`${subscribeStyle} bg-white border-8 border-indigo-500`} type="button">
+            <Link
+              to="/register"
+              className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
+            >
+              Inscription
+            </Link>
+          </button>
+          <button className={subscribeStyle} type="button">
+            <Link to="/login" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base ">
+              Connexion
+            </Link>
+          </button>
+        </>
+      )}
       <button
         type="button"
         onClick={handleClickMobileMenu}
@@ -159,15 +169,14 @@ Navbar.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-    })).isRequired,
+    })
+  ).isRequired,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-    })).isRequired,
+    })
+  ).isRequired,
 };
 
 export default Navbar;
-
-
-
