@@ -1,4 +1,4 @@
-import Slider from "./Slider"
+import Slider from "./Slider";
 
 import image1 from "../assets/images/musculation.jpg";
 import image2 from "../assets/images/yoga.jpg";
@@ -8,31 +8,34 @@ import image5 from "../assets/images/training.jpg";
 
 const sportList = [
   {
-    imgSrc: image1,
-    name: "Musculation",
+    id: 1,
+    image: image1,
+    title: "Fitness",
   },
   {
-    imgSrc: image2,
-    name: "Yoga",
+    id: 2,
+    image: image2,
+    title: "Musculation",
   },
   {
-    imgSrc: image3,
-    name: "Nutrition",
+    id: 3,
+    image: image3,
+    title: "Pilates",
   },
   {
-    imgSrc: image4,
-    name: "Pilates",
+    id: 4,
+    image: image4,
+    title: "Yoga",
   },
   {
-    imgSrc: image5,
-    name: "Fitness",
+    id: 5,
+    image: image5,
+    title: "Nutrition",
   },
 ];
 
 function SliderCategory() {
-  return <Slider 
-  sportList={sportList}
-  />
+  return <Slider resourceList={sportList} resourcePath="category" />;
 }
 
-export default SliderCategory
+export default SliderCategory;

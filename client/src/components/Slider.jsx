@@ -7,9 +7,12 @@ import "../assets/styles/slider.css";
 import { Navigation, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import locker from "../assets/images/locker.png";
+import LoggedContext from "../context/LoggedContext";
 
-
-export default function Slider({ sportList }) {
+export default function Slider({ resourceList, resourcePath }) {
+  const { isLogged } = useContext(LoggedContext);
   return (
     <Swiper
       spaceBetween={30}
@@ -19,31 +22,56 @@ export default function Slider({ sportList }) {
       modules={[Navigation, Pagination]}
       breakpoints={{
         320: {
+          slidesPerView: 1,
+          spaceBetween: 8,
+        },
+        640: {
           slidesPerView: 2,
-          spaceBetween: 10,
+          spaceBetween: 16,
         },
         768: {
           slidesPerView: 3,
-          spaceBetween: 20,
+          spaceBetween: 24,
         },
         1024: {
           slidesPerView: 4,
-          spaceBetween: 30,
+          spaceBetween: 32,
         },
       }}
     >
-      {sportList.map((sport) => (
-        <SwiperSlide key={sport.name}>
+      {resourceList.map((resource) => (
+        <SwiperSlide key={resource.id}>
           <Link
-            to="/category"
+            to={
+              (resource.access === "subscription" &&
+                isLogged &&
+                `/${resourcePath}/${resource.id}`) ||
+              (resource.access !== "subscription" &&
+                `/${resourcePath}/${resource.id}`) ||
+              (resource.access === "subscription" && !isLogged && null)
+            }
             className="flex flex-col text-center text-dark-color"
           >
-            <img
-              src={sport.imgSrc}
-              alt={sport.name}
-              className="img-shadow w-[calc(100%-15px)] mr-auto rounded-xl mb-4 h-60 object-cover"
-            />
-            {sport.name}
+            <figure className=" relative group img-shadow w-[calc(100%-15px)] mr-auto rounded-xl  mb-4 h-60 object-cover">
+              <img
+                src={resource.image}
+                alt={resource.name}
+                className="w-full h-full rounded-xl object-cover"
+              />
+              {isLogged || resource.acces === "free" ? (
+                <figcaption
+                  className="bg-gradient-custom text-light-color h-full w-full px-2 pb-2 absolute top-0 flex items-end justify-center opacity-0 
+            transition-opacity duration-300 rounded-xl group-hover:opacity-100"
+                >
+                  {resource.description.substring(1, 50)}
+                </figcaption>
+              ) : (
+                <figcaption className="bg-gradient-light text-light-color h-full w-full px-2 pb-2 absolute top-0 flex items-center justify-center">
+                  <img src={locker} alt="video verrouillée" />
+                </figcaption>
+              )}
+            </figure>
+            {resource.title}
           </Link>
         </SwiperSlide>
       ))}
@@ -52,10 +80,12 @@ export default function Slider({ sportList }) {
 }
 
 Slider.propTypes = {
-  sportList: PropTypes.arrayOf(
+  resourceList: PropTypes.arrayOf(
     PropTypes.shape({
-      imgSrc: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
     })
   ).isRequired,
+  resourcePath: PropTypes.string.isRequired,
 };

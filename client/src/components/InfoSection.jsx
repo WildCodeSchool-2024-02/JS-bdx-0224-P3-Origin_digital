@@ -4,7 +4,7 @@ export default function InfoSection() {
       <img
         src="./src/assets/images/musculation.jpg"
         alt=""
-        className="img-shadow h-72 w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] justify-self-center rounded-xl lg:ml-[60vw] lg:mt-[-15%]"
+        className="img-shadow h-72 w-[calc(90%-15px)] mx-auto max-w-[450px] justify-self-center rounded-xl lg:ml-[60vw] lg:mt-[-15%]"
       />
       <h2 className="text-center lg:text-left place-self-end mt-10 lg:relative lg:top-[-40vh] lg:ml-[10vw]">
         L'offre

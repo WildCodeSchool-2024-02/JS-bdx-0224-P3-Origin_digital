@@ -20,7 +20,8 @@ export default function RegisterSection() {
       <Link
         to="/register"
         className="text-[var(--lightColor)] text-xl bg-[var(--primaryColor)] p-2 text-center visited:text-[var(--lightColor)] 
-        hover:bg-[var(--primaryDark)] rounded-xl flex item-center justify-end mx-[auto] mb-10 w-40 md:text-left lg:p-4 lg:w-56 lg:text-2xl lg:gap-6 lg:ml-[60vw] lg:mt-8 lg:relative lg:top-[-40vh]"
+        hover:bg-[var(--primaryDark)] rounded-xl flex item-center justify-end mx-[auto] mb-10 w-40 md:text-left lg:p-4 lg:w-56 lg:text-2xl 
+        lg:gap-6 lg:ml-[60vw] lg:mt-8 lg:relative lg:top-[-40vh]"
       >
         <img
           src="./src/assets/images/logoPlay.png"
