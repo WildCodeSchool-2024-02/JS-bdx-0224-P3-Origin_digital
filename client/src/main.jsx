@@ -9,6 +9,7 @@ import RegisterPage from "./pages/RegisterPage";
 import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
+import Dashboard from "./pages/Dashboard"
 import sendData from "./services/api.service";
 
 const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },
