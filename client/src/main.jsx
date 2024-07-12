@@ -10,6 +10,7 @@ import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
 import {sendData, getData} from "./services/api.service";
+import Dashboard from "./pages/Dashboard"
 import { LoggedProvider } from "./context/LoggedContext";
 
 const router = createBrowserRouter([
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },
