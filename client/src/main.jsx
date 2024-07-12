@@ -1,13 +1,15 @@
+import { CookiesProvider } from "react-cookie";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/HomePage";
 import CategoryPage from "./pages/CategoryPage";
-import SubscriptionPage from "./pages/SubscriptionPage";
+import RegisterPage from "./pages/RegisterPage";
 import Viewing from "./pages/ViewingPage";
-import SignInPage from "./pages/SignInPage";
-import categoryFetch from "./services/loader";
+import LoginPage from "./pages/LoginPage";
+import ContactPage from "./pages/ContactPage";
+import {sendData, getData} from "./services/api.service";
 
 const router = createBrowserRouter([
   {
@@ -20,19 +22,37 @@ const router = createBrowserRouter([
       {
         path: "/category/:id",
         element: <CategoryPage />,
-        loader: (req) => categoryFetch(req.params.id),
+        loader: (req) => getData(`/api/categories/${req.params.id}`),
       },
       {
-        path: "/subscription",
-        element: <SubscriptionPage />,
+        path: "/register",
+        element: <RegisterPage />,
+        action: async ({ request }) => {
+          const formData = Object.fromEntries(await request.formData());
+          const response = await sendData("/api/users", formData, "POST");
+          if (response.status === 201) {
+            return redirect("/login");
+          }
+          return response;
+        },
       },
       {
-        path: "/signin",
-        element: <SignInPage />,
+        path: "/login",
+        element: <LoginPage />,
+        action: async ({ request }) => {
+          const formData = Object.fromEntries(await request.formData());
+          const response = await sendData("/api/auth", formData, "POST");
+          return response;
+        },
+        
       },
       {
         path: "/viewing",
         element: <Viewing />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
     ],
   },
@@ -42,6 +62,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <CookiesProvider defaultSetOptions={{ path: "/" }}>
+      <RouterProvider router={router} />
+    </CookiesProvider>
   </React.StrictMode>
 );

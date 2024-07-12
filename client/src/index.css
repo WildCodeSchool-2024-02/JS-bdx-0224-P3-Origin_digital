@@ -93,7 +93,7 @@ li {
 }
 
 button {
-  height: 2.5rem;
+  height: 2rem;
   padding: 0.5rem 1rem;
   text-align: center;
   border-radius: 15px;
@@ -171,6 +171,9 @@ a {
 
   footer {
     padding: 1rem 3rem;
+  }
+  button {
+    height: 2.5rem;
   }
 }
 

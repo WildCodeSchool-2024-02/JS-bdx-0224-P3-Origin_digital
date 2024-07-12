@@ -40,7 +40,7 @@ class VideoRepository extends AbstractRepository {
 
   async create(video) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (title, description, uplaod_date, duration, video_url, preview_url, category_id, user_id) VALUES (?)`,
+      `INSERT INTO ${this.table} (title, description, uplaod_date, duration, video_url, preview_url, category_id, user_id) VALUES (?,?,?,?,?,?,?,?)`,
       [
         video.title,
         video.description,

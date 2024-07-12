@@ -24,6 +24,7 @@ class CategoryRepository extends AbstractRepository {
                video.title,
                video.img_url,
                video.access,
+               video.description,
                video_tag.tag_id
         FROM video
         JOIN video_tag ON video.id = video_tag.video_id
@@ -40,7 +41,8 @@ class CategoryRepository extends AbstractRepository {
                               'id', TagVideos.video_id,
                               'title', TagVideos.title,
                               'image', TagVideos.img_url,
-                              'access', TagVideos.access
+                              'access', TagVideos.access,
+                              'description', TagVideos.description
                             )
                          )
                   FROM TagVideos

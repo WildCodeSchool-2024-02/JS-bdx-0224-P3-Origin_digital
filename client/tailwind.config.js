@@ -27,16 +27,17 @@ export default {
     plugin(({ addComponents }) => {
       const components = {
         ".line-burger": {
-          "@apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200 bg-gray-600": {},
+          "@apply block absolute h-1 w-full rounded-full opacity-100 left-0 transform rotate-0 transition ease-in-out duration-200 bg-gray-600":
+            {},
         },
         "button.active .line-burger:first-child": {
-          "@apply transform rotate-45 top-0 left-1.5": {},
+          "@apply transform rotate-45 top-0 left-2": {},
         },
         "button.active .line-burger:nth-child(2)": {
           "@apply w-0 opacity-0": {},
         },
         "button.active .line-burger:last-child": {
-          "@apply transform -rotate-45 top-8 left-1.5": {},
+          "@apply transform -rotate-45 top-7 left-2": {},
         },
         ".footer-list": {
           "@apply text-[var(--darkColor)]": {},
@@ -45,10 +46,21 @@ export default {
           "@apply shadow-custom-shadow": {},
         },
         ".containBtnForm": {
-          "@apply font-bold h-full m-0 flex-1 flex justify-center items-center": {},
-        }
+          "@apply font-bold h-full m-0 flex-1 flex justify-center items-center":
+            {},
+        },
+        ".tagsViewing": {
+          "@apply mx-1 py-1 px-6 text-xl bg-primary-color border-2 border-dark-color rounded-full text-dark-color font-bold capitalize hover:text-light-color hover:border-light-color hover:bg-primary-dark hover:ring-2 hover:ring-primary-dark":
+            {},
+        },
+        ".inputContact": {
+          "@apply rounded-lg m-2 p-4": {},
+        },
+        ".labelContact": {
+          "@apply rounded-lg m-2 p-4 h-7 justify-self-center text-base": {},
+        },
       };
       addComponents(components);
-    }),    
+    }),
   ],
 };

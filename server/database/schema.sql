@@ -11,6 +11,7 @@ CREATE TABLE user (
     firstname VARCHAR(100) NOT NULL,
     lastname VARCHAR(100) NOT NULL,
     role_id INT UNSIGNED NOT NULL,
+    siret VARCHAR(100) NULL,
     FOREIGN KEY (role_id) REFERENCES role(id)
 );
 
