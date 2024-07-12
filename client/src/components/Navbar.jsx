@@ -1,4 +1,4 @@
- import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import logoSrc from "../assets/images/LogoSweatStream.png";
@@ -16,6 +16,8 @@ function Navbar({
   objectiveSectionClasses,
   categories,
   tags,
+  handleLogout,
+  isLogged
 }) {
 
   return (
@@ -64,23 +66,29 @@ function Navbar({
           </li>
         </ul>
       </nav>
-      <button
-        className={`${subscribeStyle} bg-white border-8 border-indigo-500`}
-        type="button"
-      >
-        {" "}
-        <Link
-          to="/register"
-          className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
-        >
-          Inscription
-        </Link>
-      </button>
-      <button className={subscribeStyle} type="button">
-        <Link to="/login" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base ">
-          Connexion
-        </Link>
-      </button>
+      {isLogged ? (
+        <button className={subscribeStyle} type="button" onClick={handleLogout}>
+          <Link to="/" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base">
+            Déconnexion
+          </Link>
+        </button>
+      ) : (
+        <>
+          <button className={`${subscribeStyle} bg-white border-8 border-indigo-500`} type="button">
+            <Link
+              to="/register"
+              className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
+            >
+              Inscription
+            </Link>
+          </button>
+          <button className={subscribeStyle} type="button">
+            <Link to="/login" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base ">
+              Connexion
+            </Link>
+          </button>
+        </>
+      )}
       <button
         type="button"
         onClick={handleClickMobileMenu}
@@ -159,15 +167,16 @@ Navbar.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-    })).isRequired,
+    })
+  ).isRequired,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-    })).isRequired,
+    })
+  ).isRequired,
+  handleLogout: PropTypes.func.isRequired,
+  isLogged: PropTypes.func.isRequired
 };
 
 export default Navbar;
-
-
-
