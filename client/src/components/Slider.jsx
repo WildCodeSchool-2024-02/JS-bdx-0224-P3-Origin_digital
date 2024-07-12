@@ -8,9 +8,11 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useContext } from "react";
+import locker from "../assets/images/locker.png";
+import LoggedContext from "../context/LoggedContext";
 
 export default function Slider({ resourceList, resourcePath }) {
-  const { isLogged } = useContext();
+  const { isLogged } = useContext(LoggedContext);
   return (
     <Swiper
       spaceBetween={30}
@@ -65,10 +67,7 @@ export default function Slider({ resourceList, resourcePath }) {
                 </figcaption>
               ) : (
                 <figcaption className="bg-gradient-light text-light-color h-full w-full px-2 pb-2 absolute top-0 flex items-center justify-center">
-                  <img
-                    src="../src/assets/images/locker.png"
-                    alt="video verrouiller"
-                  />
+                  <img src={locker} alt="video verrouiller" />
                 </figcaption>
               )}
             </figure>

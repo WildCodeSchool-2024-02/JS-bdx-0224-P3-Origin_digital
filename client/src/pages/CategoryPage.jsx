@@ -3,7 +3,6 @@ import Slider from "../components/Slider";
 
 function CategoryPage() {
   const category = useLoaderData();
-  console.info(category);
 
   return (
     <main className="w-full px-4 py-8 mb:py-10 mb:px-6 lg:px-8 lg:py-14">

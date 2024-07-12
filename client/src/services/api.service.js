@@ -9,8 +9,7 @@ export async function sendData(url, data, http) {
     });
     return response;
   } catch (error) {
-    console.error("Erreur lors de l'envoi des données :", error);
-    return null;
+    return error;
   }
 }
 
@@ -24,7 +23,6 @@ export async function getData(url) {
     });
     return response;
   } catch (error) {
-    console.error("Erreur lors de l'envoi des données :", error);
-    return null;
+    return error;
   }
 }
