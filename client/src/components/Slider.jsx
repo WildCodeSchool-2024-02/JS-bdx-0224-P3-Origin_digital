@@ -67,7 +67,7 @@ export default function Slider({ resourceList, resourcePath }) {
                 </figcaption>
               ) : (
                 <figcaption className="bg-gradient-light text-light-color h-full w-full px-2 pb-2 absolute top-0 flex items-center justify-center">
-                  <img src={locker} alt="video verrouiller" />
+                  <img src={locker} alt="video verrouillée" />
                 </figcaption>
               )}
             </figure>
