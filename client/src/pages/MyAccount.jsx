@@ -1,17 +1,8 @@
-// import { useEffect, useState } from "react"
+
 
 
 function MyAccount() {
-//     const [informationUser, setInformationUser] = useState([]);
 
-//     useEffect(() => {
-//         fetch(`${import.meta.env.VITE_API_URL}/api/user`)
-//         .then((result) => result.json())
-//         .then((data) => {
-//             setInformationUser(data);
-//         });
-//     }, []);
-// console.log(informationUser)
 
   return (
     <>

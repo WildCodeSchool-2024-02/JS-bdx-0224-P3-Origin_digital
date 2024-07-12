@@ -11,6 +11,8 @@ import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
 import sendData from "./services/api.service";
 import MyAccount from "./pages/MyAccount";
+import { LoggedProvider } from "./context/LoggedContext";
+
 
 const router = createBrowserRouter([
   {
@@ -67,7 +69,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <CookiesProvider defaultSetOptions={{ path: "/" }}>
-      <RouterProvider router={router} />
+      <LoggedProvider>
+        <RouterProvider router={router} />
+      </LoggedProvider>
     </CookiesProvider>
   </React.StrictMode>
 );

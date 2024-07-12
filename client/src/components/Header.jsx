@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 
+
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isObjectivesMenuOpen, setIsObjectivesMenuOpen] = useState(false);
+
 
   const closeMenu = () => {
     setIsMobileMenuOpen(false);
@@ -12,6 +14,7 @@ function Header() {
 
   const handleClickMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsObjectivesMenuOpen(false);
   };
 
   const handleClickObjectivesMenu = () => {
@@ -39,7 +42,7 @@ function Header() {
     flex flex-col justify-around items-center 
     transform translate-x-[100vw] transition-all duration-300 text-center fixed inset-0
     lg:bg-[var(--secondaryColor)] lg:static lg:max-h-12 lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none 
-    ${isMobileMenuOpen ? "opacity-100 transform translate-x-[0vw]" : ""}`;
+    ${isMobileMenuOpen ? "opacity-100 transform -translate-x-[0vw]" : ""}`;
 
   const objectivesButtonClasses = `font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline bg-transparent 
     hover:bg-transparent hover:text-[var(--darkColor)] 
@@ -77,7 +80,7 @@ function Header() {
       subscribeStyle={subscribeStyle}
       categories={categories}
       tags={tags}
-    />
+       />
   );
 }
 
