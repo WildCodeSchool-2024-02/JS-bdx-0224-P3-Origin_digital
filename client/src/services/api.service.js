@@ -13,3 +13,5 @@ export default async function sendData(url, data, http) {
       return null;
     }
   }
+
+  

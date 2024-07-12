@@ -17,12 +17,13 @@ function Navbar({
   categories,
   tags,
 }) {
+
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
-      <nav className="grid grid-cols-2 items-center w-full h-[4.5rem] px-4 lg:px-8  lg:flex">
+      <nav className="items-center w-full h-[4.5rem] px-2 lg:px-8 flex">
         <Link to="/">
           <img
-            className="~w-[400px]/[550px] "
+            className="~w-[300px]/[450px]"
             src={logoSrc}
             alt="retour à l'accueil"
           />
@@ -70,13 +71,13 @@ function Navbar({
         {" "}
         <Link
           to="/register"
-          className="text-[var(--darkColor)] hover:text-white"
+          className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
         >
           Inscription
         </Link>
       </button>
       <button className={subscribeStyle} type="button">
-        <Link to="/login" className="text-[var(--darkColor)] hover:text-white">
+        <Link to="/login" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base ">
           Connexion
         </Link>
       </button>
