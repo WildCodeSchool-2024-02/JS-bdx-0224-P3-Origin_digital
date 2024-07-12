@@ -10,6 +10,7 @@ import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
 import {sendData, getData} from "./services/api.service";
+import { LoggedProvider } from "./context/LoggedContext";
 
 const router = createBrowserRouter([
   {
@@ -63,7 +64,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <CookiesProvider defaultSetOptions={{ path: "/" }}>
-      <RouterProvider router={router} />
+      <LoggedProvider>
+        <RouterProvider router={router} />
+      </LoggedProvider>
     </CookiesProvider>
   </React.StrictMode>
 );
