@@ -9,7 +9,7 @@ const loginContent = {
   linkToRegister: "Pas de compte ? Inscrivez-vous",
 };
 
-function LoginPage() {
+function LoginPage( ) {
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -23,10 +23,13 @@ function LoginPage() {
 
   useEffect(()=> {
     if(actionData && actionData.token) {
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 7);
       setCookie("jwt", actionData.token)
       navigate("/")
     }
   }, [actionData, setCookie, navigate])
+  
 
   const fields = [
     {
