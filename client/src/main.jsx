@@ -1,10 +1,7 @@
-import { CookiesProvider } from 'react-cookie';
+import { CookiesProvider } from "react-cookie";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/HomePage";
 import Category from "./pages/CategoryPage";
@@ -13,9 +10,6 @@ import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
 import sendData from "./services/api.service";
-
-
-
 
 const router = createBrowserRouter([
   {
@@ -35,6 +29,9 @@ const router = createBrowserRouter([
         action: async ({ request }) => {
           const formData = Object.fromEntries(await request.formData());
           const response = await sendData("/api/users", formData, "POST");
+          if (response.status === 201) {
+            return redirect("/login");
+          }
           return response;
         },
       },
@@ -44,11 +41,9 @@ const router = createBrowserRouter([
         action: async ({ request }) => {
           const formData = Object.fromEntries(await request.formData());
           const response = await sendData("/api/auth", formData, "POST");
-          if (response.status === 200) {
-            return response;
-          }
           return response;
         },
+        
       },
       {
         path: "/viewing",
@@ -66,7 +61,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <CookiesProvider defaultSetOptions={{ path: '/' }}>
+    <CookiesProvider defaultSetOptions={{ path: "/" }}>
       <RouterProvider router={router} />
     </CookiesProvider>
   </React.StrictMode>
