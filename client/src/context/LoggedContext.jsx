@@ -5,7 +5,7 @@ import { useCookies } from 'react-cookie';
 const LoggedContext = createContext();
 
 export function LoggedProvider({ children }) {
-  const [cookies, removeCookie] = useCookies(['jwt']);
+  const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
@@ -14,10 +14,10 @@ export function LoggedProvider({ children }) {
     } else {
       setIsLogged(false);
     }
-  }, [cookies]);
+  }, [cookies, setCookie]);
 
   const handleLogout = () => {
-    removeCookie('jwt', { path: '/' });
+    removeCookie('jwt');
     setIsLogged(false);
   };
 
