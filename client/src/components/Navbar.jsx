@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { useContext } from "react";
+import LoggedContext from "../context/LoggedContext";
 import logoSrc from "../assets/images/LogoSweatStream.png";
 import arrowSrc from "../assets/images/objectiveArrow.png";
 
@@ -16,9 +18,9 @@ function Navbar({
   objectiveSectionClasses,
   categories,
   tags,
-  handleLogout,
-  isLogged
 }) {
+  const { isLogged, handleLogout } = useContext(LoggedContext);
+
 
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
@@ -175,8 +177,6 @@ Navbar.propTypes = {
       name: PropTypes.string.isRequired,
     })
   ).isRequired,
-  handleLogout: PropTypes.func.isRequired,
-  isLogged: PropTypes.func.isRequired
 };
 
 export default Navbar;
