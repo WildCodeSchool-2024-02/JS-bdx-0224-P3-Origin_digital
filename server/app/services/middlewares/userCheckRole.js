@@ -4,6 +4,7 @@ const userCheckRole = (req,res,next) => {
       next();
     } else {
       req.body.roleId = 2;
+      req.body.siret = "";
       next();
     }
 }
