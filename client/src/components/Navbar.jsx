@@ -21,7 +21,6 @@ function Navbar({
 }) {
   const { isLogged, handleLogout } = useContext(LoggedContext);
 
-
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
       <nav className="items-center w-full h-[4.5rem] px-2 lg:px-8 flex">
@@ -57,26 +56,44 @@ function Navbar({
               Pourquoi s'abonner ?
             </HashLink>
           </li>
-          <li>
-            <Link
-              to="/account"
-              onClick={closeMenu}
-              className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
-            >
-              Mon espace
-            </Link>
-          </li>
+          {isLogged ? (
+            <li>
+              <Link
+                to="/account"
+                onClick={closeMenu}
+                className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
+              >
+                Mon espace
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link
+                to="/login"
+                onClick={closeMenu}
+                className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
+              >
+                Mon espace
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
       {isLogged ? (
         <button className={subscribeStyle} type="button" onClick={handleLogout}>
-          <Link to="/" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base">
+          <Link
+            to="/"
+            className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
+          >
             Déconnexion
           </Link>
         </button>
       ) : (
         <>
-          <button className={`${subscribeStyle} bg-white border-8 border-indigo-500`} type="button">
+          <button
+            className={`${subscribeStyle} bg-white border-8 border-indigo-500`}
+            type="button"
+          >
             <Link
               to="/register"
               className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
@@ -85,7 +102,10 @@ function Navbar({
             </Link>
           </button>
           <button className={subscribeStyle} type="button">
-            <Link to="/login" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base ">
+            <Link
+              to="/login"
+              className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base "
+            >
               Connexion
             </Link>
           </button>
