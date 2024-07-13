@@ -43,6 +43,24 @@
   top: 110px;
 }
 
+.bg-gradient-dark {
+  background: linear-gradient(
+    180deg,
+    #35353526 0%,
+    #3535358b 50%,
+    #353535c4 75%
+  );
+}
+
+.bg-gradient-light {
+  background: linear-gradient(
+    180deg,
+    #fdfdfd26 0%,
+    #fdfdfd8b 50%,
+    #fdfdfdc4 75%
+  );
+}
+
 @media screen and (min-width: 992px) {
   .swiper-pagination-bullet {
     width: 0.8rem;

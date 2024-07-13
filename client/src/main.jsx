@@ -1,18 +1,22 @@
 import { CookiesProvider } from "react-cookie";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+} from "react-router-dom";
 import App from "./App";
 import Home from "./pages/HomePage";
-import Category from "./pages/CategoryPage";
+import CategoryPage from "./pages/CategoryPage";
 import RegisterPage from "./pages/RegisterPage";
 import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
-import sendData from "./services/api.service";
-import MyAccount from "./pages/MyAccount";
+import { sendData, getData } from "./services/api.service";
+import Dashboard from "./pages/Dashboard";
+import MyAccount from "./pages/MyAccount"
 import { LoggedProvider } from "./context/LoggedContext";
-
 
 const router = createBrowserRouter([
   {
@@ -23,8 +27,9 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/category",
-        element: <Category />,
+        path: "/category/:id",
+        element: <CategoryPage />,
+        loader: (req) => getData(`/api/categories/${req.params.id}`),
       },
       {
         path: "/register",
@@ -46,7 +51,6 @@ const router = createBrowserRouter([
           const response = await sendData("/api/auth", formData, "POST");
           return response;
         },
-        
       },
       {
         path: "/viewing",
@@ -58,8 +62,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/account",
-        element: <MyAccount />
-      }
+        element: <MyAccount />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
     ],
   },
 ]);

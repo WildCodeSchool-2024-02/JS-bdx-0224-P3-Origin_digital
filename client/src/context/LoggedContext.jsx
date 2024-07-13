@@ -14,10 +14,10 @@ export function LoggedProvider({ children }) {
     } else {
       setIsLogged(false);
     }
-  }, [cookies, setCookie, removeCookie]);
+  }, [cookies, setCookie]);
 
   const handleLogout = () => {
-    removeCookie('jwt', { path: '/' });
+    removeCookie('jwt');
     setIsLogged(false);
   };
 

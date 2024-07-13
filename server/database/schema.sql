@@ -27,7 +27,7 @@ CREATE TABLE video (
     upload_date DATE NOT NULL,
     duration INT,
     video_url  VARCHAR(255) NOT NULL,
-    preview_url VARCHAR(255),
+    img_url VARCHAR(255),
     access VARCHAR(100) NOT NULL,
     category_id INT UNSIGNED NOT NULL,
     user_id INT UNSIGNED NOT NULL,
@@ -37,7 +37,9 @@ CREATE TABLE video (
 
 CREATE TABLE tag (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name VARCHAR(100) NOT NULL UNIQUE
+    name VARCHAR(100) NOT NULL UNIQUE,
+    category_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES category(id)
 );
 
 CREATE TABLE video_tag (
