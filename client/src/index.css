@@ -24,6 +24,7 @@
   --secondaryColor: #eaf3f5;
   --lightColor: #fdfdfd;
   --darkColor: #353535;
+  --blurBg: #f4e6ffc4;
   --logoFont: "Poppins", sans-serif;
   --headingFont: "Rajdhani", sans-serif;
   --textFont: "Nunito Sans", sans-serif;
@@ -113,6 +114,39 @@ a {
   color: var(--primaryDark);
   text-decoration: none;
   transition: all ease 300ms;
+}
+
+.center {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.img-shadow {
+  box-shadow: 15px 15px 0px 0px var(--primaryColor);
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+td {
+  border: 1px solid var(--primaryColor);
+}
+
+th:first-child {
+  border-radius: 50px 0px 0px 0px;
+}
+
+th:last-child {
+  border-radius: 0px 50px 0px 0px;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
 }
 
 @media screen and (min-width: 768px) {

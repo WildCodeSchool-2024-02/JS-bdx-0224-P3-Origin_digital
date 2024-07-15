@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 
-
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isObjectivesMenuOpen, setIsObjectivesMenuOpen] = useState(false);
-
 
   const closeMenu = () => {
     setIsMobileMenuOpen(false);
@@ -80,7 +78,7 @@ function Header() {
       subscribeStyle={subscribeStyle}
       categories={categories}
       tags={tags}
-       />
+    />
   );
 }
 
