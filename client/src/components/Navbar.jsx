@@ -21,7 +21,6 @@ function Navbar({
 }) {
   const { isLogged, handleLogout } = useContext(LoggedContext);
 
-
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
       <nav className="items-center w-full h-[4.5rem] px-2 lg:px-8 flex">
@@ -69,26 +68,28 @@ function Navbar({
         </ul>
       </nav>
       {isLogged ? (
-        <button className={subscribeStyle} type="button" onClick={handleLogout}>
-          <Link to="/" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base">
-            Déconnexion
-          </Link>
-        </button>
+        <Link
+          to="/"
+          className={`${subscribeStyle} buttonForLink text-[var(--darkColor)] hover:text-white text-xs lg:text-base`}
+          onClick={handleLogout}
+        >
+          Déconnexion
+        </Link>
       ) : (
         <>
-          <button className={`${subscribeStyle} bg-white border-8 border-indigo-500`} type="button">
-            <Link
-              to="/register"
-              className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
-            >
-              Inscription
-            </Link>
-          </button>
-          <button className={subscribeStyle} type="button">
-            <Link to="/login" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base ">
-              Connexion
-            </Link>
-          </button>
+          <Link
+            to="/register"
+            className={`${subscribeStyle} buttonForLink bg-white text-[var(--darkColor)] hover:text-white text-xs lg:text-base`}
+          >
+            Inscription
+          </Link>
+
+          <Link
+            to="/login"
+            className={`${subscribeStyle}  buttonForLink text-[var(--darkColor)] hover:text-white text-xs lg:text-base`}
+          >
+            Connexion
+          </Link>
         </>
       )}
       <button
