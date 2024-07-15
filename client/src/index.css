@@ -24,6 +24,7 @@
   --secondaryColor: #eaf3f5;
   --lightColor: #fdfdfd;
   --darkColor: #353535;
+  --blurBg: #f4e6ffc4;
   --logoFont: "Poppins", sans-serif;
   --headingFont: "Rajdhani", sans-serif;
   --textFont: "Nunito Sans", sans-serif;
@@ -115,6 +116,20 @@ a {
   color: var(--darkColor);
   text-decoration: none;
   transition: all ease 300ms;
+}
+
+.center {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.img-shadow {
+  box-shadow: 15px 15px 0px 0px var(--primaryColor);
 }
 
 @media screen and (min-width: 768px) {

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { getData } from "../services/api.service";

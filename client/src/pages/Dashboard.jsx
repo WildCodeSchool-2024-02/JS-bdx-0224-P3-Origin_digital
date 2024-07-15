@@ -9,7 +9,12 @@ export default function Dashboard() {
         placeholder="Rechercher une vidéo.."
         className="mt-6 lg:mr-5 bg-primary-color rounded-full p-1 lg:p-2 pl-4 ml-4 md:ml-8 lg:ml-12 w-[90vw] lg:w-auto"
       />
-      <button type="button" className="p-0 mt-6 ml-4 px-4 h-8 lg:h-11  rounded-full overflow-hidden w-[90vw] lg:w-auto">+ Ajouter une vidéo</button>
+      <button
+        type="button"
+        className="p-0 mt-6 ml-4 px-4 h-8 lg:h-11  rounded-full overflow-hidden w-[90vw] lg:w-auto"
+      >
+        + Ajouter une vidéo
+      </button>
       <section className="overflow-x-auto rounded-xl">
         <h2>Votre Tableau de bord</h2>
         <Table className="w-[90vw] mx-auto">
@@ -22,7 +27,9 @@ export default function Dashboard() {
             <Column className="px-3 lg:p-0 lg:w-28">Visibilité</Column>
             <Column className="px-3 lg:p-0 lg:w-16">Vue</Column>
             <Column className="px-3 lg:p-0 lg:w-36">Publication</Column>
-            <Column className="px-3 lg:p-0 lg:w-36 rounded-tr-3xl">Modification</Column>
+            <Column className="px-3 lg:p-0 lg:w-36 rounded-tr-3xl">
+              Modification
+            </Column>
           </TableHeader>
           <TableBody className="[&>*:nth-child(even)]:bg-secondary-color ">
             <DashboardVideo />

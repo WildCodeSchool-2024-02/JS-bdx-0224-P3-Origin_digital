@@ -20,7 +20,7 @@ export default function DashboardVideo() {
     setShowAllTags(!showAllTags);
   };
 
-  return (
+ return (
     <Row className="[&>*]:border-2 [&>*]:px-2 lg:[&>*]:px-0">
       <Cell className="px-0">
         <img
