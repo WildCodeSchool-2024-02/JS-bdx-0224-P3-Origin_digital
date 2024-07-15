@@ -12,10 +12,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-aria-components": "^1.2.1",
-<<<<<<< HEAD
-=======
     "react-cookie": "^7.1.4",
->>>>>>> a544384794d8c3897bed38d10985055818d8c71d
     "react-dom": "^18.3.1",
     "react-focus-lock": "^2.12.1",
     "react-router-dom": "^6.23.0",
