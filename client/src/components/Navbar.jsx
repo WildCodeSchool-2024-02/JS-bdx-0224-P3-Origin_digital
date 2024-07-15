@@ -36,16 +36,16 @@ function Navbar({
           <li className="flex">
             <button
               onClick={handleClickObjectivesMenu}
-              className={`${objectivesButtonClasses} h-auto uppercase`}
+              className={`${objectivesButtonClasses} h-auto uppercase flex items-center`}
               type="button"
             >
               Objectifs
+              <img
+                className="ml-1"
+                src={arrowSrc}
+                alt="flèche indiquant qu'objectif est déroulant"
+              />
             </button>
-            <img
-              className="ml-1"
-              src={arrowSrc}
-              alt="flèche indiquant qu'objectif est déroulant"
-            />
           </li>
           <li>
             <HashLink
