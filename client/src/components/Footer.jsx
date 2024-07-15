@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom";
 import logoSrc from "../assets/images/LogoSweatStream.png";
 
-
 export default function Footer() {
   return (
     <footer className="bg-[var(--primaryColor)] p-4 lg:flex lg:p-10">
       <Link to="/">
-          <img
-            className="~w-[200px]/[300px] "
-            src={logoSrc}
-            alt="retour à l'accueil"
-          />
-        </Link>
+        <img
+          className="~w-[200px]/[300px] "
+          src={logoSrc}
+          alt="retour à l'accueil"
+        />
+      </Link>
       <ul className="flex flex-wrap gap-x-6 gap-y-6 lg:grow lg:justify-evenly lg:leading-10 ">
         <li className="grow lg:grow-0">
           <h3 className="footer-list">Pages</h3>

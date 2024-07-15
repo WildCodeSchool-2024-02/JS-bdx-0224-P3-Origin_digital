@@ -55,15 +55,27 @@ function Navbar({
               Pourquoi s'abonner ?
             </HashLink>
           </li>
-          <li>
-            <Link
-              to="/"
-              onClick={closeMenu}
-              className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
-            >
-              Mon espace
-            </Link>
-          </li>
+          {isLogged ? (
+            <li>
+              <Link
+                to="/account"
+                onClick={closeMenu}
+                className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
+              >
+                Mon espace
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link
+                to="/login"
+                onClick={closeMenu}
+                className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
+              >
+                Mon espace
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
       {isLogged ? (
@@ -76,19 +88,25 @@ function Navbar({
         </Link>
       ) : (
         <>
-          <Link
-            to="/register"
-            className={`${subscribeStyle} buttonForLink bg-white text-[var(--darkColor)] hover:text-white text-xs lg:text-base`}
+          <button
+            className={`${subscribeStyle} bg-white border-8 border-indigo-500`}
+            type="button"
           >
-            Inscription
-          </Link>
-
-          <Link
-            to="/login"
-            className={`${subscribeStyle}  buttonForLink text-[var(--darkColor)] hover:text-white text-xs lg:text-base`}
-          >
-            Connexion
-          </Link>
+            <Link
+              to="/register"
+              className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
+            >
+              Inscription
+            </Link>
+          </button>
+          <button className={subscribeStyle} type="button">
+            <Link
+              to="/login"
+              className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base "
+            >
+              Connexion
+            </Link>
+          </button>
         </>
       )}
       <button
