@@ -38,7 +38,7 @@ export function LoggedProvider({ children }) {
       handleLogout,
       isCoach,
     }),
-    [isLogged,handleLogout, isCoach]
+    [isLogged ,handleLogout , isCoach]
   );
 
   return (

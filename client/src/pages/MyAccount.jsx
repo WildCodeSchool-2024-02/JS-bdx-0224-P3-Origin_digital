@@ -3,8 +3,8 @@ import { useContext } from "react";
 import LoggedContext from "../context/LoggedContext";
 
 function MyAccount() {
-  const { contextValue } = useContext(LoggedContext);
-  const { isCoach } = contextValue;
+  
+  const { isCoach } = useContext(LoggedContext);
 
   return (
     <>
