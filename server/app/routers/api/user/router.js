@@ -8,10 +8,14 @@ const {
   verifyToken,
 } = require("../../../services/middlewares/tokenVerification");
 const validateUser = require("../../../services/middlewares/validateUser");
+const { getIdFromToken } = require("../../../services/middlewares/getIdFromToken");
 
-router.get("/", user.browse);
-router.get("/:id", user.read);
 router.post("/", userCheckRole, validateUser, hashPassword, user.add);
-router.delete("/:id", verifyToken, user.destroy);
+
+router.use(verifyToken);
+
+router.get("/:id", user.read);
+router.get("/", getIdFromToken, user.read)
+router.delete("/:id", user.destroy);
 
 module.exports = router;

@@ -1,12 +1,23 @@
-import { createContext, useState, useEffect, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import { useCookies } from 'react-cookie';
+import { createContext, useState, useEffect, useMemo } from "react";
+import PropTypes from "prop-types";
+import { useCookies } from "react-cookie";
+import { getSecureData } from "../services/api.service";
 
 const LoggedContext = createContext();
 
 export function LoggedProvider({ children }) {
-  const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
+  const [cookies, setCookie, removeCookie] = useCookies("jwt");
   const [isLogged, setIsLogged] = useState(false);
+  const [isCoach, setIsCoach] = useState({});
+  const token = cookies.jwt;
+
+  useEffect(() => {
+    getSecureData("/api/users", token)
+      .then((result) => result.json())
+      .then((data) => {
+        setIsCoach(data);
+      });
+  }, [token]);
 
   useEffect(() => {
     if (cookies.jwt) {
@@ -17,14 +28,18 @@ export function LoggedProvider({ children }) {
   }, [cookies, setCookie]);
 
   const handleLogout = () => {
-    removeCookie('jwt');
+    removeCookie("jwt");
     setIsLogged(false);
   };
 
-  const contextValue = useMemo(() => ({
-    isLogged,
-    handleLogout,
-  }), [isLogged]);
+  const contextValue = useMemo(
+    () => ({
+      isLogged,
+      handleLogout,
+      isCoach,
+    }),
+    [isLogged ,handleLogout , isCoach]
+  );
 
   return (
     <LoggedContext.Provider value={contextValue}>

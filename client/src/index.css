@@ -95,13 +95,15 @@ li {
 button {
   height: 2rem;
   padding: 0.5rem 1rem;
-  text-align: center;
   border-radius: 15px;
   font-weight: 600;
   background-color: var(--primaryColor);
   border: none;
   transition: all ease 300ms;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover {
@@ -110,7 +112,7 @@ button:hover {
 }
 
 a {
-  color: var(--primaryDark);
+  color: var(--darkColor);
   text-decoration: none;
   transition: all ease 300ms;
 }
