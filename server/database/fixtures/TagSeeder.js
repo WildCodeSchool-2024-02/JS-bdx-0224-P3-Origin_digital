@@ -1,27 +1,32 @@
 const AbstractSeeder = require("./AbstractSeeder");
+const CategorySeeder = require("./CategorySeeder");
 
 class TagSeeder extends AbstractSeeder {
   constructor() {
-    // Call the constructor of the parent class (AbstractSeeder) with appropriate options
-    super({ table: "tag", truncate: true });
+    super({ table: "tag", truncate: true, dependencies: [CategorySeeder] });
   }
 
-  // The run method - Populate the 'user' table with fake data
-
   run() {
-    // Generate and insert fake data into the 'user' table
+    const categories = [
+      "Fitness",
+      "Musculation",
+      "Nutrition",
+      "Pilates",
+      "Yoga",
+    ];
+
     for (let i = 0; i < 10; i += 1) {
-      // Generate fake user data
       const fakeTag = {
         name: this.faker.lorem.word(),
+        category_id: this.getRef(
+          `category_${categories[Math.floor(Math.random() * (categories.length - 1) + 1)]}`
+        ).insertId,
         refName: `tag_${i}`,
       };
 
-      // Insert the fakeUser data into the 'user' table
-      this.insert(fakeTag); // insert into user(email, password) values (?, ?)
+      this.insert(fakeTag);
     }
   }
 }
 
-// Export the UserSeeder class
 module.exports = TagSeeder;
