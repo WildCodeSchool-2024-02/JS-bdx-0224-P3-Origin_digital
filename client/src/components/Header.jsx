@@ -69,15 +69,13 @@ function Header() {
       .then((data) => {
         setCategories(data);
       })
-      .catch((error) => console.error("Error fetching categories:", error));
 
     getData(`/api/tags`)
       .then((result) => result.json())
       .then((data) => {
         setTags(data);
       })
-      .catch((error) => console.error("Error fetching tags:", error));
-  }, []);
+      }, []);
 
   return (
     <Navbar
