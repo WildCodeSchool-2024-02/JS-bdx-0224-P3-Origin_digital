@@ -8,14 +8,14 @@ const LoggedContext = createContext();
 export function LoggedProvider({ children }) {
   const [cookies, setCookie, removeCookie] = useCookies("jwt");
   const [isLogged, setIsLogged] = useState(false);
-  const [isCoach, setIsCoach] = useState({});
+  const [userData, setUserData] = useState({});
   const token = cookies.jwt;
 
   useEffect(() => {
     getSecureData("/api/users", token)
       .then((result) => result.json())
       .then((data) => {
-        setIsCoach(data);
+        setUserData(data);
       });
   }, [token]);
 
@@ -36,9 +36,9 @@ export function LoggedProvider({ children }) {
     () => ({
       isLogged,
       handleLogout,
-      isCoach,
+      userData,
     }),
-    [isLogged ,handleLogout , isCoach]
+    [isLogged ,handleLogout , userData]
   );
 
   return (
