@@ -51,17 +51,17 @@ export default function DashboardModal({
         }}
         role="presentation"
       >
-        <h2
+        <button
+          type="button"
           id="form-title"
           className="w-full col-span-1 lg:pl-2"
           onClick={(e) => e.stopPropagation()}
           onKeyDown={(e) => {
             e.stopPropagation();
           }}
-          role="presentation"
         >
           {toModify ? "Modifier la vidéo" : "Ajouter une vidéo"}
-        </h2>
+        </button>
         <button
           className="col-span-1 place-self-start justify-self-end text-[var(--lightColor)] focus:outline focus:outline-2 focus:outline-blue-600
         bg-[var(--primaryDark)] hover:text-[var(--darkColor)] hover:bg-[var(--primaryLight)]"

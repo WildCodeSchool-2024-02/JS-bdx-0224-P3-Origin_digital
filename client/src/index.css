@@ -129,25 +129,6 @@ a {
 .img-shadow {
   box-shadow: 15px 15px 0px 0px var(--primaryColor);
 }
-table {
-  table-layout: fixed;
-  width: 100%;
-}
-td {
-  border: 1px solid var(--primaryColor);
-}
-
-th:first-child {
-  border-radius: 50px 0px 0px 0px;
-}
-
-th:last-child {
-  border-radius: 0px 50px 0px 0px;
-}
-td {
-  text-align: center;
-  vertical-align: middle;
-}
 
 @media screen and (min-width: 768px) {
   body {
