@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import { getData } from "../services/api.service";
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isObjectivesMenuOpen, setIsObjectivesMenuOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
 
   const closeMenu = () => {
     setIsMobileMenuOpen(false);
@@ -46,15 +48,14 @@ function Header() {
     hover:bg-transparent hover:text-[var(--darkColor)] 
     p-0 border-none cursor-pointer`;
 
-  // fetch
-
-  const [categories, setCategories] = useState([]);
-
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/categories`)
-      .then((result) => result.json())
+    getData(`/api/categories`)
+      .then((res) => res.json())
       .then((data) => {
         setCategories(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch categories:", error);
       });
   }, []);
 

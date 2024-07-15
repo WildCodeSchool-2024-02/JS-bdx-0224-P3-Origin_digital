@@ -14,8 +14,8 @@ const login = async (req, res) => {
     if (verified) {
       delete user.password;
 
-      const token = await jwt.sign(
-        { sub: user.id, isAdmin: user.is_admin },
+      const token = jwt.sign(
+        { sub: user.id, isAdmin: user.role_id === 1 },
         process.env.APP_SECRET,
         {
           expiresIn: "1h",

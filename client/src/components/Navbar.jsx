@@ -17,10 +17,8 @@ function Navbar({
   objectivesButtonClasses,
   objectiveSectionClasses,
   categories,
-  tags,
 }) {
   const { isLogged, handleLogout } = useContext(LoggedContext);
-
 
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
@@ -70,13 +68,19 @@ function Navbar({
       </nav>
       {isLogged ? (
         <button className={subscribeStyle} type="button" onClick={handleLogout}>
-          <Link to="/" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base">
+          <Link
+            to="/"
+            className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
+          >
             Déconnexion
           </Link>
         </button>
       ) : (
         <>
-          <button className={`${subscribeStyle} bg-white border-8 border-indigo-500`} type="button">
+          <button
+            className={`${subscribeStyle} bg-white border-8 border-indigo-500`}
+            type="button"
+          >
             <Link
               to="/register"
               className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
@@ -85,7 +89,10 @@ function Navbar({
             </Link>
           </button>
           <button className={subscribeStyle} type="button">
-            <Link to="/login" className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base ">
+            <Link
+              to="/login"
+              className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base "
+            >
               Connexion
             </Link>
           </button>
@@ -134,18 +141,6 @@ function Navbar({
                 >
                   {category.name}
                 </Link>
-                <ul className="flex flex-col hover:text-[var(--primaryDark)] capitalize">
-                  {tags.map((tag) => (
-                    <li key={tag.id}>
-                      <Link
-                        to={`/category/${categories.id}/${tag.id}`}
-                        className="hover:text-[var(--primaryDark)] text-[var(--darkColor)] font-light"
-                      >
-                        {tag.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
               </li>
             ))}
           </ul>
@@ -166,12 +161,6 @@ Navbar.propTypes = {
   objectivesButtonClasses: PropTypes.string.isRequired,
   objectiveSectionClasses: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  tags: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,

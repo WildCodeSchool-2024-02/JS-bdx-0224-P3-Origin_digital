@@ -14,22 +14,29 @@ import {
   FileTrigger,
 } from "react-aria-components";
 import "../class.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PropTypes } from "prop-types";
 import FocusLock from "react-focus-lock";
+import Multiselect from "multiselect-react-dropdown";
 
 export default function DashboardModal({
   handleOpenModal,
   isModalOpen,
   displayClass,
   toModify,
+  tags,
 }) {
   const [selectedAccess, setSelectedAccess] = useState("Public");
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const ref = useRef();
 
   const handleClickAccessSelection = () => {
     setSelectedAccess(selectedAccess === "Public" ? "Abonnés" : "Public");
+  };
+
+  const handleChangeSelectedTags = (selectedList) => {
+    setSelectedTags(selectedList);
   };
 
   useEffect(() => {
@@ -40,7 +47,7 @@ export default function DashboardModal({
     <FocusLock>
       <dialog
         className={` ${displayClass} absolute top-0 left-0 w-screen min-h-screen bg-[var(--primaryColor)] 
-       grid-cols-[1fr,0.25fr] grid-rows-[70px,auto] items-center justify-center p-4 md:px-32 lg:py-12 lg:px-[25vw] 
+       grid-cols-[1fr,0.25fr] grid-rows-[70px,auto] items-center justify-center p-4 lg:py-12 lg:px-[25vw] 
        lg:bg-[var(--blurBg)]`}
         open={isModalOpen}
         onClick={handleOpenModal}
@@ -125,6 +132,7 @@ export default function DashboardModal({
                   ▼
                 </span>
               </Button>
+
               <Popover
                 className="w-4/5 bg-[var(--lightColor)] border border-[var(--darkColor)] rounded-[15px] 
               py-2 px-4 md:w-2/3 lg:w-1/3 "
@@ -135,9 +143,6 @@ export default function DashboardModal({
                   selectedKeys={selectedCategory}
                   onSelectionChange={setSelectedCategory}
                 >
-                  <ListBoxItem className="hover:bg-slate-200 cursor-pointer w-full p-1 rounded-md">
-                    Aardvark
-                  </ListBoxItem>
                   <ListBoxItem>Pilates</ListBoxItem>
                   <ListBoxItem>Musculation</ListBoxItem>
                   <ListBoxItem>Fitness</ListBoxItem>
@@ -149,7 +154,18 @@ export default function DashboardModal({
           </Label>
           <Label className="w-full text-base font-nunitoBold md:col-[1/2]">
             Tags*
-            <Select
+            <Multiselect
+              options={tags.map((tag) => tag.name)}
+              isObject={false}
+              avoidHighlightFirstOption
+              onSelect={(e) => handleChangeSelectedTags(e.target.value)}
+              onRemove={(e) => handleChangeSelectedTags(e.target.value)}
+              selectedValues={selectedTags.map((tag) => tag.name)}
+              ref={ref}
+              className="w-4/5 bg-[var(--lightColor)]  border border-[var(--darkColor)] rounded-[15px] 
+              py-2 px-4 md:w-2/3 lg:w-1/3"
+            />
+            {/* <Select
               className="w-full mt-1 font-nunito"
               aria-label="selection de tag"
             >
@@ -180,7 +196,7 @@ export default function DashboardModal({
                   <ListBoxItem>Snake</ListBoxItem>
                 </ListBox>
               </Popover>
-            </Select>
+            </Select> */}
           </Label>
           <Label className="w-full flex flex-wrap gap-2 items-center outline-none focus:outline focus:outline-2 focus:outline-blue-600 md:col-[1/2]">
             <span className="w-full font-nunitoBold">Accès</span>
@@ -254,6 +270,12 @@ DashboardModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   displayClass: PropTypes.string.isRequired,
   toModify: PropTypes.bool,
+  tags: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 DashboardModal.defaultProps = {

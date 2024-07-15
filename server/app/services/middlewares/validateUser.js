@@ -3,7 +3,7 @@ const Joi = require("joi");
 const createUserSchema = Joi.object({
   firstname: Joi.string().min(1).max(100).required(),
   lastname: Joi.string().min(1).max(100).required(),
-  email: Joi.string().min(5).max(255).required(),
+  email: Joi.string().email().min(5).max(255).required(),
   roleId: Joi.number().integer().min(1).max(3).required(),
   password: Joi.string()
     .pattern(

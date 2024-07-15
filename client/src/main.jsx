@@ -24,6 +24,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => getData(`/api/categories`),
       },
       {
         path: "/category/:id",
@@ -65,6 +66,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+        loader: () => getData(`/api/tags`),
       },
     ],
   },

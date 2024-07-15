@@ -22,7 +22,7 @@ CREATE TABLE category (
 
 CREATE TABLE video (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    title VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL UNIQUE,
     description TEXT NOT NULL,
     upload_date DATE NOT NULL,
     duration INT,
