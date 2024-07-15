@@ -35,16 +35,16 @@ function Navbar({
           <li className="flex">
             <button
               onClick={handleClickObjectivesMenu}
-              className={`${objectivesButtonClasses} h-auto uppercase`}
+              className={`${objectivesButtonClasses} h-auto uppercase flex items-center`}
               type="button"
             >
               Objectifs
+              <img
+                className="ml-1"
+                src={arrowSrc}
+                alt="flèche indiquant qu'objectif est déroulant"
+              />
             </button>
-            <img
-              className="ml-1"
-              src={arrowSrc}
-              alt="flèche indiquant qu'objectif est déroulant"
-            />
           </li>
           <li>
             <HashLink
@@ -67,35 +67,28 @@ function Navbar({
         </ul>
       </nav>
       {isLogged ? (
-        <button className={subscribeStyle} type="button" onClick={handleLogout}>
-          <Link
-            to="/"
-            className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
-          >
-            Déconnexion
-          </Link>
-        </button>
+        <Link
+          to="/"
+          className={`${subscribeStyle} buttonForLink text-[var(--darkColor)] hover:text-white text-xs lg:text-base`}
+          onClick={handleLogout}
+        >
+          Déconnexion
+        </Link>
       ) : (
         <>
-          <button
-            className={`${subscribeStyle} bg-white border-8 border-indigo-500`}
-            type="button"
+          <Link
+            to="/register"
+            className={`${subscribeStyle} buttonForLink bg-white text-[var(--darkColor)] hover:text-white text-xs lg:text-base`}
           >
-            <Link
-              to="/register"
-              className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
-            >
-              Inscription
-            </Link>
-          </button>
-          <button className={subscribeStyle} type="button">
-            <Link
-              to="/login"
-              className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base "
-            >
-              Connexion
-            </Link>
-          </button>
+            Inscription
+          </Link>
+
+          <Link
+            to="/login"
+            className={`${subscribeStyle}  buttonForLink text-[var(--darkColor)] hover:text-white text-xs lg:text-base`}
+          >
+            Connexion
+          </Link>
         </>
       )}
       <button
