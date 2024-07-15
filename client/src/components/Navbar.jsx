@@ -19,7 +19,9 @@ function Navbar({
   categories,
   tags,
 }) {
-  const { isLogged, handleLogout } = useContext(LoggedContext);
+
+  const { contextValue } = useContext(LoggedContext);
+  const {isLogged, handleLogout} = contextValue
 
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
