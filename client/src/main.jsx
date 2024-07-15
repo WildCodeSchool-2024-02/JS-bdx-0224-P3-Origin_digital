@@ -25,6 +25,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => getData(`/api/categories`),
       },
       {
         path: "/category/:id",
