@@ -14,7 +14,6 @@ import {
   FileTrigger,
 } from "react-aria-components";
 import "../class.css";
-import { useState, useEffect, useRef } from "react";
 import { PropTypes } from "prop-types";
 import FocusLock from "react-focus-lock";
 import Multiselect from "multiselect-react-dropdown";
@@ -25,24 +24,14 @@ export default function DashboardModal({
   displayClass,
   toModify,
   tags,
+  selectedTags,
+  selectedCategory,
+  setSelectedCategory,
+  handleClickAccessSelection,
+  handleChangeSelectedTags,
+  ref,
+  selectedAccess,
 }) {
-  const [selectedAccess, setSelectedAccess] = useState("Public");
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const ref = useRef();
-
-  const handleClickAccessSelection = () => {
-    setSelectedAccess(selectedAccess === "Public" ? "Abonnés" : "Public");
-  };
-
-  const handleChangeSelectedTags = (selectedList) => {
-    setSelectedTags(selectedList);
-  };
-
-  useEffect(() => {
-    document.body.style.overflow = isModalOpen ? "hidden" : "auto";
-  }, [isModalOpen]);
-
   return (
     <FocusLock>
       <dialog
@@ -59,6 +48,7 @@ export default function DashboardModal({
         role="presentation"
       >
         <h2
+          type="button"
           id="form-title"
           className="w-full col-span-1 lg:pl-2"
           onClick={(e) => e.stopPropagation()}
@@ -157,46 +147,17 @@ export default function DashboardModal({
             <Multiselect
               options={tags.map((tag) => tag.name)}
               isObject={false}
+              closeOnSelect
               avoidHighlightFirstOption
+              hidePlaceholder
+              placeholder="Séléctionné les tags"
               onSelect={(e) => handleChangeSelectedTags(e.target.value)}
               onRemove={(e) => handleChangeSelectedTags(e.target.value)}
               selectedValues={selectedTags.map((tag) => tag.name)}
               ref={ref}
-              className="w-4/5 bg-[var(--lightColor)]  border border-[var(--darkColor)] rounded-[15px] 
+              className="w-4/5 bg-[var(--lightColor)] rounded-[15px] mt-1
               py-2 px-4 md:w-2/3 lg:w-1/3"
             />
-            {/* <Select
-              className="w-full mt-1 font-nunito"
-              aria-label="selection de tag"
-            >
-              <Button
-                className="w-full bg-[var(--lightColor)] flex justify-between items-center min-h-10 md:min-h-12 
-              focus:outline focus:outline-2 focus:outline-blue-600"
-              >
-                <SelectValue placeholder="Choisissez une catégorie" />
-                <span aria-hidden="true" className="justify-self-end">
-                  ▼
-                </span>
-              </Button>
-              <Popover
-                className="w-4/5 bg-[var(--lightColor)]  border border-[var(--darkColor)] rounded-[15px] 
-              py-2 px-4 md:w-2/3 lg:w-1/3"
-              >
-                <ListBox
-                  aria-label="selection de tag"
-                  selectionMode="multiple"
-                  selectedKeys={selectedTags}
-                  onSelectionChange={setSelectedTags}
-                >
-                  <ListBoxItem>Aardvark</ListBoxItem>
-                  <ListBoxItem>Cat</ListBoxItem>
-                  <ListBoxItem>Dog</ListBoxItem>
-                  <ListBoxItem>Kangaroo</ListBoxItem>
-                  <ListBoxItem>Panda</ListBoxItem>
-                  <ListBoxItem>Snake</ListBoxItem>
-                </ListBox>
-              </Popover>
-            </Select> */}
           </Label>
           <Label className="w-full flex flex-wrap gap-2 items-center outline-none focus:outline focus:outline-2 focus:outline-blue-600 md:col-[1/2]">
             <span className="w-full font-nunitoBold">Accès</span>
@@ -276,6 +237,13 @@ DashboardModal.propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
+  selectedTags: PropTypes.arrayOf().isRequired,
+  selectedCategory: PropTypes.string.isRequired,
+  setSelectedCategory: PropTypes.func.isRequired,
+  handleClickAccessSelection: PropTypes.func.isRequired,
+  handleChangeSelectedTags: PropTypes.func.isRequired,
+  ref: PropTypes.func.isRequired,
+  selectedAccess: PropTypes.string.isRequired,
 };
 
 DashboardModal.defaultProps = {

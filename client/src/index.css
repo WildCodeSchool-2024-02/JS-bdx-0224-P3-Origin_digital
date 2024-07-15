@@ -96,13 +96,15 @@ li {
 button {
   height: 2rem;
   padding: 0.5rem 1rem;
-  text-align: center;
   border-radius: 15px;
   font-weight: 600;
   background-color: var(--primaryColor);
   border: none;
   transition: all ease 300ms;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover {
@@ -111,7 +113,7 @@ button:hover {
 }
 
 a {
-  color: var(--primaryDark);
+  color: var(--darkColor);
   text-decoration: none;
   transition: all ease 300ms;
 }
@@ -128,25 +130,6 @@ a {
 
 .img-shadow {
   box-shadow: 15px 15px 0px 0px var(--primaryColor);
-}
-table {
-  table-layout: fixed;
-  width: 100%;
-}
-td {
-  border: 1px solid var(--primaryColor);
-}
-
-th:first-child {
-  border-radius: 50px 0px 0px 0px;
-}
-
-th:last-child {
-  border-radius: 0px 50px 0px 0px;
-}
-td {
-  text-align: center;
-  vertical-align: middle;
 }
 
 @media screen and (min-width: 768px) {

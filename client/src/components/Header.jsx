@@ -1,11 +1,13 @@
+
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { getData } from "../services/api.service";
 
+
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isObjectivesMenuOpen, setIsObjectivesMenuOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
+
 
   const closeMenu = () => {
     setIsMobileMenuOpen(false);
@@ -21,9 +23,25 @@ function Header() {
     setIsObjectivesMenuOpen(!isObjectivesMenuOpen);
   };
 
+  const handleClickOutside = (event) => {
+    if (!event.target.closest(".menu-list, .objectives-menu")) {
+      closeMenu();
+    }
+  };
+
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", isMobileMenuOpen);
-  }, [isMobileMenuOpen]);
+
+    if (isMobileMenuOpen || isObjectivesMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen, isObjectivesMenuOpen]);
 
   const subscribeStyle = `mr-5 flex lg:flex-row lg:opacity-100 lg:transform-none  lg:static lg:max-h-16
   items-center relative`;
@@ -38,24 +56,30 @@ function Header() {
     lg:top-[6rem] flex-row z-50 lg:bg-transparent 
     ${isObjectivesMenuOpen ? "opacity-100 transform translate-y-0" : "opacity-0 pointer-events-none"}`;
 
-  const menuListClasses = `top-[4.5rem] h-[calc(100vh-4.5rem)] w-full uppercase bg-white list-none 
+  const menuListClasses = `top-[4.5rem] w-full uppercase bg-white list-none 
     flex flex-col justify-around items-center 
-    transform translate-x-[100vw] transition-all duration-300 text-center fixed inset-0
+    transform translate-x-[100vw] transition-all text-center fixed inset-0
     lg:bg-[var(--secondaryColor)] lg:static lg:max-h-12 lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none 
-    ${isMobileMenuOpen ? "opacity-100 transform -translate-x-[0vw]" : ""}`;
+    ${isMobileMenuOpen ? "opacity-100 transform translate-x-[0vw] duration-300" : ""}`;
 
   const objectivesButtonClasses = `font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline bg-transparent 
     hover:bg-transparent hover:text-[var(--darkColor)] 
     p-0 border-none cursor-pointer`;
 
+  const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
+
   useEffect(() => {
     getData(`/api/categories`)
-      .then((res) => res.json())
+      .then((result) => result.json())
       .then((data) => {
         setCategories(data);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch categories:", error);
+      });
+
+    getData(`/api/tags`)
+      .then((result) => result.json())
+      .then((data) => {
+        setTags(data);
       });
   }, []);
 
@@ -71,6 +95,7 @@ function Header() {
       objectivesButtonClasses={objectivesButtonClasses}
       subscribeStyle={subscribeStyle}
       categories={categories}
+      tags={tags}
     />
   );
 }

@@ -15,6 +15,7 @@ import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
 import { sendData, getData } from "./services/api.service";
 import Dashboard from "./pages/Dashboard";
+import MyAccount from "./pages/MyAccount";
 import { LoggedProvider } from "./context/LoggedContext";
 
 const router = createBrowserRouter([
@@ -36,10 +37,8 @@ const router = createBrowserRouter([
         element: <RegisterPage />,
         action: async ({ request }) => {
           const formData = Object.fromEntries(await request.formData());
-          const response = await sendData("/api/users", formData, "POST");
-          if (response.status === 201) {
-            return redirect("/login");
-          }
+          const response = await sendData("/api/users", formData);
+          if (response.status === 201) return redirect("/login");
           return response;
         },
       },
@@ -62,11 +61,18 @@ const router = createBrowserRouter([
       },
       {
         path: "/account",
+        element: <MyAccount />,
       },
       {
         path: "/dashboard",
         element: <Dashboard />,
         loader: () => getData(`/api/tags`),
+        action: async ({ request }) => {
+          const formData = Object.fromEntries(await request.formData());
+          const response = sendData("/api/videos", formData);
+          if (response.status === 201) return window.location.reload();
+          return response;
+        },
       },
     ],
   },

@@ -35,16 +35,16 @@ function Navbar({
           <li className="flex">
             <button
               onClick={handleClickObjectivesMenu}
-              className={`${objectivesButtonClasses} h-auto uppercase`}
+              className={`${objectivesButtonClasses} h-auto uppercase flex items-center`}
               type="button"
             >
               Objectifs
+              <img
+                className="ml-1"
+                src={arrowSrc}
+                alt="flèche indiquant qu'objectif est déroulant"
+              />
             </button>
-            <img
-              className="ml-1"
-              src={arrowSrc}
-              alt="flèche indiquant qu'objectif est déroulant"
-            />
           </li>
           <li>
             <HashLink
@@ -55,26 +55,37 @@ function Navbar({
               Pourquoi s'abonner ?
             </HashLink>
           </li>
-          <li>
-            <Link
-              to="/"
-              onClick={closeMenu}
-              className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
-            >
-              Mon espace
-            </Link>
-          </li>
+          {isLogged ? (
+            <li>
+              <Link
+                to="/account"
+                onClick={closeMenu}
+                className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
+              >
+                Mon espace
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link
+                to="/login"
+                onClick={closeMenu}
+                className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
+              >
+                Mon espace
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
       {isLogged ? (
-        <button className={subscribeStyle} type="button" onClick={handleLogout}>
-          <Link
-            to="/"
-            className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base"
-          >
-            Déconnexion
-          </Link>
-        </button>
+        <Link
+          to="/"
+          className={`${subscribeStyle} buttonForLink text-[var(--darkColor)] hover:text-white text-xs lg:text-base`}
+          onClick={handleLogout}
+        >
+          Déconnexion
+        </Link>
       ) : (
         <>
           <button

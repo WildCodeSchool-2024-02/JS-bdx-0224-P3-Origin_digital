@@ -3,6 +3,8 @@ const tables = require("../../database/tables");
 const browse = async (req, res, next) => {
   try {
     const user = await tables.user.readAll();
+    delete user.password;
+
     res.json(user);
   } catch (err) {
     next(err);
@@ -11,10 +13,14 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const user = await tables.user.read(req.params.id);
+    const user = await tables.user.read(req.auth);
     if (user == null) {
       res.sendStatus(404);
     } else {
+      delete user.id;
+      delete user.password;
+      if (user.siret === "") delete user.siret;
+      
       res.json(user);
     }
   } catch (err) {

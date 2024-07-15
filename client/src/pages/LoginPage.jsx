@@ -27,6 +27,7 @@ function LoginPage( ) {
       expirationDate.setDate(expirationDate.getDate() + 7);
       setCookie("jwt", actionData.token)
       navigate("/")
+      window.location.reload()
     }
   }, [actionData, setCookie, navigate])
   
