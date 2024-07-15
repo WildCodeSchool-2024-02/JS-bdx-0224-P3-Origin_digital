@@ -4,7 +4,6 @@ const CategorySeeder = require("./CategorySeeder");
 
 class VideoSeeder extends AbstractSeeder {
   constructor() {
-    // Call the constructor of the parent class (AbstractSeeder) with appropriate options
     super({
       table: "video",
       truncate: true,
@@ -12,43 +11,50 @@ class VideoSeeder extends AbstractSeeder {
     });
   }
 
-  // The run method - Populate the 'user' table with fake data
-
   run() {
-    // Generate and insert fake data into the 'user' table
-
-    const accesType = ["free", "subscription"];
-    const categories = [
-      "Fitness",
-      "Musculation",
-      "Nutrition",
-      "Pilates",
-      "Yoga",
+    const videos = [
+      {
+        title: "titre1",
+        description: "Ceci est une descirption de la video 1.",
+        upload_date: "15/07/2024",
+        duration: 15,
+        video_url: "server/public/assets/videos/test1.mp4",
+        img_url: "server/public/assets/thumbnails/thumbnail1.jpg",
+        access: "free",
+        user_id: 1,
+        category_id: 1,
+      },
+      {
+        title: "titre2",
+        description: "Ceci est une descirption de la video 2.",
+        upload_date: "14/07/2024",
+        duration: 20,
+        video_url: "server/public/assets/videos/test2.mp4",
+        img_url: "server/public/assets/thumbnails/thumbnail2.jpg",
+        access: "subscription",
+        user_id: 2,
+        category_id: 2,
+      },
+      {
+        title: "titre3",
+        description: "Ceci est une descirption de la video 3.",
+        upload_date: "13/07/2024",
+        duration: 25,
+        video_url: "server/public/assets/videos/test3.mp4",
+        img_url: "server/public/assets/thumbnails/thumbnail3.jpg",
+        access: "free",
+        user_id: 3,
+        category_id: 2,
+      },
     ];
-
-    for (let i = 0; i < 10; i += 1) {
-      // Generate fake user data
-      const fakeVideo = {
-        title: this.faker.lorem.sentence(),
-        description: this.faker.lorem.words(30),
-        upload_date: this.faker.date.past(),
-        duration: this.faker.number.int(100),
-        video_url: this.faker.image.urlPicsumPhotos(),
-        img_url: this.faker.image.urlLoremFlickr(),
-        access: accesType[Math.round(Math.random())],
-        user_id: this.getRef(`user_${Math.floor(Math.random() * (10 - 1) + 1)}`)
-          .insertId,
-        category_id: this.getRef(
-          `category_${categories[Math.floor(Math.random() * (categories.length - 1) + 1)]}`
-        ).insertId,
-        refName: `video_${i}`,
+    videos.forEach((video) => {
+      const videoWithRefName = {
+        ...video,
+        refName: `${video.title}`,
       };
-
-      // Insert the fakeUser data into the 'user' table
-      this.insert(fakeVideo); // insert into user(email, password) values (?, ?)
-    }
+      this.insert(videoWithRefName);
+    });
   }
 }
 
-// Export the UserSeeder class
 module.exports = VideoSeeder;
