@@ -10,26 +10,6 @@ export default {
   theme: {
     extend: {
       colors: {
-<<<<<<< HEAD
-        pc: "#e1b7ff",
-        pcd: "#b44dfe",
-        pcl: "#f2e2fe",
-        sc: "#eaf3f5",
-        lc: "#fdfdfd",
-        dc: "#353535",
-      },
-      fontFamily: {
-        nunito: ["Nunito-Sans", "sans-serif"],
-        rajdhani: ["Rajdhani", "sans-serif"],
-        nunitoBold: ["Nunito-Sans-Bold", "sans-serif"],
-      },
-    },
-  },
-  variants: {
-    extend: {
-      borderColor: ["focus"],
-      outline: ["focus"],
-=======
         "primary-color": "#e1b7ff",
         "primary-dark": "#b44dfe",
         "primary-light": "#f2e2fe",
@@ -40,7 +20,6 @@ export default {
       boxShadow: {
         "custom-shadow": "15px 15px 0px 0px var(--primaryColor)",
       },
->>>>>>> a544384794d8c3897bed38d10985055818d8c71d
     },
   },
   plugins: [

@@ -138,11 +138,11 @@ export default function DashboardModal({
                   <ListBoxItem className="hover:bg-slate-200 cursor-pointer w-full p-1 rounded-md">
                     Aardvark
                   </ListBoxItem>
-                  <ListBoxItem>Cat</ListBoxItem>
-                  <ListBoxItem>Dog</ListBoxItem>
-                  <ListBoxItem>Kangaroo</ListBoxItem>
-                  <ListBoxItem>Panda</ListBoxItem>
-                  <ListBoxItem>Snake</ListBoxItem>
+                  <ListBoxItem>Pilates</ListBoxItem>
+                  <ListBoxItem>Musculation</ListBoxItem>
+                  <ListBoxItem>Fitness</ListBoxItem>
+                  <ListBoxItem>Yoga</ListBoxItem>
+                  <ListBoxItem>Nutrition</ListBoxItem>
                 </ListBox>
               </Popover>
             </Select>
