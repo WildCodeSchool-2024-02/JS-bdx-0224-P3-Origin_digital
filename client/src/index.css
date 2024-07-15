@@ -116,8 +116,7 @@ a {
   transition: all ease 300ms;
 }
 
-<<<<<<< HEAD
-.center {
+<<<<<<< HEAD .center {
   width: 50%;
   margin: auto;
   display: flex;
@@ -150,9 +149,11 @@ td {
   vertical-align: middle;
 }
 
-=======
->>>>>>> a544384794d8c3897bed38d10985055818d8c71d
-@media screen and (min-width: 768px) {
+=======>>>>>>>a544384794d8c3897bed38d10985055818d8c71d
+  @media
+  screen
+  and
+  (min-width: 768px) {
   body {
     font-size: 1.2rem;
   }
