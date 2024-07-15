@@ -65,6 +65,9 @@ function Header() {
     hover:bg-transparent hover:text-[var(--darkColor)] 
     p-0 border-none cursor-pointer`;
 
+  const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
+
   useEffect(() => {
     getData(`/api/categories`)
       .then((result) => result.json())
