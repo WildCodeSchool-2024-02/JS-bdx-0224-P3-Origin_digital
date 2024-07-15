@@ -15,6 +15,7 @@ import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
 import { sendData, getData } from "./services/api.service";
 import Dashboard from "./pages/Dashboard";
+import MyAccount from "./pages/MyAccount";
 import { LoggedProvider } from "./context/LoggedContext";
 
 const router = createBrowserRouter([
@@ -62,6 +63,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/account",
+        element: <MyAccount />
       },
       {
         path: "/dashboard",
