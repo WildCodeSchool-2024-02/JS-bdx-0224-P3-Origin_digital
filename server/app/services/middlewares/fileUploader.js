@@ -17,19 +17,30 @@ const storage = multer.diskStorage({
   },
 });
 
-const uploadController = (req, res) => {
-  if (!req.file) {
-    return res.status(400).send("No file uploaded.");
+const uploadVideo = (req, res, next) => {
+  if (req.file) {
+    const video = req.file;
+    console.info(video);
+    req.body.video_url = video;
+    next();
+  } else {
+    res.status(400).send("No video uploaded.");
   }
-  // Le nom du fichier stocké est accessible via req.file.filename
-  const imageName = req.file.filename;
-  console.info(imageName);
-  return res
-    .status(201)
-    .send({ message: "Video uploaded successfully", filename: imageName });
+};
+
+const uploadImage = (req, res, next) => {
+  if (req.file) {
+    const image = req.file;
+    console.info(image);
+    req.body.img_url = image;
+    next();
+  } else {
+    res.status(400).send("No image uploaded.");
+  }
 };
 
 module.exports = {
   storage,
-  uploadController,
+  uploadVideo,
+  uploadImage,
 };

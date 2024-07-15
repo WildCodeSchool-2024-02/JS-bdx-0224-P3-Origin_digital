@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import DashboardVideo from "../components/DashboardVideo";
@@ -11,7 +11,6 @@ export default function Dashboard() {
   const [selectedAccess, setSelectedAccess] = useState("Public");
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const ref = useRef();
   const tags = useLoaderData();
 
   const handleOpenModal = () => {
@@ -91,7 +90,6 @@ export default function Dashboard() {
         setSelectedCategory={setSelectedCategory}
         handleClickAccessSelection={handleClickAccessSelection}
         handleChangeSelectedTags={handleChangeSelectedTags}
-        ref={ref}
         selectedAccess={selectedAccess}
         setSelectedAccess={setSelectedAccess}
         handleSumbitModal={handleSumbitModal}

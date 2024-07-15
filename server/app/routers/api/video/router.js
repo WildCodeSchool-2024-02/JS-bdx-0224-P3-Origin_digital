@@ -8,9 +8,10 @@ const {
   verifyToken,
 } = require("../../../services/middlewares/tokenVerification");
 const {
-  uploadController,
+  uploadVideo,
   storage,
-} = require("../../../controllers/uploadController");
+} = require("../../../services/middlewares/fileUploader");
+const validateVideo = require("../../../services/middlewares/validateVideo");
 
 const upload = multer({ storage });
 
@@ -19,10 +20,16 @@ router.get("/:id", video.read);
 
 router.use(verifyToken);
 
-router.put("/:id", video.edit);
 router.post("/", video.add);
-router.delete("/:id", video.destroy);
+router.post(
+  "/upload",
+  upload.single("file"),
+  uploadVideo,
+  validateVideo,
+  video.add
+);
 
-router.post("/upload", upload.single("video"), uploadController);
+router.put("/:id", video.edit);
+router.delete("/:id", video.destroy);
 
 module.exports = router;

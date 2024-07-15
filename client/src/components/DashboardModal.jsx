@@ -29,7 +29,6 @@ export default function DashboardModal({
   setSelectedCategory,
   handleClickAccessSelection,
   handleChangeSelectedTags,
-  ref,
   selectedAccess,
 }) {
   return (
@@ -112,6 +111,8 @@ export default function DashboardModal({
             <Select
               className="w-full relative mt-1 min-h-10 font-nunito md:min-h-12"
               aria-label="selection de tag"
+              isRequired
+              name="category_id"
             >
               <Button
                 className="w-full bg-[var(--lightColor)] flex justify-between items-center min-h-10 
@@ -142,23 +143,24 @@ export default function DashboardModal({
               </Popover>
             </Select>
           </Label>
-          <Label className="w-full text-base font-nunitoBold md:col-[1/2]">
+          <Label className="w-full text-base font-nunitoBold md:col-[1/2] focus:outline focus:outline-2 focus:outline-blue-600">
             Tags*
-            <Multiselect
-              options={tags.map((tag) => tag.name)}
-              isObject={false}
-              closeOnSelect
-              avoidHighlightFirstOption
-              hidePlaceholder
-              placeholder="Séléctionné les tags"
-              onSelect={(e) => handleChangeSelectedTags(e.target.value)}
-              onRemove={(e) => handleChangeSelectedTags(e.target.value)}
-              selectedValues={selectedTags.map((tag) => tag.name)}
-              ref={ref}
-              className="w-4/5 bg-[var(--lightColor)] rounded-[15px] mt-1
-              py-2 px-4 md:w-2/3 lg:w-1/3"
-            />
           </Label>
+          <Multiselect
+            displayValue="tag_id"
+            options={tags.map((tag) => tag.name)}
+            isObject={false}
+            closeOnSelect
+            avoidHighlightFirstOption
+            hidePlaceholder
+            emptyRecordMsg
+            placeholder="Séléctionnez les tags"
+            onSelect={(e) => handleChangeSelectedTags(e.target.value)}
+            onRemove={(e) => handleChangeSelectedTags(e.target.value)}
+            selectedValues={selectedTags.map((tag) => tag.name)}
+            className="w-4/5 bg-[var(--lightColor)] rounded-[15px] mt-[-28px] hover:border 
+            hover:border-[var(--primaryDark)] py-2 px-4 md:w-2/3 lg:w-1/3 focus:outline focus:outline-2 focus:outline-blue-600"
+          />
           <Label className="w-full flex flex-wrap gap-2 items-center outline-none focus:outline focus:outline-2 focus:outline-blue-600 md:col-[1/2]">
             <span className="w-full font-nunitoBold">Accès</span>
             <span
@@ -171,6 +173,7 @@ export default function DashboardModal({
               Public
             </span>
             <input
+              name="access"
               value={selectedAccess}
               type="checkbox"
               className="theme-checkbox outline-none focus:outline focus:outline-2 focus:outline-blue-600"
@@ -202,8 +205,8 @@ export default function DashboardModal({
               </Button>
             </FileTrigger>
             <FileTrigger
-              name="preview_url"
-              acceptedFileTypes={["image/png", "image/webp"]}
+              name="img_url"
+              acceptedFileTypes={["image/png", "image/webp, image/jpg"]}
             >
               <Button
                 className="insertField w-full border-black 
@@ -242,7 +245,6 @@ DashboardModal.propTypes = {
   setSelectedCategory: PropTypes.func.isRequired,
   handleClickAccessSelection: PropTypes.func.isRequired,
   handleChangeSelectedTags: PropTypes.func.isRequired,
-  ref: PropTypes.func.isRequired,
   selectedAccess: PropTypes.string.isRequired,
 };
 

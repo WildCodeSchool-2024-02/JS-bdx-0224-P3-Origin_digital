@@ -17,7 +17,6 @@ router.use("/roles", roleRouter);
 const videoRouter = require("./video/router");
 
 router.use("/videos", videoRouter);
-router.use("/upload", videoRouter);
 
 const userRouter = require("./user/router");
 
