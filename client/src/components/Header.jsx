@@ -49,19 +49,12 @@ function Header() {
   // fetch
 
   const [categories, setCategories] = useState([]);
-  const [tags, setTags] = useState([]);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/categories`)
       .then((result) => result.json())
       .then((data) => {
         setCategories(data);
-      });
-
-    fetch(`${import.meta.env.VITE_API_URL}/api/tags`)
-      .then((result) => result.json())
-      .then((data) => {
-        setTags(data);
       });
   }, []);
 
@@ -77,7 +70,6 @@ function Header() {
       objectivesButtonClasses={objectivesButtonClasses}
       subscribeStyle={subscribeStyle}
       categories={categories}
-      tags={tags}
     />
   );
 }

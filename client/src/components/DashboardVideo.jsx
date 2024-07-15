@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Cell, Row } from "react-aria-components";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function DashboardVideo() {
+export default function DashboardVideo({ handleOpenModalModify }) {
   const tag = [
     "#Tag1",
     "#Tag2",
@@ -54,17 +54,35 @@ export default function DashboardVideo() {
       <Cell>
         <ul className="flex flex-col gap-4">
           <li>
-            <Link to="/" className="textHoverUnderline">
+            <button
+              type="button"
+              onClick={handleOpenModalModify}
+              className="textHoverUnderline"
+            >
               Modifier
-            </Link>
+            </button>
           </li>
           <li>
-            <Link to="/" className="textHoverUnderline">
+            <button
+              type="button"
+              onClick={handleOpenModalModify}
+              className="textHoverUnderline"
+            >
               Supprimer
-            </Link>
+            </button>
           </li>
         </ul>
       </Cell>
     </Row>
   );
 }
+
+DashboardVideo.propTypes = {
+  handleOpenModalModify: PropTypes.func,
+};
+
+DashboardVideo.defaultProps = {
+  handleOpenModalModify: () => {},
+};
+  
+  

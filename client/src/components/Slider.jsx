@@ -63,7 +63,7 @@ export default function Slider({ resourceList, resourcePath }) {
                   className="bg-gradient-custom text-light-color h-full w-full px-2 pb-2 absolute top-0 flex items-end justify-center opacity-0 
             transition-opacity duration-300 rounded-xl group-hover:opacity-100"
                 >
-                  {resource.description.substring(1, 50)}
+                  dss
                 </figcaption>
               ) : (
                 <figcaption className="bg-gradient-light text-light-color h-full w-full px-2 pb-2 absolute top-0 flex items-center justify-center">

@@ -18,7 +18,9 @@
     "react-router-dom": "^6.23.0",
     "react-router-hash-link": "^2.4.3",
     "swiper": "^11.1.4",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^3.4.4",
+    "@formatjs/icu-messageformat-parser": "^2.7.8",
+    "@formatjs/fast-memoize": "^2.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",

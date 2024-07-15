@@ -1,7 +1,19 @@
+import { useState } from "react";
 import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import DashboardVideo from "../components/DashboardVideo";
+import DashboardModal from "../components/DashboardModal";
 
 export default function Dashboard() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [toModify, setToModify] = useState(false);
+
+  const handleOpenModal = () => setIsModalOpen(!isModalOpen);
+
+  const handleOpenModalModify = () => [
+    setToModify(!toModify),
+    setIsModalOpen(!isModalOpen),
+  ];
+
   return (
     <>
       <input
@@ -12,6 +24,7 @@ export default function Dashboard() {
       <button
         type="button"
         className="p-0 mt-6 ml-4 px-4 h-8 lg:h-11  rounded-full overflow-hidden w-[90vw] lg:w-auto"
+        onClick={handleOpenModal}
       >
         + Ajouter une vidéo
       </button>
@@ -32,11 +45,17 @@ export default function Dashboard() {
             </Column>
           </TableHeader>
           <TableBody className="[&>*:nth-child(even)]:bg-secondary-color ">
-            <DashboardVideo />
+            <DashboardVideo handleOpenModalModify={handleOpenModalModify} />
             <DashboardVideo />
           </TableBody>
         </Table>
       </section>
+      <DashboardModal
+        displayClass={isModalOpen ? "grid" : "none"}
+        handleOpenModal={handleOpenModal}
+        isModalOpen={isModalOpen}
+        toModify={toModify}
+      />
     </>
   );
 }
