@@ -21,7 +21,7 @@ export default function DashboardVideo() {
     setShowAllTags(!showAllTags);
   };
 
-  return (
+ return (
     <Row className="[&>*]:border-2 [&>*]:px-2 lg:[&>*]:px-0">
       <Cell className="px-0">
         <img
@@ -54,14 +54,14 @@ export default function DashboardVideo() {
       <Cell>
         <ul className="flex flex-col gap-4">
           <li>
-            <Link to="/" className="textHoverUnderline">
+            <button type="button" className="textHoverUnderline">
               Modifier
-            </Link>
+            </button>
           </li>
           <li>
-            <Link to="/" className="textHoverUnderline">
+            <button type="button" className="textHoverUnderline">
               Supprimer
-            </Link>
+            </button>
           </li>
         </ul>
       </Cell>
