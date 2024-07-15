@@ -12,7 +12,7 @@ class VideoTagSeeder extends AbstractSeeder {
   }
 
   run() {
-    for (let i = 0; i < 30; i += 1) {
+    for (let i = 0; i < 60; i += 1) {
       const fakeVideoTag = {
         video_id: this.getRef(
           `video_${Math.floor(Math.random() * (10 - 1) + 1)}`
