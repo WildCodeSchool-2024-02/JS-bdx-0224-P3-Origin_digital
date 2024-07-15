@@ -17,7 +17,6 @@ function Navbar({
   objectivesButtonClasses,
   objectiveSectionClasses,
   categories,
-  tags,
 }) {
   const { isLogged, handleLogout } = useContext(LoggedContext);
 
@@ -135,18 +134,6 @@ function Navbar({
                 >
                   {category.name}
                 </Link>
-                <ul className="flex flex-col hover:text-[var(--primaryDark)] capitalize">
-                  {tags.map((tag) => (
-                    <li key={tag.id}>
-                      <Link
-                        to={`/category/${categories.id}/${tag.id}`}
-                        className="hover:text-[var(--primaryDark)] text-[var(--darkColor)] font-light"
-                      >
-                        {tag.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
               </li>
             ))}
           </ul>
@@ -167,12 +154,6 @@ Navbar.propTypes = {
   objectivesButtonClasses: PropTypes.string.isRequired,
   objectiveSectionClasses: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  tags: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,

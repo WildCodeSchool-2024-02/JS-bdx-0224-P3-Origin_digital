@@ -10,14 +10,17 @@ function CategoryPage() {
         {category.name}
       </h1>
       <ul className="flex flex-col gap-y-6 mb:gap-y-8 lg:gap-y-10">
-        {category.tags.map((tag) => (
-          <li key={tag.id}>
-            <h2 className="text-4xl font-semibold mb-2 md:mb-4 md:text-5xl lg:mb-6 lg:text-6xl">
-              {tag.name}
-            </h2>
-            <Slider resourceList={tag.videos} resourcePath="video" />
-          </li>
-        ))}
+        {category.tags.map(
+          (tag) =>
+            tag.videos !== null && (
+              <li key={tag.id}>
+                <h2 className="text-4xl font-semibold mb-2 md:mb-4 md:text-5xl lg:mb-6 lg:text-6xl">
+                  {tag.name}
+                </h2>
+                <Slider resourceList={tag.videos} resourcePath="video" />
+              </li>
+            )
+        )}
       </ul>
     </main>
   );

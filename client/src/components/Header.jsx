@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import { getData } from "../services/api.service";
+
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isObjectivesMenuOpen, setIsObjectivesMenuOpen] = useState(false);
+
 
   const closeMenu = () => {
     setIsMobileMenuOpen(false);
@@ -62,19 +65,14 @@ function Header() {
     hover:bg-transparent hover:text-[var(--darkColor)] 
     p-0 border-none cursor-pointer`;
 
-  // fetch
-
-  const [categories, setCategories] = useState([]);
-  const [tags, setTags] = useState([]);
-
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/categories`)
+    getData(`/api/categories`)
       .then((result) => result.json())
       .then((data) => {
         setCategories(data);
       });
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/tags`)
+    getData(`/api/tags`)
       .then((result) => result.json())
       .then((data) => {
         setTags(data);

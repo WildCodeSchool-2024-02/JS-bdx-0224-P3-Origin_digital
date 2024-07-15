@@ -20,6 +20,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => getData(`/api/categories`),
       },
       {
         path: "/category/:id",
@@ -46,7 +47,6 @@ const router = createBrowserRouter([
           const response = await sendData("/api/auth", formData, "POST");
           return response;
         },
-        
       },
       {
         path: "/viewing",
