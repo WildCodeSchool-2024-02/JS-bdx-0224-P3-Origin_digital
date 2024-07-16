@@ -47,7 +47,7 @@ app.use(
 // Uncomment one or more of these options depending on the format of the data sent by your client:
 
 app.use(express.json());
-// app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 // app.use(express.text());
 // app.use(express.raw());
 
@@ -77,6 +77,10 @@ app.use(express.json());
 /* ************************************************************************* */
 
 // Import the API router
+
+
+const path = require("path");
+
 const apiRouter = require("./routers/api/router");
 
 // Mount the API router under the "/api" endpoint
@@ -99,10 +103,8 @@ app.use("/api", apiRouter);
 // 1. Uncomment the lines related to serving static files and redirecting unhandled requests.
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your client's build artifacts are located.
 
-/*
-const path = require("path");
-
-const reactBuildPath = path.join(__dirname, "/../../client/dist");
+// const reactBuildPath = path.join(__dirname, "/../../client/dist"); for deploy
+const reactBuildPath = path.join(__dirname, "/../../client");
 const publicFolderPath = path.join(__dirname, "/../public");
 
 // Serve react resources
@@ -118,7 +120,6 @@ app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
 app.get("*", (_, res) => {
   res.sendFile(path.join(reactBuildPath, "/index.html"));
 });
-*/
 
 /* ************************************************************************* */
 

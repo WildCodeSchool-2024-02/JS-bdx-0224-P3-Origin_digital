@@ -41,3 +41,18 @@ export async function getSecureData(url, token) {
     return error;
   }
 }
+
+export async function sendNewVideo(url, data, token) {
+  try {
+    const response = await fetch(import.meta.env.VITE_API_URL + url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: data,
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+}

@@ -5,7 +5,7 @@ const createUserSchema = Joi.object({
   description: Joi.string().min(1).max(1000).required(),
   upload_date: Joi.date().required(),
   duration: Joi.number().integer().min(1).required(),
-  video_url: Joi.string().min(0).max(255),
+  video_url: Joi.string().min(0).max(255).required(),
   img_url: Joi.string().min(0).max(255),
   access: Joi.string().min(0).max(100),
   category_id: Joi.number().integer().min(1).required(),

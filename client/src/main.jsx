@@ -13,7 +13,7 @@ import RegisterPage from "./pages/RegisterPage";
 import Viewing from "./pages/ViewingPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
-import { sendData, getData } from "./services/api.service";
+import { sendData, getData, sendNewVideo } from "./services/api.service";
 import Dashboard from "./pages/Dashboard";
 import MyAccount from "./pages/MyAccount";
 import { LoggedProvider } from "./context/LoggedContext";
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         element: <LoginPage />,
         action: async ({ request }) => {
           const formData = Object.fromEntries(await request.formData());
-          const response = await sendData("/api/auth", formData, "POST");
+          const response = await sendData("/api/auth", formData);
           return response;
         },
       },
@@ -68,9 +68,10 @@ const router = createBrowserRouter([
         element: <Dashboard />,
         loader: () => getData(`/api/tags`),
         action: async ({ request }) => {
-          const formData = Object.fromEntries(await request.formData());
-          const response = sendData("/api/videos", formData);
-          if (response.status === 201) return window.location.reload();
+          const formData = await request.formData();
+          const { token } = Object.fromEntries(formData);
+          const response = await sendNewVideo("/api/videos", formData, token);
+          if (response.status === 201) return response;
           return response;
         },
       },

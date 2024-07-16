@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useActionData, useLoaderData } from "react-router-dom";
 import { Column, Table, TableHeader, TableBody } from "react-aria-components";
+import { useCookies } from "react-cookie";
 import DashboardVideo from "../components/DashboardVideo";
 import DashboardModal from "../components/DashboardModal";
-import { sendData } from "../services/api.service";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [toModify, setToModify] = useState(false);
-  const [selectedAccess, setSelectedAccess] = useState("Public");
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedAccess, setSelectedAccess] = useState(false);
+  const [videoFileName, setVideoFileName] = useState("");
+  const [imageFileName, setImageFileName] = useState("");
   const tags = useLoaderData();
-
+  const [cookies] = useCookies("jwt");
+  const modalResponse = useActionData();
+  console.info(modalResponse);
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
     if (isModalOpen === true && toModify === true) {
@@ -26,15 +28,21 @@ export default function Dashboard() {
   ];
 
   const handleClickAccessSelection = () => {
-    setSelectedAccess(selectedAccess === "Public" ? "Abonnés" : "Public");
+    setSelectedAccess(!selectedAccess);
   };
 
-  const handleChangeSelectedTags = (selectedList) => {
-    setSelectedTags(selectedList);
+  const handleVideoFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setVideoFileName(file.name);
+    }
   };
 
-  const handleSumbitModal = (formData) => {
-    sendData("/api/videos", formData);
+  const handleImageFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImageFileName(file.name);
+    }
   };
 
   useEffect(() => {
@@ -85,14 +93,14 @@ export default function Dashboard() {
         isModalOpen={isModalOpen}
         toModify={toModify}
         tags={tags}
-        selectedTags={selectedTags}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
         handleClickAccessSelection={handleClickAccessSelection}
-        handleChangeSelectedTags={handleChangeSelectedTags}
         selectedAccess={selectedAccess}
         setSelectedAccess={setSelectedAccess}
-        handleSumbitModal={handleSumbitModal}
+        handleVideoFileChange={handleVideoFileChange}
+        handleImageFileChange={handleImageFileChange}
+        imageFileName={imageFileName}
+        videoFileName={videoFileName}
+        cookies={cookies}
       />
     </>
   );

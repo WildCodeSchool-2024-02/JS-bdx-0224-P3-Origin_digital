@@ -20,6 +20,7 @@ const getIdFromToken = (req, res, next) => {
           return res.status(401).json({ message: 'Token non valide' });
         }
         const userId = decoded.sub;
+        req.body.user_id = userId;
         return userId;
       });
 
