@@ -1,22 +1,27 @@
 import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import DashboardVideo from "../components/DashboardVideo";
+// import { useLoaderData } from "react-router-dom";
 
 export default function Dashboard() {
+
+  // const video = useLoaderData();
+  // console.log(video);
+
   return (
     <>
+      <h2>Votre Tableau de bord</h2>
       <input
         type="text"
         placeholder="Rechercher une vidéo.."
-        className="mt-6 lg:mr-5 bg-primary-color rounded-full p-1 lg:p-2 pl-4 ml-4 md:ml-8 lg:ml-12 w-[90vw] lg:w-auto"
+        className="mt-4 ml-4 h-8 pl-4 w-64 border-4 border-primary-dark bg-light-color rounded-full lg:h-10"
       />
       <button
         type="button"
-        className="p-0 mt-6 ml-4 px-4 h-8 lg:h-11  rounded-full overflow-hidden w-[90vw] lg:w-auto"
+        className="mt-4 mb-2 ml-4 w-64 rounded-full "
       >
         + Ajouter une vidéo
       </button>
-      <section className="overflow-x-auto rounded-xl">
-        <h2>Votre Tableau de bord</h2>
+      <section className=" overflow-x-auto rounded-xl">
         <Table className="w-[90vw] mx-auto">
           <TableHeader className="bg-primary-color">
             <Column isRowHeader className="px-28 lg:p-0 w-60 rounded-tl-3xl">
@@ -32,7 +37,7 @@ export default function Dashboard() {
             </Column>
           </TableHeader>
           <TableBody className="[&>*:nth-child(even)]:bg-secondary-color ">
-            <DashboardVideo />
+            <DashboardVideo/>
             <DashboardVideo />
           </TableBody>
         </Table>

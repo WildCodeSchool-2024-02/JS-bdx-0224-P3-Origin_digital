@@ -30,7 +30,7 @@ export default function DashboardVideo() {
         />
         <p className="block text-ellipsis pt-10">Titre de la vidéo</p>
       </Cell>
-      <Cell>Pilate</Cell>
+      <Cell>titre</Cell>
       <Cell className="py-2 px-0">
         <ul className="flex flex-wrap w-auto justify-center items-center gap-4 [&>*]:py-0 [&>*]:px-4 [&>*]:text-xl [&>*]:h-7 [&>*]:bg-[var(--primaryColor)] [&>*]:rounded-full [&>*]:text-[var(--darkColor)] [&>*]:capitaliz [&>*]:my-1 [&>*]:border-2 [&>*]:border-dark-color">
           {(showAllTags ? tag : tag.slice(0, 2)).map((tags) => (

@@ -4,11 +4,12 @@ class VideoRepository extends AbstractRepository {
   constructor() {
     super({ table: "video" });
   }
-
+  
   async readAll() {
     const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
     return rows;
   }
+
 
   async read(id) {
     const [rows] = await this.database.query(
