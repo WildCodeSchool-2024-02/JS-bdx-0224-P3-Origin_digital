@@ -62,18 +62,11 @@ function Header() {
   }, [isMobileMenuOpen, isObjectivesMenuOpen]);
 
   const [categories, setCategories] = useState([]);
-  const [tags, setTags] = useState([]);
   useEffect(() => {
     getData(`/api/categories`)
       .then((result) => result.json())
       .then((data) => {
         setCategories(data);
-      })
-
-    getData(`/api/tags`)
-      .then((result) => result.json())
-      .then((data) => {
-        setTags(data);
       })
       }, []);
 
@@ -89,7 +82,6 @@ function Header() {
       objectivesButtonClasses={objectivesButtonClasses}
       subscribeStyle={subscribeStyle}
       categories={categories}
-      tags={tags}
     />
   );
 }
