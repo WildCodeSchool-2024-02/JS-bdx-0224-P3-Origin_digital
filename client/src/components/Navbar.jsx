@@ -46,6 +46,7 @@ function Navbar({
               />
             </button>
           </li>
+          {!isLogged && (
           <li>
             <HashLink
               to="/#WhySubscribe"
@@ -55,6 +56,7 @@ function Navbar({
               Pourquoi s'abonner ?
             </HashLink>
           </li>
+          )}
           {isLogged ? (
             <li>
               <Link

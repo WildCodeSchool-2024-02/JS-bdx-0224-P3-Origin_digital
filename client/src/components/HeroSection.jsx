@@ -19,8 +19,8 @@ export default function HeroSection() {
     <>
       <h1
         ref={inViewRef}
-        className={`z-10 h-[90vh] text-[var(--lightColor)] text-5xl bg-[url(./assets/images/banner.jpg)] 
-        bg-no-repeat bg-[30%] bg-cover bg-clip-border h-dvh text-center md:text-6xl lg:text-left lg:pl-[55%] pt-[20%] lg:pt-[10%] drop-shadow-2xl ${fadeInClass}`}
+        className={` h-[90vh] text-[var(--lightColor)] text-5xl bg-[url(./assets/images/banner.jpg)] 
+        bg-no-repeat bg-[30%] bg-cover bg-clip-border text-center md:text-6xl lg:text-left lg:pl-[55%] pt-[20%] lg:pt-[10%] drop-shadow-lg ${fadeInClass}`}
       >
         {isLogged ? `Bon retour, ${userData.firstname}` : "Découvrez le sport en Streaming"}
       </h1>
