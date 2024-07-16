@@ -68,7 +68,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
-        loader: () => getData(`/api/video`),
+        loader: () => getData(`/api/videos`),
       },
     ],
   },

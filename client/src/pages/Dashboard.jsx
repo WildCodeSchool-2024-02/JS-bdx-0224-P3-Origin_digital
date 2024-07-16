@@ -1,11 +1,10 @@
+import { useLoaderData } from "react-router-dom";
 import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import DashboardVideo from "../components/DashboardVideo";
-// import { useLoaderData } from "react-router-dom";
 
 export default function Dashboard() {
 
-  // const video = useLoaderData();
-  // console.log(video);
+  const videos = useLoaderData();
 
   return (
     <>
@@ -30,15 +29,14 @@ export default function Dashboard() {
             <Column className="px-3 lg:p-0 lg:w-28">Catégorie</Column>
             <Column className="px-28 lg:p-0 lg:w-44">Tag</Column>
             <Column className="px-3 lg:p-0 lg:w-28">Visibilité</Column>
-            <Column className="px-3 lg:p-0 lg:w-16">Vue</Column>
             <Column className="px-3 lg:p-0 lg:w-36">Publication</Column>
             <Column className="px-3 lg:p-0 lg:w-36 rounded-tr-3xl">
               Modification
             </Column>
           </TableHeader>
           <TableBody className="[&>*:nth-child(even)]:bg-secondary-color ">
-            <DashboardVideo/>
-            <DashboardVideo />
+          {videos.map((video) => (<DashboardVideo video={video} key={video.id}
+          />))}
           </TableBody>
         </Table>
       </section>
