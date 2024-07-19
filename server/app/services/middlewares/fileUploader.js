@@ -9,22 +9,24 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     // Construire le nom du fichier avec son nom d'origine et l'extension d'origine, autrement le fichier ne possède pas d'extension
     // le Date.now() permet de renommer le fichier afin qu'ils soient tous unique, c'est une façon simple de s'assurer de l'unicité des fichiers
-    cb(null, `${Date.now()}-${file.originalname}`);
+    const date = new Date(Date.now()).toISOString().substring(0, 16);
+    cb(null, `${date}-${file.originalname}`);
   },
 });
 
-const uploadVideo = (req, res, next) => {
-    if (req.file) {
-      const video = req.file;
-      const currentDate = new Date(Date.now()).toISOString();
-      const formattedDate = currentDate.split("T")[0];
-      req.body.video_url = video.filename;
-      req.body.upload_date = formattedDate;
-
-      next();
-    } else {
-      res.status(400).send("No video uploaded.");
+const formatVideoData = (req, res, next) => {
+  if (req.file) {
+    const video = req.file;
+    req.body.video_url = video.filename;
+    if (req.body.access === undefined) req.body.access = false;
+    if (typeof req.body.tags_id === "string") {
+      req.body.tags_id = [req.body.tags_id];
     }
+    delete req.body.token;
+    next();
+  } else {
+    res.status(400).send("No video uploaded.");
+  }
 };
 
 const uploadImage = (req, res, next) => {
@@ -40,6 +42,6 @@ const uploadImage = (req, res, next) => {
 
 module.exports = {
   storage,
-  uploadVideo,
+  formatVideoData,
   uploadImage,
 };

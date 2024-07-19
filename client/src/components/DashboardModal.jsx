@@ -92,6 +92,20 @@ export default function DashboardModal({
             hover:border-[var(--primaryDark)] md:min-h-16 md:text-base "
             />
           </label>
+          <label htmlFor="duration">
+            Durée de la vidéo (format HH:MM:SS)
+            <input
+              id="duration"
+              name="duration"
+              type="text"
+              required
+              pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
+              defaultValue="00:00:00"
+              title="Write a duration in the format hh:mm:ss"
+              className="w-full col-[1/2] bg-[var(--lightColor)] text-sm min-h-10 rounded-xl p-1 outline-none ease-linear duration-100 
+              hover:border hover:border-[var(--primaryDark)] focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-12 md:text-base"
+            />
+          </label>
           <label
             className="w-full text-base font-nunitoBold md:col-[1/2]"
             htmlFor="category_id"
@@ -116,28 +130,27 @@ export default function DashboardModal({
           </label>
           <label
             htmlFor="tags_id"
-            className="w-full text-base font-nunitoBold md:col-[1/2] focus:outline focus:outline-2 focus:outline-blue-600"
+            className="w-full text-base font-nunitoBold md:col-[1/2]"
           >
             Tags*
+            <select
+              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12"
+              aria-label="selection de la catégorie"
+              required
+              name="tags_id"
+              id="category"
+              multiple
+            >
+              <span aria-hidden="true" className="justify-self-end ">
+                ▼
+              </span>
+              {tags.map((tag) => (
+                <option key={tag.id} value={tag.id}>
+                  {tag.name}
+                </option>
+              ))}
+            </select>
           </label>
-          <select
-            className="w-full bg-[var(--lightColor)] rounded-[15px] mt-[-28px] hover:border 
-           hover:border-[var(--primaryDark)] py-2 px-4 focus:outline focus:outline-2 focus:outline-blue-600"
-            aria-label="selection de la catégorie"
-            required
-            name="tags_id"
-            id="category"
-            multiple
-          >
-            <span aria-hidden="true" className="justify-self-end ">
-              ▼
-            </span>
-            {tags.map((tag) => (
-              <option key={tag.id} value={tag.id}>
-                {tag.name}
-              </option>
-            ))}
-          </select>
           {/* <Multiselect
             displayValue="name"
             options={tags.map((tag) => tag.name)}
@@ -197,21 +210,8 @@ export default function DashboardModal({
             <legend className="w-full mb-1 text-base font-nunitoBold md:mb-2">
               Télécharger vos fichiers
             </legend>
-            {/* <label
-              htmlFor="videoUrl"
-              className="insertField flex flex-col items-center justify-center w-full mb-2 border-black text-base duration-300
-                normal-case min-h-10 hover:bg-primary-dark hover:cursor-pointer focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-14 md:h-[40%] md:mb-0"
-            >
-              <input
-                type="file"
-                accept="video/mp4"
-                name="video_url"
-                required
-                id="videoUrl"
-              />
-            </label> */}
+
             {/* <FileTrigger
-              name="video_url"
               acceptedFileTypes={["video/mp4"]}
               onChange={handleVideoFileChange}
             >

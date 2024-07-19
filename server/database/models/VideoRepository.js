@@ -41,11 +41,10 @@ class VideoRepository extends AbstractRepository {
 
   async create(video) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (title, description, upload_date, duration, video_url, img_url, access, category_id, user_id) VALUES (?,?,?,?,?,?,?,?)`,
+      `INSERT INTO ${this.table} (title, description, duration, video_url, access, category_id, user_id) VALUES (?,?,?,?,?,?,?)`,
       [
         video.title,
         video.description,
-        video.upload_date,
         video.duration,
         video.video_url,
         video.access,
@@ -53,6 +52,13 @@ class VideoRepository extends AbstractRepository {
         video.user_id,
       ]
     );
+
+    // for (const tag of video.tags_id) {
+    //   const [junctionResult] = this.database.query(
+    //     `INSERT INTO video_tag (video_id, tag_id) VALUES (?,?)`,
+    //     [result.insertId, tag]
+    //   );
+    // }
 
     return result.insertId;
   }

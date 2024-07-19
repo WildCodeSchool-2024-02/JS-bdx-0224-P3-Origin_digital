@@ -5,20 +5,27 @@ const router = express.Router();
 
 const video = require("../../../controllers/videoActions");
 const {
-  uploadVideo,
+  formatVideoData,
   storage,
 } = require("../../../services/middlewares/fileUploader");
 const {
   getIdFromToken,
 } = require("../../../services/middlewares/getIdFromToken");
+const validateVideo = require("../../../services/middlewares/validateVideo");
 
 const upload = multer({ storage });
 
 router.get("/", video.browse);
 router.get("/:id", video.read);
 
-
-router.post("/", upload.single("video_url"), getIdFromToken, uploadVideo);
+router.post(
+  "/",
+  upload.single("video_url"),
+  getIdFromToken,
+  formatVideoData,
+  validateVideo,
+  video.add
+);
 
 // router.use(verifyToken);
 
