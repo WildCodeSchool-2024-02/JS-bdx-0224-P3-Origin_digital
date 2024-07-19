@@ -210,7 +210,20 @@ export default function DashboardModal({
             <legend className="w-full mb-1 text-base font-nunitoBold md:mb-2">
               Télécharger vos fichiers
             </legend>
-
+            {/* <label
+              htmlFor="videoUrl"
+              className="insertField flex flex-col items-center justify-center w-full mb-2 border-black text-base duration-300
+                normal-case min-h-10 hover:bg-primary-dark hover:cursor-pointer focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-14 md:h-[40%] md:mb-0"
+            >
+              <input
+                type="file"
+                accept="video/mp4"
+                name="video_url"
+                required
+                id="videoUrl"
+                className="file:mr-2 file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
+              />
+            </label> */}
             {/* <FileTrigger
               acceptedFileTypes={["video/mp4"]}
               onChange={handleVideoFileChange}
