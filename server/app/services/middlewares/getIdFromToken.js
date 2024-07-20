@@ -22,7 +22,6 @@ const getIdFromToken = (req, res, next) => {
         const userId = decoded.sub;
         return userId;
       });
-
     next();
   } catch (err) {
     res.sendStatus(401);
