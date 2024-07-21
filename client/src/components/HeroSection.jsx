@@ -12,22 +12,23 @@ export default function HeroSection() {
   }`;
 
   const heroSectionButton = `flex gap-6 p-2 text-[var(--lightColor)] text-2xl bg-[var(--primaryLight)] items-center rounded-xl 
-            visited:text-[var(--lightColor)] hover:bg-[var(--primaryDark)] mx-[auto] w-[16ch] relative text-center top-[-50vh] lg:text-3xl
-            lg:top-[-50vh] lg:ml-[55%] ${fadeInClass}`;
+            visited:text-[var(--lightColor)] hover:bg-[var(--primaryDark)] mx-[auto] w-[16ch] relative text-center top-[-70vh] lg:text-3xl
+            lg:top-[-40vh] lg:ml-[55%] ${fadeInClass}`;
 
   return (
     <>
       <h1
         ref={inViewRef}
         className={` h-[90vh] text-[var(--lightColor)] text-5xl bg-[url(./assets/images/banner.jpg)] 
-        bg-no-repeat bg-[30%] bg-cover bg-clip-border text-center md:text-6xl lg:text-left lg:pl-[55%] pt-[20%] lg:pt-[10%] drop-shadow-lg ${fadeInClass}`}
+        bg-no-repeat bg-[30%] bg-cover bg-clip-border text-center md:text-6xl lg:text-left lg:pl-[55%] pt-[20%] lg:pt-[10%] drop-shadow-lg ${fadeInClass}
+        h1-background-effect`}
       >
         {isLogged ? `Bon retour, ${userData.firstname}` : "Découvrez le sport en Streaming"}
       </h1>
       <p
         ref={inViewRef}
         className={`w-full text-[var(--lightColor)] lg:pl-[55%] text-lg text-center lg:text-left lg:text-2xl relative 
-        top-[-64vh] drop-shadow-2xl md:text-xl lg:top-[-60vh] ${fadeInClass}`}
+        top-[-64vh] drop-shadow-2xl md:text-xl lg:top-[-50vh] ${fadeInClass}`}
       >
         {(() => {
           if (isLogged) {
