@@ -16,7 +16,9 @@ export default function InfoSection() {
         ref={inViewRef}
         src="./src/assets/images/yoga.jpg"
         alt=""
-        className={`img-shadow w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] rounded-xl lg:ml-[8vw]  ${fadeInClass}`}
+        className={`img-shadow w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] rounded-xl lg:ml-[8vw] lg:mt-[-10%]
+  ${fadeInClass}`}
+        
       />{" "}
         <h2
           ref={inViewRef}
