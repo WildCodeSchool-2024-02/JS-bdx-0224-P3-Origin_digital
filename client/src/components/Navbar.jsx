@@ -31,7 +31,7 @@ function Navbar({
           />
         </Link>
 
-        <ul className={`${menuListClasses} z-10`}>
+        <ul className={`${menuListClasses} z-1`}>
           <li className="flex">
             <button
               onClick={handleClickObjectivesMenu}
@@ -144,7 +144,7 @@ function Navbar({
             {categories.map((category) => (
               <li
                 key={category.id}
-                className=" border-b border-gray-400 my-8 w-1/4 lg:w-1/6"
+                className=" border-b border-gray-400 my-8 w-1/2 lg:w-1/6"
               >
                 <Link
                   to={`/category/${category.id}`}

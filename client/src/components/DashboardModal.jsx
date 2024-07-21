@@ -17,7 +17,7 @@ export default function DashboardModal({
     <FocusLock>
       <dialog
         className={` ${displayClass} absolute top-0 left-0 w-screen min-h-screen bg-[var(--primaryColor)] 
-       grid-cols-[1fr,0.25fr] grid-rows-[70px,auto] items-center justify-center p-4 lg:py-12 lg:px-[15vw] 
+       grid-cols-[1fr,0.25fr] grid-rows-[70px,auto] items-center z-10 justify-center p-4 lg:py-12 lg:px-[15vw] 
        lg:bg-[var(--blurBg)]`}
         open={isModalOpen}
         onClick={handleOpenModal}
@@ -56,7 +56,7 @@ export default function DashboardModal({
           onClick={(e) => e.stopPropagation()}
           method={toModify ? "PUT" : "POST"}
           action="/dashboard"
-          enctype="multipart/form-data"
+          encType="multipart/form-data"
         >
           <label
             className="w-full mb-1 text-base font-nunitoBold"
@@ -67,7 +67,7 @@ export default function DashboardModal({
               className="w-full col-[1/2] bg-[var(--lightColor)] text-sm min-h-10 rounded-xl p-1 outline-none ease-linear duration-100 
               hover:border hover:border-[var(--primaryDark)] focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-12 md:text-base"
               id="title"
-              aria-labelledby="titleLabel"
+              aria-labelledby="title"
               name="title"
               type="text"
               required
@@ -82,7 +82,7 @@ export default function DashboardModal({
               label="Description"
               name="description"
               id="description"
-              aria-labelledby="descriptionLabel"
+              aria-labelledby="description"
               className="w-full md:col-[1/2] bg-[var(--lightColor)] radius-4 text-sm rounded-[15px] min-h-10 p-1
             outline-none ease-linear duration-100 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
             hover:border-[var(--primaryDark)] md:min-h-16 md:text-base "
@@ -110,14 +110,11 @@ export default function DashboardModal({
             <select
               className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
               hover:border-[var(--primaryDark)]"
-              aria-label="selection de la catégorie"
+              aria-labelledby="category_id"
               required
               name="category_id"
               id="category"
             >
-              <span aria-hidden="true" className="justify-self-end ">
-                ▼
-              </span>
               <option value={3}>Pilates</option>
               <option value={2}>Musculation</option>
               <option value={1}>Fitness</option>
@@ -132,20 +129,18 @@ export default function DashboardModal({
             Tags*
             <select
               className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12"
-              aria-label="selection de la catégorie"
+              aria-labelledby="tags_id"
               required
               name="tags_id"
               id="category"
               multiple
             >
-              <span aria-hidden="true" className="justify-self-end ">
-                ▼
-              </span>
-              {tags.map((tag) => (
-                <option key={tag.id} value={tag.id}>
-                  {tag.name}
-                </option>
-              ))}
+              {tags &&
+                tags.map((tag) => (
+                  <option key={tag.id} value={tag.id}>
+                    {tag.name}
+                  </option>
+                ))}
             </select>
           </label>
           <label
@@ -223,7 +218,7 @@ export default function DashboardModal({
           <input
             type="text"
             name="token"
-            value={cookies.jwt}
+            defaultValue={cookies.jwt}
             id="token"
             className="hidden"
           />
@@ -252,7 +247,7 @@ DashboardModal.propTypes = {
     }).isRequired
   ).isRequired,
   handleClickAccessSelection: PropTypes.func.isRequired,
-  selectedAccess: PropTypes.string.isRequired,
+  selectedAccess: PropTypes.bool.isRequired,
   cookies: PropTypes.shape({
     jwt: PropTypes.string,
   }),

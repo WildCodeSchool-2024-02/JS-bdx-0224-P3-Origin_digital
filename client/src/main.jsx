@@ -66,7 +66,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
-        loader: () => getData(`/api/tags`),
+        loader: () => getData("/api/tags"),
         action: async ({ request }) => {
           const formData = await request.formData();
           const { token } = Object.fromEntries(formData);

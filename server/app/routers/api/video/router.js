@@ -3,6 +3,9 @@ const multer = require("multer");
 
 const router = express.Router();
 
+const {
+  verifyToken,
+} = require("../../../services/middlewares/tokenVerification");
 const video = require("../../../controllers/videoActions");
 const {
   storage,
@@ -17,8 +20,11 @@ const validateVideo = require("../../../services/middlewares/validateVideo");
 
 const upload = multer({ storage });
 
-router.get("/", video.browse);
 router.get("/:id", video.read);
+
+router.use(verifyToken);
+
+router.get("/", getIdFromToken, video.browse);
 
 router.post(
   "/",
@@ -34,7 +40,6 @@ router.post(
   video.add
 );
 
-// router.use(verifyToken);
 
 
 router.put("/:id", video.edit);

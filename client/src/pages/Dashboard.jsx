@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useActionData, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import { useCookies } from "react-cookie";
 import DashboardVideo from "../components/DashboardVideo";
 import DashboardModal from "../components/DashboardModal";
+import { getSecureData } from "../services/api.service";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,10 +12,16 @@ export default function Dashboard() {
   const [selectedAccess, setSelectedAccess] = useState(false);
   const [videoFileName, setVideoFileName] = useState("");
   const [imageFileName, setImageFileName] = useState("");
-  const tags = useLoaderData();
+  const [videos, setVideos] = useState([]);
   const [cookies] = useCookies("jwt");
-  const modalResponse = useActionData();
-  console.info(modalResponse);
+  const tags = useLoaderData();
+
+  useEffect(() => {
+    getSecureData("/api/videos", cookies.jwt)
+      .then((res) => res.json())
+      .then((data) => setVideos(data));
+  }, []);
+
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
     if (isModalOpen === true && toModify === true) {
@@ -52,14 +59,15 @@ export default function Dashboard() {
   return (
     <>
       <main>
+        <h2>Votre Tableau de bord</h2>
         <input
           type="text"
           placeholder="Rechercher une vidéo.."
-          className="mt-6 lg:mr-5 bg-primary-color rounded-full p-1 lg:p-2 pl-4 ml-4 md:ml-8 lg:ml-12 w-[90vw] lg:w-auto"
+          className="mt-4 ml-4 h-8 pl-4 w-64 border-4 border-primary-dark bg-light-color rounded-full lg:h-10"
         />
         <button
           type="button"
-          className="p-0 mt-6 ml-4 px-4 h-8 lg:h-11 rounded-full overflow-hidden w-[90vw] lg:w-auto"
+          className="mt-4 mb-2 ml-4 w-64 rounded-full "
           onClick={handleOpenModal}
         >
           + Ajouter une vidéo
@@ -74,15 +82,20 @@ export default function Dashboard() {
               <Column className="px-3 lg:p-0 lg:w-28">Catégorie</Column>
               <Column className="px-28 lg:p-0 lg:w-44">Tag</Column>
               <Column className="px-3 lg:p-0 lg:w-28">Visibilité</Column>
-              <Column className="px-3 lg:p-0 lg:w-16">Vue</Column>
               <Column className="px-3 lg:p-0 lg:w-36">Publication</Column>
               <Column className="px-3 lg:p-0 lg:w-36 rounded-tr-3xl">
                 Modification
               </Column>
             </TableHeader>
             <TableBody className="[&>*:nth-child(even)]:bg-secondary-color ">
-              <DashboardVideo handleOpenModalModify={handleOpenModalModify} />
-              <DashboardVideo />
+              {videos &&
+                videos.map((video) => (
+                  <DashboardVideo
+                    video={video}
+                    key={video.id}
+                    handleOpenModalModify={handleOpenModalModify}
+                  />
+                ))}
             </TableBody>
           </Table>
         </section>
