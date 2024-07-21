@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import LoggedContext from "../context/LoggedContext";
 import logoSrc from "../assets/images/LogoSweatStream.png";
 import arrowSrc from "../assets/images/objectiveArrow.png";
@@ -19,6 +19,15 @@ function Navbar({
   categories,
 }) {
   const { isLogged, handleLogout } = useContext(LoggedContext);
+  const [menuMaxHeight, setMenuMaxHeight] = useState("max-h-0");
+
+  useEffect(() => {
+    if (isObjectivesMenuOpen) {
+      setMenuMaxHeight("max-h-50"); 
+    } else {
+      setMenuMaxHeight("max-h-0");
+    }
+  }, [isObjectivesMenuOpen]);
 
   return (
     <header className="bg-[var(--secondaryColor)] h-20 lg:h-24 flex items-center">
@@ -120,44 +129,44 @@ function Navbar({
         <span className="line-burger top-1/2 -translate-y-1/2 origin-left" />
         <span className="line-burger top-full -translate-y-full origin-left" />
       </button>
-      {isObjectivesMenuOpen && (
-        <nav className={objectiveSectionClasses}>
-          <button
-            className="absolute top-0 right-0 px-6 py-6 bg-transparent hover:bg-transparent"
-            type="button"
-            aria-label="bouton fermant dans objectif"
-            onClick={handleClickObjectivesMenu}
+      <nav
+        className={`${objectiveSectionClasses} transition-max-height duration-700 ease-in-out overflow-hidden ${menuMaxHeight}`}
+      >
+        <button
+          className="absolute top-0 right-0 px-6 py-6 bg-transparent hover:bg-transparent"
+          type="button"
+          aria-label="bouton fermant dans objectif"
+          onClick={handleClickObjectivesMenu}
+        >
+          <svg
+            className="h-8 w-8 text-gray-600"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <svg
-              className="h-8 w-8 text-gray-600"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <ul className="flex flex-wrap justify-around bg-white">
+          {categories.map((category) => (
+            <li
+              key={category.id}
+              className=" border-b border-gray-400 my-8 w-1/4 lg:w-1/6"
             >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
-          <ul className="flex flex-wrap justify-around bg-white">
-            {categories.map((category) => (
-              <li
-                key={category.id}
-                className=" border-b border-gray-400 my-8 w-1/4 lg:w-1/6"
+              <Link
+                to={`/category/${category.id}`}
+                className="text-[var(--darkColor)] hover:text-primary-color visited:text-[var(--darkColor)]"
               >
-                <Link
-                  to={`/category/${category.id}`}
-                  className="text-[var(--darkColor)] visited:text-[var(--darkColor)]"
-                >
-                  {category.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+                {category.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }
@@ -181,4 +190,3 @@ Navbar.propTypes = {
 };
 
 export default Navbar;
-
