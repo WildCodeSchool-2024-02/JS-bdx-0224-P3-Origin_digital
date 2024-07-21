@@ -8,7 +8,7 @@ const createUserSchema = Joi.object({
   img_url: Joi.string().min(0).max(255),
   access: Joi.bool().required(),
   category_id: Joi.number().integer().min(1).required(),
-  tags_id: Joi.array().items(Joi.string()).required(),
+  tags_id: Joi.array().items(Joi.number().integer()).required(),
   user_id: Joi.number().integer().min(1).required(),
 });
 

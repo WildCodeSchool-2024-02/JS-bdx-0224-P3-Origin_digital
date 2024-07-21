@@ -11,10 +11,6 @@ export default function DashboardModal({
   tags,
   handleClickAccessSelection,
   selectedAccess,
-  //   handleVideoFileChange,
-  //   handleImageFileChange,
-  //   imageFileName,
-  //   videoFileName,
   cookies,
 }) {
   return (
@@ -92,7 +88,7 @@ export default function DashboardModal({
             hover:border-[var(--primaryDark)] md:min-h-16 md:text-base "
             />
           </label>
-          <label htmlFor="duration">
+          <label htmlFor="duration" className=" text-base">
             Durée de la vidéo (format HH:MM:SS)
             <input
               id="duration"
@@ -107,12 +103,13 @@ export default function DashboardModal({
             />
           </label>
           <label
-            className="w-full text-base font-nunitoBold md:col-[1/2]"
+            className="w-full text-base font-nunitoBold md:col-[1/2] "
             htmlFor="category_id"
           >
             Catégories*
             <select
-              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12"
+              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
+              hover:border-[var(--primaryDark)]"
               aria-label="selection de la catégorie"
               required
               name="category_id"
@@ -151,23 +148,6 @@ export default function DashboardModal({
               ))}
             </select>
           </label>
-          {/* <Multiselect
-            displayValue="name"
-            options={tags.map((tag) => tag.name)}
-            isObject={false}
-            closeOnSelect
-            avoidHighlightFirstOption
-            hidePlaceholder
-            emptyRecordMsg
-            id="tags"
-            name="tags"
-            placeholder="Séléctionnez les tags"
-            onSelect={(e) => handleChangeSelectedTags(e.target.value)}
-            onRemove={(e) => handleChangeSelectedTags(e.target.value)}
-            selectedValues={selectedTags.map((tag) => tag.name)}
-            className="w-4/5 bg-[var(--lightColor)] rounded-[15px] mt-[-28px] hover:border 
-            hover:border-[var(--primaryDark)] py-2 px-4 md:w-2/3 lg:w-1/3 focus:outline focus:outline-2 focus:outline-blue-600"
-          /> */}
           <label
             htmlFor="access"
             className="w-full flex flex-wrap gap-2 items-center outline-none hover:cursor-pointer focus:outline focus:outline-2 focus:outline-blue-600 md:col-[1/2]"
@@ -207,53 +187,38 @@ export default function DashboardModal({
             className="w-full flex flex-wrap items-center justify-center gap-3 md:justify-evenly md:gap-5 
           md:flex-col md:col-[2/-1] md:row-[1/6] md:h-[90%]"
           >
-            <legend className="w-full mb-1 text-base font-nunitoBold md:mb-2">
+            <legend className="w-full mb-1 text-base md:text-lg font-bold font-nunitoBold md:mb-2">
               Télécharger vos fichiers
             </legend>
-            {/* <label
-              htmlFor="videoUrl"
-              className="insertField flex flex-col items-center justify-center w-full mb-2 border-black text-base duration-300
+            <label
+              htmlFor="video_url"
+              className="insertField flex flex-col gap-4 items-start p-4 font-semibold justify-center w-full mb-2 border-black text-base duration-300
                 normal-case min-h-10 hover:bg-primary-dark hover:cursor-pointer focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-14 md:h-[40%] md:mb-0"
             >
+              Ajouter votre vidéo
               <input
                 type="file"
                 accept="video/mp4"
                 name="video_url"
                 required
-                id="videoUrl"
+                id="video_url"
+                className="file:mr-2 font-normal file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
+              />
+            </label>
+            <label
+              htmlFor="img_url"
+              className="insertField gap-4 flex flex-col items-start p-4 justify-center w-full mb-2 border-black text-base duration-300
+                normal-case min-h-10 hover:bg-primary-dark hover:cursor-pointer focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-14 md:h-[40%] md:mb-0"
+            >
+              Ajouter votre miniature
+              <input
+                type="file"
+                accept="image/*"
+                name="img_url"
+                id="img_url"
                 className="file:mr-2 file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
               />
-            </label> */}
-            {/* <FileTrigger
-              acceptedFileTypes={["video/mp4"]}
-              onChange={handleVideoFileChange}
-            >
-              <Button
-                className="insertField w-full mb-2 border-black text-base 
-          normal-case min-h-10 focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-14 md:h-[40%] md:mb-0"
-              >
-                Inserer votre vidéo
-              </Button>
-            </FileTrigger>
-            {videoFileName && <p>{videoFileName}</p>} */}
-            {/* <input
-              type="file"
-              accept="image/webp, image/png, image/jpg"
-              name="img_url"
-            /> */}
-            {/* <FileTrigger
-              name="img_url"
-              acceptedFileTypes={["image/png", "image/webp, image/jpg"]}
-              onChange={handleImageFileChange}
-            >
-              <Button
-                className="insertField w-full border-black 
-          text-base min-h-10 focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-14 md:h-[40%]"
-              >
-                Inserer votre miniature
-              </Button>
-            </FileTrigger>
-            {imageFileName && <p>{imageFileName}</p>} */}
+            </label>
           </fieldset>
           <input
             type="text"

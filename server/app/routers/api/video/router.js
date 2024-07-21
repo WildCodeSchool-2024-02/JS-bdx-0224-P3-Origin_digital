@@ -5,9 +5,11 @@ const router = express.Router();
 
 const video = require("../../../controllers/videoActions");
 const {
-  formatVideoData,
   storage,
-} = require("../../../services/middlewares/fileUploader");
+  formatVideoData,
+  formatThumbnail,
+  formatVideoAccessTagsCategory,
+} = require("../../../services/middlewares/multerFormat");
 const {
   getIdFromToken,
 } = require("../../../services/middlewares/getIdFromToken");
@@ -20,9 +22,14 @@ router.get("/:id", video.read);
 
 router.post(
   "/",
-  upload.single("video_url"),
+  upload.fields([
+    { name: "video_url", maxCount: 1 },
+    { name: "img_url", maxCount: 1 },
+  ]),
   getIdFromToken,
   formatVideoData,
+  formatThumbnail,
+  formatVideoAccessTagsCategory,
   validateVideo,
   video.add
 );
