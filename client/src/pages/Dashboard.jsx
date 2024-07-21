@@ -1,22 +1,26 @@
+import { useLoaderData } from "react-router-dom";
 import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import DashboardVideo from "../components/DashboardVideo";
 
 export default function Dashboard() {
+
+  const videos = useLoaderData();
+
   return (
     <>
+      <h2>Votre Tableau de bord</h2>
       <input
         type="text"
         placeholder="Rechercher une vidéo.."
-        className="mt-6 lg:mr-5 bg-primary-color rounded-full p-1 lg:p-2 pl-4 ml-4 md:ml-8 lg:ml-12 w-[90vw] lg:w-auto"
+        className="mt-4 ml-4 h-8 pl-4 w-64 border-4 border-primary-dark bg-light-color rounded-full lg:h-10"
       />
       <button
         type="button"
-        className="p-0 mt-6 ml-4 px-4 h-8 lg:h-11  rounded-full overflow-hidden w-[90vw] lg:w-auto"
+        className="mt-4 mb-2 ml-4 w-64 rounded-full "
       >
         + Ajouter une vidéo
       </button>
-      <section className="overflow-x-auto rounded-xl">
-        <h2>Votre Tableau de bord</h2>
+      <section className=" overflow-x-auto rounded-xl">
         <Table className="w-[90vw] mx-auto">
           <TableHeader className="bg-primary-color">
             <Column isRowHeader className="px-28 lg:p-0 w-60 rounded-tl-3xl">
@@ -25,15 +29,14 @@ export default function Dashboard() {
             <Column className="px-3 lg:p-0 lg:w-28">Catégorie</Column>
             <Column className="px-28 lg:p-0 lg:w-44">Tag</Column>
             <Column className="px-3 lg:p-0 lg:w-28">Visibilité</Column>
-            <Column className="px-3 lg:p-0 lg:w-16">Vue</Column>
             <Column className="px-3 lg:p-0 lg:w-36">Publication</Column>
             <Column className="px-3 lg:p-0 lg:w-36 rounded-tr-3xl">
               Modification
             </Column>
           </TableHeader>
           <TableBody className="[&>*:nth-child(even)]:bg-secondary-color ">
-            <DashboardVideo />
-            <DashboardVideo />
+          {videos.map((video) => (<DashboardVideo video={video} key={video.id}
+          />))}
           </TableBody>
         </Table>
       </section>

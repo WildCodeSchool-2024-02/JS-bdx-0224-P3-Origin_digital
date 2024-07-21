@@ -5,10 +5,36 @@ class VideoRepository extends AbstractRepository {
     super({ table: "video" });
   }
 
-  async readAll() {
-    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
+  async readAll(userId) {
+    const [rows] = await this.database.query(
+      `SELECT 
+        video.id AS video_id,
+        video.title,
+        video.description,
+        video.upload_date,
+        video.duration,
+        video.video_url,
+        video.img_url,
+        video.access,
+        category.name AS category_name,
+        GROUP_CONCAT(tag.name SEPARATOR ', ') AS tags
+      FROM 
+        video_tag
+      JOIN 
+        video ON video_tag.video_id = video.id
+      JOIN 
+        tag ON video_tag.tag_id = tag.id
+      JOIN 
+        category ON video.category_id = category.id
+      WHERE 
+        video.user_id = ?
+      GROUP BY 
+        video.id;`,
+      [userId]
+    );
     return rows;
   }
+
 
   async read(id) {
     const [rows] = await this.database.query(

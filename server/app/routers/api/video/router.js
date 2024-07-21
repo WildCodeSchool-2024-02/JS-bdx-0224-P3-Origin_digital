@@ -7,6 +7,7 @@ const {
   verifyToken,
 } = require("../../../services/middlewares/tokenVerification");
 
+
 router.get("/", video.browse);
 router.get("/:id", video.read);
 

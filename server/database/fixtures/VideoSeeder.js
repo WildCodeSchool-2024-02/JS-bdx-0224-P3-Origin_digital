@@ -17,7 +17,7 @@ class VideoSeeder extends AbstractSeeder {
   run() {
     // Generate and insert fake data into the 'user' table
 
-    const accesType = ["free", "subscription"];
+    const accesType = ["Publique", "Abonné(e)"];
     const categories = [
       "Fitness",
       "Musculation",
