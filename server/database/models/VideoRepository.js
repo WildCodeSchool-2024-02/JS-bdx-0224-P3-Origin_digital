@@ -47,7 +47,6 @@ class VideoRepository extends AbstractRepository {
     return rows;
   }
 
-
   async read(id) {
     const [rows] = await this.database.query(
       `SELECT * FROM ${this.table} WHERE id = ?`,
@@ -117,6 +116,22 @@ class VideoRepository extends AbstractRepository {
       connection.release();
     }
   }
+
+  async delete(id) {
+    const [deletedTags] = await this.database.query(
+      `DELETE FROM video_tag WHERE video_id=?`,
+      [id]
+    );
+
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id=?`,
+      [id]
+    );
+
+    return [result.affectedRows, deletedTags.affectedRows];
+  }
 }
+
+
 
 module.exports = VideoRepository;

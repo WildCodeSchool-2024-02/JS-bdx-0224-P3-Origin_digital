@@ -26,6 +26,8 @@ router.use(verifyToken);
 
 router.get("/", getIdFromToken, video.browse);
 
+router.delete("/:id", video.destroy);
+
 router.post(
   "/",
   upload.fields([

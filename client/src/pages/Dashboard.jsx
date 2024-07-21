@@ -4,7 +4,7 @@ import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import { useCookies } from "react-cookie";
 import DashboardVideo from "../components/DashboardVideo";
 import DashboardModal from "../components/DashboardModal";
-import { getSecureData } from "../services/api.service";
+import { deleteVideo, getSecureData } from "../services/api.service";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,12 +15,6 @@ export default function Dashboard() {
   const [videos, setVideos] = useState([]);
   const [cookies] = useCookies("jwt");
   const tags = useLoaderData();
-
-  useEffect(() => {
-    getSecureData("/api/videos", cookies.jwt)
-      .then((res) => res.json())
-      .then((data) => setVideos(data));
-  }, []);
 
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -52,9 +46,20 @@ export default function Dashboard() {
     }
   };
 
+  const handleDeleteVideo = (videoId) => {
+    deleteVideo("/api/videos/", videoId, cookies.jwt);
+    return window.location.reload();
+  };
+
   useEffect(() => {
     document.body.style.overflow = isModalOpen ? "hidden" : "auto";
   }, [isModalOpen]);
+
+  useEffect(() => {
+    getSecureData("/api/videos", cookies.jwt)
+      .then((res) => res.json())
+      .then((data) => setVideos(data));
+  }, []);
 
   return (
     <>
@@ -94,6 +99,7 @@ export default function Dashboard() {
                     video={video}
                     key={video.id}
                     handleOpenModalModify={handleOpenModalModify}
+                    handleDeleteVideo={handleDeleteVideo}
                   />
                 ))}
             </TableBody>

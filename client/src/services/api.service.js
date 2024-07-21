@@ -56,3 +56,18 @@ export async function sendNewVideo(url, data, token) {
     return error;
   }
 }
+
+export async function deleteVideo(url, videoId, token) {
+  try {
+    const response = await fetch(import.meta.env.VITE_API_URL + url + videoId, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
+  
