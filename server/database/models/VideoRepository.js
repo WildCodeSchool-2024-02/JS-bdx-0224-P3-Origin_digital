@@ -1,4 +1,5 @@
 const mysql = require("mysql2/promise");
+const fs = require("fs");
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
@@ -118,6 +119,22 @@ class VideoRepository extends AbstractRepository {
   }
 
   async delete(id) {
+    const [filesPath] = await this.database.query(
+      `SELECT img_url, video_url FROM ${this.table} WHERE id=?`,
+      [id]
+    );
+
+    fs.unlink(`public/assets/images/${filesPath[0].img_url}`, (err) => {
+      if (err) {
+        console.error("Erreur lors de la suppression de l'image :", err);
+      }
+    });
+    fs.unlink(`public/assets/videos/${filesPath[0].video_url}`, (err) => {
+      if (err) {
+        console.error("Erreur lors de la suppression de la video :", err);
+      }
+    });
+
     const [deletedTags] = await this.database.query(
       `DELETE FROM video_tag WHERE video_id=?`,
       [id]

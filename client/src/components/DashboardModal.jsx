@@ -57,6 +57,7 @@ export default function DashboardModal({
           method={toModify ? "PUT" : "POST"}
           action="/dashboard"
           encType="multipart/form-data"
+          id="modalForm"
         >
           <label
             className="w-full mb-1 text-base font-nunitoBold"

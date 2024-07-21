@@ -49,7 +49,7 @@ export default function DashboardVideo({
           <li>
             <button
               type="button"
-              onClick={handleOpenModalModify}
+              onClick={() => handleOpenModalModify(video.video_id)}
               className="textHoverUnderline"
             >
               Modifier

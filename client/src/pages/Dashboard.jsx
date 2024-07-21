@@ -4,7 +4,11 @@ import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import { useCookies } from "react-cookie";
 import DashboardVideo from "../components/DashboardVideo";
 import DashboardModal from "../components/DashboardModal";
-import { deleteVideo, getSecureData } from "../services/api.service";
+import {
+  deleteVideo,
+  getSecureData,
+  getSecureDataById,
+} from "../services/api.service";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +20,14 @@ export default function Dashboard() {
   const [cookies] = useCookies("jwt");
   const tags = useLoaderData();
 
+  //   const onSubmit = () => {
+  //     document.getElementById("modalForm").reset();
+  //     setIsModalOpen(!isModalOpen);
+  //     if (isModalOpen === true && toModify === true) {
+  //       setToModify(false);
+  //     }
+  //   };
+
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
     if (isModalOpen === true && toModify === true) {
@@ -23,10 +35,16 @@ export default function Dashboard() {
     }
   };
 
-  const handleOpenModalModify = () => [
-    setToModify(!toModify),
-    setIsModalOpen(!isModalOpen),
-  ];
+  const handleOpenModalModify = async (videoId) => {
+    setToModify(!toModify);
+    setIsModalOpen(!isModalOpen);
+    const videoData = await getSecureDataById(
+      "/api/videos/",
+      videoId,
+      cookies.jwt
+    );
+    return videoData;
+  };
 
   const handleClickAccessSelection = () => {
     setSelectedAccess(!selectedAccess);
