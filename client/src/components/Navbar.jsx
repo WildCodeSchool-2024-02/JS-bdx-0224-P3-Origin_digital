@@ -52,9 +52,10 @@ function Navbar({
               onClick={closeMenu}
               className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
             >
-              Pourquoi s'abonner ?
+              {isLogged ? "En ce moment" : "Pourquoi s'abonner ?"}
             </HashLink>
           </li>
+
           {isLogged ? (
             <li>
               <Link
@@ -144,7 +145,7 @@ function Navbar({
             {categories.map((category) => (
               <li
                 key={category.id}
-                className=" border-b border-gray-400 my-8 w-1/2 lg:w-1/6"
+                className=" border-b border-gray-400 my-8 w-1/4 lg:w-1/6"
               >
                 <Link
                   to={`/category/${category.id}`}
@@ -180,3 +181,4 @@ Navbar.propTypes = {
 };
 
 export default Navbar;
+
