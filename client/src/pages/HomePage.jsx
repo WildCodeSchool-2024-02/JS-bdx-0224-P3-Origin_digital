@@ -7,7 +7,7 @@ import image1 from "../assets/images/training.jpg";
 import image2 from "../assets/images/musculation.jpg";
 import image3 from "../assets/images/nutrition.jpg";
 import image4 from "../assets/images/yoga.jpg";
-import image5 from "../assets/images/pilate.jpg";
+import image5 from "../assets/images/pilat.jpg";
 
 function Home() {
   const categoryImages = [image1, image2, image3, image4, image5];
