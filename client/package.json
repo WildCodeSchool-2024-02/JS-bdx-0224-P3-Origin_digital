@@ -7,8 +7,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formatjs/fast-memoize": "^2.2.0",
+    "@formatjs/icu-messageformat-parser": "^2.7.8",
     "dotenv": "^16.4.5",
     "fluid-tailwind": "^1.0.2",
+    "multiselect-react-dropdown": "^2.0.25",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-aria-components": "^1.2.1",

@@ -1,12 +1,12 @@
 const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
-  try {
-    const video = await tables.video.readAll();
-    res.json(video);
-  } catch (err) {
-    next(err);
-  }
+    try {
+      const video = await tables.video.readAll(req.body.user_id);
+      res.json(video);
+    } catch (err) {
+      next(err);
+    }
 };
 
 const read = async (req, res, next) => {
