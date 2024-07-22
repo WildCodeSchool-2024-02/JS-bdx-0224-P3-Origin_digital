@@ -18,7 +18,7 @@ const login = async (req, res) => {
         { sub: user.id, isAdmin: user.role_id === 1 },
         process.env.APP_SECRET,
         {
-          expiresIn: "1h",
+          expiresIn: "24h",
         }
       );
 

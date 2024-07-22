@@ -19,17 +19,11 @@ export default function Dashboard() {
   const [videos, setVideos] = useState([]);
   const [cookies] = useCookies("jwt");
   const [modifiedVideo, setModifiedVideo] = useState({});
-  const tags = useLoaderData();
-
-  //   const onSubmit = () => {
-  //     document.getElementById("modalForm").reset();
-  //     setIsModalOpen(!isModalOpen);
-  //     if (isModalOpen === true && toModify === true) {
-  //       setToModify(false);
-  //     }
-  //   };
+  const { tags, categories } = useLoaderData();
 
   const handleOpenModal = () => {
+    setSelectedAccess(false);
+    setModifiedVideo({});
     setIsModalOpen(!isModalOpen);
     if (isModalOpen === true && toModify === true) {
       setToModify(false);
@@ -39,9 +33,12 @@ export default function Dashboard() {
   const handleOpenModalModify = async (videoId) => {
     setToModify(!toModify);
     setIsModalOpen(!isModalOpen);
-    await getSecureDataById("/api/videos/", videoId, cookies.jwt)
+    return getSecureDataById("/api/videos/", videoId, cookies.jwt)
       .then((res) => res.json())
-      .then((data) => setModifiedVideo(data));
+      .then((data) => {
+        setModifiedVideo(data);
+        setSelectedAccess(data.access === "true");
+      });
   };
 
   const handleClickAccessSelection = () => {
@@ -83,6 +80,7 @@ export default function Dashboard() {
         <h2>Votre Tableau de bord</h2>
         <input
           type="text"
+          aria-label="Rechercher une vidéo"
           placeholder="Rechercher une vidéo.."
           className="mt-4 ml-4 h-8 pl-4 w-64 border-4 border-primary-dark bg-light-color rounded-full lg:h-10"
         />
@@ -94,7 +92,6 @@ export default function Dashboard() {
           + Ajouter une vidéo
         </button>
         <section className="overflow-x-auto rounded-xl">
-          <h2>Votre Tableau de bord</h2>
           <Table className="w-[90vw] mx-auto">
             <TableHeader className="bg-primary-color">
               <Column isRowHeader className="px-28 lg:p-0 w-60 rounded-tl-3xl">
@@ -137,6 +134,7 @@ export default function Dashboard() {
         videoFileName={videoFileName}
         cookies={cookies}
         modifiedVideo={modifiedVideo}
+        categories={categories}
       />
     </>
   );

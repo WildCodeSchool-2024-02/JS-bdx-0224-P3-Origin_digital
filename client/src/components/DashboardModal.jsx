@@ -9,6 +9,7 @@ export default function DashboardModal({
   displayClass,
   toModify,
   tags,
+  categories,
   handleClickAccessSelection,
   selectedAccess,
   cookies,
@@ -70,7 +71,6 @@ export default function DashboardModal({
               className="w-full col-[1/2] bg-[var(--lightColor)] text-sm min-h-10 rounded-xl p-1 outline-none ease-linear duration-100 
               hover:border hover:border-[var(--primaryDark)] focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-12 md:text-base"
               id="title"
-              aria-label="Titre de la vidéo"
               name="title"
               type="text"
               required
@@ -86,7 +86,6 @@ export default function DashboardModal({
               label="Description"
               name="description"
               id="description"
-              aria-label="description"
               defaultValue={modifiedVideo ? modifiedVideo.description : ""}
               className="w-full md:col-[1/2] bg-[var(--lightColor)] radius-4 text-sm rounded-[15px] min-h-10 p-1
             outline-none ease-linear duration-100 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
@@ -100,7 +99,6 @@ export default function DashboardModal({
               name="duration"
               type="text"
               required
-              aria-label="Durée de la vidéo"
               pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
               title="Write a duration in the format hh:mm:ss"
               defaultValue={modifiedVideo ? modifiedVideo.duration : "00:00:00"}
@@ -116,17 +114,16 @@ export default function DashboardModal({
             <select
               className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
               hover:border-[var(--primaryDark)]"
-              aria-label="Catégorie de la vidéo"
               required
               name="category_id"
-              defaultValue={modifiedVideo ? modifiedVideo.category_id : null}
-              id="category"
+              defaultValue={modifiedVideo ? modifiedVideo.category_id : ""}
+              id="category_id"
             >
-              <option value={3}>Pilates</option>
-              <option value={2}>Musculation</option>
-              <option value={1}>Fitness</option>
-              <option value={4}>Yoga</option>
-              <option value={5}>Nutrition</option>
+              {categories.map((category) => (
+                <option value={category.id} key={category.id}>
+                  {category.name}
+                </option>
+              ))}
             </select>
           </label>
           <label
@@ -135,13 +132,12 @@ export default function DashboardModal({
           >
             Tags*
             <select
-              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12"
-              aria-label="Tags de la vidéo"
+              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 focus:outline focus:outline-2 focus:outline-blue-600"
               required
               name="tags_id"
               id="tags_id"
               multiple
-              selected={modifiedVideo ? modifiedVideo.tags_id : ""}
+              defaultValue={modifiedVideo ? modifiedVideo.tags : []}
             >
               {tags &&
                 tags.map((tag) => (
@@ -161,7 +157,7 @@ export default function DashboardModal({
             <span
               className={`text-sm md:text-base ${
                 selectedAccess === false
-                  ? "text-blue-600 font-nunitoBold"
+                  ? "text-primary-dark font-nunitoBold"
                   : "font-light"
               }`}
             >
@@ -171,16 +167,14 @@ export default function DashboardModal({
               name="access"
               value={selectedAccess}
               type="checkbox"
-              defaultChecked={modifiedVideo && modifiedVideo.access === "true"}
               id="access"
-              aria-label="Type d'accès"
-              className="theme-checkbox outline-none focus:outline focus:outline-2 focus:outline-blue-600"
+              className="theme-checkbox outline-none focus:outline focus:outline-2 focus:outline-blue-600 rotate-180"
               onChange={handleClickAccessSelection}
             />{" "}
             <span
               className={`text-sm md:text-base ${
                 selectedAccess === true
-                  ? "text-blue-600 font-nunitoBold"
+                  ? "text-primary-dark font-nunitoBold"
                   : "font-light"
               }`}
             >
@@ -204,7 +198,6 @@ export default function DashboardModal({
                 type="file"
                 accept="video/mp4"
                 name="video_url"
-                aria-label="Vidéo"
                 required
                 id="video_url"
                 defaultValue={modifiedVideo ? modifiedVideo.video_url : ""}
@@ -219,7 +212,6 @@ export default function DashboardModal({
               Ajouter votre miniature
               <input
                 type="file"
-                aria-label="Miniature"
                 accept="image/*"
                 name="img_url"
                 id="img_url"
@@ -276,10 +268,16 @@ DashboardModal.propTypes = {
     upload_date: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     category_id: PropTypes.number.isRequired,
-    tags_id: PropTypes.arrayOf({
-      tag_id: PropTypes.number.isRequired,
+    tags: PropTypes.arrayOf({
+      tag: PropTypes.number.isRequired,
     }).isRequired,
   }),
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 DashboardModal.defaultProps = {

@@ -60,14 +60,15 @@ class VideoRepository extends AbstractRepository {
         video.img_url,
         video.access,
         category.name AS category_name,
-        GROUP_CONCAT(tag.name SEPARATOR ', ') AS tags
+        category.id AS category_id,
+        JSON_ARRAYAGG(tag.name) AS tags
       FROM 
         video
-      LEFT JOIN 
+      INNER JOIN 
         video_tag ON video.id = video_tag.video_id
-      LEFT JOIN 
+      INNER JOIN 
         tag ON video_tag.tag_id = tag.id
-      LEFT JOIN 
+      INNER JOIN 
         category ON video.category_id = category.id
       WHERE 
         video.id = ?
