@@ -2,7 +2,11 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { Cell, Row } from "react-aria-components";
 
-export default function DashboardVideo({ video, handleOpenModalModify }) {
+export default function DashboardVideo({
+  video,
+  handleOpenModalModify,
+  handleDeleteVideo,
+}) {
   const [showAllTags, setShowAllTags] = useState(false);
 
   const handleButtonClick = () => {
@@ -54,7 +58,7 @@ export default function DashboardVideo({ video, handleOpenModalModify }) {
           <li>
             <button
               type="button"
-              onClick={handleOpenModalModify}
+              onClick={() => handleDeleteVideo(video.video_id)}
               className="textHoverUnderline"
             >
               Supprimer
@@ -68,6 +72,7 @@ export default function DashboardVideo({ video, handleOpenModalModify }) {
 
 DashboardVideo.propTypes = {
   video: PropTypes.shape({
+    video_id: PropTypes.number.isRequired,
     upload_date: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -75,4 +80,5 @@ DashboardVideo.propTypes = {
     access: PropTypes.string.isRequired,
   }).isRequired,
   handleOpenModalModify: PropTypes.func.isRequired,
+  handleDeleteVideo: PropTypes.func.isRequired,
 };
