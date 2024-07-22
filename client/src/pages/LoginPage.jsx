@@ -1,5 +1,5 @@
 import { useCookies } from "react-cookie";
-import { useActionData, useLocation, useNavigate } from "react-router-dom";
+import { useActionData, useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import Subscription from "../components/Subscription";
 
@@ -18,7 +18,6 @@ function LoginPage( ) {
   const url = path.pathname.substring(1);
   const emailRef = useRef();
   const actionData = useActionData();
-  const navigate = useNavigate();
   const [, setCookie ] = useCookies();
 
   useEffect(()=> {
@@ -26,9 +25,10 @@ function LoginPage( ) {
       const expirationDate = new Date();
       expirationDate.setDate(expirationDate.getDate() + 7);
       setCookie("jwt", actionData.token)
-      navigate("/");
+      window.location.href= "/";
+
     }
-  }, [actionData, setCookie, navigate])
+  }, [actionData, setCookie])
   
 
   const fields = [
