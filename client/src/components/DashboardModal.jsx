@@ -13,7 +13,6 @@ export default function DashboardModal({
   handleClickAccessSelection,
   selectedAccess,
   cookies,
-  modifiedVideo,
 }) {
   return (
     <FocusLock>
@@ -74,7 +73,6 @@ export default function DashboardModal({
               name="title"
               type="text"
               required
-              defaultValue={modifiedVideo ? modifiedVideo.title : ""}
             />
           </label>
           <label
@@ -86,7 +84,6 @@ export default function DashboardModal({
               label="Description"
               name="description"
               id="description"
-              defaultValue={modifiedVideo ? modifiedVideo.description : ""}
               className="w-full md:col-[1/2] bg-[var(--lightColor)] radius-4 text-sm rounded-[15px] min-h-10 p-1
             outline-none ease-linear duration-100 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
             hover:border-[var(--primaryDark)] md:min-h-16 md:text-base "
@@ -99,9 +96,9 @@ export default function DashboardModal({
               name="duration"
               type="text"
               required
+              defaultValue="00:00:00"
               pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
               title="Write a duration in the format hh:mm:ss"
-              defaultValue={modifiedVideo ? modifiedVideo.duration : "00:00:00"}
               className="w-full col-[1/2] bg-[var(--lightColor)] text-sm min-h-10 rounded-xl p-1 outline-none ease-linear duration-100 
               hover:border hover:border-[var(--primaryDark)] focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-12 md:text-base"
             />
@@ -116,7 +113,6 @@ export default function DashboardModal({
               hover:border-[var(--primaryDark)]"
               required
               name="category_id"
-              defaultValue={modifiedVideo ? modifiedVideo.category_id : ""}
               id="category_id"
             >
               {categories.map((category) => (
@@ -137,7 +133,6 @@ export default function DashboardModal({
               name="tags_id"
               id="tags_id"
               multiple
-              defaultValue={modifiedVideo ? modifiedVideo.tags : []}
             >
               {tags &&
                 tags.map((tag) => (
@@ -168,7 +163,7 @@ export default function DashboardModal({
               value={selectedAccess}
               type="checkbox"
               id="access"
-              className="theme-checkbox outline-none focus:outline focus:outline-2 focus:outline-blue-600 rotate-180"
+              className="theme-checkbox outline-none focus:outline focus:outline-2 focus:outline-blue-600"
               onChange={handleClickAccessSelection}
             />{" "}
             <span
@@ -200,7 +195,6 @@ export default function DashboardModal({
                 name="video_url"
                 required
                 id="video_url"
-                defaultValue={modifiedVideo ? modifiedVideo.video_url : ""}
                 className="file:mr-2 font-normal file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
               />
             </label>
@@ -215,7 +209,6 @@ export default function DashboardModal({
                 accept="image/*"
                 name="img_url"
                 id="img_url"
-                defaultValue={modifiedVideo ? modifiedVideo.img_url : ""}
                 className="file:mr-2 file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
               />
             </label>
@@ -257,21 +250,6 @@ DashboardModal.propTypes = {
   cookies: PropTypes.shape({
     jwt: PropTypes.string,
   }),
-  modifiedVideo: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    access: PropTypes.bool.isRequired,
-    duration: PropTypes.string.isRequired,
-    img_url: PropTypes.string.isRequired,
-    video_url: PropTypes.string.isRequired,
-    upload_date: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    category_id: PropTypes.number.isRequired,
-    tags: PropTypes.arrayOf({
-      tag: PropTypes.number.isRequired,
-    }).isRequired,
-  }),
   categories: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -283,5 +261,4 @@ DashboardModal.propTypes = {
 DashboardModal.defaultProps = {
   toModify: false,
   cookies: {},
-  modifiedVideo: {},
 };

@@ -4,11 +4,7 @@ import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import { useCookies } from "react-cookie";
 import DashboardVideo from "../components/DashboardVideo";
 import DashboardModal from "../components/DashboardModal";
-import {
-  deleteVideo,
-  getSecureData,
-  getSecureDataById,
-} from "../services/api.service";
+import { deleteVideo, getSecureData } from "../services/api.service";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,27 +14,18 @@ export default function Dashboard() {
   const [imageFileName, setImageFileName] = useState("");
   const [videos, setVideos] = useState([]);
   const [cookies] = useCookies("jwt");
-  const [modifiedVideo, setModifiedVideo] = useState({});
   const { tags, categories } = useLoaderData();
 
   const handleOpenModal = () => {
-    setSelectedAccess(false);
-    setModifiedVideo({});
     setIsModalOpen(!isModalOpen);
     if (isModalOpen === true && toModify === true) {
       setToModify(false);
     }
   };
 
-  const handleOpenModalModify = async (videoId) => {
+  const handleOpenModalModify = async () => {
     setToModify(!toModify);
     setIsModalOpen(!isModalOpen);
-    return getSecureDataById("/api/videos/", videoId, cookies.jwt)
-      .then((res) => res.json())
-      .then((data) => {
-        setModifiedVideo(data);
-        setSelectedAccess(data.access === "true");
-      });
   };
 
   const handleClickAccessSelection = () => {
@@ -133,7 +120,6 @@ export default function Dashboard() {
         imageFileName={imageFileName}
         videoFileName={videoFileName}
         cookies={cookies}
-        modifiedVideo={modifiedVideo}
         categories={categories}
       />
     </>

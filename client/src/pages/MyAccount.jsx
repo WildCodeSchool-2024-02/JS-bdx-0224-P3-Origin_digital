@@ -4,7 +4,9 @@ import LoggedContext from "../context/LoggedContext";
 import yoga from "../assets/images/yoga.jpg";
 
 function MyAccount() {
-  const { isCoach } = useContext(LoggedContext);
+
+  
+  const { userData } = useContext(LoggedContext);
 
   return (
     <>
@@ -17,15 +19,15 @@ function MyAccount() {
           Status: abonné
         </li>
         <li className="gridMyAccount md:col-end-2 row-start-3 row-end-4">
-          Prénom: {isCoach.firstname}
+          Prénom: {userData.firstname}
         </li>
         <li className="gridMyAccount md:col-end-2 row-start-4 row-end-5">
-          Nom: {isCoach.lastname}
+          Nom: {userData.lastname}
         </li>
         <li className="gridMyAccount md:col-end-2 row-start-5 row-end-6">
-          Adresse mail: {isCoach.email}
+          Adresse mail: {userData.email}
         </li>
-        {isCoach.role_id === 3 && (
+        {userData.role_id === 3 && (
           <Link
             to="/dashboard"
             className="gridMyAccount text-xs md:col-end-2 row-start-6 row-end-7 md:text-base rounded-xl bg-primary-color h-8 px-4 py-2 font-semibold transition-all duration-300 ease-linear cursor-pointer flex justify-center items-center hover:text-light-color hover:bg-primary-dark"
@@ -44,3 +46,4 @@ function MyAccount() {
 }
 
 export default MyAccount;
+

@@ -1,10 +1,7 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 export default function ViewingPage() {
   const video = useLoaderData();
-
-
-  const tags = video.tags ? video.tags.split(', ') : [];
 
   return (
     <>
@@ -16,16 +13,18 @@ export default function ViewingPage() {
         >
           <track kind="captions" />
         </video>
-        <section className="p-0 [&>*]:tagsViewing">
-          {tags.length > 0 ? (
-            tags.map((tag) => (
-              <Link key={tag} to={`/tags/${tag}`}>
-                #{tag}
-              </Link>
-            ))
-          ) : (
-            <p>Aucuns tags</p>
-          )}
+        <section className="p-0 ">
+          <ul className="flex gap-2 flex-wrap [&>*]:tagsViewing">
+            {video.tags.length > 0 ? (
+              video.tags.map((tag) => (
+                <li key={tag.id} className=" duration-300">
+                  #{tag.name}
+                </li>
+              ))
+            ) : (
+              <li>Aucuns tags</li>
+            )}
+          </ul>
         </section>
         <h2 className="font-bold mt-4">{video.title}</h2>
         <p>Durée : {video.duration} minutes</p>

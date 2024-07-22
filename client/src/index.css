@@ -132,6 +132,17 @@ a {
   box-shadow: 15px 15px 0px 0px var(--primaryColor);
 }
 
+.h1-background-effect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.301);
+  z-index: -1;
+}
+
 @media screen and (min-width: 768px) {
   body {
     font-size: 1.2rem;
