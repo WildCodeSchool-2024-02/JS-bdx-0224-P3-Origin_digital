@@ -50,7 +50,29 @@ class VideoRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE id = ?`,
+      `SELECT 
+        video.id AS video_id,
+        video.title,
+        video.description,
+        video.upload_date,
+        video.duration,
+        video.video_url,
+        video.img_url,
+        video.access,
+        category.name AS category_name,
+        GROUP_CONCAT(tag.name SEPARATOR ', ') AS tags
+      FROM 
+        video
+      LEFT JOIN 
+        video_tag ON video.id = video_tag.video_id
+      LEFT JOIN 
+        tag ON video_tag.tag_id = tag.id
+      LEFT JOIN 
+        category ON video.category_id = category.id
+      WHERE 
+        video.id = ?
+      GROUP BY 
+        video.id;`,
       [id]
     );
 

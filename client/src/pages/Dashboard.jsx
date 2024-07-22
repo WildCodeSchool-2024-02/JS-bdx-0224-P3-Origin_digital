@@ -18,6 +18,7 @@ export default function Dashboard() {
   const [imageFileName, setImageFileName] = useState("");
   const [videos, setVideos] = useState([]);
   const [cookies] = useCookies("jwt");
+  const [modifiedVideo, setModifiedVideo] = useState({});
   const tags = useLoaderData();
 
   //   const onSubmit = () => {
@@ -38,12 +39,9 @@ export default function Dashboard() {
   const handleOpenModalModify = async (videoId) => {
     setToModify(!toModify);
     setIsModalOpen(!isModalOpen);
-    const videoData = await getSecureDataById(
-      "/api/videos/",
-      videoId,
-      cookies.jwt
-    );
-    return videoData;
+    await getSecureDataById("/api/videos/", videoId, cookies.jwt)
+      .then((res) => res.json())
+      .then((data) => setModifiedVideo(data));
   };
 
   const handleClickAccessSelection = () => {
@@ -138,6 +136,7 @@ export default function Dashboard() {
         imageFileName={imageFileName}
         videoFileName={videoFileName}
         cookies={cookies}
+        modifiedVideo={modifiedVideo}
       />
     </>
   );

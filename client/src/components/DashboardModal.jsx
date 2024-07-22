@@ -12,6 +12,7 @@ export default function DashboardModal({
   handleClickAccessSelection,
   selectedAccess,
   cookies,
+  modifiedVideo,
 }) {
   return (
     <FocusLock>
@@ -30,6 +31,7 @@ export default function DashboardModal({
       >
         <h2
           type="button"
+          aria-label="Titre du formulaire"
           id="form-title"
           className="w-full col-span-1 lg:pl-2"
           onClick={(e) => e.stopPropagation()}
@@ -68,10 +70,11 @@ export default function DashboardModal({
               className="w-full col-[1/2] bg-[var(--lightColor)] text-sm min-h-10 rounded-xl p-1 outline-none ease-linear duration-100 
               hover:border hover:border-[var(--primaryDark)] focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-12 md:text-base"
               id="title"
-              aria-labelledby="title"
+              aria-label="Titre de la vidéo"
               name="title"
               type="text"
               required
+              defaultValue={modifiedVideo ? modifiedVideo.title : ""}
             />
           </label>
           <label
@@ -83,7 +86,8 @@ export default function DashboardModal({
               label="Description"
               name="description"
               id="description"
-              aria-labelledby="description"
+              aria-label="description"
+              defaultValue={modifiedVideo ? modifiedVideo.description : ""}
               className="w-full md:col-[1/2] bg-[var(--lightColor)] radius-4 text-sm rounded-[15px] min-h-10 p-1
             outline-none ease-linear duration-100 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
             hover:border-[var(--primaryDark)] md:min-h-16 md:text-base "
@@ -96,9 +100,10 @@ export default function DashboardModal({
               name="duration"
               type="text"
               required
+              aria-label="Durée de la vidéo"
               pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
-              defaultValue="00:00:00"
               title="Write a duration in the format hh:mm:ss"
+              defaultValue={modifiedVideo ? modifiedVideo.duration : "00:00:00"}
               className="w-full col-[1/2] bg-[var(--lightColor)] text-sm min-h-10 rounded-xl p-1 outline-none ease-linear duration-100 
               hover:border hover:border-[var(--primaryDark)] focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-12 md:text-base"
             />
@@ -111,9 +116,10 @@ export default function DashboardModal({
             <select
               className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
               hover:border-[var(--primaryDark)]"
-              aria-labelledby="category_id"
+              aria-label="Catégorie de la vidéo"
               required
               name="category_id"
+              defaultValue={modifiedVideo ? modifiedVideo.category_id : null}
               id="category"
             >
               <option value={3}>Pilates</option>
@@ -130,11 +136,12 @@ export default function DashboardModal({
             Tags*
             <select
               className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12"
-              aria-labelledby="tags_id"
+              aria-label="Tags de la vidéo"
               required
               name="tags_id"
-              id="category"
+              id="tags_id"
               multiple
+              selected={modifiedVideo ? modifiedVideo.tags_id : ""}
             >
               {tags &&
                 tags.map((tag) => (
@@ -164,8 +171,9 @@ export default function DashboardModal({
               name="access"
               value={selectedAccess}
               type="checkbox"
+              defaultChecked={modifiedVideo && modifiedVideo.access === "true"}
               id="access"
-              aria-labelledby="accessLabel"
+              aria-label="Type d'accès"
               className="theme-checkbox outline-none focus:outline focus:outline-2 focus:outline-blue-600"
               onChange={handleClickAccessSelection}
             />{" "}
@@ -196,8 +204,10 @@ export default function DashboardModal({
                 type="file"
                 accept="video/mp4"
                 name="video_url"
+                aria-label="Vidéo"
                 required
                 id="video_url"
+                defaultValue={modifiedVideo ? modifiedVideo.video_url : ""}
                 className="file:mr-2 font-normal file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
               />
             </label>
@@ -209,14 +219,17 @@ export default function DashboardModal({
               Ajouter votre miniature
               <input
                 type="file"
+                aria-label="Miniature"
                 accept="image/*"
                 name="img_url"
                 id="img_url"
+                defaultValue={modifiedVideo ? modifiedVideo.img_url : ""}
                 className="file:mr-2 file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
               />
             </label>
           </fieldset>
           <input
+            aria-hidden
             type="text"
             name="token"
             defaultValue={cookies.jwt}
@@ -252,9 +265,25 @@ DashboardModal.propTypes = {
   cookies: PropTypes.shape({
     jwt: PropTypes.string,
   }),
+  modifiedVideo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    access: PropTypes.bool.isRequired,
+    duration: PropTypes.string.isRequired,
+    img_url: PropTypes.string.isRequired,
+    video_url: PropTypes.string.isRequired,
+    upload_date: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    category_id: PropTypes.number.isRequired,
+    tags_id: PropTypes.arrayOf({
+      tag_id: PropTypes.number.isRequired,
+    }).isRequired,
+  }),
 };
 
 DashboardModal.defaultProps = {
   toModify: false,
   cookies: {},
+  modifiedVideo: {},
 };
