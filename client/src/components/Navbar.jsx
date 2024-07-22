@@ -40,7 +40,7 @@ function Navbar({
           />
         </Link>
 
-        <ul className={`${menuListClasses} z-10`}>
+        <ul className={`${menuListClasses} z-1`}>
           <li className="flex">
             <button
               onClick={handleClickObjectivesMenu}

@@ -1,7 +1,7 @@
-export async function sendData(url, data, http) {
+export async function sendData(url, data) {
   try {
     const response = await fetch(import.meta.env.VITE_API_URL + url, {
-      method: http,
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -33,7 +33,7 @@ export async function getSecureData(url, token) {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     });
     return response;
@@ -42,3 +42,17 @@ export async function getSecureData(url, token) {
   }
 }
 
+export async function sendNewVideo(url, data, token) {
+  try {
+    const response = await fetch(import.meta.env.VITE_API_URL + url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: data,
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
