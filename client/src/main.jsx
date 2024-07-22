@@ -54,8 +54,10 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/viewing",
+        path: "/viewing/:id",
         element: <Viewing />,
+        loader: ({ params }) => getData(`/api/videos/${params.id}`),
+
       },
       {
         path: "/contact",

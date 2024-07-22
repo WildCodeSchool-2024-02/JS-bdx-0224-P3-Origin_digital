@@ -17,7 +17,7 @@ function CategoryPage() {
                 <h2 className="text-4xl font-semibold mb-2 md:mb-4 md:text-5xl lg:mb-6 lg:text-6xl">
                   {tag.name}
                 </h2>
-                <Slider resourceList={tag.videos} resourcePath="video" />
+                <Slider resourceList={tag.videos} resourcePath="viewing" />
               </li>
             )
         )}
