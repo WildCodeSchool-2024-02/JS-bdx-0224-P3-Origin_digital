@@ -24,7 +24,7 @@ export default function ViewingPage() {
               </Link>
             ))
           ) : (
-            <p>No tags available</p>
+            <p>Aucuns tags</p>
           )}
         </section>
         <h2 className="font-bold mt-4">{video.title}</h2>
