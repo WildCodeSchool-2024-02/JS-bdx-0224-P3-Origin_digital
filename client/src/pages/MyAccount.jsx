@@ -4,8 +4,6 @@ import LoggedContext from "../context/LoggedContext";
 import yoga from "../assets/images/yoga.jpg";
 
 function MyAccount() {
-
-  
   const { userData } = useContext(LoggedContext);
 
   return (
@@ -46,4 +44,3 @@ function MyAccount() {
 }
 
 export default MyAccount;
-
