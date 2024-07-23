@@ -19,7 +19,7 @@ export default function DashboardModal({
 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data) {
-      handleOpenModal(); // Fermer la modal après soumission réussie
+      handleOpenModal();
     }
   }, [fetcher.state, fetcher.data]);
 
