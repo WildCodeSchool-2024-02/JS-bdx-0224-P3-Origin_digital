@@ -87,7 +87,6 @@ DashboardVideo.propTypes = {
     title: PropTypes.string.isRequired,
     category_name: PropTypes.string.isRequired,
     access: PropTypes.string.isRequired,
-    img_url: PropTypes.string.isRequired,
   }).isRequired,
   handleOpenModalModify: PropTypes.func.isRequired,
   handleDeleteVideo: PropTypes.func.isRequired,
