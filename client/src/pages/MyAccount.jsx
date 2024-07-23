@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import LoggedContext from "../context/LoggedContext";
 import yoga from "../assets/images/yoga.jpg";
+import Footer from "../components/Footer";
 
 function MyAccount() {
   const { userData } = useContext(LoggedContext);

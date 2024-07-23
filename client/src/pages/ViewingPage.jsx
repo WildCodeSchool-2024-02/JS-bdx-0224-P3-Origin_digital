@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function ViewingPage() {
   const video = useLoaderData();
@@ -8,7 +9,7 @@ export default function ViewingPage() {
       <section className="p-0 md:w-4/6 md:mx-auto md:my-5 md:p-5 md:bg-secondary-color md:rounded-xl ">
         <video
           controls
-          src={video.video_url}
+          src={`http://localhost:3310/assets/videos/${video.video_url}`}
           className=" w-full max-h-screen mb-4"
         >
           <track kind="captions" />
@@ -33,6 +34,8 @@ export default function ViewingPage() {
       </section>
       <h2>Suggestions</h2>
       <p>carrousel vidéo suggestion</p>
+
+      <Footer />
     </>
   );
 }

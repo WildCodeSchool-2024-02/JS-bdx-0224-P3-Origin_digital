@@ -108,15 +108,16 @@ export default function Dashboard() {
         </button>
         <section className="overflow-x-auto rounded-xl">
           <Table className="w-[90vw] mx-auto">
+
             <TableHeader className="bg-primary-color">
-              <Column isRowHeader className="px-28 lg:p-0 w-60 rounded-tl-3xl">
+              <Column isRowHeader className="px-28 lg:p-0 w-60 rounded-tl-xl">
                 Vos vidéos
               </Column>
               <Column className="px-3 lg:p-0 lg:w-28">Catégorie</Column>
               <Column className="px-28 lg:p-0 lg:w-44">Tag</Column>
               <Column className="px-3 lg:p-0 lg:w-28">Visibilité</Column>
               <Column className="px-3 lg:p-0 lg:w-36">Publication</Column>
-              <Column className="px-3 lg:p-0 lg:w-36 rounded-tr-3xl">
+              <Column className="px-3 lg:p-0 lg:w-36 rounded-tr-xl">
                 Modification
               </Column>
             </TableHeader>
