@@ -18,6 +18,14 @@ import Dashboard from "./pages/Dashboard";
 import MyAccount from "./pages/MyAccount";
 import { LoggedProvider } from "./context/LoggedContext";
 
+const dashboardLoader = async () => {
+  const [tags, categories] = await Promise.all([
+    getData("/api/tags").then((res) => res.json()),
+    getData("/api/categories").then((res) => res.json()),
+  ]);
+  return { tags, categories };
+};
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -55,7 +63,6 @@ const router = createBrowserRouter([
         path: "/viewing/:id",
         element: <Viewing />,
         loader: ({ params }) => getData(`/api/videos/${params.id}`),
-
       },
       {
         path: "/contact",
@@ -68,12 +75,15 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
-        loader: () => getData("/api/tags"),
+        loader: dashboardLoader,
         action: async ({ request }) => {
           const formData = await request.formData();
           const { token } = Object.fromEntries(formData);
           const response = await sendNewVideo("/api/videos", formData, token);
-          if (response.status === 201) return response;
+          if (response.status === 201) {
+            const data = await response.json();
+            return data;
+          }
           return response;
         },
       },

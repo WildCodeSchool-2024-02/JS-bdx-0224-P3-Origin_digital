@@ -42,6 +42,21 @@ export async function getSecureData(url, token) {
   }
 }
 
+export async function getSecureDataById(url, id, token) {
+  try {
+    const response = await fetch(import.meta.env.VITE_API_URL + url + id, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
+
 export async function sendNewVideo(url, data, token) {
   try {
     const response = await fetch(import.meta.env.VITE_API_URL + url, {

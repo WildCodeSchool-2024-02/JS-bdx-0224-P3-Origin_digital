@@ -14,7 +14,8 @@ export default function Dashboard() {
   const [imageFileName, setImageFileName] = useState("");
   const [videos, setVideos] = useState([]);
   const [cookies] = useCookies("jwt");
-  const tags = useLoaderData();
+
+  const { tags, categories } = useLoaderData();
 
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -23,10 +24,10 @@ export default function Dashboard() {
     }
   };
 
-  const handleOpenModalModify = () => [
-    setToModify(!toModify),
-    setIsModalOpen(!isModalOpen),
-  ];
+  const handleOpenModalModify = async () => {
+    setToModify(!toModify);
+    setIsModalOpen(!isModalOpen);
+  };
 
   const handleClickAccessSelection = () => {
     setSelectedAccess(!selectedAccess);
@@ -67,6 +68,7 @@ export default function Dashboard() {
         <h2>Votre Tableau de bord</h2>
         <input
           type="text"
+          aria-label="Rechercher une vidéo"
           placeholder="Rechercher une vidéo.."
           className="mt-4 ml-4 h-8 pl-4 w-64 border-4 border-primary-dark bg-light-color rounded-full lg:h-10"
         />
@@ -78,7 +80,6 @@ export default function Dashboard() {
           + Ajouter une vidéo
         </button>
         <section className="overflow-x-auto rounded-xl">
-          <h2>Votre Tableau de bord</h2>
           <Table className="w-[90vw] mx-auto">
             <TableHeader className="bg-primary-color">
               <Column isRowHeader className="px-28 lg:p-0 w-60 rounded-tl-3xl">
@@ -120,6 +121,7 @@ export default function Dashboard() {
         imageFileName={imageFileName}
         videoFileName={videoFileName}
         cookies={cookies}
+        categories={categories}
       />
     </>
   );

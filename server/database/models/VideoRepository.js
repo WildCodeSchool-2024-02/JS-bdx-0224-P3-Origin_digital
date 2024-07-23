@@ -1,4 +1,5 @@
 const mysql = require("mysql2/promise");
+const fs = require("fs");
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
@@ -59,14 +60,20 @@ class VideoRepository extends AbstractRepository {
         video.img_url,
         video.access,
         category.name AS category_name,
-        GROUP_CONCAT(tag.name SEPARATOR ', ') AS tags
+        category.id AS category_id,
+        JSON_ARRAYAGG(
+            JSON_OBJECT(
+                'id', tag.id,
+                'name', tag.name
+              )
+            ) AS tags
       FROM 
         video
-      LEFT JOIN 
+      INNER JOIN 
         video_tag ON video.id = video_tag.video_id
-      LEFT JOIN 
+      INNER JOIN 
         tag ON video_tag.tag_id = tag.id
-      LEFT JOIN 
+      INNER JOIN 
         category ON video.category_id = category.id
       WHERE 
         video.id = ?
@@ -99,23 +106,7 @@ class VideoRepository extends AbstractRepository {
   }
 
   async create(video) {
-
-    const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (title, description, upload_date, duration, video_url, img_url, category_id, user_id) VALUES (?,?,?,?,?,?,?,?)`,
-      [
-        video.title,
-        video.description,
-        video.upload_date,
-        video.duration,
-        video.video_url,
-        video.img_url,
-        video.category_id,
-        video.user_id,
-      ]
-    );
-
     const connection = await pool.getConnection();
-
 
     try {
       await connection.beginTransaction();
@@ -156,6 +147,22 @@ class VideoRepository extends AbstractRepository {
   }
 
   async delete(id) {
+    const [filesPath] = await this.database.query(
+      `SELECT img_url, video_url FROM ${this.table} WHERE id=?`,
+      [id]
+    );
+
+    fs.unlink(`public/assets/images/${filesPath[0].img_url}`, (err) => {
+      if (err) {
+        console.error("Erreur lors de la suppression de l'image :", err);
+      }
+    });
+    fs.unlink(`public/assets/videos/${filesPath[0].video_url}`, (err) => {
+      if (err) {
+        console.error("Erreur lors de la suppression de la video :", err);
+      }
+    });
+
     const [deletedTags] = await this.database.query(
       `DELETE FROM video_tag WHERE video_id=?`,
       [id]
