@@ -16,8 +16,13 @@ export default function DashboardModal({
   cookies,
   selectedCategory,
   handleChangeCategory,
+  videoToModify,
+  selectedTags,
+  handleChangeTags,
 }) {
   const fetcher = useFetcher();
+
+  console.info(videoToModify.tags, selectedTags);
 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data) {
@@ -54,23 +59,23 @@ export default function DashboardModal({
           {toModify ? "Modifier la vidéo" : "Ajouter une vidéo"}
         </h2>
         <button
-          className="col-span-1 place-self-start justify-self-end text-[var(--lightColor)] focus:outline focus:outline-2 focus:outline-blue-600
-        bg-[var(--primaryDark)] hover:text-[var(--darkColor)] hover:bg-[var(--primaryLight)]"
           onClick={handleOpenModal}
           type="button"
           aria-label="fermer la modale"
+          className="col-span-1 place-self-start justify-self-end text-[var(--lightColor)] focus:outline focus:outline-2 focus:outline-blue-600
+          bg-[var(--primaryDark)] hover:text-[var(--darkColor)] hover:bg-[var(--primaryLight)]"
         >
           X
         </button>
         <fetcher.Form
           aria-labelledby="form-title"
-          className="w-full h-full flex flex-col items-center justify-evenly col-span-2 gap-1 md:gap-x-4 md:grid md:grid-cols-[1.5fr,1fr] 
-          md:grid-rows-[repeat(6, minmax(0, auto))] md:gap-2 lg:gap-x-5 lg:p-4 lg:rounded-3xl lg:bg-[var(--primaryColor)]"
           onClick={(e) => e.stopPropagation()}
           method={toModify ? "PUT" : "POST"}
           action="/dashboard"
           encType="multipart/form-data"
           id="modalForm"
+          className={`w-full h-full flex flex-col items-center justify-evenly col-span-2 gap-1 lg:gap-x-5 lg:p-4 lg:rounded-3xl 
+          lg:bg-[var(--primaryColor)] ${toModify ? "" : "md:gap-x-4 md:grid md:grid-cols-[1.5fr,1fr] md:grid-rows-[repeat(6, minmax(0, auto))] md:gap-2"}`}
         >
           <label
             className="w-full mb-1 text-base font-nunitoBold"
@@ -78,36 +83,38 @@ export default function DashboardModal({
           >
             Titre*
             <input
-              className="w-full col-[1/2] bg-[var(--lightColor)] text-sm min-h-10 rounded-xl p-1 outline-none ease-linear duration-100 
-              hover:border hover:border-[var(--primaryDark)] focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-12 md:text-base"
               id="title"
               name="title"
               type="text"
+              defaultValue={videoToModify.title}
               required
+              className="w-full col-[1/2] bg-[var(--lightColor)] text-sm min-h-10 rounded-xl p-1 outline-none ease-linear duration-100 
+              hover:border hover:border-[var(--primaryDark)] focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-12 md:text-base"
             />
           </label>
           <label
-            className="w-full mb-1 text-base font-nunitoBold"
             htmlFor="description"
+            className="w-full mb-1 text-base font-nunitoBold"
           >
             Description*
             <textarea
               label="Description"
               name="description"
               id="description"
+              defaultValue={videoToModify.title}
               className="w-full md:col-[1/2] bg-[var(--lightColor)] radius-4 text-sm rounded-[15px] min-h-10 p-1
             outline-none ease-linear duration-100 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
             hover:border-[var(--primaryDark)] md:min-h-16 md:text-base "
             />
           </label>
-          <label htmlFor="duration" className=" text-base">
+          <label htmlFor="duration" className="text-base w-full">
             Durée de la vidéo (format HH:MM:SS)
             <input
               id="duration"
               name="duration"
               type="text"
               required
-              defaultValue="00:00:00"
+              defaultValue={videoToModify ? videoToModify.duration : "00:00:00"}
               pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
               title="Write a duration in the format hh:mm:ss"
               className="w-full col-[1/2] bg-[var(--lightColor)] text-sm min-h-10 rounded-xl p-1 outline-none ease-linear duration-100 
@@ -115,18 +122,19 @@ export default function DashboardModal({
             />
           </label>
           <label
-            className="w-full text-base font-nunitoBold md:col-[1/2] "
             htmlFor="category_id"
+            className="w-full text-base font-nunitoBold md:col-[1/2]"
           >
             Catégories*
             <select
-              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
-              hover:border-[var(--primaryDark)]"
               required
               name="category_id"
               id="category_id"
               value={selectedCategory}
               onChange={handleChangeCategory}
+              defaultValue={parseInt(videoToModify.category_id, 10)}
+              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 
+              focus:outline-blue-600 hover:border hover:border-[var(--primaryDark)]"
             >
               {categories.map((category) => (
                 <option value={category.id} key={category.id}>
@@ -141,11 +149,15 @@ export default function DashboardModal({
           >
             Tags*
             <select
-              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 focus:outline focus:outline-2 focus:outline-blue-600"
+              className="w-full p-1 relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
+              hover:border-[var(--primaryDark)]"
               required
               name="tags_id"
               id="tags_id"
               multiple
+              value={selectedTags}
+              onChange={handleChangeTags}
+              defaultValue={parseInt(videoToModify.tags, 10)}
             >
               {tags &&
                 tags.map(
@@ -179,7 +191,8 @@ export default function DashboardModal({
               value={selectedAccess}
               type="checkbox"
               id="access"
-              className="theme-checkbox outline-none focus:outline focus:outline-2 focus:outline-blue-600"
+              className="theme-checkbox outline-none focus:outline border focus:outline-2 focus:outline-blue-600
+              hover:border-[var(--primaryDark)]"
               onChange={handleClickAccessSelection}
             />{" "}
             <span
@@ -192,43 +205,45 @@ export default function DashboardModal({
               Abonnés
             </span>
           </label>
-          <fieldset
-            className="w-full flex flex-wrap items-center justify-center gap-3 md:justify-evenly md:gap-5 
+          {toModify || (
+            <fieldset
+              className="w-full flex flex-wrap items-center justify-center gap-3 md:justify-evenly md:gap-5 
           md:flex-col md:col-[2/-1] md:row-[1/6] md:h-[90%]"
-          >
-            <legend className="w-full mb-1 text-base md:text-lg font-bold font-nunitoBold md:mb-2">
-              Télécharger vos fichiers
-            </legend>
-            <label
-              htmlFor="video_url"
-              className="insertField flex flex-col gap-4 items-start p-4 font-semibold justify-center w-full mb-2 border-black text-base duration-300
-                normal-case min-h-10 hover:bg-primary-dark hover:cursor-pointer focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-14 md:h-[40%] md:mb-0"
             >
-              Ajouter votre vidéo
-              <input
-                type="file"
-                accept="video/mp4"
-                name="video_url"
-                required
-                id="video_url"
-                className="file:mr-2 font-normal file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
-              />
-            </label>
-            <label
-              htmlFor="img_url"
-              className="insertField gap-4 flex flex-col items-start p-4 justify-center w-full mb-2 border-black text-base duration-300
+              <legend className="w-full mb-1 text-base md:text-lg font-bold font-nunitoBold md:mb-2">
+                Télécharger vos fichiers
+              </legend>
+              <label
+                htmlFor="video_url"
+                className="insertField flex flex-col gap-4 items-start p-4 font-semibold justify-center w-full mb-2 border-black text-base duration-300
                 normal-case min-h-10 hover:bg-primary-dark hover:cursor-pointer focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-14 md:h-[40%] md:mb-0"
-            >
-              Ajouter votre miniature
-              <input
-                type="file"
-                accept="image/*"
-                name="img_url"
-                id="img_url"
-                className="file:mr-2 file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
-              />
-            </label>
-          </fieldset>
+              >
+                Ajouter votre vidéo
+                <input
+                  type="file"
+                  accept="video/mp4"
+                  name="video_url"
+                  required
+                  id="video_url"
+                  className="file:mr-2 font-normal file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
+                />
+              </label>
+              <label
+                htmlFor="img_url"
+                className="insertField gap-4 flex flex-col items-start p-4 justify-center w-full mb-2 border-black text-base duration-300
+                normal-case min-h-10 hover:bg-primary-dark hover:cursor-pointer focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-14 md:h-[40%] md:mb-0"
+              >
+                Ajouter votre miniature
+                <input
+                  type="file"
+                  accept="image/*"
+                  name="img_url"
+                  id="img_url"
+                  className="file:mr-2 file:border-none file:bg-primary-dark file:px-2 file:py-3 file:cursor-pointer file:text-light-color"
+                />
+              </label>
+            </fieldset>
+          )}
           <input
             aria-hidden
             type="text"
@@ -274,9 +289,21 @@ DashboardModal.propTypes = {
   ).isRequired,
   selectedCategory: PropTypes.number.isRequired,
   handleChangeCategory: PropTypes.func.isRequired,
+  videoToModify: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    category_id: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf().isRequired,
+    access: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
+  }),
+  handleChangeTags: PropTypes.func.isRequired,
+  selectedTags: PropTypes.arrayOf().isRequired,
 };
 
 DashboardModal.defaultProps = {
   toModify: false,
   cookies: {},
+  videoToModify: {},
 };
