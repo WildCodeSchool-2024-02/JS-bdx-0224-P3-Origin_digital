@@ -15,12 +15,13 @@ export default function DashboardVideo({
 
   const tagsArray = video.tags.split(",");
 
+
   return (
     <Row className="[&>*]:border-2 [&>*]:px-2 lg:[&>*]:px-0">
       <Cell className="px-0">
         <img
-          src="../src/assets/images/pilat.jpg"
-          alt=""
+                src={`http://localhost:3310/assets/images/${video.img_url}`}
+                alt={video.title}
           className="w-36 inline float-left"
         />
         <p className="block text-ellipsis pt-10"> {video.title} </p>
@@ -73,6 +74,7 @@ export default function DashboardVideo({
 DashboardVideo.propTypes = {
   video: PropTypes.shape({
     video_id: PropTypes.number.isRequired,
+    img_url: PropTypes.string.isRequired,
     upload_date: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
