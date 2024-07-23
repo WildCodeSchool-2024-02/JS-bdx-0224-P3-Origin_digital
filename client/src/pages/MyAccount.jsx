@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import LoggedContext from "../context/LoggedContext";
 import yoga from "../assets/images/yoga.jpg";
+import Footer from "../components/Footer";
 
 function MyAccount() {
-
-  
   const { userData } = useContext(LoggedContext);
 
   return (
@@ -41,6 +40,7 @@ function MyAccount() {
           className="hidden md:block col-start-2 col-end-3 row-start-1 row-end-7 place-self-center img-shadow rounded-xl"
         />
       </ul>
+      <Footer />
     </>
   );
 }
