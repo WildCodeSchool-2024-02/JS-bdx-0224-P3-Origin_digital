@@ -13,6 +13,9 @@ import LoggedContext from "../context/LoggedContext";
 
 export default function Slider({ resourceList, resourcePath }) {
   const { isLogged } = useContext(LoggedContext);
+
+
+
   return (
     <Swiper
       spaceBetween={30}

@@ -15,6 +15,7 @@ export default function DashboardVideo({
 
   const tagsArray = video.tags.split(",");
 
+
   return (
     <Row className="[&>*]:border-2 [&>*]:px-2 lg:[&>*]:px-0">
       <Cell className="p-0">
@@ -80,6 +81,7 @@ export default function DashboardVideo({
 DashboardVideo.propTypes = {
   video: PropTypes.shape({
     video_id: PropTypes.number.isRequired,
+    img_url: PropTypes.string.isRequired,
     upload_date: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
