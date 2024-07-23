@@ -12,10 +12,15 @@ export default function Dashboard() {
   const [selectedAccess, setSelectedAccess] = useState(false);
   const [videoFileName, setVideoFileName] = useState("");
   const [imageFileName, setImageFileName] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(1);
   const [videos, setVideos] = useState([]);
   const [cookies] = useCookies("jwt");
 
   const { tags, categories } = useLoaderData();
+
+  const handleChangeCategory = (e) => {
+    setSelectedCategory(parseInt(e.target.value, 10));
+  };
 
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -122,6 +127,8 @@ export default function Dashboard() {
         videoFileName={videoFileName}
         cookies={cookies}
         categories={categories}
+        selectedCategory={selectedCategory}
+        handleChangeCategory={handleChangeCategory}
       />
     </>
   );
