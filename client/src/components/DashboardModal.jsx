@@ -142,7 +142,8 @@ export default function DashboardModal({
           >
             Tags*
             <select
-              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 focus:outline focus:outline-2 focus:outline-blue-600"
+              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
+              hover:border-[var(--primaryDark)]"
               required
               name="tags_id"
               id="tags_id"
@@ -180,7 +181,8 @@ export default function DashboardModal({
               value={selectedAccess}
               type="checkbox"
               id="access"
-              className="theme-checkbox outline-none focus:outline focus:outline-2 focus:outline-blue-600"
+              className="theme-checkbox outline-none focus:outline border focus:outline-2 focus:outline-blue-600
+              hover:border-[var(--primaryDark)]"
               onChange={handleClickAccessSelection}
             />{" "}
             <span
