@@ -80,7 +80,10 @@ const router = createBrowserRouter([
           const formData = await request.formData();
           const { token } = Object.fromEntries(formData);
           const response = await sendNewVideo("/api/videos", formData, token);
-          if (response.status === 201) return response;
+          if (response.status === 201) {
+            const data = await response.json();
+            return data;
+          }
           return response;
         },
       },

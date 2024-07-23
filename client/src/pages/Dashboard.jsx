@@ -14,6 +14,7 @@ export default function Dashboard() {
   const [imageFileName, setImageFileName] = useState("");
   const [videos, setVideos] = useState([]);
   const [cookies] = useCookies("jwt");
+
   const { tags, categories } = useLoaderData();
 
   const handleOpenModal = () => {

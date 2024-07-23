@@ -1,7 +1,8 @@
 import "../class.css";
 import { PropTypes } from "prop-types";
+import { useEffect } from "react";
 import FocusLock from "react-focus-lock";
-import { Form } from "react-router-dom";
+import { useFetcher } from "react-router-dom";
 
 export default function DashboardModal({
   handleOpenModal,
@@ -14,6 +15,14 @@ export default function DashboardModal({
   selectedAccess,
   cookies,
 }) {
+  const fetcher = useFetcher();
+
+  useEffect(() => {
+    if (fetcher.state === "idle" && fetcher.data) {
+      handleOpenModal(); // Fermer la modal après soumission réussie
+    }
+  }, [fetcher.state, fetcher.data]);
+
   return (
     <FocusLock>
       <dialog
@@ -51,7 +60,7 @@ export default function DashboardModal({
         >
           X
         </button>
-        <Form
+        <fetcher.Form
           aria-labelledby="form-title"
           className="w-full h-full flex flex-col items-center justify-evenly col-span-2 gap-1 md:gap-x-4 md:grid md:grid-cols-[1.5fr,1fr] 
           md:grid-rows-[repeat(6, minmax(0, auto))] md:gap-2 lg:gap-x-5 lg:p-4 lg:rounded-3xl lg:bg-[var(--primaryColor)]"
@@ -228,7 +237,7 @@ export default function DashboardModal({
           >
             {toModify ? "Modifier" : "Ajouter"}
           </button>
-        </Form>
+        </fetcher.Form>
       </dialog>
     </FocusLock>
   );
