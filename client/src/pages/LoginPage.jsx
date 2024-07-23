@@ -2,6 +2,7 @@ import { useCookies } from "react-cookie";
 import { useActionData, useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import Subscription from "../components/Subscription";
+import Footer from "../components/Footer";
 
 const loginContent = {
   title: "CONNEXION",
@@ -60,15 +61,18 @@ function LoginPage( ) {
     `label ${formValues[id].length > 0 ? "active" : ""}`;
 
   return (
-    <Subscription
-      handleChangeInputValue={handleChangeInputValue}
-      fields={fields}
-      formValues={formValues}
-      generateFieldLabelClass={generateFieldLabelClass}
-      url={url}
-      loginContent={loginContent}
-      actionData={actionData}
-    />
+    <>
+      <Subscription
+        handleChangeInputValue={handleChangeInputValue}
+        fields={fields}
+        formValues={formValues}
+        generateFieldLabelClass={generateFieldLabelClass}
+        url={url}
+        loginContent={loginContent}
+        actionData={actionData}
+      />
+      <Footer />
+    </>
   );
 }
 
