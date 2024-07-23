@@ -22,6 +22,7 @@ export default function DashboardModal({
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data) {
       handleOpenModal();
+      window.location.reload()
     }
   }, [fetcher.state, fetcher.data]);
 
