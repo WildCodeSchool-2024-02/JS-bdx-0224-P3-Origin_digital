@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function ViewingPage() {
   const video = useLoaderData();
@@ -33,6 +34,8 @@ export default function ViewingPage() {
       </section>
       <h2>Suggestions</h2>
       <p>carrousel vidéo suggestion</p>
+
+      <Footer />
     </>
   );
 }

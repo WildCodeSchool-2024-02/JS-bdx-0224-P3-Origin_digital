@@ -22,7 +22,7 @@ export default function DashboardModal({
 }) {
   const fetcher = useFetcher();
 
-  console.info(videoToModify.tags, selectedTags);
+  console.info(videoToModify, selectedAccess);
 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data) {
@@ -86,7 +86,7 @@ export default function DashboardModal({
               id="title"
               name="title"
               type="text"
-              defaultValue={videoToModify.title}
+              defaultValue={videoToModify && videoToModify.title}
               required
               className="w-full col-[1/2] bg-[var(--lightColor)] text-sm min-h-10 rounded-xl p-1 outline-none ease-linear duration-100 
               hover:border hover:border-[var(--primaryDark)] focus:outline focus:outline-2 focus:outline-blue-600 md:min-h-12 md:text-base"
@@ -101,7 +101,7 @@ export default function DashboardModal({
               label="Description"
               name="description"
               id="description"
-              defaultValue={videoToModify.title}
+              defaultValue={videoToModify && videoToModify.description}
               className="w-full md:col-[1/2] bg-[var(--lightColor)] radius-4 text-sm rounded-[15px] min-h-10 p-1
             outline-none ease-linear duration-100 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
             hover:border-[var(--primaryDark)] md:min-h-16 md:text-base "
@@ -132,7 +132,9 @@ export default function DashboardModal({
               id="category_id"
               value={selectedCategory}
               onChange={handleChangeCategory}
-              defaultValue={parseInt(videoToModify.category_id, 10)}
+              defaultValue={
+                videoToModify && parseInt(videoToModify.category_id, 10)
+              }
               className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 
               focus:outline-blue-600 hover:border hover:border-[var(--primaryDark)]"
             >
@@ -149,15 +151,15 @@ export default function DashboardModal({
           >
             Tags*
             <select
-              className="w-full p-1 relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 focus:outline-blue-600 hover:border 
-              hover:border-[var(--primaryDark)]"
+              className="w-full relative mt-1 min-h-10 font-nunito rounded-[15px] md:min-h-12 duration-300 focus:outline focus:outline-2 
+              focus:outline-blue-600 hover:border hover:border-[var(--primaryDark)]"
               required
               name="tags_id"
               id="tags_id"
               multiple
               value={selectedTags}
               onChange={handleChangeTags}
-              defaultValue={parseInt(videoToModify.tags, 10)}
+              defaultValue={videoToModify && parseInt(videoToModify.tags, 10)}
             >
               {tags &&
                 tags.map(
@@ -191,9 +193,9 @@ export default function DashboardModal({
               value={selectedAccess}
               type="checkbox"
               id="access"
-              className="theme-checkbox outline-none focus:outline border focus:outline-2 focus:outline-blue-600
-              hover:border-[var(--primaryDark)]"
               onChange={handleClickAccessSelection}
+              className={`theme-checkbox outline-none focus:outline border focus:outline-2 focus:outline-blue-600
+              hover:border-[var(--primaryDark)] ${selectedAccess === true ? "checked-checkbox" : ""}`}
             />{" "}
             <span
               className={`text-sm md:text-base ${
@@ -251,6 +253,7 @@ export default function DashboardModal({
             defaultValue={cookies.jwt}
             id="token"
             className="hidden"
+            checked={selectedAccess}
           />
           <button
             type="submit"

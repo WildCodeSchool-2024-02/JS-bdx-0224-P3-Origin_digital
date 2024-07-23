@@ -71,7 +71,7 @@
   transition: 0.3s;
 }
 
-.theme-checkbox:checked::before {
+.checked-checkbox:checked::before {
   left: calc(100% - 1.5rem - 0.25rem);
 }
 
