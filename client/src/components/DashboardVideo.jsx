@@ -21,7 +21,7 @@ export default function DashboardVideo({
       <Cell className="px-0">
         <img
                 src={`http://localhost:3310/assets/images/${video.img_url}`}
-                alt=""
+                alt="video.title"
           className="w-36 inline float-left"
         />
         <p className="block text-ellipsis pt-10"> {video.title} </p>
