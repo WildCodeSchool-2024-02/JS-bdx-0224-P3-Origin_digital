@@ -27,13 +27,13 @@ export default function RegisterSection({ video }) {
       />
       <h2
         ref={inViewRef}
-        className={`text-center mt-5 max-w-5xl lg:text-left place-self-end lg:relative lg:ml-[12vw] lg:top-[-35vh] lg:mt-0 ${fadeInClass}`}
+        className={`text-center mt-5 max-w-5xl lg:text-left place-self-end lg:relative lg:ml-[8vw] lg:top-[-35vh] lg:mt-0 ${fadeInClass}`}
       >
         {isLogged ? "Cours du moment" : "Pourquoi s'abonner ?"}
       </h2>
       <p
         ref={inViewRef}
-        className={`text-center max-w-sm lg:text-left lg:relative lg:ml-[12vw] lg:top-[-35vh] lg:p-0 ${fadeInClass}`}
+        className={`text-center lg:w-[40vw] lg:text-left lg:relative lg:ml-[8vw] lg:top-[-35vh] lg:p-0 ${fadeInClass}`}
       >
         {isLogged && video
           ? video.title
