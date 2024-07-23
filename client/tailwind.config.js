@@ -31,13 +31,13 @@ export default {
             {},
         },
         "button.active .line-burger:first-child": {
-          "@apply transform rotate-45 top-0 left-2": {},
+          "@apply transform rotate-45": {},
         },
         "button.active .line-burger:nth-child(2)": {
           "@apply w-0 opacity-0": {},
         },
         "button.active .line-burger:last-child": {
-          "@apply transform -rotate-45 top-7 left-2": {},
+          "@apply transform -rotate-45 top-[1.9rem]": {},
         },
         ".footer-list": {
           "@apply text-[var(--darkColor)]": {},
@@ -70,3 +70,4 @@ export default {
     }),
   ],
 };
+

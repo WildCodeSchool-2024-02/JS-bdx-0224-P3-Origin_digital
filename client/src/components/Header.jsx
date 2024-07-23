@@ -41,9 +41,12 @@ function Header() {
   lg:top-[6rem] lg:bg-transparent
   ${isObjectivesMenuOpen ? "opacity-100 transform translate-y-0" : "opacity-0 pointer-events-none"}`;
 
-  const menuListClasses = `top-[4.5rem] w-full uppercase bg-white list-none flex flex-col justify-around items-center transform translate-x-[100vw] transition-all text-center fixed inset-0 
-  lg:bg-[var(--secondaryColor)] lg:static lg:max-h-12 lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none 
-  ${isMobileMenuOpen ? "opacity-100 transform -translate-x-[0vw] duration-300" : ""}`;
+  const menuListClasses = `
+  fixed inset-0 top-[4.5rem] z-10 w-full bg-white list-none flex flex-col justify-around items-center transition-transform duration-300 ease-in-out
+  lg:static lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none lg:bg-[var(--secondaryColor)]
+  ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}
+`;
+
 
   const objectivesButtonClasses = `objectivesButton font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline bg-transparent hover:bg-transparent hover:text-[var(--darkColor)] p-0 border-none cursor-pointer`;
 
@@ -67,8 +70,8 @@ function Header() {
       .then((result) => result.json())
       .then((data) => {
         setCategories(data);
-      })
-      }, []);
+      });
+  }, []);
 
   return (
     <Navbar
@@ -87,3 +90,4 @@ function Header() {
 }
 
 export default Header;
+
