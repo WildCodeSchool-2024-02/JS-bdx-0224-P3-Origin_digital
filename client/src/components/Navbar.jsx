@@ -4,7 +4,6 @@ import { HashLink } from "react-router-hash-link";
 import { useContext, useState, useEffect } from "react";
 import LoggedContext from "../context/LoggedContext";
 import logoSrc from "../assets/images/LogoSweatStream.png";
-import arrowSrc from "../assets/images/objectiveArrow.png";
 
 function Navbar({
   isObjectivesMenuOpen,
@@ -23,7 +22,7 @@ function Navbar({
 
   useEffect(() => {
     if (isObjectivesMenuOpen) {
-      setMenuMaxHeight("max-h-50"); 
+      setMenuMaxHeight("max-h-50");
     } else {
       setMenuMaxHeight("max-h-0");
     }
@@ -41,51 +40,48 @@ function Navbar({
         </Link>
 
         <ul className={`${menuListClasses} z-1`}>
-          <li className="flex">
+        <li className="flex">
             <button
               onClick={handleClickObjectivesMenu}
-              className={`${objectivesButtonClasses} h-auto uppercase flex items-center`}
+              className={`${objectivesButtonClasses} h-auto hover:text-primary-dark flex items-center`}
               type="button"
             >
               Objectifs
-              <img
-                className="ml-1"
-                src={arrowSrc}
-                alt="flèche indiquant qu'objectif est déroulant"
-              />
+              <svg
+                className={`w-4 lg:w-5 ml-1 transition-transform duration-300 ${
+                  isObjectivesMenuOpen ? 'rotate-90' : ''
+                }`}
+                xmlns="http://www.w3.org/2000/svg"
+                width="26.000000pt"
+                height="26.000000pt"
+                viewBox="0 0 26.000000 26.000000"
+                preserveAspectRatio="xMidYMid meet"
+                fill="currentColor"
+              >
+                <g transform="translate(0.000000,26.000000) scale(0.100000,-0.100000)" stroke="none">
+                  <path d="M73 234 c-4 -10 9 -31 38 -60 l43 -44 -43 -44 c-29 -29 -42 -50 -38 -60 10 -25 19 -20 82 44 l59 60 -59 60 c-63 64 -72 69 -82 44z"/>
+                </g>
+              </svg>
             </button>
           </li>
           <li>
             <HashLink
               to="/#WhySubscribe"
               onClick={closeMenu}
-              className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
+              className="font-[var(--secondaryFont)] hover:text-primary-dark text-[var(--darkColor)] no-underline"
             >
               {isLogged ? "En ce moment" : "Pourquoi s'abonner ?"}
             </HashLink>
           </li>
-
-          {isLogged ? (
-            <li>
-              <Link
-                to="/account"
-                onClick={closeMenu}
-                className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
-              >
-                Mon espace
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <Link
-                to="/login"
-                onClick={closeMenu}
-                className="font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline"
-              >
-                Mon espace
-              </Link>
-            </li>
-          )}
+          <li>
+            <Link
+              to="/account"
+              onClick={closeMenu}
+              className="font-[var(--secondaryFont)] hover:text-primary-dark text-[var(--darkColor)] no-underline"
+            >
+              Mon espace
+            </Link>
+          </li>
         </ul>
       </nav>
       {isLogged ? (
@@ -112,7 +108,7 @@ function Navbar({
           <button className={subscribeStyle} type="button">
             <Link
               to="/login"
-              className="text-[var(--darkColor)] hover:text-white text-xs lg:text-base "
+              className="text-[var(--darkColor)]  hover:text-white text-xs lg:text-base "
             >
               Connexion
             </Link>
@@ -130,7 +126,7 @@ function Navbar({
         <span className="line-burger top-full -translate-y-full origin-left" />
       </button>
       <nav
-        className={`${objectiveSectionClasses} transition-max-height duration-700 ease-in-out overflow-hidden ${menuMaxHeight}`}
+        className={`${objectiveSectionClasses} transition-max-height duration-500 ease-in-out overflow-hidden ${menuMaxHeight}`}
       >
         <button
           className="absolute top-0 right-0 px-6 py-6 bg-transparent hover:bg-transparent"
@@ -151,15 +147,12 @@ function Navbar({
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
-        <ul className="flex flex-wrap justify-around bg-white">
+        <ul className=" gap-10 lg:gap-0 flex flex-col lg:flex-row justify-around bg-white">
           {categories.map((category) => (
-            <li
-              key={category.id}
-              className=" border-b border-gray-400 my-8 w-1/4 lg:w-1/6"
-            >
+            <li key={category.id} className=" my-8">
               <Link
                 to={`/category/${category.id}`}
-                className="text-[var(--darkColor)] hover:text-primary-color visited:text-[var(--darkColor)]"
+                className=" border-b border-gray-400 text-[var(--darkColor)] hover:text-primary-dark hover:border-primary-dark visited:text-[var(--darkColor)]"
               >
                 {category.name}
               </Link>
