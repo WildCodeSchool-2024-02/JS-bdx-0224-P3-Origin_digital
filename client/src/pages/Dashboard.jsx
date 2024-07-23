@@ -63,15 +63,16 @@ export default function Dashboard() {
   const handleSearch = (e) => {
     const value = e.target.value.toLowerCase();
     setSearch(value);
-  
-    const searchedLessons = lesson.filter(lessons => 
-      lessons.title.toLowerCase().includes(value) ||
-      lessons.category_name.toLowerCase().includes(value) ||
-      lessons.tags.toLowerCase().includes(value)
+
+    const searchedLessons = lesson.filter(
+      (lessons) =>
+        lessons.title.toLowerCase().includes(value) ||
+        lessons.category_name.toLowerCase().includes(value) ||
+        lessons.tags.toLowerCase().includes(value)
     );
-  
+
     setFilteredLesson(searchedLessons);
-  };  
+  };
 
   useEffect(() => {
     document.body.style.overflow = isModalOpen ? "hidden" : "auto";
@@ -81,7 +82,7 @@ export default function Dashboard() {
     getSecureData("/api/videos", cookies.jwt)
       .then((res) => res.json())
       .then((data) => {
-        setVideos(data)
+        setVideos(data);
         setLesson(data);
         setFilteredLesson(data);
       });
@@ -95,7 +96,7 @@ export default function Dashboard() {
           type="text"
           aria-label="Rechercher une vidéo"
           placeholder="Rechercher une vidéo.."
-          className="mt-4 ml-4 h-8 pl-4 w-64 border-4 border-primary-dark bg-light-color rounded-full lg:h-10"
+          className="mt-4 ml-4 h-8 pl-4 w-64 border-2 border-primary-dark bg-light-color rounded-full focus:border-primary-dark focus:ring ring-offset-2 focus:outline-none focus:ring-primary-dark transition ease-in-out delay-150 lg:h-10 "
           onChange={handleSearch}
         />
         <button
