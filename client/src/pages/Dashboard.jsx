@@ -80,17 +80,11 @@ export default function Dashboard() {
   useEffect(() => {
     getSecureData("/api/videos", cookies.jwt)
       .then((res) => res.json())
-      .then((data) => setVideos(data));
-  }, []);
-
-  useEffect(() => {
-    getSecureData("/api/videos", cookies.jwt)
-      .then((res) => res.json())
       .then((data) => {
+        setVideos(data)
         setLesson(data);
         setFilteredLesson(data);
-      })
-      .catch((err) => console.error(err));
+      });
   }, []);
 
   return (
