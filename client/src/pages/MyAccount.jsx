@@ -9,7 +9,7 @@ function MyAccount() {
   const { userData } = useContext(LoggedContext);
 
   return (
-    <>
+    <main className="min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)]">
       <h2 className="m-5">Mon espace</h2>
       <ul className="grid grid-cols-1 md:grid-cols-2 grid-rows-6 gap-0 bg-secondary-color rounded-xl mx-5 mb-8 px-5 pt-5 pb-9">
         <h3 className="gridMyAccount md:col-end-2 row-start-1 row-end-2">
@@ -30,7 +30,7 @@ function MyAccount() {
         {userData.role_id === 3 && (
           <Link
             to="/dashboard"
-            className="gridMyAccount text-xs md:col-end-2 row-start-6 row-end-7 md:text-base rounded-xl bg-primary-color h-8 px-4 py-2 font-semibold transition-all duration-300 ease-linear cursor-pointer flex justify-center items-center hover:text-light-color hover:bg-primary-dark"
+            className="gridMyAccount text-xs md:col-end-2 row-start-6 row-end-7 rounded-xl bg-primary-color h-8 px-4 py-2 font-semibold transition-all duration-300 ease-linear cursor-pointer flex justify-center items-center hover:text-light-color hover:bg-primary-dark md:w-96 md:h-10 md:text-xl"
           >
             Accéder à mon tableau de bord
           </Link>
@@ -41,7 +41,7 @@ function MyAccount() {
           className="hidden md:block col-start-2 col-end-3 row-start-1 row-end-7 place-self-center img-shadow rounded-xl"
         />
       </ul>
-    </>
+    </main>
   );
 }
 
