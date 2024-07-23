@@ -54,7 +54,7 @@ export default function Slider({ resourceList, resourcePath }) {
           >
             <figure className=" relative group img-shadow w-[calc(100%-15px)] mr-auto rounded-xl  mb-4 h-60 object-cover">
               <img
-                src={resource.image}
+                src={`http://localhost:3310/assets/images/${resource.image}`}
                 alt={resource.name}
                 className="w-full h-full rounded-xl object-cover"
               />

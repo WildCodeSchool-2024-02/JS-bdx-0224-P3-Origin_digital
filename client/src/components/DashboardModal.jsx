@@ -14,6 +14,8 @@ export default function DashboardModal({
   handleClickAccessSelection,
   selectedAccess,
   cookies,
+  selectedCategory,
+  handleChangeCategory,
 }) {
   const fetcher = useFetcher();
 
@@ -123,6 +125,8 @@ export default function DashboardModal({
               required
               name="category_id"
               id="category_id"
+              value={selectedCategory}
+              onChange={handleChangeCategory}
             >
               {categories.map((category) => (
                 <option value={category.id} key={category.id}>
@@ -144,11 +148,14 @@ export default function DashboardModal({
               multiple
             >
               {tags &&
-                tags.map((tag) => (
-                  <option key={tag.id} value={tag.id}>
-                    {tag.name}
-                  </option>
-                ))}
+                tags.map(
+                  (tag) =>
+                    tag.category_id === selectedCategory && (
+                      <option key={tag.id} value={tag.id}>
+                        {tag.name}
+                      </option>
+                    )
+                )}
             </select>
           </label>
           <label
@@ -265,6 +272,8 @@ DashboardModal.propTypes = {
       name: PropTypes.string.isRequired,
     })
   ).isRequired,
+  selectedCategory: PropTypes.number.isRequired,
+  handleChangeCategory: PropTypes.func.isRequired,
 };
 
 DashboardModal.defaultProps = {

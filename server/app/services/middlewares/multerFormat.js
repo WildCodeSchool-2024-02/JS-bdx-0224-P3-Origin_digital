@@ -13,9 +13,7 @@ const storage = multer.diskStorage({
     }
   },
   filename: (req, file, cb) => {
-    // Construire le nom du fichier avec son nom d'origine et l'extension d'origine, autrement le fichier ne possède pas d'extension
-    // le Date.now() permet de renommer le fichier afin qu'ils soient tous unique, c'est une façon simple de s'assurer de l'unicité des fichiers
-    const date = new Date(Date.now()).toISOString().substring(0, 19);
+    const date = Date.now();
     cb(null, `${date}-${file.originalname}`);
   },
 });
