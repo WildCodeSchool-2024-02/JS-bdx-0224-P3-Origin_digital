@@ -26,7 +26,7 @@ function MyAccount() {
             <li className="md:col-span-2 row-start-2 row-end-3">
               Status:{" "}
               {userData.role_id === 3
-                ? `Coach ${userData.firstname}`
+                ? `Coach`
                 : "Abonné"}
             </li>
 
