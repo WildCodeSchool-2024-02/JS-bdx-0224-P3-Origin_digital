@@ -125,7 +125,7 @@ export default function Dashboard() {
             type="text"
             aria-label="Rechercher une vidéo"
             placeholder="Rechercher une vidéo.."
-            className="h-8 pl-4 w-64 border-4 border-primary-dark bg-light-color rounded-xl lg:h-10"
+            className="h-8 pl-4 w-64 border-2 border-primary-dark bg-light-color rounded-xl focus:border-primary-dark focus:ring ring-offset-2 focus:outline-none focus:ring-primary-dark transition ease-in-out delay-150 lg:h-10"
             onChange={handleSearch}
           />
           <button type="button" className="w-64" onClick={handleOpenModal}>
