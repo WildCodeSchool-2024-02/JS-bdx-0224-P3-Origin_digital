@@ -189,6 +189,7 @@ export default function DashboardModal({
             <input
               name="access"
               value={selectedAccess}
+              checked={selectedAccess}
               type="checkbox"
               id="access"
               onChange={handleClickAccessSelection}

@@ -43,8 +43,8 @@ export default function Dashboard() {
   };
 
   const handleOpenModalModify = async (videoId) => {
-    setToModify(!toModify);
-    setIsModalOpen(!isModalOpen);
+    setToModify(true);
+    setIsModalOpen(true);
     getData(`/api/videos/${videoId}`)
       .then((res) => res.json())
       .then((data) => {
@@ -87,14 +87,6 @@ export default function Dashboard() {
       .then((res) => res.json())
       .then((data) => setVideos(data));
   }, []);
-
-  useEffect(() => {
-    if (selectedAccess) {
-      document.getElementById("access").checked = true;
-    } else {
-      document.getElementById("access").checked = false;
-    }
-  }, [selectedAccess]);
 
   return (
     <>
