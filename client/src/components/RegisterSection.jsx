@@ -19,7 +19,7 @@ export default function RegisterSection({ video }) {
         ref={inViewRef}
         src={
           isLogged && video
-            ? video.img_url
+            ? `http://localhost:3310/assets/images/${video.img_url}`
             : "./src/assets/images/musculation.jpg"
         }
         alt={isLogged && video ? video.title : ""}
@@ -40,7 +40,7 @@ export default function RegisterSection({ video }) {
           : "Conçue pour répondre aux besoins des amateurs de fitness comme des athlètes chevronnés, accédez aux meilleurs cours en ligne pour atteindre vos objectifs."}
       </p>
       <Link
-        to={isLogged && video ? `/viewing/${video.id}` : "/register"}
+        to={isLogged && video ? `/video/${video.video_id}` : "/register"}
         ref={inViewRef}
         className={`text-[var(--lightColor)] text-xl bg-[var(--primaryColor)] p-2 text-center visited:text-[var(--lightColor)] 
             hover:bg-[var(--primaryDark)] rounded-xl flex items-center justify-center mx-auto mt-5 mb-10 w-40 md:text-left lg:w-56 lg:text-2xl 
@@ -61,7 +61,7 @@ RegisterSection.propTypes = {
   video: PropTypes.shape({
     img_url: PropTypes.string,
     title: PropTypes.string,
-    id: PropTypes.number,
+    video_id: PropTypes.number,
   }),
 };
 

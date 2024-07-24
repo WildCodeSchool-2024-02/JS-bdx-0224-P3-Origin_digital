@@ -2,7 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import Footer from "../components/Footer";
 
 export default function ViewingPage() {
-  const video = useLoaderData();
+  const { tags, video } = useLoaderData();
+  const videoTags = tags.filter((tag) => video.tags.includes(tag.id));
 
   return (
     <>
@@ -16,9 +17,9 @@ export default function ViewingPage() {
         </video>
         <section className="p-0 ">
           <ul className="flex gap-2 flex-wrap [&>*]:tagsViewing">
-            {video.tags.length > 0 ? (
-              video.tags.map((tag) => (
-                <li key={tag.id} className=" duration-300">
+            {videoTags.length > 0 ? (
+              videoTags.map((tag) => (
+                <li key={tag.id} className="duration-300">
                   #{tag.name}
                 </li>
               ))
