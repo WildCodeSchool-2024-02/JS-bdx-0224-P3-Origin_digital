@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
+import { useInView } from 'react-intersection-observer';
 import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import { useCookies } from "react-cookie";
 import DashboardVideo from "../components/DashboardVideo";
@@ -22,6 +23,12 @@ export default function Dashboard() {
   const [, setSearch] = useState("");
 
   const { tags, categories } = useLoaderData();
+
+  const [inViewRef, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+
+  const fadeInClass = `transition-opacity duration-[1000ms] ease-out transform ${
+    inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+  }`;
 
   const handleChangeCategory = (e) => {
     setSelectedCategory(parseInt(e.target.value, 10));
@@ -111,7 +118,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <main className="min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)]">
+      <main ref={inViewRef} className={`${fadeInClass} min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)]`}>
         <header className="px-4 py-4 md:px-8 lg:px-12 flex flex-wrap gap-4">
           <h2 className="w-full font-semibold">Votre Tableau de bord</h2>
           <input
@@ -125,6 +132,7 @@ export default function Dashboard() {
             + Ajouter une vidéo
           </button>
         </header>
+
         <section className="overflow-x-auto rounded-xl">
           <Table className="w-full mx-auto">
             <TableHeader className="bg-primary-color">

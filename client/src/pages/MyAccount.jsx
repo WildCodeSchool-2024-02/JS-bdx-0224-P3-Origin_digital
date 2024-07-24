@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+import { useInView } from 'react-intersection-observer';
 import LoggedContext from "../context/LoggedContext";
 import yoga from "../assets/images/yoga.jpg";
 import Footer from "../components/Footer";
@@ -7,9 +8,15 @@ import Footer from "../components/Footer";
 function MyAccount() {
   const { userData } = useContext(LoggedContext);
 
+  const [inViewRef, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+
+  const fadeInClass = `transition-opacity duration-[1000ms] ease-out transform ${
+    inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+  }`;
+
   return (
     <>
-      <main className="min-h-[calc(100vh-5rem)] flex flex-col items-start justifify-center px-4 md:px-8 lg:px-12">
+      <main ref={inViewRef} className={`${fadeInClass} min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)] min-h-[calc(100vh-5rem)] flex flex-col items-start justifify-center px-4 md:px-8 lg:px-12`}>
         <h2 className="m-5">Mon espace</h2>
         <ul className="w-full grid grid-cols-1 md:grid-cols-2 grid-rows-6 gap-0 bg-secondary-color rounded-xl mx-5 mb-8 px-5 pt-5 pb-9">
           <h3 className="gridMyAccount md:col-end-2 row-start-1 row-end-2">
@@ -22,6 +29,7 @@ function MyAccount() {
                 ? `Coach ${userData.firstname}`
                 : "Abonné"}
             </li>
+
           </li>
           <li className="gridMyAccount md:col-end-2 row-start-3 row-end-4">
             Prénom: {userData.firstname}
