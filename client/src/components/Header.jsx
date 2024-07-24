@@ -46,6 +46,7 @@ function Header() {
   lg:static lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none lg:bg-[var(--secondaryColor)]
   ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`;
 
+
   const objectivesButtonClasses = `objectivesButton font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline bg-transparent hover:bg-transparent hover:text-[var(--darkColor)] p-0 border-none cursor-pointer`;
 
   useEffect(() => {
@@ -68,8 +69,8 @@ function Header() {
       .then((result) => result.json())
       .then((data) => {
         setCategories(data);
-      })
-      }, []);
+      });
+  }, []);
 
   return (
     <Navbar
@@ -88,3 +89,4 @@ function Header() {
 }
 
 export default Header;
+
