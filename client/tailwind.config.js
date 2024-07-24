@@ -40,7 +40,7 @@ export default {
           "@apply transform -rotate-45 top-[1.9rem]": {},
         },
         ".footer-list": {
-          "@apply text-[var(--darkColor)]": {},
+          "@apply text-[var(--darkColor)] hover:text-primary-dark": {},
         },
         ".img-shadow": {
           "@apply shadow-custom-shadow": {},
@@ -60,7 +60,8 @@ export default {
           "@apply rounded-lg m-2 p-4 h-7 justify-self-center text-base": {},
         },
         ".buttonForLink": {
-         "@apply rounded-xl bg-primary-color h-9 px-4 py-2 font-semibold transition-all duration-300 ease-linear cursor-pointer flex justify-center items-center hover:text-light-color hover:bg-primary-dark" : {},
+          "@apply rounded-xl bg-primary-color h-9 px-4 py-2 font-semibold transition-all duration-300 ease-linear cursor-pointer flex justify-center items-center hover:text-light-color hover:bg-primary-dark":
+            {},
         },
         ".gridMyAccount": {
           "@apply col-start-1 col-end-2": {},

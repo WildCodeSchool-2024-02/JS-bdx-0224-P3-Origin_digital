@@ -14,8 +14,6 @@ import LoggedContext from "../context/LoggedContext";
 export default function Slider({ resourceList, resourcePath }) {
   const { isLogged } = useContext(LoggedContext);
 
-
-
   return (
     <Swiper
       spaceBetween={30}
@@ -46,12 +44,12 @@ export default function Slider({ resourceList, resourcePath }) {
         <SwiperSlide key={resource.id}>
           <Link
             to={
-              (resource.access === "subscription" &&
+              (resource.access === "true" &&
                 isLogged &&
                 `/${resourcePath}/${resource.id}`) ||
-              (resource.access !== "subscription" &&
+              (resource.access !== "true" &&
                 `/${resourcePath}/${resource.id}`) ||
-              (resource.access === "subscription" && !isLogged && null)
+              (resource.access === "true" && !isLogged && null)
             }
             className="flex flex-col text-center text-dark-color"
           >
