@@ -13,7 +13,7 @@ import image5 from "../assets/images/pilat.jpg";
 import Footer from "../components/Footer";
 
 function Home() {
-  const categoryImages = [image1, image2, image3, image4, image5];
+  const categoryImages = [image1, image2, image5, image3, image4];
   const categories = useLoaderData();
 
   const [video, setVideo] = useState(null);

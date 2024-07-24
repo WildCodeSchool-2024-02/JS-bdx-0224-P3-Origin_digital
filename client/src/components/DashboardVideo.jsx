@@ -49,7 +49,7 @@ export default function DashboardVideo({
       </Cell>
       <Cell className="text-center">
         {" "}
-        {video.access === true ? "Abonné" : "Public"}{" "}
+        {video.access ? "Abonné" : "Public"}{" "}
       </Cell>
       <Cell> {video.upload_date.split("T")[0]} </Cell>
       <Cell>

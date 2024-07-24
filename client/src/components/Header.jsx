@@ -27,6 +27,8 @@ function Header() {
       )
     ) {
       setIsObjectivesMenuOpen(false);
+      setIsMobileMenuOpen(false);
+
     }
   };
 

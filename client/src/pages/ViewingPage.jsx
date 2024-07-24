@@ -29,7 +29,7 @@ export default function ViewingPage() {
           </ul>
         </section>
         <h2 className="font-bold mt-4">{video.title}</h2>
-        <p>Durée : {video.duration} minutes</p>
+        <p>Durée : {video.duration} minute(s)</p>
         <h3 className="font-bold mt-4">Description</h3>
         <p>{video.description}</p>
       </section>

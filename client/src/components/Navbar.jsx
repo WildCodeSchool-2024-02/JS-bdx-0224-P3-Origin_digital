@@ -40,7 +40,7 @@ function Navbar({
         </Link>
 
         <ul className={`${menuListClasses} z-1`}>
-        <li className="flex">
+          <li className="flex">
             <button
               onClick={handleClickObjectivesMenu}
               className={`${objectivesButtonClasses} h-auto hover:text-primary-dark flex items-center`}
@@ -49,7 +49,7 @@ function Navbar({
               Objectifs
               <svg
                 className={`w-4 lg:w-5 ml-1 transition-transform duration-300 ${
-                  isObjectivesMenuOpen ? 'rotate-90' : ''
+                  isObjectivesMenuOpen ? "rotate-90" : ""
                 }`}
                 xmlns="http://www.w3.org/2000/svg"
                 width="26.000000pt"
@@ -58,8 +58,11 @@ function Navbar({
                 preserveAspectRatio="xMidYMid meet"
                 fill="currentColor"
               >
-                <g transform="translate(0.000000,26.000000) scale(0.100000,-0.100000)" stroke="none">
-                  <path d="M73 234 c-4 -10 9 -31 38 -60 l43 -44 -43 -44 c-29 -29 -42 -50 -38 -60 10 -25 19 -20 82 44 l59 60 -59 60 c-63 64 -72 69 -82 44z"/>
+                <g
+                  transform="translate(0.000000,26.000000) scale(0.100000,-0.100000)"
+                  stroke="none"
+                >
+                  <path d="M73 234 c-4 -10 9 -31 38 -60 l43 -44 -43 -44 c-29 -29 -42 -50 -38 -60 10 -25 19 -20 82 44 l59 60 -59 60 c-63 64 -72 69 -82 44z" />
                 </g>
               </svg>
             </button>
@@ -73,15 +76,17 @@ function Navbar({
               {isLogged ? "En ce moment" : "Pourquoi s'abonner ?"}
             </HashLink>
           </li>
-          <li>
-            <Link
-              to="/account"
-              onClick={closeMenu}
-              className="font-[var(--secondaryFont)] hover:text-primary-dark text-[var(--darkColor)] no-underline"
-            >
-              Mon espace
-            </Link>
-          </li>
+          {isLogged && (
+            <li>
+              <Link
+                to="/account"
+                onClick={closeMenu}
+                className="font-[var(--secondaryFont)] hover:text-primary-dark text-[var(--darkColor)] no-underline"
+              >
+                Mon espace
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
       {isLogged ? (
@@ -147,13 +152,14 @@ function Navbar({
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
-        <ul className=" gap-10 lg:gap-0 flex flex-col lg:flex-row justify-around bg-white">
+        <ul className=" gap-10 lg:gap-0 flex flex-col lg:flex-row justify-around bg-secondary-color border-t border-black">
           {categories.map((category) => (
             <li key={category.id} className=" my-8">
               <Link
                 to={`/category/${category.id}`}
                 className=" border-b border-gray-400 text-[var(--darkColor)] hover:text-primary-dark hover:border-primary-dark visited:text-[var(--darkColor)]"
-              >
+                onClick={closeMenu}
+             >
                 {category.name}
               </Link>
             </li>
