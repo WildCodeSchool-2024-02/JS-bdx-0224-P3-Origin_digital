@@ -21,13 +21,13 @@ export default function InfoSection() {
       />{" "}
       <h2
         ref={inViewRef}
-        className={`text-center lg:text-left place-self-end mt-5 lg:relative lg:top-[-34vh] lg:ml-[60vw] lg:mt-[0rem]${fadeInClass}`}
+        className={`text-center mt-8 lg:text-left place-self-end lg:relative lg:top-[-34vh] lg:ml-[60vw] lg:mt-[0rem]${fadeInClass}`}
       >
         {isLogged ? "Bravo pour votre détermination !" : "Notre offre"}
       </h2>
       <p
         ref={inViewRef}
-        className={`text-center lg:text-left px-5 lg:relative lg:top-[-34vh] mb-10 md:mb-16 lg:ml-[60vw] lg:p-0 ${fadeInClass}`}
+        className={`text-center mb-10 mt-2 lg:text-left px-5 lg:relative lg:top-[-34vh]  md:mb-16 lg:ml-[60vw] lg:p-0 ${fadeInClass}`}
       >
         {isLogged
           ? "Vous vous donnez les moyens pour réussir. L'équipe SweatStream vous félicite pour votre assiduité sur la plateforme !"
