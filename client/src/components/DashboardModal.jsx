@@ -22,8 +22,6 @@ export default function DashboardModal({
 }) {
   const fetcher = useFetcher();
 
-  console.info(videoToModify, selectedAccess);
-
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data) {
       handleOpenModal();
@@ -194,8 +192,8 @@ export default function DashboardModal({
               type="checkbox"
               id="access"
               onChange={handleClickAccessSelection}
-              className={`theme-checkbox outline-none focus:outline border focus:outline-2 focus:outline-blue-600
-              hover:border-[var(--primaryDark)] ${selectedAccess === true ? "checked-checkbox" : ""}`}
+              className="theme-checkbox outline-none focus:outline border focus:outline-2 focus:outline-blue-600
+              hover:border-[var(--primaryDark)]"
             />{" "}
             <span
               className={`text-sm md:text-base ${

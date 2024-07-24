@@ -33,12 +33,12 @@ export default function Dashboard() {
 
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
-    if (!isModalOpen) {
+    setSelectedAccess(false);
+    setSelectedCategory(1);
+    setSelectedTags([]);
+    if (isModalOpen === true && toModify === true) {
       setToModify(false);
-      setSelectedAccess(false);
       setVideoToModify({});
-      setSelectedCategory(1);
-      setSelectedTags([]);
     }
   };
 
@@ -56,7 +56,7 @@ export default function Dashboard() {
   };
 
   const handleClickAccessSelection = () => {
-    setSelectedAccess((prevAccess) => !prevAccess);
+    setSelectedAccess(!selectedAccess);
   };
 
   const handleVideoFileChange = (event) => {
@@ -89,8 +89,12 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    getData(``);
-  }, [toModify === true]);
+    if (selectedAccess) {
+      document.getElementById("access").checked = true;
+    } else {
+      document.getElementById("access").checked = false;
+    }
+  }, [selectedAccess]);
 
   return (
     <>
