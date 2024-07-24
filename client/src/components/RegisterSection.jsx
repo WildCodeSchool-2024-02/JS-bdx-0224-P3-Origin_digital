@@ -36,14 +36,14 @@ export default function RegisterSection({ video }) {
         className={`text-center lg:w-[40vw] lg:text-left lg:relative lg:ml-[8vw] lg:top-[-35vh] lg:p-0 ${fadeInClass}`}
       >
         {isLogged && video
-          ? video.title
+          ? ""
           : "Conçue pour répondre aux besoins des amateurs de fitness comme des athlètes chevronnés, accédez aux meilleurs cours en ligne pour atteindre vos objectifs."}
       </p>
       <Link
         to={isLogged && video ? `/video/${video.video_id}` : "/register"}
         ref={inViewRef}
         className={`text-[var(--lightColor)] text-xl bg-[var(--primaryColor)] p-2 text-center visited:text-[var(--lightColor)] 
-            hover:bg-[var(--primaryDark)] rounded-xl flex items-center justify-center mx-auto mt-5 mb-10 w-40 md:text-left lg:w-56 lg:text-2xl 
+            hover:bg-[var(--primaryDark)] rounded-xl flex items-center justify-center mx-auto mt-5 mb-10 md:mb-16 w-40 md:text-left lg:w-56 lg:text-2xl 
             lg:gap-6 lg:mb-0 lg:mr-[70vw] lg:relative lg:top-[-34vh] ${fadeInClass} whitespace-nowrap`}
       >
         <img

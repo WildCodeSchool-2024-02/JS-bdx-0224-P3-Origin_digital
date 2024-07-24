@@ -51,7 +51,7 @@ export default function Slider({ resourceList, resourcePath }) {
                 `/${resourcePath}/${resource.id}`) ||
               (resource.access === "true" && !isLogged && null)
             }
-            className="flex flex-col text-center text-dark-color"
+            className="flex flex-col text-center text-2xl lg:text-3xl text-dark-color"
           >
             <figure className=" relative group img-shadow w-[calc(100%-15px)] mr-auto rounded-xl  mb-4 h-60 object-cover">
               <img
@@ -59,16 +59,17 @@ export default function Slider({ resourceList, resourcePath }) {
                 alt={resource.name}
                 className="w-full h-full rounded-xl object-cover"
               />
-              {isLogged || resource.access === "true" ? (
-                <figcaption
-                  className="bg-gradient-custom text-light-color h-full w-full px-2 pb-2 absolute top-0 flex items-end justify-center opacity-0 
-            transition-opacity duration-300 rounded-xl group-hover:opacity-100"
-                >
-                  {resource.description}
+              {!isLogged && resource.access === "true" ? (
+                <figcaption className="bg-gradient-light shadow-[inset_10px_5px_10px_-15px_rgba(16, 221, 247, 0.8)] text-light-color h-full w-full px-2 pb-2 absolute top-0 flex items-center justify-center">
+                  <img src={locker} alt="video verrouillée" />
                 </figcaption>
               ) : (
-                <figcaption className="bg-gradient-light text-light-color h-full w-full px-2 pb-2 absolute top-0 flex items-center justify-center">
-                  <img src={locker} alt="video verrouillée" />
+                <figcaption
+                  className="bg-gradient-custom text-light-color h-full w-full px-2 pb-2 absolute top-0 flex items-end justify-center 
+                  opacity-0 transition-opacity duration-300 rounded-xl shadow-[inset_10px_5px_10px_-15px_rgba(16, 221, 247, 0.8)] 
+                  hover:opacity-100"
+                >
+                  {resource.description}
                 </figcaption>
               )}
             </figure>
