@@ -23,17 +23,17 @@ export default function RegisterSection({ video }) {
             : "./src/assets/images/musculation.jpg"
         }
         alt={isLogged && video ? video.title : ""}
-        className={`img-shadow w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] rounded-xl mt-10 lg:mr-[10vw] ${fadeInClass}`}
+        className={`img-shadow w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] rounded-xl mt-10 lg:mr-[10vw] lg:my-[10vw] ${fadeInClass}`}
       />
       <h2
         ref={inViewRef}
-        className={`text-center mt-8 max-w-5xl lg:text-left place-self-end lg:relative lg:ml-[8vw] lg:top-[-35vh] lg:mt-0 ${fadeInClass}`}
+        className={`text-center mt-8 max-w-5xl lg:text-left place-self-end lg:relative lg:ml-[8vw] lg:top-[-26vw] ${fadeInClass}`}
       >
         {isLogged ? "Cours du moment" : "Pourquoi s'abonner ?"}
       </h2>
       <p
         ref={inViewRef}
-        className={`mt-2 text-center lg:w-[40vw] lg:text-left lg:relative lg:ml-[8vw] lg:top-[-35vh] lg:p-0 ${fadeInClass}`}
+        className={`mt-2 text-center lg:w-[40vw] lg:text-left lg:relative lg:ml-[8vw] lg:top-[-55vh] ${fadeInClass}`}
       >
         {isLogged && video
           ? ""
@@ -43,8 +43,8 @@ export default function RegisterSection({ video }) {
         to={isLogged && video ? `/video/${video.video_id}` : "/register"}
         ref={inViewRef}
         className={`text-light-color text-xl bg-primary-color p-2 visited:text-light-color
-            hover:bg-primary-dark rounded-xl flex items-center justify-around mx-auto mt-5 mb-14 md:mb-16 w-40 md:text-left lg:w-56 lg:text-2xl 
-            lg:gap-6 lg:mb-0 lg:mr-[70vw] lg:relative lg:top-[-34vh] ${fadeInClass} whitespace-nowrap`}
+            hover:bg-primary-dark rounded-xl flex items-center mx-auto mt-5 mb-14 md:mb-16 w-40 md:text-left lg:w-56 lg:text-2xl 
+            gap-3 lg:gap-6 lg:mr-[79vw] lg:relative lg:top-[-55vh] ${fadeInClass} whitespace-nowrap`}
       >
         <img
           src="./src/assets/images/logoPlay.png"
