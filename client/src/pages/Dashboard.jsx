@@ -13,8 +13,11 @@ export default function Dashboard() {
   const [videoFileName, setVideoFileName] = useState("");
   const [imageFileName, setImageFileName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(1);
-  const [videos, setVideos] = useState([]);
+  const [, setVideos] = useState([]);
   const [cookies] = useCookies("jwt");
+  const [lesson, setLesson] = useState([]);
+  const [filteredLesson, setFilteredLesson] = useState([]);
+  const [, setSearch] = useState("");
 
   const { tags, categories } = useLoaderData();
 
@@ -57,6 +60,20 @@ export default function Dashboard() {
     return window.location.reload();
   };
 
+  const handleSearch = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearch(value);
+
+    const searchedLessons = lesson.filter(
+      (lessons) =>
+        lessons.title.toLowerCase().includes(value) ||
+        lessons.category_name.toLowerCase().includes(value) ||
+        lessons.tags.toLowerCase().includes(value)
+    );
+
+    setFilteredLesson(searchedLessons);
+  };
+
   useEffect(() => {
     document.body.style.overflow = isModalOpen ? "hidden" : "auto";
   }, [isModalOpen]);
@@ -64,26 +81,34 @@ export default function Dashboard() {
   useEffect(() => {
     getSecureData("/api/videos", cookies.jwt)
       .then((res) => res.json())
-      .then((data) => setVideos(data));
+      .then((data) => {
+        setVideos(data);
+        setLesson(data);
+        setFilteredLesson(data);
+      });
   }, []);
 
   return (
     <>
-      <main className="min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)]">
-        <header className="px-4 py-4 md:px-8 lg:px-12 flex flex-wrap gap-4">
-          <h2 className="w-full font-semibold">Votre Tableau de bord</h2>
-          <input
-            type="text"
-            aria-label="Rechercher une vidéo"
-            placeholder="Rechercher une vidéo.."
-            className="h-8 pl-4 w-64 border-4 border-primary-dark bg-light-color rounded-xl lg:h-10"
-          />
-          <button type="button" className=" w-64 " onClick={handleOpenModal}>
-            + Ajouter une vidéo
-          </button>
-        </header>
-        <section className="overflow-x-auto">
-          <Table className="w-full mx-auto">
+      <main>
+        <h2>Votre Tableau de bord</h2>
+        <input
+          type="text"
+          aria-label="Rechercher une vidéo"
+          placeholder="Rechercher une vidéo.."
+          className="mt-4 ml-4 h-8 pl-4 w-64 border-2 border-primary-dark bg-light-color rounded-full focus:border-primary-dark focus:ring ring-offset-2 focus:outline-none focus:ring-primary-dark transition ease-in-out delay-150 lg:h-10 "
+          onChange={handleSearch}
+        />
+        <button
+          type="button"
+          className="mt-4 mb-2 ml-4 w-64 rounded-full "
+          onClick={handleOpenModal}
+        >
+          + Ajouter une vidéo
+        </button>
+        <section className="overflow-x-auto rounded-xl">
+          <Table className="w-[90vw] mx-auto">
+
             <TableHeader className="bg-primary-color">
               <Column isRowHeader className="px-28 lg:p-0 w-60 rounded-tl-xl">
                 Vos vidéos
@@ -97,8 +122,8 @@ export default function Dashboard() {
               </Column>
             </TableHeader>
             <TableBody className="[&>*:nth-child(even)]:bg-secondary-color ">
-              {videos &&
-                videos.map((video) => (
+              {filteredLesson &&
+                filteredLesson.map((video) => (
                   <DashboardVideo
                     video={video}
                     key={video.id}
