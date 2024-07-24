@@ -21,23 +21,28 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link to="/" className="footer-list">
+              <Link to="/#WhySubscribe" className="footer-list">
                 Pourquoi s'abonner
               </Link>
             </li>
             <li>
-              <Link to="/" className="footer-list">
+              <Link to="/register" className="footer-list">
                 Inscription utilisateur
               </Link>
             </li>
             <li>
-              <Link to="/" className="footer-list">
+              <Link to="/register" className="footer-list">
                 Inscription coach
               </Link>
             </li>
             <li>
-              <Link to="/" className="footer-list">
+              <Link to="/login" className="footer-list">
                 Connexion
+              </Link>
+            </li>
+            <li>
+              <Link to="/account" className="footer-list">
+                Mon espace
               </Link>
             </li>
           </ul>
@@ -46,27 +51,27 @@ export default function Footer() {
           <h3 className="footer-list">Catégories</h3>
           <ul>
             <li>
-              <Link to="/" className="footer-list">
+              <Link to="/category/3" className="footer-list">
                 Musculation
               </Link>
             </li>
             <li>
-              <Link to="/" className="footer-list">
+              <Link to="/category/4" className="footer-list">
                 Pilate
               </Link>
             </li>
             <li>
-              <Link to="/" className="footer-list">
+              <Link to="/category/2" className="footer-list">
                 Yoga
               </Link>
             </li>
             <li>
-              <Link to="/" className="footer-list">
+              <Link to="/category/1" className="footer-list">
                 Fitness
               </Link>
             </li>
             <li>
-              <Link to="/" className="footer-list">
+              <Link to="/category/5" className="footer-list">
                 Nutrition
               </Link>
             </li>
@@ -83,7 +88,7 @@ export default function Footer() {
             <li className="m-0">
               <ul className="flex justify-around grow md:justify-start">
                 <li className="m-0">
-                  <a href="facebook.com">
+                  <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
                     <img
                       src="src/assets/images/icons8-facebook-100.png"
                       alt="Facebook"
@@ -92,7 +97,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="instagram.com">
+                  <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
                     <img
                       src="src/assets/images/icons8-instagram-100.png"
                       alt="Instagram"
@@ -101,7 +106,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="tiktok.com">
+                  <a href="https://www.tiktok.com" target="_blank" rel="noreferrer">
                     <img
                       src="src/assets/images/icons8-tic-tac-100.png"
                       alt="TikTok"
