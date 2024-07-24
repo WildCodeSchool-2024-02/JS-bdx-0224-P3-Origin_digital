@@ -38,7 +38,7 @@ export default function Footer() {
                 Mon espace
               </Link>
             </li>
-            <li className="m-0">
+            <li>
               <Link to="/contact" className="footer-list">
                 Contact
               </Link>

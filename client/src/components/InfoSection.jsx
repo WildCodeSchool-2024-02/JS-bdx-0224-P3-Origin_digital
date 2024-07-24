@@ -31,7 +31,7 @@ export default function InfoSection() {
       >
         {isLogged
           ? "Vous vous donnez les moyens pour réussir. L'équipe SweatStream vous félicite pour votre assiduité sur la plateforme !"
-          : "  Des vidéos en temps réel rapides, fun et efficaces qui s’adaptent à tonniveau (intensité, zones du corps...) Ton rythme (fréquence & durée) Et ton équipement (avec ou sans matériel)"}
+          : "  Des vidéos en temps réel rapides, fun et efficaces qui s’adaptent à ton niveau (intensité, zones du corps...) ton rythme (fréquence & durée) et ton équipement (avec ou sans matériel)"}
       </p>
     </>
   );
