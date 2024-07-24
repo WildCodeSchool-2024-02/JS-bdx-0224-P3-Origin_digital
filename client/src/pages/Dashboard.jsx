@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
+import { useInView } from 'react-intersection-observer';
 import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import { useCookies } from "react-cookie";
 import DashboardVideo from "../components/DashboardVideo";
@@ -22,6 +23,12 @@ export default function Dashboard() {
   const [, setSearch] = useState("");
 
   const { tags, categories } = useLoaderData();
+
+  const [inViewRef, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+
+  const fadeInClass = `transition-opacity duration-[1000ms] ease-out transform ${
+    inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+  }`;
 
   const handleChangeCategory = (e) => {
     setSelectedCategory(parseInt(e.target.value, 10));
@@ -111,8 +118,8 @@ export default function Dashboard() {
 
   return (
     <>
-      <main>
-        <h2>Votre Tableau de bord</h2>
+      <main ref={inViewRef} className={fadeInClass}>
+        <h2 className="m-5">Votre Tableau de bord</h2>
         <input
           type="text"
           aria-label="Rechercher une vidéo"
