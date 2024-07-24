@@ -153,7 +153,8 @@ function Navbar({
               <Link
                 to={`/category/${category.id}`}
                 className=" border-b border-gray-400 text-[var(--darkColor)] hover:text-primary-dark hover:border-primary-dark visited:text-[var(--darkColor)]"
-              >
+                onClick={closeMenu}
+             >
                 {category.name}
               </Link>
             </li>
