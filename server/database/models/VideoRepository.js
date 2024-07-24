@@ -61,12 +61,7 @@ class VideoRepository extends AbstractRepository {
         video.access,
         category.name AS category_name,
         category.id AS category_id,
-        JSON_ARRAYAGG(
-            JSON_OBJECT(
-                'id', tag.id,
-                'name', tag.name
-              )
-            ) AS tags
+        JSON_ARRAYAGG(tag.id) AS tags
       FROM 
         video
       INNER JOIN 

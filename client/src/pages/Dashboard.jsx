@@ -4,7 +4,7 @@ import { Column, Table, TableHeader, TableBody } from "react-aria-components";
 import { useCookies } from "react-cookie";
 import DashboardVideo from "../components/DashboardVideo";
 import DashboardModal from "../components/DashboardModal";
-import { deleteVideo, getSecureData } from "../services/api.service";
+import { deleteVideo, getData, getSecureData } from "../services/api.service";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,6 +13,8 @@ export default function Dashboard() {
   const [videoFileName, setVideoFileName] = useState("");
   const [imageFileName, setImageFileName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(1);
+  const [videoToModify, setVideoToModify] = useState({});
+  const [selectedTags, setSelectedTags] = useState([]);
   const [, setVideos] = useState([]);
   const [cookies] = useCookies("jwt");
   const [lesson, setLesson] = useState([]);
@@ -25,16 +27,35 @@ export default function Dashboard() {
     setSelectedCategory(parseInt(e.target.value, 10));
   };
 
+  const handleChangeTags = (e) => {
+    const selectedOptions = Array.from(e.target.selectedOptions, (option) =>
+      parseInt(option.value, 10)
+    );
+    setSelectedTags(selectedOptions);
+  };
+
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
+    setSelectedAccess(false);
+    setSelectedCategory(1);
+    setSelectedTags([]);
     if (isModalOpen === true && toModify === true) {
       setToModify(false);
+      setVideoToModify({});
     }
   };
 
-  const handleOpenModalModify = async () => {
-    setToModify(!toModify);
-    setIsModalOpen(!isModalOpen);
+  const handleOpenModalModify = async (videoId) => {
+    setToModify(true);
+    setIsModalOpen(true);
+    getData(`/api/videos/${videoId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setVideoToModify(data);
+        setSelectedCategory(data.category_id);
+        setSelectedTags(data.tags.map((tag) => tag));
+        setSelectedAccess(data.access === "true");
+      });
   };
 
   const handleClickAccessSelection = () => {
@@ -152,6 +173,9 @@ export default function Dashboard() {
         categories={categories}
         selectedCategory={selectedCategory}
         handleChangeCategory={handleChangeCategory}
+        videoToModify={videoToModify}
+        selectedTags={selectedTags}
+        handleChangeTags={handleChangeTags}
       />
     </>
   );
