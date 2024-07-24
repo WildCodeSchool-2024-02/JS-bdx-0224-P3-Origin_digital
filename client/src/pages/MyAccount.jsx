@@ -16,7 +16,9 @@ function MyAccount() {
             Information du compte
           </h3>
           <li className="gridMyAccount md:col-end-2 row-start-2 row-end-3">
-            Status: abonné
+          <li className="md:col-span-2 row-start-2 row-end-3">
+            Status: {userData.role_id === 3 ? `Coach ${userData.firstname}` : 'Abonné'}
+          </li>
           </li>
           <li className="gridMyAccount md:col-end-2 row-start-3 row-end-4">
             Prénom: {userData.firstname}
