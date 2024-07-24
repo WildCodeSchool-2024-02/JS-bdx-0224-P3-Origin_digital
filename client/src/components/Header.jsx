@@ -44,8 +44,7 @@ function Header() {
   const menuListClasses = `
   fixed inset-0 top-[4.5rem] z-10 w-full bg-white list-none flex flex-col justify-around items-center transition-transform duration-300 ease-in-out
   lg:static lg:flex-row lg:justify-around lg:opacity-100 lg:transform-none lg:bg-[var(--secondaryColor)]
-  ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}
-`;
+  ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`;
 
 
   const objectivesButtonClasses = `objectivesButton font-[var(--secondaryFont)] text-[var(--darkColor)] no-underline bg-transparent hover:bg-transparent hover:text-[var(--darkColor)] p-0 border-none cursor-pointer`;

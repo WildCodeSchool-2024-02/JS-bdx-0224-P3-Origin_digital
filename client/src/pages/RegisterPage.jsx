@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Subscription from "../components/Subscription";
+import Footer from "../components/Footer";
 
 const emptyFields = {
   firstname: "",
@@ -103,21 +104,24 @@ function RegisterPage() {
     `label ${formValues[id].length > 0 ? "active" : ""}`;
 
   return (
-    <Subscription
-      handleClickProfile={handleClickProfile}
-      handleChangeInputValue={handleChangeInputValue}
-      fields={fields}
-      formValues={formValues}
-      customerButton={customerButton}
-      professionalButton={professionalButton}
-      generateFieldLabelClass={generateFieldLabelClass}
-      emailRef={emailRef}
-      firstNameRef={firstNameRef}
-      lastNameRef={lastNameRef}
-      navigate={navigate}
-      url={url}
-      registerContent={registerContent}
-    />
+    <>
+      <Subscription
+        handleClickProfile={handleClickProfile}
+        handleChangeInputValue={handleChangeInputValue}
+        fields={fields}
+        formValues={formValues}
+        customerButton={customerButton}
+        professionalButton={professionalButton}
+        generateFieldLabelClass={generateFieldLabelClass}
+        emailRef={emailRef}
+        firstNameRef={firstNameRef}
+        lastNameRef={lastNameRef}
+        navigate={navigate}
+        url={url}
+        registerContent={registerContent}
+      />
+      <Footer />
+    </>
   );
 }
 

@@ -69,32 +69,30 @@ export default function Dashboard() {
 
   return (
     <>
-      <main>
-        <h2>Votre Tableau de bord</h2>
-        <input
-          type="text"
-          aria-label="Rechercher une vidéo"
-          placeholder="Rechercher une vidéo.."
-          className="mt-4 ml-4 h-8 pl-4 w-64 border-4 border-primary-dark bg-light-color rounded-full lg:h-10"
-        />
-        <button
-          type="button"
-          className="mt-4 mb-2 ml-4 w-64 rounded-full "
-          onClick={handleOpenModal}
-        >
-          + Ajouter une vidéo
-        </button>
-        <section className="overflow-x-auto rounded-xl">
-          <Table className="w-[90vw] mx-auto">
+      <main className="min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)]">
+        <header className="px-4 py-4 md:px-8 lg:px-12 flex flex-wrap gap-4">
+          <h2 className="w-full font-semibold">Votre Tableau de bord</h2>
+          <input
+            type="text"
+            aria-label="Rechercher une vidéo"
+            placeholder="Rechercher une vidéo.."
+            className="h-8 pl-4 w-64 border-4 border-primary-dark bg-light-color rounded-xl lg:h-10"
+          />
+          <button type="button" className=" w-64 " onClick={handleOpenModal}>
+            + Ajouter une vidéo
+          </button>
+        </header>
+        <section className="overflow-x-auto">
+          <Table className="w-full mx-auto">
             <TableHeader className="bg-primary-color">
-              <Column isRowHeader className="px-28 lg:p-0 w-60 rounded-tl-3xl">
+              <Column isRowHeader className="px-28 lg:p-0 w-60 rounded-tl-xl">
                 Vos vidéos
               </Column>
               <Column className="px-3 lg:p-0 lg:w-28">Catégorie</Column>
               <Column className="px-28 lg:p-0 lg:w-44">Tag</Column>
               <Column className="px-3 lg:p-0 lg:w-28">Visibilité</Column>
               <Column className="px-3 lg:p-0 lg:w-36">Publication</Column>
-              <Column className="px-3 lg:p-0 lg:w-36 rounded-tr-3xl">
+              <Column className="px-3 lg:p-0 lg:w-36 rounded-tr-xl">
                 Modification
               </Column>
             </TableHeader>
