@@ -66,6 +66,12 @@ export default {
         ".gridMyAccount": {
           "@apply col-start-1 col-end-2": {},
         },
+        ".bg-gradient-light": {
+          "@apply bg-gradient-to-t from-dark-color/95 to-dark-color/20": {},
+        },
+        ".bg-gradient-dark": {
+          "@apply bg-gradient-to-t from-dark-color/95 to-dark-color/20": {},
+        },
       };
       addComponents(components);
     }),
