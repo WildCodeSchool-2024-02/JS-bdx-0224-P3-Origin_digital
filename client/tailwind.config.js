@@ -60,7 +60,7 @@ export default {
           "@apply rounded-lg m-2 p-4 h-7 justify-self-center text-base": {},
         },
         ".buttonForLink": {
-          "@apply rounded-sm md:rounded-lg bg-primary-color h-9 px-4 py-2 font-semibold transition-all duration-300 ease-linear cursor-pointer flex justify-center items-center hover:text-light-color hover:bg-primary-dark":
+          "@apply rounded-md  bg-primary-color h-9 px-4 py-2 font-semibold transition-all duration-300 ease-linear cursor-pointer flex justify-center items-center hover:text-light-color hover:bg-primary-dark":
             {},
         },
         ".gridMyAccount": {
@@ -77,4 +77,3 @@ export default {
     }),
   ],
 };
-
