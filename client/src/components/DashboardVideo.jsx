@@ -24,7 +24,7 @@ export default function DashboardVideo({
           alt=""
           className="w-36 inline float-left mr-4"
         />
-        <p className="block text-ellipsis pt-10"> {video.title} </p>
+        <p className="block text-ellipsis pt-10"> {`${video.title.substring(0,40)}...`} </p>
       </Cell>
       <Cell className="text-center"> {video.category_name} </Cell>
       <Cell className="py-2 px-0">
