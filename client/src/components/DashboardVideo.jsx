@@ -30,11 +30,13 @@ export default function DashboardVideo({
       <Cell className="py-2 px-0">
         <ul
           className="flex flex-wrap w-auto justify-center items-center gap-3 [&>*]:py-0 [&>*]:px-4 [&>*]:text-xl [&>*]:h-7 
-        [&>*]:bg-[var(--primaryColor)] [&>*]:rounded-full [&>*]:text-[var(--darkColor)] [&>*]:capitaliz [&>*]:my-1 [&>*]:border-2 
+        [&>*]:bg-[var(--primaryColor)] [&>*]:rounded-full [&>*]:text-[var(--darkColor)] [&>*]:capitalize [&>*]:my-1 [&>*]:border-2 
         [&>*]:border-dark-color"
         >
           {(showAllTags ? tagsArray : tagsArray.slice(0, 3)).map((tag) => (
-            <li key={tag}>{tag}</li>
+            <li className="overflow-hidden" key={tag}>
+              {tag}
+            </li>
           ))}
         </ul>
         {tagsArray.length > 3 && (
