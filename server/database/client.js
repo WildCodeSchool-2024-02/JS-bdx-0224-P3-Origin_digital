@@ -1,7 +1,5 @@
-// Get variables from .env file for database connection
 const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
-// Create a connection pool to the database
 const mysql = require("mysql2/promise");
 
 const client = mysql.createPool({
@@ -13,7 +11,6 @@ const client = mysql.createPool({
 });
 
 client.checkConnection = () => {
-  // Try to get a connection to the database
   client
     .getConnection()
     .then((connection) => {
@@ -31,8 +28,6 @@ client.checkConnection = () => {
     });
 };
 
-// Store database name into client for further uses
 client.databaseName = DB_NAME;
 
-// Ready to export
 module.exports = client;

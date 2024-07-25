@@ -1,30 +1,39 @@
-import { Link } from 'react-router-dom';
+import { useLoaderData } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function ViewingPage() {
+  const { tags, video } = useLoaderData();
+  const videoTags = tags.filter((tag) => video.tags.includes(tag.id));
+
   return (
-    <>
-      <section className=" lg:w-4/6 lg:block lg:mx-auto lg:bg-[var(--secondaryColor)] lg:rounded-b-3xl lg:px-10 lg:pb-5">
+    <main>
+      <section className="p-0 pb-6 md:w-4/6 md:mx-auto md:my-5 md:p-5 md:bg-secondary-color md:rounded-xl ">
         <video
           controls
-          src="src\assets\videos\test3.mp4"
-          className=" w-full max-h-screen"
+          src={`http://localhost:3310/assets/videos/${video.video_url}`}
+          className=" w-full max-h-screen mb-4"
         >
           <track kind="captions" />
         </video>
-        <h1 className="font-bold text-3xl pt-2">Placeholder : Titre de vidéo</h1>
-        <section className="p-0 [&>*]:mx-1 [&>*]:py-0 [&>*]:px-4 [&>*]:text-xl [&>*]:h-7 [&>*]:bg-[var(--primaryColor)] [&>*]:rounded-3xl [&>*]:text-[var(--darkColor)] [&>*]:font-bold [&>*]:capitalize">
-          <Link to="/tag1">#tag1</Link>
-          <Link to="/tag2">#tag2</Link>
-          <Link to="/tag3">#tag3</Link>
+        <section className="px-4">
+          <ul className="flex gap-2 flex-wrap [&>*]:tagsViewing">
+            {videoTags.length > 0 ? (
+              videoTags.map((tag) => (
+                <li key={tag.id} className="duration-300 text-sm">
+                  #{tag.name}
+                </li>
+              ))
+            ) : (
+              <li>Aucuns tags</li>
+            )}
+          </ul>
         </section>
-        <p className="py-1 text-lg">Durée : XX minutes</p>
-        <h2 className="text-2xl">Description</h2>
-        <p className="text-lg">
-        Placeholder : description 
-        </p>
+        <h2 className="font-bold mt-4 px-4">{video.title}</h2>
+        <p className="px-4">Durée : {video.duration} minute(s)</p>
+        <h3 className="font-bold mt-4 px-4">Description</h3>
+        <p className="px-4">{video.description}</p>
       </section>
-      <h2>Suggestions</h2>
-      <p>carrousel vidéo suggestion</p>
-    </>
+      <Footer />
+    </main>
   );
 }
