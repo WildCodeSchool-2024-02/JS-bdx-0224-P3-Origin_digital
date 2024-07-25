@@ -16,16 +16,19 @@ function MyAccount() {
 
   return (
     <>
-      <main ref={inViewRef} className={`${fadeInClass} min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)]`}>
+      <main ref={inViewRef} className={`${fadeInClass} min-h-[calc(100vh-5rem)] flex flex-col items-start justifify-center px-4 md:px-8 lg:px-12`}>
         <h2 className="m-5">Mon espace</h2>
-        <ul className="grid grid-cols-1 md:grid-cols-2 grid-rows-6 gap-0 bg-secondary-color rounded-xl mx-5 mb-8 px-5 pt-5 pb-9">
+        <ul className="w-full grid grid-cols-1 md:grid-cols-2 grid-rows-6 gap-0 bg-secondary-color rounded-xl mx-5 mb-8 px-5 pt-5 pb-9">
           <h3 className="gridMyAccount md:col-end-2 row-start-1 row-end-2">
             Information du compte
           </h3>
           <li className="gridMyAccount md:col-end-2 row-start-2 row-end-3">
-          <li className="md:col-span-2 row-start-2 row-end-3">
-            Status: {userData.role_id === 3 ? `Coach` : 'Abonné'}
-          </li>
+            <li className="md:col-span-2 row-start-2 row-end-3">
+              Status:{" "}
+              {userData.role_id === 3
+                ? "Coach"
+                : "Abonné"}
+            </li>
           </li>
           <li className="gridMyAccount md:col-end-2 row-start-3 row-end-4">
             Prénom: {userData.firstname}

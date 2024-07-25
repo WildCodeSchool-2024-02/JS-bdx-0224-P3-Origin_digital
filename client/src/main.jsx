@@ -26,6 +26,14 @@ const dashboardLoader = async () => {
   return { tags, categories };
 };
 
+const videoLoader = async (id) => {
+  const [tags, video] = await Promise.all([
+    getData("/api/tags").then((res) => res.json()),
+    getData(`/api/videos/${id}`).then((res) => res.json()),
+  ]);
+  return { tags, video };
+};
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -60,9 +68,9 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/viewing/:id",
+        path: "/video/:id",
         element: <Viewing />,
-        loader: ({ params }) => getData(`/api/videos/${params.id}`),
+        loader: ({ params }) => videoLoader(params.id),
       },
       {
         path: "/contact",

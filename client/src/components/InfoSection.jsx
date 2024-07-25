@@ -11,30 +11,29 @@ export default function InfoSection() {
   }`;
 
   return (
-    <>
+    <article className='flex flex-col justify-center items-center lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:my-40 lg:mx-20'>
       <img
         ref={inViewRef}
         src="./src/assets/images/yoga.jpg"
         alt=""
-        className={`img-shadow w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] rounded-xl lg:ml-[8vw] lg:mt-[-10%]
+        className={`img-shadow w-[calc(90%-15px)] h-auto rounded-xl lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 lg:place-self-center lg:mr-20
   ${fadeInClass}`}
-        
       />{" "}
-        <h2
-          ref={inViewRef}
-          className={`text-center lg:text-left place-self-end mt-5 lg:relative lg:top-[-34vh] lg:ml-[60vw] lg:mt-[0rem]${fadeInClass}`}
-        >
-          {isLogged ? "Bravo pour votre détermination !" : "Notre offre"}
-          </h2>
-
-        <p
-          ref={inViewRef}
-          className={`text-center lg:text-left px-5 lg:relative lg:top-[-34vh] lg:ml-[60vw] lg:p-0 ${fadeInClass}`}
-        >
-            {isLogged ? "Vous vous donnez les moyens pour réussir. L'équipe SweatStream vous félicite pour votre assiduité sur la plateforme !" : "  Des vidéos en temps réel rapides, fun et efficaces qui s’adaptent à tonniveau (intensité, zones du corps...) Ton rythme (fréquence & durée) Et ton équipement (avec ou sans matériel)"}
-
-        </p>
-    </>
+      <h2
+        ref={inViewRef}
+        className={`text-center mt-8 lg:col-start-2 lg:mt-20 lg:col-end-3 lg:row-start-1 lg:row-end-2 lg:place-self-start lg:ml-14 ${fadeInClass}`}
+      >
+        {isLogged ? "Félicitation" : "Notre offre"}
+      </h2>
+      <p
+        ref={inViewRef}
+        className={`text-center mb-10 mt-2 px-5 lg:mt-0 lg:px-0 lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3 lg:place-self-start lg:text-left lg:ml-14 ${fadeInClass}`}
+      >
+        {isLogged
+          ? "Vous vous donnez les moyens pour réussir. L'équipe SweatStream vous félicite pour votre assiduité sur la plateforme !"
+          : "  Des vidéos en temps réel rapides, fun et efficaces qui s’adaptent à ton niveau (intensité, zones du corps...) Ton rythme (fréquence & durée) Et ton équipement (avec ou sans matériel)"}
+      </p>
+    </article>
   );
 }
 

@@ -118,25 +118,22 @@ export default function Dashboard() {
 
   return (
     <>
-      <main ref={inViewRef} className={fadeInClass}>
-        <h2 className="m-5">Votre Tableau de bord</h2>
-        <input
-          type="text"
-          aria-label="Rechercher une vidéo"
-          placeholder="Rechercher une vidéo.."
-          className="mt-4 ml-4 h-8 pl-4 w-64 border-2 border-primary-dark bg-light-color rounded-full focus:border-primary-dark focus:ring ring-offset-2 focus:outline-none focus:ring-primary-dark transition ease-in-out delay-150 lg:h-10 "
-          onChange={handleSearch}
-        />
-        <button
-          type="button"
-          className="mt-4 mb-2 ml-4 w-64 rounded-full "
-          onClick={handleOpenModal}
-        >
-          + Ajouter une vidéo
-        </button>
+      <main ref={inViewRef} className={`${fadeInClass} min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)]`}>
+        <header className="px-4 py-4 md:px-8 lg:px-12 flex flex-wrap gap-4">
+          <h2 className="w-full font-semibold">Votre Tableau de bord</h2>
+          <input
+            type="text"
+            aria-label="Rechercher une vidéo"
+            placeholder="Rechercher une vidéo.."
+            className="h-8 pl-4 w-64 border-2 border-primary-dark bg-light-color rounded-xl focus:border-primary-dark focus:ring ring-offset-2 focus:outline-none focus:ring-primary-dark transition ease-in-out delay-150 lg:h-10"
+            onChange={handleSearch}
+          />
+          <button type="button" className="w-64" onClick={handleOpenModal}>
+            + Ajouter une vidéo
+          </button>
+        </header>
         <section className="overflow-x-auto rounded-xl">
-          <Table className="w-[90vw] mx-auto">
-
+          <Table className="w-full mx-auto">
             <TableHeader className="bg-primary-color">
               <Column isRowHeader className="px-28 lg:p-0 w-60 rounded-tl-xl">
                 Vos vidéos

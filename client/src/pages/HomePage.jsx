@@ -7,8 +7,8 @@ import SliderCategory from "../components/SliderCategory";
 import { getData } from "../services/api.service";
 import image1 from "../assets/images/training.jpg";
 import image2 from "../assets/images/musculation.jpg";
-import image3 from "../assets/images/nutrition.jpg";
-import image4 from "../assets/images/yoga.jpg";
+import image4 from "../assets/images/nutrition.jpg";
+import image3 from "../assets/images/yoga.jpg";
 import image5 from "../assets/images/pilat.jpg";
 import Footer from "../components/Footer";
 
@@ -20,7 +20,7 @@ function Home() {
 
   useEffect(() => {
     const fetchVideo = async () => {
-      const response = await getData(`/api/videos/1`);
+      const response = await getData(`/api/videos/17`);
       const videoData = await response.json();
       setVideo(videoData);
     };

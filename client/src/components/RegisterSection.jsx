@@ -13,38 +13,38 @@ export default function RegisterSection({ video }) {
   }`;
 
   return (
-    <>
+    <article className="flex flex-col justify-center items-center lg:grid lg:grid-cols-2 lg:grid-rows-3 lg:gap-0 lg:my-40 lg:mx-20">
       <img
         id="WhySubscribe"
         ref={inViewRef}
         src={
           isLogged && video
-            ? video.img_url
+            ? `http://localhost:3310/assets/images/${video.img_url}`
             : "./src/assets/images/musculation.jpg"
         }
         alt={isLogged && video ? video.title : ""}
-        className={`img-shadow w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] rounded-xl lg:mr-[10vw] mt-[3rem] ${fadeInClass}`}
+        className={`img-shadow w-[calc(90%-15px)] object-cover h-auto rounded-xl lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3 lg:place-self-center ${fadeInClass}`}
       />
       <h2
         ref={inViewRef}
-        className={`text-center mt-5 max-w-5xl lg:text-left place-self-end lg:relative lg:ml-[8vw] lg:top-[-35vh] lg:mt-0 ${fadeInClass}`}
+        className={`text-center mt-8 lg:row-start-1 lg:row-end-2 lg:col-start-1 lg:col-end-2 lg:place-self-start  ${fadeInClass}`}
       >
         {isLogged ? "Cours du moment" : "Pourquoi s'abonner ?"}
       </h2>
       <p
         ref={inViewRef}
-        className={`text-center lg:w-[40vw] lg:text-left lg:relative lg:ml-[8vw] lg:top-[-35vh] lg:p-0 ${fadeInClass}`}
+        className={`mt-2 text-center lg:row-start-2 lg:row-end-3 lg:col-start-1 lg:col-end-2 lg:place-self-start lg:text-left ${fadeInClass}`}
       >
         {isLogged && video
-          ? video.title
+          ? video.description
           : "Conçue pour répondre aux besoins des amateurs de fitness comme des athlètes chevronnés, accédez aux meilleurs cours en ligne pour atteindre vos objectifs."}
       </p>
       <Link
-        to={isLogged && video ? `/viewing/${video.id}` : "/register"}
+        to={isLogged && video ? `/video/${video.video_id}` : "/register"}
         ref={inViewRef}
-        className={`text-[var(--lightColor)] text-xl bg-[var(--primaryColor)] p-2 text-center visited:text-[var(--lightColor)] 
-            hover:bg-[var(--primaryDark)] rounded-xl flex items-center justify-center mx-auto mt-5 mb-10 w-40 md:text-left lg:w-56 lg:text-2xl 
-            lg:gap-6 lg:mb-0 lg:mr-[70vw] lg:relative lg:top-[-34vh] ${fadeInClass} whitespace-nowrap`}
+        className={`text-light-color text-xl bg-primary-color p-2 visited:text-light-color
+            hover:bg-primary-dark rounded-xl flex items-center mt-5 mb-14 w-40 md:text-left lg:mb-0 lg:mt-0 lg:w-56 lg:text-2xl 
+            gap-3 lg:gap-6 lg:row-start-3 lg:row-end-4 lg:col-start-1 lg:col-end-2 lg:place-self-start ${fadeInClass} whitespace-nowrap`}
       >
         <img
           src="./src/assets/images/logoPlay.png"
@@ -53,15 +53,16 @@ export default function RegisterSection({ video }) {
         />
         {isLogged && video ? "Voir la vidéo" : "S'inscrire"}
       </Link>
-    </>
+    </article>
   );
 }
 
 RegisterSection.propTypes = {
   video: PropTypes.shape({
     img_url: PropTypes.string,
+    description: PropTypes.string,
     title: PropTypes.string,
-    id: PropTypes.number,
+    video_id: PropTypes.number,
   }),
 };
 

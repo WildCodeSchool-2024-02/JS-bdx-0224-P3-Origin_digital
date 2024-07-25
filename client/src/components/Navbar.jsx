@@ -100,7 +100,7 @@ function Navbar({
       ) : (
         <>
           <button
-            className={`${subscribeStyle} bg-white border-8 border-indigo-500`}
+            className={`${subscribeStyle} buttonForLink bg-white border-8 border-indigo-500`}
             type="button"
           >
             <Link
@@ -110,7 +110,7 @@ function Navbar({
               Inscription
             </Link>
           </button>
-          <button className={subscribeStyle} type="button">
+          <button className={`${subscribeStyle} buttonForLink`} type="button">
             <Link
               to="/login"
               className="text-[var(--darkColor)]  hover:text-white text-xs lg:text-base "
@@ -159,7 +159,7 @@ function Navbar({
                 to={`/category/${category.id}`}
                 className=" border-b border-gray-400 text-[var(--darkColor)] hover:text-primary-dark hover:border-primary-dark visited:text-[var(--darkColor)]"
                 onClick={closeMenu}
-             >
+              >
                 {category.name}
               </Link>
             </li>
