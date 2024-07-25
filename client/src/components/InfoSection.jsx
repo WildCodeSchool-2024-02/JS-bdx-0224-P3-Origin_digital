@@ -27,7 +27,7 @@ export default function InfoSection() {
       </h2>
       <p
         ref={inViewRef}
-        className={`text-center mb-10 mt-2 lg:text-right px-5 lg:relative lg:top-[-26vw] md:mb-16 lg:ml-[40vw] lg:p-40 lg:whitespace-normal lg:max-w-2${fadeInClass}`}
+        className={`text-center mb-10 mt-2 lg:text-right px-5 lg:relative lg:top-[-26vw] md:mb-16 lg:ml-[40vw] lg:p-16 lg:whitespace-normal lg:max-w-2${fadeInClass}`}
       >
         {isLogged
           ? "Vous vous donnez les moyens pour réussir. L'équipe SweatStream vous félicite pour votre assiduité sur la plateforme !"
