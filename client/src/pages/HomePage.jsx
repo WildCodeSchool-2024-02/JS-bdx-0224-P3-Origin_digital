@@ -20,7 +20,7 @@ function Home() {
 
   useEffect(() => {
     const fetchVideo = async () => {
-      const response = await getData(`/api/videos/1`);
+      const response = await getData(`/api/videos/17`);
       const videoData = await response.json();
       setVideo(videoData);
     };

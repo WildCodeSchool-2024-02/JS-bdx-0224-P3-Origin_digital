@@ -36,20 +36,20 @@ export default function RegisterSection({ video }) {
         className={`mt-2 text-center lg:row-start-2 lg:row-end-3 lg:col-start-1 lg:col-end-2 lg:place-self-start lg:text-left ${fadeInClass}`}
       >
         {isLogged && video
-          ? video.title
+          ? video.description
           : "Conçue pour répondre aux besoins des amateurs de fitness comme des athlètes chevronnés, accédez aux meilleurs cours en ligne pour atteindre vos objectifs."}
       </p>
       <Link
         to={isLogged && video ? `/video/${video.video_id}` : "/register"}
         ref={inViewRef}
         className={`text-light-color text-xl bg-primary-color p-2 visited:text-light-color
-            hover:bg-primary-dark rounded-xl flex items-center  mt-5 mb-14 w-40 md:text-left lg:mb-0 lg:mt-0 lg:w-56 lg:text-2xl 
+            hover:bg-primary-dark rounded-xl flex items-center mt-5 mb-14 w-40 md:text-left lg:mb-0 lg:mt-0 lg:w-56 lg:text-2xl 
             gap-3 lg:gap-6 lg:row-start-3 lg:row-end-4 lg:col-start-1 lg:col-end-2 lg:place-self-start ${fadeInClass} whitespace-nowrap`}
       >
         <img
           src="./src/assets/images/logoPlay.png"
           alt=""
-          className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 mb-12"
+          className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8"
         />
         {isLogged && video ? "Voir la vidéo" : "S'inscrire"}
       </Link>
@@ -60,6 +60,7 @@ export default function RegisterSection({ video }) {
 RegisterSection.propTypes = {
   video: PropTypes.shape({
     img_url: PropTypes.string,
+    description: PropTypes.string,
     title: PropTypes.string,
     video_id: PropTypes.number,
   }),
