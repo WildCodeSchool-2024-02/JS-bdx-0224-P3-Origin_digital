@@ -12,7 +12,7 @@ export default function HeroSection() {
   }`;
 
   const heroSectionButton = `flex gap-6 p-2 text-[var(--lightColor)] text-2xl bg-[var(--primaryLight)] items-center rounded-xl 
-            visited:text-[var(--lightColor)] hover:bg-[var(--primaryDark)] mx-[auto] w-[16ch] col-start-2 row-start-3 place-self-start lg:mx-0 lg:mt-20`;
+            visited:text-[var(--lightColor)] hover:bg-[var(--primaryDark)] mx-[auto] w-[16ch] col-start-2 row-start-3 place-self-start lg:mx-0 lg:mt-20 lg:z-10`;
 
   return (
     <article
@@ -48,7 +48,7 @@ export default function HeroSection() {
                 <img
                   src="./src/assets/images/logoPlay.png"
                   alt=""
-                  className="block w-7 h-7 md:w-6 md:h-6 lg:h-8 lg:w-8"
+                  className="block w-7 h-7 md:w-6 md:h-6 lg:h-8 lg:w-8 cursor-pointer"
                 />
                 Mon espace
               </Link>
