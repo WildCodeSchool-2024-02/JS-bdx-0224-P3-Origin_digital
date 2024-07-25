@@ -13,7 +13,7 @@ export default function RegisterSection({ video }) {
   }`;
 
   return (
-    <>
+    <article className="flex flex-col justify-center items-center lg:grid lg:grid-cols-2 lg:grid-rows-3 lg:gap-0 lg:my-40 lg:mx-20">
       <img
         id="WhySubscribe"
         ref={inViewRef}
@@ -23,17 +23,17 @@ export default function RegisterSection({ video }) {
             : "./src/assets/images/musculation.jpg"
         }
         alt={isLogged && video ? video.title : ""}
-        className={`img-shadow w-[calc(90%-15px)] h-auto mx-auto max-w-[450px] rounded-xl mt-10 lg:mr-[10vw] lg:my-[10vw] ${fadeInClass}`}
+        className={`img-shadow w-[calc(90%-15px)] object-cover h-auto rounded-xl lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3 lg:place-self-center ${fadeInClass}`}
       />
       <h2
         ref={inViewRef}
-        className={`text-center mt-8 max-w-5xl lg:text-left place-self-end lg:relative lg:ml-[8vw] lg:top-[-26vw] ${fadeInClass}`}
+        className={`text-center mt-8 lg:row-start-1 lg:row-end-2 lg:col-start-1 lg:col-end-2 lg:place-self-start  ${fadeInClass}`}
       >
         {isLogged ? "Cours du moment" : "Pourquoi s'abonner ?"}
       </h2>
       <p
         ref={inViewRef}
-        className={`mt-2 text-center lg:w-[40vw] lg:text-left lg:relative lg:ml-[8vw] lg:top-[-55vh] ${fadeInClass}`}
+        className={`mt-2 text-center lg:row-start-2 lg:row-end-3 lg:col-start-1 lg:col-end-2 lg:place-self-start lg:text-left ${fadeInClass}`}
       >
         {isLogged && video
           ? ""
@@ -43,8 +43,8 @@ export default function RegisterSection({ video }) {
         to={isLogged && video ? `/video/${video.video_id}` : "/register"}
         ref={inViewRef}
         className={`text-light-color text-xl bg-primary-color p-2 visited:text-light-color
-            hover:bg-primary-dark rounded-xl flex items-center mx-auto mt-5 mb-14 md:mb-16 w-40 md:text-left lg:w-56 lg:text-2xl 
-            gap-3 lg:gap-6 lg:mr-[79vw] lg:relative lg:top-[-55vh] ${fadeInClass} whitespace-nowrap`}
+            hover:bg-primary-dark rounded-xl flex items-center  mt-5 mb-14 w-40 md:text-left lg:mb-0 lg:mt-0 lg:w-56 lg:text-2xl 
+            gap-3 lg:gap-6 lg:row-start-3 lg:row-end-4 lg:col-start-1 lg:col-end-2 lg:place-self-start ${fadeInClass} whitespace-nowrap`}
       >
         <img
           src="./src/assets/images/logoPlay.png"
@@ -53,7 +53,7 @@ export default function RegisterSection({ video }) {
         />
         {isLogged && video ? "Voir la vidéo" : "S'inscrire"}
       </Link>
-    </>
+    </article>
   );
 }
 
