@@ -13,7 +13,7 @@ export default function SliderCategory({ categories, categoryImages }) {
   return (
     <Swiper
       spaceBetween={30}
-      className="lg:my-40"
+      className="my-20 lg:my-40"
       loop
       navigation
       pagination={{ clickable: true }}
